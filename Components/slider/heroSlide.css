@@ -1,0 +1,40 @@
+.heroSlide {
+  position: relative;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.heroSlide div {
+  width: 100%;
+  height: 100%;
+}
+
+.heroSlide img {
+  /* border: 4px solid burlywood; */
+  object-fit: cover;
+}
+
+#slider div {
+  background-size: cover;
+  background-position: right 50%;
+}
+
+.arr {
+  color: azure;
+  transition: 0.5s ease-in-out;
+  border-radius: 50%;
+}
+.arr:hover {
+  color: brown;
+  cursor: pointer;
+  background-color: aqua;
+}
+.left {
+  position: absolute;
+  top: 50%;
+  left: 1%;
+}
+.right {
+  position: absolute;
+  top: 50%;
+  right: 1%;
+}
