@@ -85,6 +85,7 @@ const Pricing = () => {
           Beginner $4.99
         </button>
         <ul>
+          <p>50 clef points for sure</p>
           <li>50 clef points </li>
         </ul>
         <h1 className='price text-[55px]'>

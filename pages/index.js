@@ -1,124 +1,213 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
+import Image from "next/image";
+import { Inter } from "next/font/google";
+import DrawingComponent from "@/Components/DrawingComponent";
+import Square from "@/Components/Square";
+import { IconWifi } from "@tabler/icons-react";
+import { IconUsersGroup } from "@tabler/icons-react";
+import { IconWand } from "@tabler/icons-react";
+import Lottie from "lottie-react";
+import greenLady from "@/public/assets/lottie/greenlady.json";
+// import {switch} from "@/public/assets/images/switch.svg";
+import Lotie from "@/Components/Lotie";
+import MobileSquare from "@/Components/MobileSquare";
+import { useState } from "react";
+import { useEffect } from "react";
+import GraySquare from "@/Components/GraySquare";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { useAnimation } from "framer-motion";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import InstagramIcon from "@mui/icons-material/Instagram";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const [screenWidth, setScreenWidth] = useState(0);
+  const { ref, inView } = useInView({ threshold: 0.2 });
+  const animation = useAnimation();
+  const animation2 = useAnimation();
+  useEffect(() => {
+    console.log("inView", inView);
+
+    if (inView) {
+      animation.start({
+        x: 0,
+        transition: { type: "spring", duration: 1.5, bounce: 0.3 },
+      });
+      animation2.start({
+        x: 0,
+        transition: { type: "spring", duration: 2.5, bounce: 0.3 },
+      });
+    } else {
+      animation.start({
+        x: `100vw`,
+      });
+      animation2.start({
+        x: `-50vw`,
+      });
+    }
+  }, [inView]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+
+    setScreenWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const mobile = screenWidth < 798;
+
   return (
-    <main className='flex min-h-screen flex-col items-center justify-between p-24'>
-      <div className='z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex'>
-        <p className='fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30'>
-          Get started by editing&nbsp;
-          <code className='font-mono font-bold'>pages/index.js</code>
-        </p>
-        <div className='fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none'>
-          <a
-            className='pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0'
-            href='https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            By{" "}
-            <Image
-              src='/vercel.svg'
-              alt='Vercel Logo'
-              className='dark:invert'
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <main className='relative'>
+      <section className='h-[88vh]' id='hero'>
+        <div className='h-full'>{mobile ? <MobileSquare /> : <Square />}</div>
+
+        {/* <DrawingComponent /> */}
+        <div className='absolute  top-[30vh] md:bottom-[30vh]'>
+          <div className='mx-[3vw] header  relative max-w-max'>
+            <p className='z-10  text-white '>
+              WELCOME TO
+              <span className='top-[.5vh] relative md:top-0 text-secondary'>
+                TRICODE
+              </span>
+            </p>
+            <p className='text-white mt-[1.5vh]'>NETWORK</p>
+          </div>
+          <p className='text-sm  w-[70vw] mx-[3vw] mt-[7vh] md:mt-[12vh] text-white'>
+            A Community for worldclass Dev's and Hardware Engineers
+          </p>
         </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className='relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert'
-          src='/next.svg'
-          alt='Next.js Logo'
-          width={180}
-          height={37}
-          priority
+        <img
+          className='w-[30vw]  absolute  top-[35vh] right-[2vw]'
+          src='https://s3-alpha-sig.figma.com/img/b9cb/49da/67d733f7b59b3e4bb1a8100d97e4bd1f?Expires=1687737600&Signature=mv7qQoQxPxDu76vDBqbmCM5KD6KvPUc7TvxiPX3TPqCM38cGgqnuBzGDjI17-vpPOJHvzzjENGD0yyWOXCK9oWkPgJ2mKk9ZDq8vwX1d9KdwUW-5d9Doft9oRx3mGXpgHcsAvTk8bhHlszANIOWfs-xthzc4Fenduvw0oZdYvS~GNC7RtrIIQvq8soiq7eJCF3T2VLUSlLYhfj05iCxYlNjyCAiIJ~tCsXQLpRCWPO4MvE9ivUs-AK6OQWbruLmrlDJE0dlWas4BuhNWB2PyIaExF7kyGCZAZs6uiiIeuDLCqowhxy5nl3SO~44CaiGjckKt516DrOpb2QKmyI6glw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4'
         />
-      </div>
+        {/* <div className='flex md:hidden'>
+          <MobileSquare />
+        </div> */}
+      </section>
+      <section id='intro' className='h-full'>
+        {/* <Lotie src={"../public/assets/lottie/greenlady.json"} /> */}
 
-      <div className='mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left'>
-        <a
-          href='https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app'
-          className='group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <h2 className={`${inter.className} mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className='inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none'>
-              -&gt;
-            </span>
-          </h2>
-          <p
-            className={`${inter.className} m-0 max-w-[30ch] text-sm opacity-50`}
+        <div className='px-[3vw] flex flex-col items-start relative top-[1vh] max-w-max md:mt-[5vh]  mx-[3vw]'>
+          {!mobile && (
+            <div className={`cButtons md:flex justify-between  w-[45vw]`}>
+              <button>
+                <IconWifi size={22} color='gray' stroke={2} />
+                <p className={``}>Connect</p>
+              </button>
+              <button>
+                <IconUsersGroup size={22} color='gray' stroke={2} />
+                <p>Collaborate</p>
+              </button>
+              <button>
+                <IconWand size={22} stroke={2} color='gray' />
+                <p>Create</p>
+              </button>
+            </div>
+          )}
+          <div
+            className={`flex justify-between space-x-14 mt-[0vh] md:space-x-20 md:mt-[8vh]  w-[45vw]`}
           >
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+            <button className='font-medium hover:bg-opacity-70 hover:scale-110 transition ease-linear duration-150 shadow-sm shadow-black px-[7vw] py-[1.5vh] rounded-lg bg-secondary text-black'>
+              HIRE
+            </button>
+            <button className='font-medium hover:bg-opacity-70 hover:scale-110 transition ease-linear duration-150 shadow-sm shadow-secondary px-[7vw] py-[1.5vh] rounded-lg bg-black text-white'>
+              JOIN
+            </button>
+          </div>
+        </div>
+        <Lottie
+          className='relative  md:bottom-[15vh] left-[64vw]  md:left-[57vw]  w-[35vw] md:w-[15vw]'
+          animationData={greenLady}
+          loop={true}
+        />
+      </section>
+      <motion.section
+        className='relative top-[1.8vh]  overflow-hidden h-[100vh]'
+        ref={ref}
+        id='aboutUs'
+      >
+        <GraySquare />
+        <motion.p
+          animate={animation}
+          style={{ lineHeight: 2 }}
+          className='w-[50vw] absolute top-[14vh] right-[2vw] text-white text-[20px]'
+        >
+          Welcome to TRICODE Network, the epitome of excellence in the world of
+          developer recruitment. We take great pride in being a distinguished
+          platform that connects exceptional talents in the tech industry with
+          organizations seeking to bring their visionary ideas to life. We unite
+          top-notch developers for transformative projects that shape the
+          future. We're not just about recruitment; we're a vibrant learning and
+          earning community, fostering collaboration and positive impact for
+          all. Join us to be part of something great.
+          <button className='font-medium scale-50 hover:bg-opacity-70 hover:scale-[.55] transition ease-linear duration-150 shadow-sm shadow-secondary px-[7vw] py-[1.5vh] rounded-lg bg-black text-white'>
+            JOIN
+          </button>
+        </motion.p>
+        <motion.p
+          animate={animation2}
+          className='w-[30vw] absolute top-[62vh] left-[2vw] bg-black p-2 rounded-sm text-white text-[17px]'
+        >
+          {`We foster a secure and inclusive <Developer /> community, connecting
+          diverse skilled developers to collaborate on challenging projects,
+          creating cutting-edge solutions in utility software, <Mechatronics />
+          engineering, and humanitarian initiatives. Join our network platform
+          to share ideas, knowledge, and resources, driving innovation and
+          impacting the world positively.`}
+        </motion.p>
+        <motion.p
+          animate={animation}
+          className='w-[30vw] absolute top-[68vh] left-[62vw]  bg-black p-2 rounded-sm text-white text-[17px]'
+        >
+          {`
+Our goal is to create sustainable technology innovations that help solve some of the most pressing challenges facing our world today, particularly those related to climate change and green energy. We believe that Tricode Network is well positioned to make a significant impact on the world of technology and beyond.
+`}
+        </motion.p>
+      </motion.section>
+      <section
+        id='patners'
+        className='mt-[40vh] pb-[5vh] relative h-[100vh] justify-center'
+      >
+        <p className='absolute text-[28px] text-white self-center w-full text-center mt-[2vh] font-semibold '>{`< Patners />`}</p>
+        <Square />
+        <div className='px-[5vw]'>
+          <Image
+            width={200}
+            height={80}
+            quality={100}
+            className='border-2 top-[20vh] bg-white right-[10vw] absolute w-[35vw]'
+            src='/assets/images/interswitch.jpg'
+            alt='switch'
+          />
 
-        <a
-          href='https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app'
-          className='group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <h2 className={`${inter.className} mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className='inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none'>
-              -&gt;
-            </span>
-          </h2>
-          <p
-            className={`${inter.className} m-0 max-w-[30ch] text-sm opacity-50`}
-          >
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href='https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app'
-          className='group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <h2 className={`${inter.className} mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className='inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none'>
-              -&gt;
-            </span>
-          </h2>
-          <p
-            className={`${inter.className} m-0 max-w-[30ch] text-sm opacity-50`}
-          >
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
-
-        <a
-          href='https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app'
-          className='group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <h2 className={`${inter.className} mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className='inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none'>
-              -&gt;
-            </span>
-          </h2>
-          <p
-            className={`${inter.className} m-0 max-w-[30ch] text-sm opacity-50`}
-          >
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+          <Image
+            width={200}
+            height={100}
+            quality={100}
+            className=' border-2 top-[20vh] bg-white absolute w-[35vw]'
+            src='/assets/images/dsn.png'
+          />
+        </div>
+        <div className='px-[2vw] flex justify-between mb-[15vh]'>
+          <p className='text-black text-sm'>&copy; 2023 tricode.pro</p>
+          <div className='w-[30vw]  flex justify-around'>
+            <LinkedInIcon />
+            <InstagramIcon />
+            <TwitterIcon />
+            <GitHubIcon />
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
