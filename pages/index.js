@@ -65,7 +65,9 @@ export default function Home() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
+  const imageLoader = ({ src, width, quality }) => {
+    return `${src}?w=${width}&q=${quality || 75}`;
+  };
   const mobile = screenWidth < 798;
 
   return (
@@ -88,6 +90,17 @@ export default function Home() {
           <p className='text-sm  w-[70vw] mx-[3vw] mt-[7vh] md:mt-[12vh] text-white'>
             A Community for worldclass Developers and Hardware Engineers
           </p>
+        </div>
+        <div className='absolute top-[25vh] right-[0vw]'>
+          <Image
+            loader={imageLoader}
+            width={!mobile ? 500 : 200}
+            height={900}
+            src={
+              "https://s3-alpha-sig.figma.com/img/b9cb/49da/67d733f7b59b3e4bb1a8100d97e4bd1f?Expires=1687737600&Signature=mv7qQoQxPxDu76vDBqbmCM5KD6KvPUc7TvxiPX3TPqCM38cGgqnuBzGDjI17-vpPOJHvzzjENGD0yyWOXCK9oWkPgJ2mKk9ZDq8vwX1d9KdwUW-5d9Doft9oRx3mGXpgHcsAvTk8bhHlszANIOWfs-xthzc4Fenduvw0oZdYvS~GNC7RtrIIQvq8soiq7eJCF3T2VLUSlLYhfj05iCxYlNjyCAiIJ~tCsXQLpRCWPO4MvE9ivUs-AK6OQWbruLmrlDJE0dlWas4BuhNWB2PyIaExF7kyGCZAZs6uiiIeuDLCqowhxy5nl3SO~44CaiGjckKt516DrOpb2QKmyI6glw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+            }
+            alt='hand'
+          />
         </div>
 
         {/* <div className='flex md:hidden'>
@@ -132,7 +145,7 @@ export default function Home() {
         />
       </section>
       <motion.section
-        className='relative top-[1.8vh]  overflow-hidden h-[100vh]'
+        className='relative top-[0vh]  overflow-hidden h-[100vh]'
         ref={ref}
         id='aboutUs'
       >
