@@ -184,7 +184,7 @@ Our goal is to create sustainable technology innovations that help solve some of
             height={80}
             quality={100}
             className='border-2 top-[20vh] bg-white right-[10vw] absolute w-[35vw]'
-            src='/assets/images/interswitch.png'
+            src='/assets/images/switch.jpg'
             alt='switch'
           />
 
