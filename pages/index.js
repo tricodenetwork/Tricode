@@ -38,18 +38,20 @@ export default function Home() {
         transition: { type: "spring", duration: 1.5, bounce: 0.3 },
       });
       animation2.start({
-        x: 0,
-        transition: { type: "spring", duration: 2.5, bounce: 0.3 },
+        scale: 1,
+        opacity: 1,
+        transition: { type: "tween", duration: 2.5 },
       });
     } else {
       animation.start({
         x: `100vw`,
       });
       animation2.start({
-        x: `-50vw`,
+        scale: 0,
+        opacity: 0,
       });
     }
-  }, [inView]);
+  }, [inView, animation, animation2]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -69,7 +71,7 @@ export default function Home() {
   return (
     <main className='relative'>
       <section className='h-[88vh]' id='hero'>
-        <div className='h-full'>{mobile ? <MobileSquare /> : <Square />}</div>
+        <div className='h-full'>{<Square />}</div>
 
         {/* <DrawingComponent /> */}
         <div className='absolute  top-[30vh] md:bottom-[30vh]'>
@@ -77,19 +79,17 @@ export default function Home() {
             <p className='z-10  text-white '>
               WELCOME TO
               <span className='top-[.5vh] relative md:top-0 text-secondary'>
+                {" "}
                 TRICODE
               </span>
             </p>
             <p className='text-white mt-[1.5vh]'>NETWORK</p>
           </div>
           <p className='text-sm  w-[70vw] mx-[3vw] mt-[7vh] md:mt-[12vh] text-white'>
-            A Community for worldclass Dev's and Hardware Engineers
+            A Community for worldclass Developers and Hardware Engineers
           </p>
         </div>
-        <img
-          className='w-[30vw]  absolute  top-[35vh] right-[2vw]'
-          src='https://s3-alpha-sig.figma.com/img/b9cb/49da/67d733f7b59b3e4bb1a8100d97e4bd1f?Expires=1687737600&Signature=mv7qQoQxPxDu76vDBqbmCM5KD6KvPUc7TvxiPX3TPqCM38cGgqnuBzGDjI17-vpPOJHvzzjENGD0yyWOXCK9oWkPgJ2mKk9ZDq8vwX1d9KdwUW-5d9Doft9oRx3mGXpgHcsAvTk8bhHlszANIOWfs-xthzc4Fenduvw0oZdYvS~GNC7RtrIIQvq8soiq7eJCF3T2VLUSlLYhfj05iCxYlNjyCAiIJ~tCsXQLpRCWPO4MvE9ivUs-AK6OQWbruLmrlDJE0dlWas4BuhNWB2PyIaExF7kyGCZAZs6uiiIeuDLCqowhxy5nl3SO~44CaiGjckKt516DrOpb2QKmyI6glw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4'
-        />
+
         {/* <div className='flex md:hidden'>
           <MobileSquare />
         </div> */}
@@ -140,23 +140,21 @@ export default function Home() {
         <motion.p
           animate={animation}
           style={{ lineHeight: 2 }}
-          className='w-[50vw] absolute top-[14vh] right-[2vw] text-white text-[20px]'
+          className='w-[50vw] absolute top-[14vh] right-[2vw] text-white text-[15px] md:text-[20px]'
         >
-          Welcome to TRICODE Network, the epitome of excellence in the world of
-          developer recruitment. We take great pride in being a distinguished
-          platform that connects exceptional talents in the tech industry with
+          TRICODE Network! We take great pride in being a distinguished platform
+          that connects exceptional talents in the tech industry with
           organizations seeking to bring their visionary ideas to life. We unite
           top-notch developers for transformative projects that shape the
-          future. We're not just about recruitment; we're a vibrant learning and
-          earning community, fostering collaboration and positive impact for
-          all. Join us to be part of something great.
+          future, fostering collaboration and positive impact for all. Join us
+          to be part of something great.
           <button className='font-medium scale-50 hover:bg-opacity-70 hover:scale-[.55] transition ease-linear duration-150 shadow-sm shadow-secondary px-[7vw] py-[1.5vh] rounded-lg bg-black text-white'>
             JOIN
           </button>
         </motion.p>
         <motion.p
           animate={animation2}
-          className='w-[30vw] absolute top-[62vh] left-[2vw] bg-black p-2 rounded-sm text-white text-[17px]'
+          className='w-[30vw] absolute top-[68vh] left-[2vw] bg-black p-2 rounded-sm text-white text-[17px]'
         >
           {`We foster a secure and inclusive <Developer /> community, connecting
           diverse skilled developers to collaborate on challenging projects,
@@ -167,7 +165,7 @@ export default function Home() {
         </motion.p>
         <motion.p
           animate={animation}
-          className='w-[30vw] absolute top-[68vh] left-[62vw]  bg-black p-2 rounded-sm text-white text-[17px]'
+          className='w-[30vw] absolute top-[68vh] left-[58vw]  bg-black p-2 rounded-sm text-white text-[17px]'
         >
           {`
 Our goal is to create sustainable technology innovations that help solve some of the most pressing challenges facing our world today, particularly those related to climate change and green energy. We believe that Tricode Network is well positioned to make a significant impact on the world of technology and beyond.
@@ -194,6 +192,7 @@ Our goal is to create sustainable technology innovations that help solve some of
             width={200}
             height={100}
             quality={100}
+            alt='deltasciencenigeria'
             className=' border-2 top-[20vh] bg-white absolute w-[35vw]'
             src='/assets/images/dsn.png'
           />

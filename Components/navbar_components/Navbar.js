@@ -8,14 +8,13 @@ import { TiTick } from "react-icons/ti";
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { updateAddress } from "../../store/slice-reducers/Web3slice";
 import { useDispatch } from "react-redux";
 import { motion, useAnimation } from "framer-motion";
 import MenuIcon from "@mui/icons-material/Menu";
 
 // import { ethers } from 'ethers';
-import Logo from "./Logo";
 import DrawingComponent from "../DrawingComponent";
+import Image from "next/image";
 
 const Navbar = ({ children }) => {
   let sm = typeof window !== "undefined" && window.innerWidth < 789;
@@ -53,6 +52,9 @@ const Navbar = ({ children }) => {
   };
 
   const route = useRouter();
+  const imageLoader = ({ src, width, quality }) => {
+    return `${src}?w=${width}&q=${quality || 75}`;
+  };
 
   return (
     <div>
@@ -76,7 +78,12 @@ const Navbar = ({ children }) => {
             }}
             className='logos text-white'
           >
-            <img
+            <Image
+              loader={imageLoader}
+              alt='logo'
+              width={140}
+              height={50}
+              quality={100}
               className='w-[10vw]'
               src='https://s3-alpha-sig.figma.com/img/2e73/9077/d05b2e1e064bfe3c08ad9d9c9db5f31f?Expires=1687737600&Signature=gyskcAdMMiWXhuJF1CVGZQEKGuH~-21bWWi52mgPry0dgCblq0Zo8VrA~aA37GraP0i3R1KzJIuC3tiTvk557AjC~eGPyn60wuELAncT-NAfI5eGsLhB4IdjhQrtTEvuJrBiZMLgl~E0oAMYDIVOCBj5nUMIvDzQeXCAIb-LiFVTsgEO3Skh5U4zATOXwMbDISlHlFqD96-QULYgbBFyQpCV4UCCG42NOWavFZNhzPyk5rUYNpzPqpS0P0WnywsZVXa6I4PWJMXNK4lYhCOZ2MdxteqS1zPrk4JEJlczBYHXSQxxxhHrFswLeqQxpDWHD7rhOP7TNl9K0ykLCMPe3w__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4'
             />

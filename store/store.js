@@ -1,12 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import formReducer from "./slice-reducers/Formslice";
-import web3reducer from "./slice-reducers/Web3slice";
 
 // import storage from "redux-persist/lib/storage";
 // import { persistReducer, persistStore } from "redux-persist";
 import thunk from "redux-thunk";
 import { combineReducers } from "@reduxjs/toolkit";
-import audioreducer from "./slice-reducers/AudioSlice";
 import { createWrapper } from "next-redux-wrapper";
 // import { useDispatch, useSelector } from 'react-redux'
 
@@ -17,8 +15,6 @@ import { createWrapper } from "next-redux-wrapper";
 
 const allReducers = combineReducers({
   form: formReducer,
-  Web3: web3reducer,
-  audio: audioreducer,
 });
 
 // const persistedReducer = persistReducer(persistConfig, allReducers);

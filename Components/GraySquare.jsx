@@ -85,9 +85,9 @@ export default function GraySquare() {
       <motion.text
         // animate={{ fontSize: [15, 24] }}
         transition={{ duration: 5 }}
-        x={0.68 * size}
+        x={0.58 * size}
         y={0.1 * sizeY2}
-        fontSize={30}
+        fontSize={25}
         fontFamily={"Inter, sans-serif"}
         fontWeight={700}
         fill='white'
@@ -98,8 +98,8 @@ export default function GraySquare() {
         // animate={{ fontSize: [15, 24] }}
         transition={{ duration: 5 }}
         x={0.08 * size}
-        y={0.6 * sizeY2}
-        fontSize={30}
+        y={0.65 * sizeY2}
+        fontSize={25}
         fontFamily={"Inter, sans-serif"}
         fontWeight={700}
         fill='white'
@@ -109,9 +109,9 @@ export default function GraySquare() {
       <motion.text
         // animate={{ fontSize: [15, 24] }}
         transition={{ duration: 5 }}
-        x={0.7 * size}
+        x={0.6 * size}
         y={0.65 * sizeY2}
-        fontSize={30}
+        fontSize={25}
         fontFamily={"Inter, sans-serif"}
         fontWeight={700}
         fill='white'
