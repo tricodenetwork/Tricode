@@ -46,9 +46,6 @@ export default function GraySquare() {
   const size = Math.round(screenWidth);
   const sizeY = 0.88 * screenHeight;
   const sizeY2 = screenHeight;
-  const points = `0,0 ${size},0 ${size},${0.75 * sizeY} ${
-    0.8 * size
-  },${sizeY} 0,${sizeY}`;
   const points2 = `0,${0.6 * sizeY2} ${
     0.55 * size
   },0 ${size},${0} ${size},${sizeY2} 0,${sizeY2}`;

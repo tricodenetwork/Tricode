@@ -1,28 +1,20 @@
 import Image from "next/image";
-import { Inter } from "next/font/google";
-import DrawingComponent from "@/Components/DrawingComponent";
 import Square from "@/Components/Square";
 import { IconWifi } from "@tabler/icons-react";
 import { IconUsersGroup } from "@tabler/icons-react";
 import { IconWand } from "@tabler/icons-react";
 import Lottie from "lottie-react";
 import greenLady from "@/public/assets/lottie/greenlady.json";
-// import {switch} from "@/public/assets/images/switch.svg";
-import Lotie from "@/Components/Lotie";
-import MobileSquare from "@/Components/MobileSquare";
 import { useState } from "react";
 import { useEffect } from "react";
 import GraySquare from "@/Components/GraySquare";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useAnimation } from "framer-motion";
-import FacebookIcon from "@mui/icons-material/Facebook";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [screenWidth, setScreenWidth] = useState(0);
@@ -100,10 +92,6 @@ export default function Home() {
             alt='hand'
           />
         </div>
-
-        {/* <div className='flex md:hidden'>
-          <MobileSquare />
-        </div> */}
       </section>
       <section id='intro' className='h-full'>
         {/* <Lotie src={"../public/assets/lottie/greenlady.json"} /> */}

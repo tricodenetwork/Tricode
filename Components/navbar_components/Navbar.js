@@ -1,10 +1,5 @@
 import React from "react";
-import { GiWallet } from "react-icons/gi";
-import { IoMdCart } from "react-icons/io";
-import { FaUserAlt } from "react-icons/fa";
-import { RiCloseLine } from "react-icons/ri";
-import { AiOutlineBars } from "react-icons/ai";
-import { TiTick } from "react-icons/ti";
+
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -12,46 +7,16 @@ import { useDispatch } from "react-redux";
 import { motion, useAnimation } from "framer-motion";
 import MenuIcon from "@mui/icons-material/Menu";
 
-// import { ethers } from 'ethers';
-import DrawingComponent from "../DrawingComponent";
 import Image from "next/image";
 
 const Navbar = ({ children }) => {
-  let sm = typeof window !== "undefined" && window.innerWidth < 789;
-  const [errorMessage, setErrorMessage] = useState(null);
-  const [defaultAccount, setDefaultAccount] = useState(null);
   const [showmenu, setShowmenu] = useState(false);
-  const dispatch = useDispatch();
   const controls = useAnimation();
 
-  const connectWallet = async () => {
-    // console.log('requesting accounts');
-    if (window.ethereum) {
-      try {
-        const accounts = await window.ethereum.request({
-          method: "eth_requestAccounts",
-        });
-        setDefaultAccount(accounts[0]);
-        dispatch(updateAddress(accounts[0]));
-      } catch (error) {
-        console.log("err:" + error);
-      }
-    } else {
-      console.log("metamask not detected");
-    }
-  };
-
-  let primary = "#25092c";
-  // let secondary="#9be8a1"
-
-  const toggleMenu = () => {
-    setShowmenu(!showmenu);
-  };
   const hideMenu = () => {
     setShowmenu(false);
   };
 
-  const route = useRouter();
   const imageLoader = ({ src, width, quality }) => {
     return `${src}?w=${width}&q=${quality || 75}`;
   };
@@ -68,13 +33,11 @@ const Navbar = ({ children }) => {
             initial={{}}
             animate={{
               y: [0, -15, 0, -15, 0, -17, 0, -12, 0],
-              // x: [0, 0, 0, 0, 0, 15, 0, 0, 0, 0],
             }}
             transition={{
               delay: 0.1,
               repeat: 7,
               duration: 4,
-              // x: { delay: 8, duration: 5, repeat: 2 },
             }}
             className='logos text-white'
           >
@@ -107,9 +70,7 @@ const Navbar = ({ children }) => {
                 }}
                 className='text-[#07F307]'
                 transition={{ type: "spring", stiffness: 500, duration: 0.1 }}
-                onClick={() => {
-                  hideMenu;
-                }}
+                onClick={hideMenu}
               >
                 {"< Home / >"}
               </motion.li>
@@ -124,9 +85,7 @@ const Navbar = ({ children }) => {
                   console.log(e, i);
                 }}
                 transition={{ type: "spring", stiffness: 500, duration: 0.1 }}
-                onClick={() => {
-                  hideMenu;
-                }}
+                onClick={hideMenu}
               >
                 {"< Our Services / >"}
               </motion.li>
@@ -141,20 +100,13 @@ const Navbar = ({ children }) => {
                   console.log(e, i);
                 }}
                 transition={{ type: "spring", stiffness: 500, duration: 0.1 }}
-                onClick={() => {
-                  hideMenu;
-                }}
+                onClick={hideMenu}
               >
                 {"< About / >"}
               </motion.li>
             </Link>
           </motion.ul>
         </menu>
-
-        {/* <div className='icon flex scale-50 items-center'>
-          <MenuIcon />
-          <DrawingComponent />
-        </div> */}
         <div className='icon flex border-green-500  items-center'>
           <MenuIcon color='white' style={{ fontSize: 50, color: "#07F307" }} />
         </div>
