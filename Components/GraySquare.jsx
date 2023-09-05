@@ -44,7 +44,6 @@ export default function GraySquare() {
     animateGradient();
   }, []);
   const size = Math.round(screenWidth);
-  const sizeY = 0.88 * screenHeight;
   const sizeY2 = screenHeight;
   const points2 = `0,${0.6 * sizeY2} ${
     0.55 * size

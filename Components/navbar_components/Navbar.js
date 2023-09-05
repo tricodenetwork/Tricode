@@ -2,8 +2,6 @@ import React from "react";
 
 import { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import { useDispatch } from "react-redux";
 import { motion, useAnimation } from "framer-motion";
 import MenuIcon from "@mui/icons-material/Menu";
 
