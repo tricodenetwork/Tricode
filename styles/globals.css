@@ -20,6 +20,10 @@
   font-family: "Poppins-Regular";
   src: url("../public/assets/fonts/Poppins-Regular.ttf");
 }
+@font-face {
+  font-family: "Poppins-SemiBold";
+  src: url("../public/assets/fonts/Poppins-SemiBold.ttf");
+}
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -45,11 +49,11 @@
   /* border: 1px solid black; */
 }
 
-:root {
-  --primary: #25092c;
-  --secondary: #9be8a1;
-  --yellow: #e9ec6b;
-  --yellows: #f6e33cd6;
+h4 {
+  font-family: Poppins-SemiBold;
+  font-size: 32px;
+  line-height: normal;
+  text-transform: capitalize;
 }
 
 .navbar {
@@ -66,13 +70,7 @@
   align-items: center;
   /* border: 1px solid #d7d7d7; */
 }
-.logo-menu {
-  display: flex;
-  justify-content: center;
-  cursor: pointer;
-  gap: 10px;
-  /* border: 2px solid; */
-}
+
 .menu-icons {
   display: none;
 }
@@ -352,5 +350,11 @@ h5 {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+  }
+}
+@media screen and (max-height: 900px) {
+  .login {
+    position: relative;
+    top: 4vh;
   }
 }

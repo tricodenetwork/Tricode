@@ -15,6 +15,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
+import useFunctions from "@/hooks/useFunctions";
 
 export default function Home() {
   const [screenWidth, setScreenWidth] = useState(0);
@@ -57,9 +58,7 @@ export default function Home() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-  const imageLoader = ({ src, width, quality }) => {
-    return `${src}?w=${width}&q=${quality || 75}`;
-  };
+  const { imageLoader } = useFunctions();
   const mobile = screenWidth < 798;
 
   return (

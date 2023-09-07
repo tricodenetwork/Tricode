@@ -17,36 +17,34 @@ const Navbar = ({ children }) => {
   const { imageLoader } = useFunctions();
 
   return (
-    <div className='bg-transparent flex flex-col'>
+    <div className='bg-transparent  flex flex-col'>
       <motion.nav
         initial={{ x: 0 }}
         animate={{ x: [200, 0] }}
         className='navbar absolute mx-auto self-center border-opacity-0 border-2 border-[#d7d7d7] top-[0vh]'
       >
-        <div className='logo-menu'>
-          <motion.div
-            initial={{}}
-            animate={{
-              y: [0, -15, 0, -15, 0, -17, 0, -12, 0],
-            }}
-            transition={{
-              delay: 0.1,
-              repeat: 7,
-              duration: 4,
-            }}
-            className='logos hidden  text-white'
-          >
-            <Image
-              loader={imageLoader}
-              alt='logo'
-              width={80}
-              height={40}
-              quality={100}
-              className='w-[10vw] hidden'
-              src='/assets/images/logo.png'
-            />
-          </motion.div>
-        </div>
+        <motion.div
+          initial={{}}
+          animate={{
+            y: [0, -15, 0, -15, 0, -17, 0, -12, 0],
+          }}
+          transition={{
+            delay: 0.1,
+            repeat: 7,
+            duration: 4,
+          }}
+          className='logos hidden  text-white'
+        >
+          <Image
+            loader={imageLoader}
+            alt='logo'
+            width={80}
+            height={40}
+            quality={100}
+            className='w-[10vw] hidden'
+            src='/assets/images/logo.png'
+          />
+        </motion.div>
 
         <motion.ul
           className='nav-menu w-[65%]'
@@ -70,12 +68,14 @@ const Navbar = ({ children }) => {
             text='<Newsletter />'
           />
         </motion.ul>
-        <div className='icon flex w-[40%] md:w-[20%] border-[#d7d7d7] border-l-2   justify-around  items-center'>
-          <LinkItem
-            text={"Register"}
-            path={"/register"}
-            className={"medText"}
-          />
+        <motion.div
+          initial={{ width: "40%" }}
+          animate={{ width: "20%" }}
+          // transition={{ type: "spring", stiffness: 500, duration: 0.1 }}
+          transition={{ duration: 0.2 }}
+          className='icon flex w-[40%] md:w-[20%] border-[#d7d7d7] border-l-2   justify-around  items-center'
+        >
+          <LinkItem text={"Register"} path={"/menu"} className={"medText"} />
           <Link legacyBehavior href={"/login"}>
             <motion.a
               whileHover={{ scale: 1.05, y: -1 }}
@@ -86,7 +86,7 @@ const Navbar = ({ children }) => {
               Login
             </motion.a>
           </Link>
-        </div>
+        </motion.div>
       </motion.nav>
     </div>
   );

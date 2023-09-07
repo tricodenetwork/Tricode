@@ -11,18 +11,16 @@ const Sidebar = () => {
 
   return (
     <div className='w-[429px] hidden md:flex flex-col items-center pb-5 justify-end bg-[#2b2b2b] min-h-screen'>
-      <div className='logo-menu absolute top-0 left-3'>
-        <div className='logos  text-white'>
-          <Image
-            loader={imageLoader}
-            alt='logo'
-            width={80}
-            height={40}
-            quality={100}
-            className='w-[10vw]'
-            src='/assets/images/logo.png'
-          />
-        </div>
+      <div className='logos absolute top-0 left-3  text-white'>
+        <Image
+          loader={imageLoader}
+          alt='logo'
+          width={80}
+          height={40}
+          quality={100}
+          className='w-[10vw]'
+          src='/assets/images/logo.png'
+        />
       </div>
       <div className='relative -top-[7vh]'>
         <div className='absolute right-[70px]  -bottom-[18px] z-40'>
