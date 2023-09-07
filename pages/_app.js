@@ -39,7 +39,6 @@ function App({ Component, ...rest }) {
           <ThemeProvider theme={theme}>
             {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
             <CssBaseline />
-            <Navbar />
             <Layout Component={Component} pageProps={pageProps} />
           </ThemeProvider>
         </CacheProvider>

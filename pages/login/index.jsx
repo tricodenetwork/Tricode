@@ -19,6 +19,7 @@ const Index = () => {
 
   return (
     <>
+      <Navbar />
       <div className=''>
         <h3>SIGN IN</h3>
         <div className='flex mt-[4px] mb-[15px]  md:mt-[16px] md:mb-[30px] items-center'>
