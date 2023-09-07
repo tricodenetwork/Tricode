@@ -1,4 +1,4 @@
-import '@/styles/globals.css'
+import "@/styles/globals.css";
 import Head from "next/head";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -39,9 +39,8 @@ function App({ Component, ...rest }) {
           <ThemeProvider theme={theme}>
             {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
             <CssBaseline />
-            <Navbar>
-              <Layout Component={Component} pageProps={pageProps} />
-            </Navbar>
+            <Navbar />
+            <Layout Component={Component} pageProps={pageProps} />
           </ThemeProvider>
         </CacheProvider>
       </Provider>

@@ -3,28 +3,25 @@ import React from "react";
 import { useState } from "react";
 import Link from "next/link";
 import { motion, useAnimation } from "framer-motion";
-import MenuIcon from "@mui/icons-material/Menu";
-
 import Image from "next/image";
+import LinkItem from "../LinkItem";
 
 const Navbar = ({ children }) => {
   const [showmenu, setShowmenu] = useState(false);
   const controls = useAnimation();
-
   const hideMenu = () => {
     setShowmenu(false);
   };
-
   const imageLoader = ({ src, width, quality }) => {
     return `${src}?w=${width}&q=${quality || 75}`;
   };
 
   return (
-    <div>
+    <div className='bg-transparent md:hidden flex flex-col'>
       <motion.nav
         initial={{ x: 0 }}
         animate={{ x: [200, 0] }}
-        className='navbar px-[3vw] sticky top-0  '
+        className='navbar absolute mx-auto self-center border-opacity-20 border-2 border-[#d7d7d7] top-[5vh]'
       >
         <div className='logo-menu'>
           <motion.div
@@ -37,13 +34,13 @@ const Navbar = ({ children }) => {
               repeat: 7,
               duration: 4,
             }}
-            className='logos text-white'
+            className='logos  text-white'
           >
             <Image
               loader={imageLoader}
               alt='logo'
-              width={140}
-              height={50}
+              width={80}
+              height={40}
               quality={100}
               className='w-[10vw]'
               src='/assets/images/logo.png'
@@ -51,65 +48,46 @@ const Navbar = ({ children }) => {
           </motion.div>
         </div>
 
-        <menu>
-          <motion.ul
-            className='nav-menu'
-            id={showmenu ? "mobile" : "hide"}
-            whileHover={controls.stop}
-          >
-            <Link href='/'>
-              <motion.li
-                whileHover={{ scale: 1.2, y: -5 }}
-                whileTap={{ scale: 0.8 }}
-                drag
-                dragSnapToOrigin
-                onHoverStart={(e, i) => {
-                  console.log(e, i);
-                }}
-                className='text-[#07F307]'
-                transition={{ type: "spring", stiffness: 500, duration: 0.1 }}
-                onClick={hideMenu}
-              >
-                {"< Home / >"}
-              </motion.li>
-            </Link>
-            <Link href='/'>
-              <motion.li
-                whileHover={{ scale: 1.2, y: -5 }}
-                whileTap={{ scale: 0.8 }}
-                drag
-                dragSnapToOrigin
-                onHoverStart={(e, i) => {
-                  console.log(e, i);
-                }}
-                transition={{ type: "spring", stiffness: 500, duration: 0.1 }}
-                onClick={hideMenu}
-              >
-                {"< Our Services / >"}
-              </motion.li>
-            </Link>
-            <Link href='/'>
-              <motion.li
-                whileHover={{ scale: 1.2, y: -5 }}
-                whileTap={{ scale: 0.8 }}
-                drag
-                dragSnapToOrigin
-                onHoverStart={(e, i) => {
-                  console.log(e, i);
-                }}
-                transition={{ type: "spring", stiffness: 500, duration: 0.1 }}
-                onClick={hideMenu}
-              >
-                {"< About / >"}
-              </motion.li>
-            </Link>
-          </motion.ul>
-        </menu>
-        <div className='icon flex border-green-500  items-center'>
-          <MenuIcon color='white' style={{ fontSize: 50, color: "#07F307" }} />
+        <motion.ul
+          className='nav-menu w-[65%]'
+          id={showmenu ? "mobile" : "hide"}
+          whileHover={controls.stop}
+        >
+          <LinkItem
+            hideMenu={hideMenu}
+            path='/services'
+            offColor={false}
+            text='<Services />'
+          />
+          <LinkItem
+            hideMenu={hideMenu}
+            path='/communities'
+            text='<Communities />'
+          />
+          <LinkItem
+            hideMenu={hideMenu}
+            path='/newsletter'
+            text='<Newsletter />'
+          />
+        </motion.ul>
+        <div className='icon flex w-[20%] justify-around  items-center'>
+          <LinkItem
+            text={"Register"}
+            path={"/register"}
+            className={"medText"}
+          />
+          <Link legacyBehavior href={"/login"}>
+            <motion.a
+              whileHover={{ scale: 1.05, y: -1 }}
+              whileTap={{ scale: 0.9 }}
+              // transition={{ type: "spring", stiffness: 500, duration: 0.1 }}
+              className='bg-[#d7d7d7] py-[8px] cursor-pointer hover:text-[#d7d7d7] duration-300 hover:bg-slate-500 px-[20px] rounded-sm  medText shadow-sm shadow-slate-600'
+            >
+              Login
+            </motion.a>
+          </Link>
         </div>
       </motion.nav>
-      {children}
     </div>
   );
 };
