@@ -47,7 +47,7 @@ const Sidebar = () => {
       </div>
       <div className='  flex-col flex items-center max-w-[268px]'>
         <h3 className='text- mb- text-white'>WELCOME BACK</h3>
-        <h5 className='register text-white uppercase'>
+        <h5 className='text-white uppercase'>
           Lorem ipsum dolor sit amet consectetur.
         </h5>
         <p className='smallText mt-3'>
