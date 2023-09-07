@@ -6,7 +6,7 @@ import { Checkbox } from "@mui/material";
 import InputLine from "@/components/InputLine";
 import { useState } from "react";
 
-const index = () => {
+const Index = () => {
   // --------------------------------------------VARIABLES
   const [checked, setChecked] = useState(false);
 
@@ -58,5 +58,5 @@ const index = () => {
   );
 };
 
-index.getLayout = LoginLayout;
-export default index;
+Index.getLayout = LoginLayout;
+export default Index;

@@ -1,13 +1,13 @@
 import MenuLayout from "@/components/layouts/MenuLayout";
 
-const project = () => {
+const Project = () => {
   // --------------------------------------------VARIABLES
 
   //-----------------------------------------------------------FUNCTIONS
 
   //------------------------------------------------------------------USE EFFECTS
 
-  return <div>project</div>;
+  return <div>Project</div>;
 };
-project.getLayout = MenuLayout;
-export default project;
+Project.getLayout = MenuLayout;
+export default Project;
