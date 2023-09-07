@@ -5,7 +5,7 @@ import Sidebar from "@/Components/layouts/Sidebar";
 import InputLine from "@/Components/InputLine";
 import Button from "@/Components/Button";
 import AuthComponent from "@/Components/AuthComponent";
-const login = () => {
+const Login = () => {
   // --------------------------------------------VARIABLES
   const [checked, setChecked] = useState(false);
 
@@ -54,4 +54,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default Login;
