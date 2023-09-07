@@ -54,7 +54,7 @@ const Square = () => {
           // points={`0,0 ${size},0 100,50 50,100 0,${sizeY}`}
           points={points}
           // fill='url(#fade-grad)'
-          fill='transparent'
+          fill='black'
           stroke='black'
           strokeWidth='0'
           strokeLinejoin='round'

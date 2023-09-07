@@ -25,7 +25,7 @@ const Sidebar = () => {
         </div>
       </div>
       <div className='relative -top-[7vh]'>
-        <div className='absolute right-[27%] -bottom-[18px] z-40'>
+        <div className='absolute right-[70px]  -bottom-[18px] z-40'>
           <Image
             className=''
             loader={imageLoader}

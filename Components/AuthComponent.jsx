@@ -3,11 +3,12 @@ import React from "react";
 
 const AuthComponent = () => {
   const ellipseStyle =
-    "w-[65px] flex items-center justify-center bg-[#D9D9D9] h-[65px] rounded-full";
+    "w-[50px] md:w-[65px] flex items-center justify-center bg-[#D9D9D9] h-[50px] md:h-[65px] rounded-full";
   return (
-    <div className='flex w-[279.468px] h-[65px] justify-between'>
+    <div className='flex w-[200px] md:w-[279.468px] h-[65px] justify-between'>
       <div className={ellipseStyle}>
         <Image
+          className='auth_image'
           width={33.2}
           height={33.2}
           alt='google'
@@ -16,6 +17,7 @@ const AuthComponent = () => {
       </div>
       <div className={ellipseStyle}>
         <Image
+          className='auth_image'
           width={33.2}
           height={33.2}
           src={"/assets/icons/ic_baseline-apple.png"}
@@ -24,6 +26,7 @@ const AuthComponent = () => {
       </div>
       <div className={ellipseStyle}>
         <Image
+          className='auth_image'
           width={33.2}
           height={33.2}
           src={"/assets/icons/file-icons_microsoft-outlook.png"}

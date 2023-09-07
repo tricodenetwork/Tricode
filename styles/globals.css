@@ -81,7 +81,6 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border-right: 1px solid #d7d7d7;
 }
 ul li,
 .medText {
@@ -105,29 +104,6 @@ ul li,
 @media screen and (max-width: 520px) {
   .navbar {
     height: 9vh;
-  }
-  #hero .header {
-    font-size: 5px;
-    scale: 0.5;
-    font-family: "Inter", sans-serif;
-    font-weight: 600;
-    line-height: 42.44px;
-    border: 2px solid blu;
-  }
-  .icon {
-    display: flex;
-    gap: 5px;
-    justify-content: flex-end;
-    padding: 0 1rem;
-    margin: 0 0;
-  }
-  .icon li {
-    font-size: 25px;
-  }
-  .menu-icons {
-    display: block;
-    align-items: center;
-    justify-content: center;
   }
 
   .nav-menu {
@@ -182,6 +158,14 @@ ul li,
     left: -150%;
   }
 
+  ul li,
+  .medText {
+    font-family: "Plus Jakar", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    list-style: none;
+  }
+
   #intro .cButtons button p {
     font-weight: 500;
     font-size: 1rem;
@@ -227,13 +211,20 @@ ul li,
   font-weight: bold;
 }
 
-.login div:nth-child(2) p:nth-child(1) {
+.member {
   font-family: "Poppins-Regular";
   color: #6d717a;
   font-weight: 400;
   font-size: 20px;
 }
 .login .register {
+  font-family: Poppins;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.signin {
   font-family: Poppins;
   font-size: 20px;
   font-style: normal;
@@ -282,4 +273,74 @@ h3 {
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+
+@media screen and (max-width: 520px) {
+  .member {
+    font-family: "Poppins-Regular";
+    color: #6d717a;
+    font-weight: 400;
+    font-size: 14px;
+  }
+  .login .register {
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  .signin {
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  .login .remember {
+    font-family: "Poppins-Regular";
+    color: #6d717a;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  .login input {
+    font-family: "Poppins-Regular";
+    font-weight: 400;
+    font-size: 14px;
+  }
+
+  .smallText {
+    color: #fff;
+    font-family: Poppins-Regular;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  .auth_image {
+    width: 25px;
+    height: 25px;
+  }
+
+  h3 {
+    color: #000;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 48px; /* 150% */
+    text-transform: uppercase;
+  }
+
+  .button {
+    color: #fff;
+    font-family: Poppins-Regular;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
 }
