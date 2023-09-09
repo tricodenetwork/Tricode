@@ -8,7 +8,6 @@ import createEmotionCache from "../config/createEmotionCache";
 import { wrapper } from "../store/store";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { Provider } from "react-redux";
-import Navbar from "@/components/navbar_components/Navbar";
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -39,7 +38,6 @@ function App({ Component, ...rest }) {
           <ThemeProvider theme={theme}>
             {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
             <CssBaseline />
-            {/* <Navbar /> */}
             <Layout Component={Component} pageProps={pageProps} />
           </ThemeProvider>
         </CacheProvider>
