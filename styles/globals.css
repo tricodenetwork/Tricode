@@ -361,8 +361,4 @@ h5 {
   }
 }
 @media screen and (max-height: 900px) {
-  .login {
-    position: relative;
-    top: 4vh;
-  }
 }

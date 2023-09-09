@@ -1,0 +1,16 @@
+@ovd
+
+%% Modified the file structure. kindly take note. all your working files are
+   inside the auth folder. 
+
+@upraisertech
+
+** Work on spacing in sms-verification file and new-password file, take note 
+   to always look at the figma file for cross-checking.
+
+** Add functionality to the new-password page. also try and add the functionality
+   and flags for the phone numbers in register page. 
+
+** Keep Mobile View in mind when developing.
+
+------- Good Job @upraisertech.......

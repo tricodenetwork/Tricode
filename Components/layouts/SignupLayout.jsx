@@ -1,5 +1,4 @@
 import React from "react";
-
 import Sidebar from "@/Components/layouts/Sidebar";
 const LoginLayout = (children) => {
   // --------------------------------------------VARIABLES
@@ -9,9 +8,9 @@ const LoginLayout = (children) => {
   //------------------------------------------------------------------USE EFFECTS
 
   return (
-    <div className='flex min-h-screen   items-center'>
-      <Sidebar Header="Welcome Back"/>
-      <div className='bg-midorang mx-auto login min-h-max flex flex-col px-3 justify-center items-center'>
+    <div className='flex h-full max-h-screen w-full '>
+      <Sidebar Header='Join US' />
+      <div className='bg-midorang w-full h-screen  flex flex-col px-3 justify-center items-center'>
         {children}
       </div>
     </div>
