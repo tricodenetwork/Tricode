@@ -5,7 +5,7 @@ import Button from "@/components/Button";
 import { Checkbox } from "@mui/material";
 import InputLine from "@/components/InputLine";
 import { useState } from "react";
-import Navbar from "@/components/navbar_components/Navbar";
+// import Navbar from "@/components/navbar_components/Navbar";
 
 const Index = () => {
   // --------------------------------------------VARIABLES
