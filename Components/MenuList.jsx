@@ -17,7 +17,7 @@ const MenuList = ({ Icon, name }) => {
       <div
         className={`flex ${
           active
-            ? " bg-binance_green hover:scale-110  cursor-pointer shadow-md shadow-binance_brightash"
+            ? " bg-binance_green hover:scale-110  cursor-pointer shadow-sm shadow-binance_brightash"
             : "bg-transparent"
         } px-2 w-[80%] duration-300 items-center ml-[3vw] rounded-lg pl-[2vw] py-4`}
       >

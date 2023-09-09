@@ -5,6 +5,7 @@ import Button from "@/components/Button";
 import { Checkbox } from "@mui/material";
 import InputLine from "@/components/InputLine";
 import { useState } from "react";
+import Navbar from "@/components/navbar_components/Navbar";
 
 const Index = () => {
   // --------------------------------------------VARIABLES
@@ -19,7 +20,7 @@ const Index = () => {
 
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className=''>
         <h3>SIGN IN</h3>
         <div className='flex mt-[4px] mb-[15px]  md:mt-[16px] md:mb-[30px] items-center'>

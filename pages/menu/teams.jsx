@@ -1,13 +1,12 @@
 import MenuLayout from "@/components/layouts/MenuLayout";
 
-const Project = () => {
+const Teams = () => {
   // --------------------------------------------VARIABLES
 
   //-----------------------------------------------------------FUNCTIONS
 
   //------------------------------------------------------------------USE EFFECTS
-
-  return <div className='h-full flex justify-center items-center'>Project</div>;
+  return <div className='h-full flex justify-center items-center'>Teams</div>;
 };
-Project.getLayout = MenuLayout;
-export default Project;
+Teams.getLayout = MenuLayout;
+export default Teams;
