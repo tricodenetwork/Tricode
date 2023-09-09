@@ -16,7 +16,6 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import useFunctions from "@/hooks/useFunctions";
-// import Navbar from "@/components/navbar_components/Navbar";
 
 export default function Home() {
   const [screenWidth, setScreenWidth] = useState(0);
@@ -64,7 +63,6 @@ export default function Home() {
 
   return (
     <>
-      {/* <Navbar /> */}
       <main className='relative'>
         <section className='h-[88vh]' id='hero'>
           <div className='h-full'>{<Square />}</div>
