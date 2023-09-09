@@ -90,11 +90,6 @@ const Index = () => {
 
         <div className='w-full mt-4'>
           <Button styles={"w-[60%] md:w-full mx-auto"} Action={"Register"} />
-          <Link href='/login'>
-            <p className='register mt-[12px]  text-binance_green text-center'>
-              Forgot password?
-            </p>
-          </Link>
         </div>
       </div>
       <div className='mt-[70px]'>
