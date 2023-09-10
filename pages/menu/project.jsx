@@ -1,4 +1,4 @@
-import MenuLayout from "@/components/layouts/MenuLayout";
+import MenuLayout from "@/Components/layouts/MenuLayout";
 
 const Project = () => {
   // --------------------------------------------VARIABLES
