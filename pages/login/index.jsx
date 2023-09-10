@@ -5,8 +5,7 @@ import Button from "@/Components/Button";
 import { Checkbox } from "@mui/material";
 import InputLine from "@/Components/InputLine";
 import { useState } from "react";
-<<<<<<
-// import Navbar from "@/components/navbar_components/Navbar";
+
 const Index = () => {
   // --------------------------------------------VARIABLES
   const [checked, setChecked] = useState(false);
