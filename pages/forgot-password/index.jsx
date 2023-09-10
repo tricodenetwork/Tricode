@@ -1,7 +1,4 @@
-import AuthComponent from "@/components/AuthComponent";
 import Link from "next/link";
-import InputLine from "@/components/InputLine";
-import { useState } from "react";
 import Sidebar from "@/Components/layouts/Sidebar";
 import Image from "next/image";
 
@@ -19,7 +16,7 @@ const Index = () => {
         <div className='bg-midorang mx-auto login min-h-max flex flex-col px-3 justify-center items-center'>
           <h3>Forgot password?</h3>
           <div className="mt-5">
-            <div class="text-black text-left text-xl font-bold">Choose how you want to log in</div>
+            <div className="text-black text-left text-xl font-bold">Choose how you want to log in</div>
             <div className="flex w-[100%] mt-3 bg-neutral-100 rounded-[10px] justify-between items-center border border-zinc-300">
               <div className="px-5 py-[5px]">
                 <div className="text-black text-lg font-semibold">Send an email to</div>

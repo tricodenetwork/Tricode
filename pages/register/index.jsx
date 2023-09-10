@@ -44,11 +44,11 @@ const Index = () => {
           <InputLine placeholder={"johncena@gmail.com"} />
         </div>
 
-        <div class="flex gap-3">
-          <div class="w-[50px] flex-col justify-center items-start gap-[12.37px] inline-flex">
+        <div className="flex gap-3">
+          <div className="w-[50px] flex-col justify-center items-start gap-[12.37px] inline-flex">
             <InputLine placeholder={"234"} />
           </div>
-          <div class="w-[300px] justify-center items-center gap-[3px] inline-flex">
+          <div className="w-[300px] justify-center items-center gap-[3px] inline-flex">
             <InputLine placeholder={"Mobile phone"} />
           </div>
         </div>

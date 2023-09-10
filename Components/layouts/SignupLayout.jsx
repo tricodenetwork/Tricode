@@ -1,5 +1,4 @@
 import React from "react";
-
 import Sidebar from "@/Components/layouts/Sidebar";
 const LoginLayout = (children) => {
   // --------------------------------------------VARIABLES
