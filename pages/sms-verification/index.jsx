@@ -1,5 +1,5 @@
 import Sidebar from "@/Components/layouts/Sidebar";
-import Button from "@/components/Button";
+import Button from "@/Components/Button";
 import OTPInput from "@/Components/OTPInput";
 
 const Index = () => {
