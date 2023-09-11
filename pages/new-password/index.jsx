@@ -1,4 +1,4 @@
-import InputLine from "@/components/InputLine";
+import InputLine from "@/Components/InputLine";
 import Sidebar from "@/Components/layouts/Sidebar";
 import Button from "@/Components/Button";
 

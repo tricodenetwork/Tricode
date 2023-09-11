@@ -1,10 +1,10 @@
-import AuthComponent from "@/components/AuthComponent";
-import SignupLayout from "@/components/layouts/SignupLayout";
+import AuthComponent from "@/Components/AuthComponent";
+import SignupLayout from "@/Components/layouts/SignupLayout";
 import Link from "next/link";
-import Button from "@/components/Button";
+import Button from "@/Components/Button";
 import { Checkbox } from "@mui/material";
-import InputLine from "@/components/InputLine";
-import RadioInput from "@/components/RadioInput";
+import InputLine from "@/Components/InputLine";
+import RadioInput from "@/Components/RadioInput";
 import { useState } from "react";
 // import Navbar from "@/components/navbar_components/Navbar";
 
