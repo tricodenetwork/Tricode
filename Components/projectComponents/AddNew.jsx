@@ -5,7 +5,7 @@ import { TbCameraPlus } from 'react-icons/tb';
 import { HiOutlineDocumentDuplicate } from 'react-icons/hi';
 import { useState } from "react";
 import countries from '../../lib/constants/countries.json'
-import Image from "next/image";
+//import Image from "next/image";
 
 
 function AddNew() {
