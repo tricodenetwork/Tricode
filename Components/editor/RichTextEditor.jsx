@@ -1,6 +1,7 @@
 'use client'
 import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
+import { SvgBold, SvgIHeader, SvgItalic } from '../svg/editor'
 
 const Tiptap = () => {
     const editor = useEditor({
@@ -15,18 +16,18 @@ const Tiptap = () => {
                     <button
                         className={`formarters ${editor.isActive('heading', { level: 1 }) ? 'active' : ''}`}
                         onClick={() => editor.chain().focus().toggleBold().run()}>
-                        B
+                         <SvgBold/>
                     </button>
                     <button
                         className={`formarters ${editor.isActive('heading', { level: 2 }) ? 'active' : ''}`}
                         onClick={() => editor.chain().focus().toggleItalic().run()}>
-                        I
+                        <SvgItalic/>
                     </button>
 
                     <button
                         className={`formarters ${editor.isActive('heading', { level: 2 }) ? 'active' : ''}`}
                         onClick={() => editor.chain().focus().toggleHeading('heading', { level: 1 }).run()}>
-                        H1
+                       <SvgIHeader/>
                     </button>
 
 

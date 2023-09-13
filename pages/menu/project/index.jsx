@@ -1,5 +1,5 @@
 import MenuLayout from "@/Components/layouts/MenuLayout";
-import AddNew from "@/Components/projectComponents/AddNew";
+import ProjectTable from "@/Components/projectComponents/projectTables/ProjecctTable";
 
 const Project = () => {
   // --------------------------------------------VARIABLES
@@ -8,7 +8,11 @@ const Project = () => {
 
   //------------------------------------------------------------------USE EFFECTS
 
-  return <div className='h-full flex justify-center items-center'><AddNew/></div>;
+  return (
+    <div className='h-full flex justify-center items-center w-full pt-10'>
+      <ProjectTable/>
+    </div>
+  );
 };
 Project.getLayout = MenuLayout;
 export default Project;
