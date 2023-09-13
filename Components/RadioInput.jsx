@@ -4,7 +4,7 @@ import React from 'react';
 
 const RadioInput = ({ name, value, label, checked, onChange, className }) => {
   return (
-    <label className="text-zinc-500 gap-4 text-sm md:text-lg">
+    <label className="member gap-4 text-sm md:text-lg">
       <input
         type="radio"
         className={className}
