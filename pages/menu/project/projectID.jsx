@@ -7,14 +7,7 @@ import ProjectDetails from "@/Components/projectComponents/ProjectDetails";
 
 
 
-const variants = {
-    hidden: { x: '0%' }, // Initial position, slide out to the right
-    visible: { x: '0%' }, // Final position, slide in from the right
-};
 
-const transition = {
-    duration: 0.5, // Animation duration in seconds
-};
 
 
 const ProjectID = () => {

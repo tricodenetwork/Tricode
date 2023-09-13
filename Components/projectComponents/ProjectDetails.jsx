@@ -38,14 +38,13 @@ function ProjectDetails() {
                         consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
                         Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.
                         Velit officia consequat duis enim velit mollit.
-                        Exercitation veniam consequat sunt nostrud amet.
-
-                        <ul >
+                        Exercitation veniam consequat sunt nostrud amet
+                    </p>
+                    <ul >
                             <li className="my-4"><span>1. </span>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. </li>
                             <li className="my-4"><span>2. </span>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. </li>
                             <li className="my-4"><span>3. </span>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. </li>
                         </ul>
-                    </p>
                 </div>
             </section>
 

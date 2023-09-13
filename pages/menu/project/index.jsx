@@ -1,5 +1,4 @@
 import MenuLayout from "@/Components/layouts/MenuLayout";
-import AddNew from "@/Components/projectComponents/AddNew";
 import ProjectTable from "@/Components/projectComponents/projectTables/ProjecctTable";
 
 const Project = () => {
