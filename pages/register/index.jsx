@@ -6,7 +6,6 @@ import { Checkbox } from "@mui/material";
 import InputLine from "@/Components/InputLine";
 import RadioInput from "@/Components/RadioInput";
 import { useState } from "react";
-// import Navbar from "@/components/navbar_components/Navbar";
 
 const Index = () => {
   // --------------------------------------------VARIABLES
@@ -26,11 +25,10 @@ const Index = () => {
 
   return (
     <>
-      {/* <Navbar /> */}
       <div className=''>
         <h3>Create an Account</h3>
-        <div className='flex mt-[4px] mb-[15px]  md:mt-[10px] md:mb-[30px] items-center'>
-          <p className=' mr-1 md:mr-3 member text-black'>Already have an account?</p>
+        <div className='flex mt-[4px] mb-[10px] md:mt-[10px] md:mb-[30px] items-center'>
+          <p className='mr-1 md:mr-3 member text-black'>Already have an account?</p>
           <Link href='/login'>
             <p className='text-binance_green register'>Sign in</p>
           </Link>
@@ -80,11 +78,11 @@ const Index = () => {
             checked={checked}
           />
           <div>
-            <span className="text-zinc-500 text-base font-medium">I have read and agree to Tricode’s </span>
-            <span className="text-binance_green text-base font-bold">Terms of Service</span>
-            <span className="text-zinc-500 text-base font-medium"> and </span>
-            <span className="text-binance_green text-base font-bold">Privacy Policy</span>
-            <span className="text-zinc-500 text-base font-medium">.</span>
+            <span className="text-zinc-500 member">I have read and agree to Tricode’s </span>
+            <span className="text-binance_green font-bold">Terms of Service</span>
+            <span className="text-zinc-500 member"> and </span>
+            <span className="text-binance_green font-bold">Privacy Policy</span>
+            <span className="text-zinc-500">.</span>
           </div>
         </div>
 

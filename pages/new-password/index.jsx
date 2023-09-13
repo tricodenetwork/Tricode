@@ -20,27 +20,27 @@ const Index = () => {
             <div className="relative">
               <div className="flex h-6 gap-3">
                 <img src="/assets/icons/mark_correct.svg" alt="" className="w-4 h-4" />
-                <div className="text-zinc-500 text-base font-normal">8-32 character</div>
+                <div className="text-zinc-500 text-[15px]">8-32 character</div>
               </div>
 
               <div className="flex h-6 gap-3">
                 <img src="/assets/icons/mark_correct.svg" alt="" className="w-4 h-4" />
-                <div className="text-zinc-500 text-base font-normal">One upper case</div>
+                <div className="text-zinc-500 text-[15px]">One upper case</div>
               </div>
 
               <div className="flex h-6 gap-3">
                 <img src="/assets/icons/mark_correct.svg" alt="" className="w-4 h-4" />
-                <div className="text-zinc-500 text-base font-normal">One lower case</div>
+                <div className="text-zinc-500 text-[15px]">One lower case</div>
               </div>
 
               <div className="flex h-6 gap-3">
                 <img src="/assets/icons/mark_correct.svg" alt="" className="w-4 h-4" />
-                <div className="text-zinc-500 text-base font-normal">One special character</div>
+                <div className="text-zinc-500 text-[15px]">One special character</div>
               </div>
 
               <div className="flex h-6 gap-3">
                 <img src="/assets/icons/mark_wrong.svg" alt="" className="w-4 h-4" />
-                <div className="text-zinc-500 text-base font-normal">One numeric character</div>
+                <div className="text-zinc-500 text-[15px]">One numeric character</div>
               </div>
             </div>
 
