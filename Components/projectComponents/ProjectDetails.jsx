@@ -3,7 +3,6 @@ import { BsFillTelephoneFill } from "react-icons/bs";
 import { AiOutlineMail } from "react-icons/ai";
 import Image from "next/image";
 import useFunctions from "@/hooks/useFunctions";
-import {useRouter} from 'next/router'
 import { BackButton } from "../Button";
 
 
