@@ -9,7 +9,7 @@ import { BackButton } from "../Button";
 
 function ProjectDetails() {
     const { imageLoader } = useFunctions();
-    const router = useRouter()
+   
 
     return (
         <section className=" w-full m-auto overflow-y-scroll h-full  mt-6">
