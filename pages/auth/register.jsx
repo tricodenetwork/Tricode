@@ -6,6 +6,7 @@ import { Checkbox } from "@mui/material";
 import InputLine from "@/Components/InputLine";
 import RadioInput from "@/Components/RadioInput";
 import { useState } from "react";
+import CountryCode from "@/Components/CountryCode";
 
 const Index = () => {
   // --------------------------------------------VARIABLES
@@ -43,10 +44,10 @@ const Index = () => {
           <InputLine placeholder={"Confirm Password*"} />
           <InputLine placeholder={"Email"} />
           <div className='flex'>
-            <div className='w-[13%] mr-4 flex'>
-              <InputLine placeholder={"234"} />
+            <div className='mr-4 mt-2'>
+              <CountryCode />
             </div>
-            <div className='w-[82%] flex'>
+            <div className='w-[82%]'>
               <InputLine placeholder={"Mobile phone"} />
             </div>
           </div>
