@@ -35,7 +35,7 @@ const MenuLayout = (children) => {
           />
         </div>
 
-        <h4 className='text-white'>{title}</h4>
+        <h1 className='text-white text-xl uppercase'>{title}</h1>
         <div className='space-x-4 flex items-center justify-between'>
           <div className='relative hover:scale-90 hover:cursor-pointer transition-all ease-out duration-100'>
             <div className='absolute -top-2 -right-2'>
