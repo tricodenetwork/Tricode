@@ -32,13 +32,17 @@
   --that_green: #004343;
   --brown: rgb(36, 16, 8);
   --lemon: #adf802;
+ 
 }
+
 
 @layer base {
   [data-nextjs-scroll-focus-boundary] {
     display: contents;
   }
 }
+
+
 
 /* Navbar.css stylesheet */
 
@@ -47,6 +51,8 @@
   margin: 0;
   box-sizing: border-box;
   /* border: 1px solid black; */
+  font-size:16px;
+  font-family: Poppins-Regular;
 }
 
 h4 {
@@ -54,6 +60,15 @@ h4 {
   font-size: 32px;
   line-height: normal;
   text-transform: capitalize;
+}
+
+h3{
+  color: #000;
+  font-family: Poppins-SemiBold;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
 }
 
 .listitem {

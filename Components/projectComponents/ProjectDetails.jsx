@@ -11,13 +11,13 @@ function ProjectDetails() {
    
 
     return (
-        <section className=" w-full m-auto overflow-y-scroll h-full  mt-6">
-            <div className="flex justify-between">
-                <h2 className={` capitalize  font-bold text-xl mb-2 `}>Project Manager</h2>
+        <section className=" w-full m-auto   mt-6">
+            <div className="flex justify-between items-center   ">
+                <h3 className={` capitalize  font-bold text-start mb-2 `}>Project Manager</h3>
                 <div className=" "><span className="font-bold">Posted on:</span> 12/01/2023,  11:30 AM</div>
             </div>
             <div>
-                <h2 className={` font-bold text-xl mb-2 text-gray-600 uppercase `}>Luke Kajola</h2>
+                <h3 className={` font-bold text-start mb-2 text-gray-600 uppercase `}>Luke Kajola</h3>
                 <div className=" flex gap-2 text-[#38A312]">
                     <div className="flex gap-2 items-center "><BsFillTelephoneFill /><span>+23444444444</span></div>
                     <div className="flex gap-2 items-center "><AiOutlineMail /><span> lukekajola@gmail.com</span></div>
@@ -26,7 +26,7 @@ function ProjectDetails() {
 
             <section className="my-10">
                 <div className="mb-5">
-                    <h3 className="text-xl font-bold capitalize text-start">Project</h3>
+                    <h3 className="text-start font-bold capitalize text-start">Project</h3>
                     <div>Status: <span className="text-[#38A312]">Project completed</span></div>
                 </div>
 
