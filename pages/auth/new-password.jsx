@@ -86,7 +86,6 @@ const Index = () => {
                 <div className="text-zinc-500 text-[15px]">8-32 characters</div>
               </div>
 
-
               <div className="flex h-6 gap-3">
                 <img
                   src={passwordUppercase ? passwordUppercase : "/assets/icons/mark_wrong.svg"}

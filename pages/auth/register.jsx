@@ -43,7 +43,7 @@ const Index = () => {
           <InputLine placeholder={"Confirm Password*"} />
           <InputLine placeholder={"Email"} />
           <div className='flex'>
-            <div className='w-[15%] mr-4 flex'>
+            <div className='w-[13%] mr-4 flex'>
               <InputLine placeholder={"234"} />
             </div>
             <div className='w-[82%] flex'>
