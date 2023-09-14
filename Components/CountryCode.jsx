@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+import { FormControl, Select, MenuItem } from '@mui/material';
 
 const countries = [
     { name: 'Nigeria', code: '+234', flag: '/assets/icons/emoji _nigeria.svg' },
