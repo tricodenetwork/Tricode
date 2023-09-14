@@ -31,7 +31,7 @@ const Index = () => {
           <p className='mr-1 md:mr-3 member text-black'>
             Already have an account?
           </p>
-          <Link href='/login'>
+          <Link href='/auth/login'>
             <p className='text-binance_green register'>Sign in</p>
           </Link>
         </div>

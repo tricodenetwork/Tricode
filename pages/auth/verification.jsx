@@ -1,4 +1,5 @@
 import Sidebar from "@/Components/layouts/Sidebar";
+import Link from "next/link";
 import Button from "@/Components/Button";
 import OTPInput from "@/Components/OTPInput";
 
@@ -20,7 +21,9 @@ const Index = () => {
             <OTPInput length={6} onChange={(value, index) => console.log(`Digit ${index + 1}: ${value}`)} />
             <div className="text-binance_green mt-3 text-sm md:text-xl font-semibold">Send another code</div>
             <div className='w-full mt-4'>
-              <Button styles={"w-[60%] md:w-full mx-auto"} Action={"Continue"} />
+              <Link className='w-full mt-4' href='/auth/new-password'>
+                <Button styles={"w-[60%] md:w-full mx-auto"} Action={"Continue"} />
+              </Link>
             </div>
           </div>
         </div>
