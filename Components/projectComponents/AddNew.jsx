@@ -16,28 +16,28 @@ function AddNew() {
     setSelectedCountry(e.target.value?.toLowerCase());
   };
   return (
-    <section className='p-10 w-[75%] m-auto overflow-y-scroll h-full '>
-      <h4 style={{ fontSize: 24 }} className={` capitalize  mb-2`}>
+    <section className='p-10 w-[75%] m-auto  '>
+      <h3 className={` capitalize text-start  font-bold  mb-2`}>
         Add new project
-      </h4>
+      </h3>
       <p className='text-gray-500 mb-2'>
         The information in this section below will be shared with tradespeople
         in order to produce estimates. Please help us to protect your privacy by
         not including any Personally Identifiable Information (e.g. your name,
         email address, etc).
       </p>
-      <h2 className={` capitalize font-bold text-xl  mb-2`}>
+      <h3 className={` capitalize text-start font-bold   mb-2`}>
         How would you like to name your project?
-      </h2>
+      </h3>
 
       <input
         className={`py-3 border-b-2 border-b-gray-400 w-full mb-5`}
         placeholder='Type your project name'
       />
 
-      <h2 className={` capitalize  font-bold text-xl mb-2`}>
+      <h3 className={` capitalize text-start  font-bold  mb-2`}>
         Describe the work required clearly so that builders can understand.
-      </h2>
+      </h3>
 
       <p className='text-gray-500 mb-2'>
         If the style (including colors) are important please mention them
@@ -57,29 +57,22 @@ function AddNew() {
         existing lock.
       </p>
 
-      <div className='flex gap-3 items-center overflow-x-scroll my-4 py-4'>
-        <SelectFile
-          name='Take Picture/ video'
-          icon={TbCameraPlus}
-          setFiles={setFiles}
-          otherFiles={files}
-        />
-        <SelectFile
-          name='Upload Files'
-          icon={HiOutlineDocumentDuplicate}
-          setFiles={setFiles}
-          otherFiles={files}
-        />
-        {files.map((file, i) => (
-          <p className='ml-4 whitespace-nowrap' key={i}>
-            {file.name}
-          </p>
-        ))}
-      </div>
+      <h3 className={` capitalize text-start  font-bold  mt-5 mb-2`}>
+        Please upload at least one photo, video or design of the work to be
+        undertaken.
+      </h3>
+      <p className='text-gray-500 mb-2'>
+        For example if you are replacing a door lock please take a photo of the
+        existing lock.
+      </p>
 
       <h2 className={` capitalize  font-bold text-xl mb-2`}>
         How do we contact you?
       </h2>
+
+      <h3 className={` capitalize text-start  font-bold  mb-2`}>
+        How do we contact you?
+      </h3>
 
       <div className='flex gap-3 items-center  my-2'>
         <div className='flex justify-center gap-4'>

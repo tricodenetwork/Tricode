@@ -7,7 +7,7 @@ function ProjectTransactions() {
 
 
   return (
-    <section className=" overflow-y-scroll h-full ">
+    <section className="   ">
 
 
 
@@ -57,7 +57,7 @@ const TransactionHistory = () => {
                 <td className="py-3 px-6 text-left whitespace-nowrap">2023-09-15</td>
                 <td className={`py-3 px-6 text-left whitespace-nowrap ${v == 1 ? 'text-orange-700' : 'text-green-400' }`}>{v == 1 ? 'Pending' :  'Paid' }</td>
                 <td className="py-3 px-6 text-center">
-                {v == 1 &&  <Link href={'projectID'} className="  border-green-800 font-bold text-green-800  rounded-full border px-8 py-2">
+                {v == 1 &&  <Link href={'/menu/project/projectID'} className="  border-green-800 font-bold text-green-800  rounded-full border px-8 py-2">
                     Pay now
                   </Link>  }
                  

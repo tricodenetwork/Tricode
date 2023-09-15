@@ -69,13 +69,13 @@ const ProjectID = () => {
                 {
                     //
                 }
-                <div className="flex justify-between items-center text-gray-500 text-xl font-bold">
+                <div className="flex justify-between items-center text-gray-500  font-bold">
                     <div className="flex gap-3">
-                        <button className={`${navto == 'milestone' && 'text-[#38A312]'}`} onClick={() => setNav('milestone')}>Milestone</button>
-                        <button className={`${navto == 'details' && 'text-[#38A312]'}`} onClick={() => setNav('details')}>Details</button>
+                        <button className={`${navto == 'milestone' && 'text-[#38A312]'} text-[24px]`} onClick={() => setNav('milestone')}>Milestone</button>
+                        <button className={`${navto == 'details' && 'text-[#38A312]'} text-[24px]`} onClick={() => setNav('details')}>Details</button>
                     </div>
 
-                    <Link href={'chat'} className="flex gap-2">Chat <span className="w-6 h-6 text-white rounded-full justify-center items-center flex bg-[#38A312]">2</span></Link>
+                    <Link href={'chat'} className="flex gap-2 text-[24px] items-center">Chat <span className="w-6 h-6  text-white rounded-full justify-center items-center flex bg-[#38A312]">2</span></Link>
                 </div>
 
 
