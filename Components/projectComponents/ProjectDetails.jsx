@@ -11,8 +11,8 @@ function ProjectDetails() {
    
 
     return (
-        <section className=" w-full m-auto   mt-6">
-            <div className="flex justify-between items-center   ">
+        <section className=" w-full m-auto mt-6 overflow-scroll">
+            <div className="flex justify-between items-center ">
                 <h3 className={` capitalize  font-bold text-start mb-2 `}>Project Manager</h3>
                 <div className=" "><span className="font-bold">Posted on:</span> 12/01/2023,  11:30 AM</div>
             </div>

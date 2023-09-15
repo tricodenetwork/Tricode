@@ -19,7 +19,7 @@ const ProjectID = () => {
     //------------------------------------------------------------------USE EFFECTS
 
     return (
-        <section className='h-full w-[75%] m-auto  justify-center items-center pt-10'>
+        <section className=' w-[85%] m-auto  justify-center items-center p-10 h-full overflow-y-scroll'>
             <section className="border-gray-300 border rounded p-6  w-full">
                 <div className="flex justify-between items-center w-full capitalize">
                     <div>Submitted for review</div>

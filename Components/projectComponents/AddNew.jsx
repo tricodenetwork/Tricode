@@ -7,37 +7,22 @@ import { useState } from "react";
 import countries from "../../lib/constants/countries.json";
 
 function AddNew() {
-  const [files, setFiles] = useState([]);
-  const [selected, setSelectedCountry] = useState(
-    countries[0]?.code.toLowerCase()
-  );
-  const selectedCountry = (e) => {
-    console.log(e.target.value);
-    setSelectedCountry(e.target.value?.toLowerCase());
-  };
-  return (
-    <section className='p-10 w-[75%] m-auto  '>
-      <h3 className={` capitalize text-start  font-bold  mb-2`}>
-        Add new project
-      </h3>
-      <p className='text-gray-500 mb-2'>
-        The information in this section below will be shared with tradespeople
-        in order to produce estimates. Please help us to protect your privacy by
-        not including any Personally Identifiable Information (e.g. your name,
-        email address, etc).
-      </p>
-      <h3 className={` capitalize text-start font-bold   mb-2`}>
-        How would you like to name your project?
-      </h3>
+    
+    const [files, setFiles] = useState([]);
+    const [selected, setSelectedCountry] = useState(countries[0]?.code.toLowerCase());
+    const selectedCountry = (e) => {
+        console.log(e.target.value)
+        setSelectedCountry(e.target.value?.toLowerCase())
+    }
+    return (
+        <section className="p-10 w-[85%] m-auto overflow-scroll">
+            <h3 className={` capitalize text-start  font-bold  mb-2`}>Add new project</h3>
+            <p className="text-gray-500 mb-2">The information in this section below will be shared with tradespeople in order to produce estimates. Please help us to protect your privacy by not including any Personally Identifiable Information (e.g. your name, email address, etc).</p>
+            <h3 className={` capitalize text-start font-bold   mb-2`}>How would you like to name your project?</h3>
 
-      <input
-        className={`py-3 border-b-2 border-b-gray-400 w-full mb-5`}
-        placeholder='Type your project name'
-      />
+            <input className={`py-3 border-b-2 border-b-gray-400 w-full mb-5`} placeholder="Type your project name" />
 
-      <h3 className={` capitalize text-start  font-bold  mb-2`}>
-        Describe the work required clearly so that builders can understand.
-      </h3>
+            <h3 className={` capitalize text-start  font-bold  mb-2`}>Describe the work required clearly so that builders can understand.</h3>
 
       <p className='text-gray-500 mb-2'>
         If the style (including colors) are important please mention them

@@ -6,7 +6,7 @@ function ProjectTable() {
 
 
   return (
-    <section className=" w-[75%] m-auto  ">
+    <section className=" w-[85%] px-10 m-auto h-full overflow-y-scroll ">
       <div className="flex justify-between">
         <h3 className={` capitalize   `}>New project(s)</h3>
         <Link href={'/menu/project/addnew'} className="font-bold text-green flex gap-3 text-green-600  items-center">
@@ -41,10 +41,10 @@ const Table = () => {
         <thead>
           <tr className="font-bold text-gray-600  text-sm leading-normal capitalize">
             <th className="py-3 pr-6 text-left">S/N</th>
-            <th className="py-3 px-6 text-left whitespace-nowrap">Project Name</th>
-            <th className="py-3 px-6 text-left  whitespace-nowrap">Initial Date</th>
-            <th className="py-3 px-6 text-left">Status</th>
-            <th className="py-3 px-6 text-center"></th>
+            <th className="py-3 px-4 text-left whitespace-nowrap">Project Name</th>
+            <th className="py-3 px-4 text-left  whitespace-nowrap">Initial Date</th>
+            <th className="py-3 px-4 text-left">Status</th>
+            <th className="py-3 px-4 text-center"></th>
           </tr>
         </thead>
         <tbody className="text-gray-600 text-sm font-light">
@@ -52,10 +52,10 @@ const Table = () => {
             [1, 2, 3, 1, 6].map((v, k) => (
               <tr key={k} className="border-b border-gray-200 hover:bg-gray-100">
                 <td className="py-3 pr-6 text-left whitespace-nowrap">{k + 1}</td>
-                <td className="py-3 px-6 text-left whitespace-nowrap">Project {k}</td>
-                <td className="py-3 px-6 text-left whitespace-nowrap">2023-09-15</td>
-                <td className={`py-3 px-6 text-left whitespace-nowrap ${v == 1 ? 'text-green-700' : v == 3 ? 'text-gray-400' : v == 6 ? 'text-purple-800' : 'text-gray-800'}`}>{v == 1 ? 'Ongoing' : v == 3 ? 'Paused' : v == 6 ? 'Awaiting  your review' : 'Returned for review '}</td>
-                <td className="py-3 px-6 text-center">
+                <td className="py-3 px-4 text-left whitespace-nowrap">Project {k}</td>
+                <td className="py-3 px-4 text-left whitespace-nowrap">2023-09-15</td>
+                <td className={`py-3 px-4 text-left whitespace-nowrap ${v == 1 ? 'text-green-700' : v == 3 ? 'text-gray-400' : v == 6 ? 'text-purple-800' : 'text-gray-800'}`}>{v == 1 ? 'Ongoing' : v == 3 ? 'Paused' : v == 6 ? 'Awaiting  your review' : 'Returned for review '}</td>
+                <td className="py-3 px-4 text-center">
                   <Link href={'/menu/project/projectID'} className="  border-green-800 font-bold text-green-800  rounded-full border px-8 py-1 my-2">
                     View
                   </Link>
@@ -77,10 +77,10 @@ const TableHistory = () => {
         <thead>
           <tr className="font-bold text-gray-600 uppercase text-sm leading-normal capitalize">
             <th className="py-3 pr-6 text-left">S/N</th>
-            <th className="py-3 px-6 text-left  whitespace-nowrap">Project Name</th>
-            <th className="py-3 px-6 text-left  whitespace-nowrap">Initial Date</th>
-            <th className="py-3 px-6 text-left">Status</th>
-            <th className="py-3 px-6 text-center"></th>
+            <th className="py-3 px-4 text-left  whitespace-nowrap">Project Name</th>
+            <th className="py-3 px-4 text-left  whitespace-nowrap">Initial Date</th>
+            <th className="py-3 px-4 text-left">Status</th>
+            <th className="py-3 px-4 text-center"></th>
           </tr>
         </thead>
         <tbody className="text-gray-600 text-sm font-light">
@@ -88,10 +88,10 @@ const TableHistory = () => {
             [1, 2, 3, 1, 6].map((v, k) => (
               <tr key={k} className="border-b border-gray-200 hover:bg-gray-100">
                 <td className="py-3 pr-6 text-left whitespace-nowrap">{k + 1}</td>
-                <td className="py-3 px-6 text-left whitespace-nowrap">Project {k}</td>
-                <td className="py-3 px-6 text-left whitespace-nowrap">2023-09-15</td>
-                <td className={`py-3 px-6 text-left whitespace-nowrap ${v == 1 ? 'text-green-700' : v == 3 ? 'text-gray-400' : v == 6 ? 'text-purple-800' : 'text-gray-800'}`}>{v == 1 ? 'Completed' : v == 3 ? 'Paused' : v == 6 ? 'Ongoing' : 'Returned for review '}</td>
-                <td className="py-3 px-6 text-center">
+                <td className="py-3 px-4 text-left whitespace-nowrap">Project {k}</td>
+                <td className="py-3 px-4 text-left whitespace-nowrap">2023-09-15</td>
+                <td className={`py-3 px-4 text-left whitespace-nowrap ${v == 1 ? 'text-green-700' : v == 3 ? 'text-gray-400' : v == 6 ? 'text-purple-800' : 'text-gray-800'}`}>{v == 1 ? 'Completed' : v == 3 ? 'Paused' : v == 6 ? 'Ongoing' : 'Returned for review '}</td>
+                <td className="py-3 px-4 text-center">
                   <Link href={'/menu/project/projectID'} className="  border-green-800 font-bold text-green-800  rounded-full border px-8 py-1">
                     View
                   </Link>
