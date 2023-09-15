@@ -10,7 +10,7 @@ const Project = () => {
 
   return (
     <div className='h-full flex justify-center items-center w-full pt-10'>
-      <ProjectTable />
+      <ProjectTable/>
     </div>
   );
 };

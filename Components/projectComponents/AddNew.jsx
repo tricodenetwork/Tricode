@@ -7,28 +7,43 @@ import { useState } from "react";
 import countries from "../../lib/constants/countries.json";
 
 function AddNew() {
-    
-    const [files, setFiles] = useState([]);
-    const [selected, setSelectedCountry] = useState(countries[0]?.code.toLowerCase());
-    const selectedCountry = (e) => {
-        console.log(e.target.value)
-        setSelectedCountry(e.target.value?.toLowerCase())
-    }
-    return (
-        <section className="p-10 w-[85%] m-auto overflow-scroll">
-            <h3 className={` capitalize text-start  font-bold  mb-2`}>Add new project</h3>
-            <p className="text-gray-500 mb-2">The information in this section below will be shared with tradespeople in order to produce estimates. Please help us to protect your privacy by not including any Personally Identifiable Information (e.g. your name, email address, etc).</p>
-            <h3 className={` capitalize text-start font-bold   mb-2`}>How would you like to name your project?</h3>
+  const [files, setFiles] = useState([]);
+  const [selected, setSelectedCountry] = useState(
+    countries[0]?.code.toLowerCase()
+  );
+  const selectedCountry = (e) => {
+    console.log(e.target.value);
+    setSelectedCountry(e.target.value?.toLowerCase());
+  };
+  return (
+    <section className="p-10 w-[85%] m-auto overflow-scroll">
+      <h3 className={` capitalize text-start  font-bold  mb-2`}>
+        Add new project
+      </h3>
+      <p className="text-gray-500 mb-2">
+        The information in this section below will be shared with tradespeople
+        in order to produce estimates. Please help us to protect your privacy by
+        not including any Personally Identifiable Information (e.g. your name,
+        email address, etc).
+      </p>
+      <h3 className={` capitalize text-start font-bold   mb-2`}>
+        How would you like to name your project?
+      </h3>
 
-            <input className={`py-3 border-b-2 border-b-gray-400 w-full mb-5`} placeholder="Type your project name" />
+      <input
+        className={`py-3 border-b-2 border-b-gray-400 w-full mb-5`}
+        placeholder="Type your project name"
+      />
 
-            <h3 className={` capitalize text-start  font-bold  mb-2`}>Describe the work required clearly so that builders can understand.</h3>
+      <h3 className={` capitalize text-start  font-bold  mb-2`}>
+        Describe the work required clearly so that builders can understand.
+      </h3>
 
-      <p className='text-gray-500 mb-2'>
+      <p className="text-gray-500 mb-2">
         If the style (including colors) are important please mention them
         explicitly to avoid confusion and unexpected costs. If you&apos;re
         unsure of what to write here you might find our advice on this page
-        useful: <span className='text-green-600'>Suggestions</span>
+        useful: <span className="text-green-600">Suggestions</span>
       </p>
 
       <Editor />
@@ -37,7 +52,7 @@ function AddNew() {
         Please upload at least one photo, video or design of the work to be
         undertaken.
       </h2>
-      <p className='text-gray-500 mb-2'>
+      <p className="text-gray-500 mb-2">
         For example if you are replacing a door lock please take a photo of the
         existing lock.
       </p>
@@ -46,7 +61,7 @@ function AddNew() {
         Please upload at least one photo, video or design of the work to be
         undertaken.
       </h3>
-      <p className='text-gray-500 mb-2'>
+      <p className="text-gray-500 mb-2">
         For example if you are replacing a door lock please take a photo of the
         existing lock.
       </p>
@@ -59,12 +74,12 @@ function AddNew() {
         How do we contact you?
       </h3>
 
-      <div className='flex gap-3 items-center  my-2'>
-        <div className='flex justify-center gap-4'>
-          <div className='flex justify-center gap-2'>
+      <div className="flex gap-3 items-center  my-2">
+        <div className="flex justify-center gap-4">
+          <div className="flex justify-center gap-2">
             <img
               src={`https://flagcdn.com/16x12/${selected}.png`}
-              className='w-10 rounded-full h-10'
+              className="w-10 rounded-full h-10"
               alt={selected}
             />
             <select onChange={selectedCountry}>
@@ -74,18 +89,18 @@ function AddNew() {
                 </option>
               ))}
             </select>
-            <input className='border-b-2 border-b-gray-300' type='phone' />
+            <input className="border-b-2 border-b-gray-300" type="phone" />
           </div>
 
-          <div className='flex justify-center gap-2 items-end'>
+          <div className="flex justify-center gap-2 items-end">
             <div>Email</div>
-            <input className='border-b-2 border-b-gray-300' type='email' />
+            <input className="border-b-2 border-b-gray-300" type="email" />
           </div>
         </div>
       </div>
 
-      <div className='w-full flex justify-center my-5'>
-        <button className='bg-green-500 text-white rounded-full py-2 px-16 self-center'>
+      <div className="w-full flex justify-center my-5">
+        <button className="bg-green-500 text-white rounded-full py-2 px-16 self-center">
           Submit Now
         </button>
       </div>

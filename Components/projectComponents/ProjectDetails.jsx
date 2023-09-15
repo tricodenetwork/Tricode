@@ -5,7 +5,6 @@ import Image from "next/image";
 import useFunctions from "@/hooks/useFunctions";
 import { BackButton } from "../Button";
 
-
 function ProjectDetails() {
     const { imageLoader } = useFunctions();
    

@@ -17,7 +17,6 @@ const ProjectID = () => {
     //-----------------------------------------------------------FUNCTIONS
 
     //------------------------------------------------------------------USE EFFECTS
-
     return (
         <section className=' w-[85%] m-auto  justify-center items-center p-10 h-full overflow-y-scroll'>
             <section className="border-gray-300 border rounded p-6  w-full">

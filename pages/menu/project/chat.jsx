@@ -12,10 +12,10 @@ const Chat = () => {
   return (
     <div className='h-full flex gap-4 items-center w-full p-10'>
       <div className="w-1/3 h-full">
-        <MessageList/>
+        <MessageList />
       </div>
       <div className="w-[75%] h-full ">
-        <ConversationMessaging/>
+        <ConversationMessaging />
       </div>
     </div>
   );
