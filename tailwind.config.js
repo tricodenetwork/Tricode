@@ -24,6 +24,8 @@ module.exports = {
         lightyellow: "#fff47a",
         midorange: "#f69d3c",
         background: "#F1E5C4",
+        ash: "#d7d7d7",
+        ash2: "#aab2c8",
       },
     },
   },

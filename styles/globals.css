@@ -24,7 +24,12 @@
   font-family: "Poppins-SemiBold";
   src: url("../public/assets/fonts/Poppins-SemiBold.ttf");
 }
+/* For Light weight */
 
+@font-face {
+  font-family: "Poppins-Light";
+  src: url("../public/assets/fonts/Poppins-Light.ttf");
+}
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -40,13 +45,20 @@
   }
 }
 
-/* Navbar.css stylesheet */
-
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   /* border: 1px solid black; */
+}
+/* This will hide the scrollbar for Chrome, Safari, etc. */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* This will hide the scrollbar for Firefox */
+.scrollbar-hide {
+  scrollbar-width: none;
 }
 
 h4 {
@@ -54,6 +66,16 @@ h4 {
   font-size: 32px;
   line-height: normal;
   text-transform: capitalize;
+}
+.light {
+  font-size: 16;
+  font-family: "Poppins-Light";
+}
+.regular {
+  font-family: "Poppins-Regular";
+}
+.semiBold {
+  font-family: "Poppins-SemiBold";
 }
 
 .listitem {
@@ -64,6 +86,7 @@ h4 {
   line-height: normal;
 }
 
+/* Navbar.css stylesheet */
 .navbar {
   width: 95%;
   height: 12vh;
@@ -171,36 +194,6 @@ ul li,
     font-weight: 600;
     list-style: none;
   }
-
-  #intro .cButtons button p {
-    font-weight: 500;
-    font-size: 1rem;
-    border: 2px solid;
-  }
-}
-
-/* Main */
-
-#hero .header {
-  font-size: 45px;
-  font-family: "Inter", sans-serif;
-  font-weight: 600;
-  line-height: 42.44px;
-}
-#intro .cButtons button {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: auto;
-  /* border: 2px solid saddlebrown; */
-  /* box-shadow: -3px 3px 5px rgba(0, 80, 50, 0.5); */
-  /* background-color: rgba(139, 69, 19, 0.539);   */
-  padding-inline: 20px;
-}
-#intro .cButtons button p {
-  font-weight: 50;
-  font-size: 25px;
-  margin-left: 10px;
 }
 
 /* Login stylesheets */

@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const MenuList = ({ Icon, name }) => {
   const route = useRouter();
-  const routeName = route.pathname.split("/").pop();
+  const routeName = route.pathname.split("/menu").pop();
   const active = routeName.toLowerCase() === name.toLowerCase();
 
   return (

@@ -10,9 +10,12 @@ const Project = () => {
 
   return (
     <div className='h-full flex justify-center items-center w-full pt-10'>
-      <ProjectTable/>
+      <ProjectTable />
     </div>
   );
 };
-Project.getLayout = MenuLayout;
+
+Project.getLayout = function getLayout(page) {
+  return <MenuLayout>{page}</MenuLayout>;
+};
 export default Project;
