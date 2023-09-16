@@ -48,14 +48,6 @@ function AddNew() {
 
       <Editor />
 
-      <h2 className={` capitalize  font-bold text-xl mt-5 mb-2`}>
-        Please upload at least one photo, video or design of the work to be
-        undertaken.
-      </h2>
-      <p className="text-gray-500 mb-2">
-        For example if you are replacing a door lock please take a photo of the
-        existing lock.
-      </p>
 
       <h3 className={` capitalize text-start  font-bold  mt-5 mb-2`}>
         Please upload at least one photo, video or design of the work to be
@@ -66,9 +58,15 @@ function AddNew() {
         existing lock.
       </p>
 
-      <h2 className={` capitalize  font-bold text-xl mb-2`}>
-        How do we contact you?
-      </h2>
+      <div className="overflow-scroll flex gap-2 items-center">
+        <SelectFile icon={TbCameraPlus} name={'Take photo/Video'} otherFiles={files} setFiles={setFiles}/>
+        <SelectFile icon={HiOutlineDocumentDuplicate} name={'Upload Files'} otherFiles={files} setFiles={setFiles}/>
+        {
+          files.map((f, key) => (
+            <div className="" key={key}>{f.name}({Math.round((f.size/1000000) * 10)/10}MB)</div>
+          ))
+          }
+      </div>
 
       <h3 className={` capitalize text-start  font-bold  mb-2`}>
         How do we contact you?

@@ -14,5 +14,7 @@ const Project = () => {
     </div>
   );
 };
-Project.getLayout = MenuLayout;
+Project.getLayout = function getLayout(page) {
+  return <MenuLayout>{page}</MenuLayout>;
+};;
 export default Project;

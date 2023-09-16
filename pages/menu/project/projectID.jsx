@@ -14,6 +14,7 @@ const ProjectID = () => {
     // --------------------------------------------VARIABLES
     const [navto, setNav] = useState('milestone')
   
+    
     //-----------------------------------------------------------FUNCTIONS
 
     //------------------------------------------------------------------USE EFFECTS
@@ -107,5 +108,7 @@ const ProjectID = () => {
         </section>
     );
 };
-ProjectID.getLayout = MenuLayout;
+ProjectID.getLayout = function getLayout(page) {
+    return <MenuLayout>{page}</MenuLayout>;
+  };
 export default ProjectID;

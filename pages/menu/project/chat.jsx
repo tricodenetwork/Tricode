@@ -20,5 +20,7 @@ const Chat = () => {
     </div>
   );
 };
-Chat.getLayout = MenuLayout;
+Chat.getLayout = function getLayout(page) {
+  return <MenuLayout>{page}</MenuLayout>;
+};;
 export default Chat;
