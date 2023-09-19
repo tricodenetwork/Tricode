@@ -23,7 +23,7 @@ const Index = () => {
         <h3>SIGN IN</h3>
         <div className='flex mt-[4px] mb-[15px]  md:mt-[16px] md:mb-[30px] items-center'>
           <p className=' mr-1 md:mr-3 member text-black'>Not a member?</p>
-          <Link href='/register'>
+          <Link href='/auth/register'>
             <p className='text-binance_green register'>Register now!</p>
           </Link>
         </div>
@@ -43,7 +43,7 @@ const Index = () => {
         </div>
         <div className=' w-full'>
           <Button styles={"w-[60%] md:w-full mx-auto"} Action={"Sign in"} />
-          <Link href='/forgot-password'>
+          <Link href='/auth/forgot-password'>
             <p className='register mt-[12px]  text-binance_green text-center'>
               Forgot password?
             </p>

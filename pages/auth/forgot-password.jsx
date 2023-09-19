@@ -32,7 +32,7 @@ const Index = () => {
                     className='border-b-2   bg-neutral-100 border-gray-400 focus:outline-none focus:border-b-2 focus:border-binance_green w-full'
                   />
                 </div>
-                <Link href='/sms-verification'>
+                <Link href='/auth/verification'>
                   <div className='w-[106px] h-[82px] md:h-[90px] bg-zinc-300 rounded-tr-[10px] justify-center items-center rounded-br-[10px] border border-zinc-300'>
                     <div className='w-9 h-9 m-7'>
                       <Image
@@ -60,7 +60,7 @@ const Index = () => {
                     className='border-b-2  bg-neutral-100 border-gray-400 focus:outline-none focus:border-b-2 focus:border-binance_green w-full'
                   />
                 </div>
-                <Link href='/sms-verification'>
+                <Link href='/auth/verification'>
                   <div className='w-[106px] h-[82px] md:h-[90px] bg-zinc-300 rounded-tr-[10px] justify-center items-center rounded-br-[10px] border border-zinc-300'>
                     <div className='w-9 h-9 m-7'>
                       <Image
