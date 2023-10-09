@@ -25,28 +25,39 @@ const Index = () => {
   const [confirmPasswordError, setConfirmPasswordError] = useState("");
 
   //-----------------------------------------------------------FUNCTIONS
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Validation logic
-    // if (!password) {
-    //   setPasswordError('Password is required');
-    //   return;
-    // }
-
-    // If validation passes, you can proceed with password change logic here
-    // For example, send a request to your backend to update the password
-
-    // Reset validation errors
-    setPasswordError(false);
-    setConfirmPasswordError("");
-
-    // Reset password and confirmation fields
-    setPassword("");
-    setConfirmPassword("");
-
-    // Redirect the user or show a success message
+    if (password !== confirmPassword) {
+      setConfirmPasswordError("Passwords do not match");
+    } else {
+      // Redirect the user or show a success message
+    }
   };
+
+  //------------------------------------------------------------------USE EFFECTS
+
+  // useEffect(() => {
+  //   // Validation logic
+  //   // if (!password) {
+  //   //   setPasswordError('Password is required');
+  //   //   return;
+  //   // }
+
+  //   // If validation passes, you can proceed with password change logic here
+  //   // For example, send a request to your backend to update the password
+
+  //   // Reset validation errors
+  //   setPasswordError(false);
+  //   setConfirmPasswordError("");
+
+  //   // Reset password and confirmation fields
+  //   setPassword("");
+  //   setConfirmPassword("");
+
+  //   // Redirect the user or show a success message
+  // },[]);
 
   const passwordTest = (e) => {
     const currentValue = e.target.value;
