@@ -16,7 +16,7 @@ const ModalComponent = ({ Content }) => {
       <Modal
         isOpen={isModalOpen}
         onRequestClose={closeModal}
-        className='modal w-[35%]  bg-transparent'
+        className='modal w-auto  bg-transparent'
         overlayClassName='overlay'
       >
         <Content close={closeModal} />
