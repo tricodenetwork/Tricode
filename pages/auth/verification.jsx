@@ -17,7 +17,7 @@ const Index = () => {
           Header='Welcome Back'
           Message="Signing up for TRICODE's <Dev/> Network is your gateway to connecting with a diverse community of programmers, software engineers, product designers, product managers, mechatronics engineers, adaptive manufacturing experts, and more. In this section, we'll guide you through the process of creating your TRICODE account."
         />
-        <div className='bg-midorang mx-auto login min-h-max flex flex-col px-3 justify-center items-center'>
+        <div className='bg-midorang mx-4 login min-h-max md:mt-0 mt-[-10em] flex flex-col px-3 justify-center items-center'>
           <h3>SMS Verification</h3>
           <div className="mt-5">
             <div className="w-[90%] md:w-[424px] member mb-5 text-lg">A text message with a six digit verification code has been sent to your phone number ending in X  X  X  X  X  X 6 0 9 7</div>

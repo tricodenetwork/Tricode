@@ -19,16 +19,16 @@ const Index = () => {
 
   return (
     <>
-      <div className=''>
+      <div className='md:mt-0 mt-[-7em]'>
         <h3>SIGN IN</h3>
-        <div className='flex mt-[4px] mb-[15px]  md:mt-[16px] md:mb-[30px] items-center'>
+        <div className='flex mt-[4px] mb-[15px] md:mt-[16px] md:mb-[30px] items-center'>
           <p className=' mr-1 md:mr-3 member text-black'>Not a member?</p>
           <Link href='/auth/register'>
             <p className='text-binance_green register'>Register now!</p>
           </Link>
         </div>
       </div>
-      <div className='md:w-[487px] relative h-[308px] md:h-[308px] flex flex-col justify-between shrink-0'>
+      <div className='md:w-[487px] mx-4 relative h-[308px] md:h-[308px] flex flex-col justify-between shrink-0'>
         <div className=''>
           <InputLine placeholder={"johncena@gmail.com"} />
           <InputLine placeholder={"Password*"} />
