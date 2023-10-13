@@ -1,7 +1,7 @@
 import useFunctions from "@/hooks/useFunctions";
 import Image from "next/image";
 
-const Sidebar = ({Header}) => {
+const Sidebar = ({ Header, Message }) => {
   // --------------------------------------------VARIABLES
 
   //-----------------------------------------------------------FUNCTIONS
@@ -45,13 +45,11 @@ const Sidebar = ({Header}) => {
       </div>
       <div className='  flex-col flex items-center max-w-[268px]'>
         <h3 className='text- mb- text-white'>{Header}</h3>
-        <h5 className='text-white uppercase'>
+        {/* <h5 className='text-white uppercase'>
           Lorem ipsum dolor sit amet consectetur.
-        </h5>
+        </h5> */}
         <p className='smallText mt-3'>
-          Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-          sint. Velit officia consequat duis enim velit mollit. Exercitation
-          veniam consequat
+          {Message}
         </p>
       </div>
     </div>

@@ -119,7 +119,10 @@ const Index = () => {
   return (
     <>
       <div className='flex min-h-screen  items-center'>
-        <Sidebar Header='Welcome Back' />
+        <Sidebar
+          Header='Join US'
+          Message="Signing up for TRICODE's <Dev/> Network is your gateway to connecting with a diverse community of programmers, software engineers, product designers, product managers, mechatronics engineers, adaptive manufacturing experts, and more. In this section, we'll guide you through the process of creating your TRICODE account."
+        />
         <div className='mx-auto login min-h-max flex flex-col px-3 justify-center items-center'>
           <h3 style={{ fontSize: 32 }} className='semiBold'>
             Set New password
