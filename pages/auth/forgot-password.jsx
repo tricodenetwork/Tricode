@@ -16,7 +16,7 @@ const Index = () => {
           Header='Join US'
           Message="Signing up for TRICODE's <Dev/> Network is your gateway to connecting with a diverse community of programmers, software engineers, product designers, product managers, mechatronics engineers, adaptive manufacturing experts, and more. In this section, we'll guide you through the process of creating your TRICODE account."
         />
-        <div className='mx-5 md:mx-auto relative login min-h-max md:mt-0 mt-[-10em] flex flex-col w-[488px] h-[376px] justify-between items-center'>
+        <div className='mx-5 md:mx-3 lg:mx-auto relative login min-h-max md:mt-0 mt-[-10em] flex flex-col w-[488px] h-[376px] justify-between items-center'>
           <h3>Forgot password?</h3>
           <div className='w-full h-[75%] mx-3 flex flex-col justify-start'>
             <div className='text-black w-full relative bottom-2 text-left text-xl font-bold'>
