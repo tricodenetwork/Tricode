@@ -7,11 +7,14 @@ import InputLine from "@/Components/InputLine";
 import RadioInput from "@/Components/RadioInput";
 import { useState } from "react";
 import CountryCode from "@/Components/CountryCode";
+import ShowHidePassword, { ConfirmPassword } from "@/Components/ShowHidePassword";
 
 const Index = () => {
   // --------------------------------------------VARIABLES
   const [checked, setChecked] = useState(false);
   const [selectedOption, setSelectedOption] = useState("company");
+  const [showPasswordToggle, setShowPasswordToggle] = useState(false);
+  const [confirmPasswordToggle, setConfirmPasswordToggle] = useState(false);
 
   //-----------------------------------------------------------FUNCTIONS
   const handleChange = (event) => {
@@ -20,6 +23,14 @@ const Index = () => {
 
   const handleOptionChange = (e) => {
     setSelectedOption(e.target.value);
+  };
+  
+  const showPassword = () => {
+    setShowPasswordToggle(!showPasswordToggle);
+  };
+
+  const confirmPassword = () => {
+    setConfirmPasswordToggle(!confirmPasswordToggle);
   };
 
   //------------------------------------------------------------------USE EFFECTS
@@ -40,8 +51,22 @@ const Index = () => {
       <div className='md:w-[487px]  h-[70%] relative flex flex-col justify-between'>
         <div className='h-[55%] py-2 flex flex-col justify-between'>
           <InputLine placeholder={"Full Name"} />
-          <InputLine placeholder={"Password*"} />
-          <InputLine placeholder={"Confirm Password*"} />
+          <div>
+            <InputLine placeholder={"Password*"} type={showPasswordToggle ? "text" : "password"} />
+            <ShowHidePassword
+              className="absolute ml-[-2.5rem] mt-[1rem]"
+              onClick={showPassword}
+              showPasswordToggle={showPasswordToggle}
+            />
+          </div>
+          <div>
+            <InputLine placeholder={"Confirm Password*"} type={confirmPasswordToggle ? "text" : "password"} />
+            <ConfirmPassword
+              className="absolute ml-[-2.5rem] mt-[1rem]"
+              onClick={confirmPassword}
+              confirmPasswordToggle={confirmPasswordToggle}
+            />
+          </div>
           <InputLine placeholder={"Email"} />
           <div className='flex'>
             <div className='mr-4 mt-2'>

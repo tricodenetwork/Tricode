@@ -5,14 +5,20 @@ import Button from "@/Components/Button";
 import { Checkbox } from "@mui/material";
 import InputLine from "@/Components/InputLine";
 import { useState } from "react";
+import ShowHidePassword from "@/Components/ShowHidePassword";
 
 const Index = () => {
   // --------------------------------------------VARIABLES
   const [checked, setChecked] = useState(false);
+  const [showPasswordToggle, setShowPasswordToggle] = useState(false);
 
   //-----------------------------------------------------------FUNCTIONS
   const handleChange = (event) => {
     setChecked(event.target.checked);
+  };
+
+  const showPassword = () => {
+    setShowPasswordToggle(!showPasswordToggle);
   };
 
   //------------------------------------------------------------------USE EFFECTS
@@ -31,7 +37,14 @@ const Index = () => {
       <div className='md:w-[487px] mx-4 relative h-[308px] md:h-[308px] flex flex-col justify-between shrink-0'>
         <div className=''>
           <InputLine placeholder={"johncena@gmail.com"} />
-          <InputLine placeholder={"Password*"} />
+          <div>
+            <InputLine placeholder={"Password*"} type={showPasswordToggle ? "text" : "password"} />
+            <ShowHidePassword
+              className="absolute ml-[-2.5rem] mt-[1.5rem]"
+              onClick={showPassword}
+              showPasswordToggle={showPasswordToggle}
+            />
+          </div>
         </div>
         <div className='flex relative bottom-[3vh] md:bottom-0  items-center '>
           <Checkbox
