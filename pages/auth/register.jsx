@@ -24,7 +24,7 @@ const Index = () => {
   const handleOptionChange = (e) => {
     setSelectedOption(e.target.value);
   };
-  
+
   const showPassword = () => {
     setShowPasswordToggle(!showPasswordToggle);
   };
@@ -78,7 +78,7 @@ const Index = () => {
           </div>
         </div>
 
-        <div className='relative bottom-4'>
+        <div className='relative mt-4 md:mt-0 bottom-4'>
           <div className='text-[#000000] mb-1 text-sm md:text-lg font-medium'>
             Are you a Company or Talent?
           </div>
