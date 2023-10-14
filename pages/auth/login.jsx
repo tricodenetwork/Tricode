@@ -34,7 +34,7 @@ const Index = () => {
           </Link>
         </div>
       </div>
-      <div className='w-full md:w-[487px] mx-3 relative h-[308px] md:h-[308px] flex flex-col justify-between shrink-0'>
+      <div className='w-[85%] md:w-[487px] mx-auto relative h-[308px] md:h-[308px] flex flex-col justify-between shrink-0'>
         <div className='w-full'>
           <InputLine placeholder={"johncena@gmail.com"} />
           <div className='w-full'>
