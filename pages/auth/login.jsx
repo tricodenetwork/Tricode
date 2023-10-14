@@ -25,19 +25,19 @@ const Index = () => {
 
   return (
     <>
-      <div className='md:mt-0 mt-[-7em]'>
+      <div className='md:mt-0 mt-[-4em]'>
         <h3>SIGN IN</h3>
-        <div className='flex mt-[4px] mb-[15px] md:mt-[16px] md:mb-[30px] items-center'>
+        <div className='flex mt-[4px] mb-[15px] md:mt-[16px] md:mb-[30px] items-center w-full'>
           <p className=' mr-1 md:mr-3 member text-black'>Not a member?</p>
           <Link href='/auth/register'>
             <p className='text-binance_green register'>Register now!</p>
           </Link>
         </div>
       </div>
-      <div className='md:w-[487px] mx-4 relative h-[308px] md:h-[308px] flex flex-col justify-between shrink-0'>
-        <div className=''>
+      <div className='w-full md:w-[487px] mx-3 relative h-[308px] md:h-[308px] flex flex-col justify-between shrink-0'>
+        <div className='w-full'>
           <InputLine placeholder={"johncena@gmail.com"} />
-          <div>
+          <div className='w-full'>
             <InputLine placeholder={"Password*"} type={showPasswordToggle ? "text" : "password"} />
             <ShowHidePassword
               className="absolute ml-[-2.5rem] mt-[1.5rem]"
