@@ -107,6 +107,12 @@ h3 {
   font-weight: 400;
   line-height: normal;
 }
+.custom-input::placeholder {
+  color: #38a312;
+  /* Add any other styles you want for the placeholder */
+  opacity: 1; /* Required for some browsers to show color */
+}
+
 
 /* Navbar.css stylesheet */
 .navbar {
@@ -280,10 +286,10 @@ h3 {
   color: #000;
   text-align: center;
   font-family: Poppins;
-  font-size: 32px;
+  font-size: 24px;
   font-style: normal;
   font-weight: 700;
-  line-height: 48px; /* 150% */
+  line-height: 32px; /* 150% */
   text-transform: uppercase;
 }
 h5 {
