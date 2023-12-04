@@ -43,7 +43,7 @@ const Sidebar = ({ Header, Message }) => {
           />
         </div>
       </div>
-      <div className='  flex-col flex items-center max-w-[268px]'>
+      <div className='flex-col flex items-center max-w-[268px]'>
         <h3 className='text- mb- text-white'>{Header}</h3>
         {/* <h5 className='text-white uppercase'>
           Lorem ipsum dolor sit amet consectetur.

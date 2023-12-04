@@ -25,7 +25,7 @@ const Index = () => {
             <div className="text-binance_green mt-5 text-sm md:text-xl font-semibold">Send another code</div>
             <div className='w-full mt-4'>
               <Link className='w-full mt-4' href='/auth/new-password'>
-                <Button styles={"w-[60%] md:w-full mx-auto"} Action={"Continue"} />
+                <Button styles={"w-full mx-auto"} Action={"Continue"} />
               </Link>
             </div>
           </div>

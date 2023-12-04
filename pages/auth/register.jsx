@@ -6,7 +6,7 @@ import { Checkbox } from "@mui/material";
 import InputLine from "@/Components/InputLine";
 import RadioInput from "@/Components/RadioInput";
 import { useState } from "react";
-import CountryCode from "@/Components/CountryCode";
+import CountryCode from "@/Components/CountryCode/Countries";
 import ShowHidePassword, { ConfirmPassword } from "@/Components/ShowHidePassword";
 
 const Index = () => {
@@ -36,7 +36,7 @@ const Index = () => {
   //------------------------------------------------------------------USE EFFECTS
 
   return (
-    <div className='h-full login justify-around px-4 flex flex-col items-center'>
+    <div className='h-full login justify-around px-3 flex flex-col items-center'>
       <div className=''>
         <h3>Create an Account</h3>
         <div className='flex mt-[4px] mb-[10px] md:mt-[7px] md:mb-[20px] items-center'>
@@ -124,7 +124,7 @@ const Index = () => {
           </div>
           <div className='w-full mt-4'>
             <Button
-              styles={"w-[60%] hover:opacity-90 md:w-full mx-auto"}
+              styles={"hover:opacity-90 w-full mx-auto"}
               Action={"Register"}
             />
           </div>

@@ -55,7 +55,7 @@ const Index = () => {
           <p className='remember'>Remember me</p>
         </div>
         <div className=' w-full'>
-          <Button styles={"w-[60%] md:w-full mx-auto"} Action={"Sign in"} />
+          <Button styles={"w-full mx-auto"} Action={"Sign in"} />
           <Link href='/auth/forgot-password'>
             <p className='register mt-[12px]  text-binance_green text-center'>
               Forgot password?

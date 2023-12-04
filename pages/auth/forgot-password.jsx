@@ -19,12 +19,12 @@ const Index = () => {
         <div className='mx-5 md:mx-3 lg:mx-auto relative login min-h-max md:mt-0 mt-[-10em] flex flex-col w-[488px] h-[376px] justify-between items-center'>
           <h3>Forgot password?</h3>
           <div className='w-full h-[75%] mx-3 flex flex-col justify-start'>
-            <div className='text-black w-full relative bottom-2 text-left text-xl font-bold'>
+            <div className='text-black w-full relative mb-3 text-left text-xl font-bold'>
               Choose how you want to log in
             </div>
             <div className='h-[75%] flex flex-col justify-between'>
-              <div className='flex w-[100%] pl-5 bg-neutral-100 rounded-[10px] justify-between items-center border border-zinc-300'>
-                <div className='px-5 py-[5px]'>
+              <div className='flex w-[100%] bg-neutral-100 rounded-[10px] justify-between items-center border border-zinc-300'>
+                <div className='px-3 py-[5px]'>
                   <div className='text-black text-lg font-semibold'>
                     Send an email to
                   </div>
@@ -51,8 +51,8 @@ const Index = () => {
                 </Link>
               </div>
 
-              <div className='flex w-[100%] pl-5 bg-neutral-100 rounded-[10px] justify-between items-center border border-zinc-300'>
-                <div className='px-5 py-[5px]'>
+              <div className='flex w-[100%] bg-neutral-100 rounded-[10px] justify-between items-center border border-zinc-300'>
+                <div className='px-3 py-[5px]'>
                   <div className='text-black text-lg font-semibold'>
                     Send a message to
                   </div>

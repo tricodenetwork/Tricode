@@ -124,7 +124,7 @@ const Index = () => {
           Message="Signing up for TRICODE's <Dev/> Network is your gateway to connecting with a diverse community of programmers, software engineers, product designers, product managers, mechatronics engineers, adaptive manufacturing experts, and more. In this section, we'll guide you through the process of creating your TRICODE account."
         />
         <div className='mx-4 login min-h-max md:mt-0 mt-[-10em] flex flex-col px-3 justify-center items-center'>
-          <h3 style={{ fontSize: 32 }} className='semiBold'>
+          <h3 style={{ fontSize: 22 }} className='semiBold'>
             Set New password
           </h3>
           <div className='mt-5'>
@@ -189,7 +189,7 @@ const Index = () => {
               />
               <div className='w-full mt-4'>
                 <Button
-                  styles={"w-[60%] md:w-full mx-auto"}
+                  styles={"w-full mx-auto"}
                   Action={"Continue"}
                 />
               </div>
