@@ -101,7 +101,7 @@ const Index = () => {
           </div>
         </div>
 
-        <div className='flex flex-col relative bottom-3 justify-center '>
+        <div className='flex flex-col relative mb-3 justify-center '>
           <div className='flex items-center'>
             <Checkbox
               sx={{ padding: 0, marginLeft: 0, marginRight: 2 }}
