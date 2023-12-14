@@ -72,9 +72,9 @@ export default function Home() {
         <section id="intro" className="h-full">
           {/* <Lotie src={"../public/assets/lottie/greenlady.json"} /> */}
 
-          <div className="px-[3vw] flex flex-col items-start relative top-[1vh] max-w-max md:mt-[5vh]  mx-[3vw]">
+          <div className="px-[3vw] flex flex-col items-center relative top-[1vh] w-full md:mt-[5vh]">
             {!mobile && (
-              <div className={`cButtons md:flex justify-between  w-[45vw]`}>
+              <div className={`cButtons md:flex justify-between items-center w-full mx-[3vw]`}>
                 <button>
                   <IconWifi size={22} color="gray" stroke={2} />
                   <p className={``}>Connect</p>
