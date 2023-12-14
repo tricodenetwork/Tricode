@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Square from "@/Components/Square";
+import Navbar from "@/Components/navbar_components/Navbar";
 import { IconWifi } from "@tabler/icons-react";
 import { IconUsersGroup } from "@tabler/icons-react";
 import { IconWand } from "@tabler/icons-react";
@@ -63,83 +64,79 @@ export default function Home() {
 
   return (
     <>
-      <main className='relative'>
-        <section className='h-[88vh]' id='hero'>
-          <div className='h-full'>{<Square />}</div>
+      <Navbar />
+      <main className="relative">
+        <section className="bg-black h-[700px]" id="hero">
+          {/* <div className="h-full">{<Square />}</div> */}
 
           {/* <DrawingComponent /> */}
-          <div className='absolute  top-[30vh] md:bottom-[30vh]'>
-            <div className='mx-[3vw] header  relative max-w-max'>
-              <p className='z-10  text-white '>
-                WELCOME TO
-                <span className='top-[.5vh] relative md:top-0 text-secondary'>
-                  {" "}
-                  TRICODE
-                </span>
-              </p>
-              <p className='text-white mt-[1.5vh]'>NETWORK</p>
+          <div className="absolute mx-[3vw] top-[30vh] md:bottom-[30vh]">
+            <div className="header relative max-w-max">
+              <span className="text-white text-[53px] font-extrabold font-['Inter'] leading-[71px]">Build </span>
+              <span className="text-white text-[53px] font-normal font-['Inter'] leading-[71px]">with</span>
+              <span className="text-white text-[53px] font-extrabold font-['Inter'] leading-[71px]"> </span>
+              <span className="text-binance_green text-[53px] font-extrabold font-['Inter'] leading-[71px]">Tricode</span>
             </div>
-            <p className='text-sm  w-[70vw] mx-[3vw] mt-[7vh] md:mt-[12vh] text-white'>
-              A Community for worldclass Developers and Hardware Engineers
-            </p>
-          </div>
-          <div className='absolute top-[23vh] right-[0vw]'>
-            <Image
-              loader={imageLoader}
-              width={!mobile ? 500 : 200}
-              height={900}
-              src='/assets/images/world.png'
-              alt='hand'
-            />
-          </div>
-        </section>
-        <section id='intro' className='h-full'>
-          {/* <Lotie src={"../public/assets/lottie/greenlady.json"} /> */}
-
-          <div className='px-[3vw] flex flex-col items-start relative top-[1vh] max-w-max md:mt-[5vh]  mx-[3vw]'>
-            {!mobile && (
-              <div className={`cButtons md:flex justify-between  w-[45vw]`}>
-                <button>
-                  <IconWifi size={22} color='gray' stroke={2} />
-                  <p className={``}>Connect</p>
-                </button>
-                <button>
-                  <IconUsersGroup size={22} color='gray' stroke={2} />
-                  <p>Collaborate</p>
-                </button>
-                <button>
-                  <IconWand size={22} stroke={2} color='gray' />
-                  <p>Create</p>
-                </button>
-              </div>
-            )}
+            <div className="text-white text-lg font-normal font-['Inter'] leading-9">The Future of Remote Collaborative space.</div>
             <div
-              className={`flex justify-between space-x-14 mt-[0vh] md:space-x-20 md:mt-[8vh]  w-[45vw]`}
+              className={`flex justify-between space-x-4 mt-[0vh] md:space-x-3 md:mt-[3vh]`}
             >
-              <button className='font-medium hover:bg-opacity-70 hover:scale-110 transition ease-linear duration-150 shadow-sm shadow-black px-[7vw] py-[1.5vh] rounded-lg bg-secondary text-black'>
+              <button className="font-medium hover:bg-opacity-70 hover:scale-110 transition ease-linear duration-150 shadow-sm shadow-black px-[7vw] py-[1.5vh] rounded-lg bg-binance_green text-white">
                 HIRE
               </button>
-              <button className='font-medium hover:bg-opacity-70 hover:scale-110 transition ease-linear duration-150 shadow-sm shadow-secondary px-[7vw] py-[1.5vh] rounded-lg bg-black text-white'>
+              <button className="font-medium hover:bg-opacity-70 hover:scale-110 transition ease-linear duration-150 shadow-sm shadow-binance_green px-[7vw] py-[1.5vh] rounded-lg bg-black text-white">
                 JOIN
               </button>
             </div>
           </div>
+          <div className="absolute top-[23vh] right-[5vw]">
+            <Image
+              loader={imageLoader}
+              width={!mobile ? 400 : 200}
+              height={700}
+              src="/assets/lottie/amico.png"
+              alt="hand"
+            />
+          </div>
+        </section>
+
+        <section id="intro" className="h-full">
+          {/* <Lotie src={"../public/assets/lottie/greenlady.json"} /> */}
+
+          <div className="px-[3vw] flex flex-col items-start relative top-[1vh] max-w-max md:mt-[5vh]  mx-[3vw]">
+            {!mobile && (
+              <div className={`cButtons md:flex justify-between  w-[45vw]`}>
+                <button>
+                  <IconWifi size={22} color="gray" stroke={2} />
+                  <p className={``}>Connect</p>
+                </button>
+                <button>
+                  <IconUsersGroup size={22} color="gray" stroke={2} />
+                  <p>Collaborate</p>
+                </button>
+                <button>
+                  <IconWand size={22} stroke={2} color="gray" />
+                  <p>Create</p>
+                </button>
+              </div>
+            )}
+          </div>
           <Lottie
-            className='relative  md:bottom-[15vh] left-[64vw]  md:left-[57vw]  w-[35vw] md:w-[15vw]'
+            className="relative  md:bottom-[15vh] left-[64vw]  md:left-[57vw]  w-[35vw] md:w-[15vw]"
             animationData={greenLady}
             loop={true}
           />
         </section>
         <motion.section
-          className='relative top-[0vh]  overflow-hidden h-[100vh]'
+          className="relative top-[0vh]  overflow-hidden h-[100vh]"
           ref={ref}
-          id='aboutUs'
+          id="aboutUs"
         >
           <GraySquare />
           <motion.p
             animate={animation}
             style={{ lineHeight: 2 }}
-            className='w-[50vw] absolute top-[14vh] right-[2vw] text-white text-[15px] md:text-[20px]'
+            className="w-[50vw] absolute top-[14vh] right-[2vw] text-white text-[15px] md:text-[20px]"
           >
             TRICODE Network! We take great pride in being a distinguished
             platform that connects exceptional talents in the tech industry with
@@ -147,13 +144,13 @@ export default function Home() {
             unite top-notch developers for transformative projects that shape
             the future, fostering collaboration and positive impact for all.
             Join us to be part of something great.
-            <button className='font-medium scale-50 hover:bg-opacity-70 hover:scale-[.55] transition ease-linear duration-150 shadow-sm shadow-secondary px-[7vw] py-[1.5vh] rounded-lg bg-black text-white'>
+            <button className="font-medium scale-50 hover:bg-opacity-70 hover:scale-[.55] transition ease-linear duration-150 shadow-sm shadow-secondary px-[7vw] py-[1.5vh] rounded-lg bg-black text-white">
               JOIN
             </button>
           </motion.p>
           <motion.p
             animate={animation2}
-            className='w-[30vw] absolute top-[68vh] left-[2vw] bg-black p-2 rounded-sm text-white text-[17px]'
+            className="w-[30vw] absolute top-[68vh] left-[2vw] bg-black p-2 rounded-sm text-white text-[17px]"
           >
             {`We foster a secure and inclusive <Developer /> community, connecting
           diverse skilled developers to collaborate on challenging projects,
@@ -164,7 +161,7 @@ export default function Home() {
           </motion.p>
           <motion.p
             animate={animation}
-            className='w-[30vw] absolute top-[68vh] left-[58vw]  bg-black p-2 rounded-sm text-white text-[17px]'
+            className="w-[30vw] absolute top-[68vh] left-[58vw]  bg-black p-2 rounded-sm text-white text-[17px]"
           >
             {`
 Our goal is to create sustainable technology innovations that help solve some of the most pressing challenges facing our world today, particularly those related to climate change and green energy. We believe that Tricode Network is well positioned to make a significant impact on the world of technology and beyond.
@@ -172,33 +169,33 @@ Our goal is to create sustainable technology innovations that help solve some of
           </motion.p>
         </motion.section>
         <section
-          id='patners'
-          className='mt-[40vh] pb-[5vh] relative h-[100vh] justify-center'
+          id="patners"
+          className="mt-[40vh] pb-[5vh] relative h-[100vh] justify-center"
         >
-          <p className='absolute text-[28px] text-white self-center w-full text-center mt-[2vh] font-semibold '>{`< Patners />`}</p>
+          <p className="absolute text-[28px] text-white self-center w-full text-center mt-[2vh] font-semibold ">{`< Patners />`}</p>
           <Square />
-          <div className='px-[5vw]'>
+          <div className="px-[5vw]">
             <Image
               width={200}
               height={80}
               quality={100}
-              className='border-2 top-[20vh] bg-white right-[10vw] absolute w-[35vw]'
-              src='/assets/images/switch.jpg'
-              alt='switch'
+              className="border-2 top-[20vh] bg-white right-[10vw] absolute w-[35vw]"
+              src="/assets/images/switch.jpg"
+              alt="switch"
             />
 
             <Image
               width={200}
               height={100}
               quality={100}
-              alt='deltasciencenigeria'
-              className=' border-2 top-[20vh] bg-white absolute w-[35vw]'
-              src='/assets/images/dsn.png'
+              alt="deltasciencenigeria"
+              className=" border-2 top-[20vh] bg-white absolute w-[35vw]"
+              src="/assets/images/dsn.png"
             />
           </div>
-          <div className='px-[2vw] flex justify-between mb-[15vh]'>
-            <p className='text-black text-sm'>&copy; 2023 tricode.pro</p>
-            <div className='w-[30vw]  flex justify-around'>
+          <div className="px-[2vw] flex justify-between mb-[15vh]">
+            <p className="text-black text-sm">&copy; 2023 tricode.pro</p>
+            <div className="w-[30vw]  flex justify-around">
               <LinkedInIcon />
               <InstagramIcon />
               <TwitterIcon />

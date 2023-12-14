@@ -17,7 +17,7 @@ const LinkItem = ({ path, text, hideMenu, className, offColor = true }) => {
         whileTap={{ scale: 0.8 }}
         transition={{ type: "spring", stiffness: 500, duration: 0.1 }}
         onClick={hideMenu}
-        className={`${bgColor} duration-200 ease-out hover:text-binance_green ${className}`}
+        className={`${bgColor} duration-200 ease-out hover:text-[black] ${className}`}
       >
         {`${text}`}
       </motion.li>

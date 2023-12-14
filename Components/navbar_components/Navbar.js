@@ -17,22 +17,22 @@ const Navbar = ({ children }) => {
   const { imageLoader } = useFunctions();
 
   return (
-    <div className='bg-transparent  flex flex-col'>
+    <div className='bg-binance_green fixed h-[90px] w-full z-50 flex flex-col'>
       <motion.nav
         initial={{ x: 0 }}
         animate={{ x: [200, 0] }}
-        className='navbar absolute mx-auto self-center border-opacity-0 border-2 border-[#d7d7d7] top-[0vh]'
+        className='navbar mx-auto top-[0vh] self-center'
       >
         <motion.div
           initial={{}}
-          animate={{
-            y: [0, -15, 0, -15, 0, -17, 0, -12, 0],
-          }}
-          transition={{
-            delay: 0.1,
-            repeat: 7,
-            duration: 4,
-          }}
+          // animate={{
+          //   y: [0, -15, 0, -15, 0, -17, 0, -12, 0],
+          // }}
+          // transition={{
+          //   delay: 0.1,
+          //   repeat: 7,
+          //   duration: 4,
+          // }}
           className='logos hidden  text-white'
         >
           <Image
@@ -41,31 +41,43 @@ const Navbar = ({ children }) => {
             width={80}
             height={40}
             quality={100}
-            className='w-[10vw] hidden'
+            className='w-[10vw]'
             src='/assets/images/logo.png'
           />
         </motion.div>
 
         <motion.ul
-          className='nav-menu w-[65%]'
+          className='nav-menu w-[55%] hidden xs:flex'
           id={showmenu ? "mobile" : "hide"}
           whileHover={controls.stop}
         >
-          <LinkItem
-            hideMenu={hideMenu}
-            path='/services'
-            offColor={false}
-            text='<Services />'
-          />
+        <LinkItem
+          hideMenu={hideMenu}
+          path='/about'
+          offColor={false}
+          text='About us'
+        />
+        <LinkItem
+          hideMenu={hideMenu}
+          path='/services'
+          offColor={false}
+          text='Services'
+        />
+        <LinkItem
+          hideMenu={hideMenu}
+          path='/projects'
+          offColor={false}
+          text='Projects'
+        />
           <LinkItem
             hideMenu={hideMenu}
             path='/communities'
-            text='<Communities />'
+            text='Communities'
           />
           <LinkItem
             hideMenu={hideMenu}
             path='/newsletter'
-            text='<Newsletter />'
+            text='Newsletter'
           />
         </motion.ul>
         <motion.div
@@ -73,15 +85,15 @@ const Navbar = ({ children }) => {
           animate={{ width: "20%" }}
           // transition={{ type: "spring", stiffness: 500, duration: 0.1 }}
           transition={{ duration: 0.2 }}
-          className='icon flex w-[40%] md:w-[20%] border-[#d7d7d7] border-l-2   justify-around  items-center'
+          className='icon flex w-[40%] md:w-[20%] justify-around  items-center'
         >
-          <LinkItem text={"Register"} path={"/menu"} className={"medText"} />
+          <LinkItem text={"Register"} path={"/menu"} className={"medText p-3 hover:text-[black] rounded-lg border border-slate-500"} />
           <Link legacyBehavior href={"/login"}>
             <motion.a
               whileHover={{ scale: 1.05, y: -1 }}
               whileTap={{ scale: 0.9 }}
               // transition={{ type: "spring", stiffness: 500, duration: 0.1 }}
-              className='bg-[#d7d7d7] py-[4px] md:py-[8px] cursor-pointer hover:text-[#d7d7d7] duration-300 hover:bg-slate-500 px-[10px] md:px-[20px] rounded-sm  medText shadow-sm shadow-slate-600'
+              className='cursor-pointer text-[black] hover:text-[white] px-[10px]'
             >
               Login
             </motion.a>
