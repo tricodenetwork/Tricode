@@ -50,7 +50,7 @@ export default function Home() {
 
   return (
     <>
-      <section className="bg-black h-[700px]" id="hero">
+      <section className="h-[700px]" id="hero">
         <div className="absolute mx-[3vw] top-[30vh] md:bottom-[30vh]">
           <div className="header relative max-w-max">
             <span className="text-white text-[53px] font-extrabold font-['Inter'] leading-[71px]">

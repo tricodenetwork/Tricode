@@ -70,7 +70,7 @@ export default function Home() {
         <Hero />
 
         <section id="intro" className="h-full">
-          {/* <Lotie src={"../public/assets/lottie/greenlady.json"} /> */}
+          {/* <Lottie src={"../public/assets/lottie/greenlady.json"} /> */}
 
           <div className="px-[3vw] flex flex-col items-center relative top-[1vh] w-full md:mt-[5vh]">
             {!mobile && (
