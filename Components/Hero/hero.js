@@ -1,9 +1,10 @@
 import Image from "next/image";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { useAnimation } from "framer-motion";
 import useFunctions from "@/hooks/useFunctions";
 import Square from "../Square";
+import Marq from "./techStack";
 
 export default function Home() {
   const [screenWidth, setScreenWidth] = useState(0);
@@ -52,7 +53,12 @@ export default function Home() {
   return (
     <>
       <section className="h-[700px]" id="hero">
-          <div><img className='h-screen sm:h-[80vh] w-full' src="/assets/images/black-background.png"/></div>
+        <div>
+          <img
+            className="h-screen sm:h-[80vh] w-full"
+            src="/assets/images/black-background.png"
+          />
+        </div>
         <div className="absolute mx-[3vw] top-[30vh] md:bottom-[30vh]">
           <div className="header relative max-w-max">
             <span className="text-white text-[53px] font-extrabold font-['Inter'] leading-[71px]">
@@ -90,6 +96,9 @@ export default function Home() {
             src="/assets/lottie/amico.png"
             alt="hand"
           />
+        </div>
+        <div className="absolute top-[63vh] mx-3">
+          <Marq />
         </div>
       </section>
     </>
