@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -9,15 +9,33 @@ import useFunctions from "@/hooks/useFunctions";
 
 const Navbar = ({ children }) => {
   const [showmenu, setShowmenu] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const { imageLoader } = useFunctions();
+
   const controls = useAnimation();
   const hideMenu = useCallback(() => {
     setShowmenu(false);
   }, []);
 
-  const { imageLoader } = useFunctions();
+  const handleScroll = useCallback(() => {
+    const scrollTop = window.scrollY;
+    if (scrollTop > 0) {
+      setIsScrolled(true);
+    } else {
+      setIsScrolled(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [handleScroll]);
+
 
   return (
-    <div className='bg-binance_green fixed h-[90px] w-full z-50 flex flex-col'>
+    <div className={`bg-${isScrolled ? 'binance_green' : 'transparent'} fixed h-[90px] w-full z-50 flex flex-col`}>
       <motion.nav
         initial={{ x: 0 }}
         animate={{ x: [200, 0] }}
@@ -93,7 +111,7 @@ const Navbar = ({ children }) => {
               whileHover={{ scale: 1.05, y: -1 }}
               whileTap={{ scale: 0.9 }}
               // transition={{ type: "spring", stiffness: 500, duration: 0.1 }}
-              className='cursor-pointer text-[black] hover:text-[white] px-[10px]'
+              className='cursor-pointer hover:text-[black] text-[white] px-[10px]'
             >
               Login
             </motion.a>
