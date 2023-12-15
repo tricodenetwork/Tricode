@@ -9,7 +9,7 @@ export default function Marq() {
       <Marquee direction="left" speed={80} delay={5}>
         {marquees.map((marquee) => {
           return (
-            <div className="image_wrapper">
+            <div className="image_wrapper bg-black ml-3 p-3 rounded-2xl">
               <img src={marquee.img} alt="" />
             </div>
           );
