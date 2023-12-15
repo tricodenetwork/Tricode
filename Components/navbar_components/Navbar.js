@@ -101,7 +101,7 @@ const Navbar = ({ children }) => {
           />
           <LinkItem
             hideMenu={hideMenu}
-            path="/newsletter"
+            path="#newsletter"
             text="Newsletter"
             isScrolled={isScrolled}
           />
