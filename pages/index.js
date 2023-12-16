@@ -2,9 +2,6 @@ import Image from "next/image";
 import Square from "@/Components/Square";
 import Navbar from "@/Components/navbar_components/Navbar";
 import Hero from "@/Components/Hero/hero";
-import { IconWifi } from "@tabler/icons-react";
-import { IconUsersGroup } from "@tabler/icons-react";
-import { IconWand } from "@tabler/icons-react";
 import Lottie from "lottie-react";
 import greenLady from "@/public/assets/lottie/greenlady.json";
 import { useState } from "react";
@@ -18,6 +15,7 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import useFunctions from "@/hooks/useFunctions";
+import HireTricode from "@/Components/HireTricode/index";
 
 export default function Home() {
   const [screenWidth, setScreenWidth] = useState(0);
@@ -68,34 +66,18 @@ export default function Home() {
       <Navbar />
       <main className="relative">
         <Hero />
+        <HireTricode mobile={mobile} />
 
         <section id="intro" className="h-full">
           {/* <Lottie src={"../public/assets/lottie/greenlady.json"} /> */}
-
-          <div className="px-[3vw] flex flex-col items-center relative top-[1vh] w-full md:mt-[5vh]">
-            {!mobile && (
-              <div className={`cButtons md:flex justify-between items-center w-full mx-[3vw]`}>
-                <button>
-                  <IconWifi size={22} color="gray" stroke={2} />
-                  <p className={``}>Connect</p>
-                </button>
-                <button>
-                  <IconUsersGroup size={22} color="gray" stroke={2} />
-                  <p>Collaborate</p>
-                </button>
-                <button>
-                  <IconWand size={22} stroke={2} color="gray" />
-                  <p>Create</p>
-                </button>
-              </div>
-            )}
-          </div>
+          {/* 
           <Lottie
             className="relative  md:bottom-[15vh] left-[64vw]  md:left-[57vw]  w-[35vw] md:w-[15vw]"
             animationData={greenLady}
             loop={true}
-          />
+          /> */}
         </section>
+        
         <motion.section
           className="relative top-[0vh]  overflow-hidden h-[100vh]"
           ref={ref}

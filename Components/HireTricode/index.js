@@ -1,0 +1,55 @@
+import Image from "next/image";
+import { useState, useEffect } from "react";
+import { useInView } from "react-intersection-observer";
+import { useAnimation } from "framer-motion";
+import { IconWifi } from "@tabler/icons-react";
+import { IconUsersGroup } from "@tabler/icons-react";
+import { IconWand } from "@tabler/icons-react";
+
+export default function HireTricode({ mobile }) {
+  return (
+    <>
+      <section
+        className="p-5 bg-gradient-to-l from-[#BBD2B3] to-stone-100 overflow-hidden"
+        id="intro"
+      >
+        <div className="px-[3vw] flex flex-col items-center border-b relative w-full md:py-5">
+          {!mobile && (
+            <div
+              className={`cButtons md:flex justify-between items-center w-full mx-[3vw]`}
+            >
+              <button>
+                <IconWifi size={22} color="gray" stroke={2} />
+                <p className={``}>Connect</p>
+              </button>
+              <button>
+                <IconUsersGroup size={22} color="gray" stroke={2} />
+                <p>Collaborate</p>
+              </button>
+              <button>
+                <IconWand size={22} stroke={2} color="gray" />
+                <p>Create</p>
+              </button>
+            </div>
+          )}
+        </div>
+
+        <div className="justify-start items-center mt-12 gap-[190px] inline-flex">
+          <div className="flex-col justify-start items-start gap-8 inline-flex">
+            <div className="text-binance_green text-6xl font-semibold font-['Poppins'] leading-[65px] tracking-wide">
+              Hire Tricode
+            </div>
+            <div className="text-zinc-500 text-base font-normal font-['Poppins'] leading-[30px] tracking-tight">
+              Get a partner who understands the dynamic world of technology and
+              innovation.  Tricode is your gateway to harnessing the full
+              potential of cutting-edge tech solutions.
+            </div>
+          </div>
+          <div className="">
+            <img src="/assets/lottie/amico.png" alt="" />
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}

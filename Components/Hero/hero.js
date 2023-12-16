@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { useAnimation } from "framer-motion";
 import useFunctions from "@/hooks/useFunctions";
-import Square from "../Square";
 import Marq from "./techStack";
 
 export default function Home() {
