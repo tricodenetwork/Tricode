@@ -46,7 +46,7 @@ export default function HireTricode({ mobile }) {
             </div>
           </div>
           <div className="">
-            <img src="/assets/lottie/amico.png" alt="" />
+            <img src="/assets/lottie/bro.png" alt="" />
           </div>
         </div>
       </section>
