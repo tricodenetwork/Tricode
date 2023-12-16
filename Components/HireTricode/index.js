@@ -34,12 +34,12 @@ export default function HireTricode({ mobile }) {
           )}
         </div>
 
-        <div className="justify-start items-center mt-12 gap-[190px] inline-flex">
-          <div className="flex-col justify-start items-start gap-8 inline-flex">
-            <div className="text-binance_green text-6xl font-semibold font-['Poppins'] leading-[65px] tracking-wide">
+        <div className="justify-start items-center mt-12 gap-[19vh] inline-flex">
+          <div className="flex-col justify-start items-start gap-5 inline-flex">
+            <div className="text-binance_green text-3xl md:text-5xl font-semibold font-['Poppins'] tracking-wide">
               Hire Tricode
             </div>
-            <div className="text-zinc-500 text-base font-normal font-['Poppins'] leading-[30px] tracking-tight">
+            <div className="text-zinc-500 text-base font-['Poppins'] leading-6 tracking-tight">
               Get a partner who understands the dynamic world of technology and
               innovation.  Tricode is your gateway to harnessing the full
               potential of cutting-edge tech solutions.
