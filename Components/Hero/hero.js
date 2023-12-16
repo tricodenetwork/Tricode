@@ -52,7 +52,7 @@ export default function Home() {
 
   return (
     <>
-      <section className="h-[700px]" id="hero">
+      <section className="h-[700px] overflow-hidden" id="hero">
         <div>
           <img
             className="h-screen sm:h-[80vh] w-full"
@@ -97,7 +97,7 @@ export default function Home() {
             alt="hand"
           />
         </div>
-        <div className="absolute top-[63vh] mx-3">
+        <div className="absolute top-[63vh] mx-3 w-full overflow-hidden">
           <Marq />
         </div>
       </section>

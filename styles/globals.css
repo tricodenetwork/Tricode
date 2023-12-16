@@ -59,6 +59,9 @@
   font-size: 16px;
   font-family: Poppins-Regular;
 }
+body {
+  overflow-x: hidden;
+}
 /* This will hide the scrollbar for Chrome, Safari, etc. */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
