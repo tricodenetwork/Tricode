@@ -5,12 +5,13 @@ import { useAnimation } from "framer-motion";
 import { IconWifi } from "@tabler/icons-react";
 import { IconUsersGroup } from "@tabler/icons-react";
 import { IconWand } from "@tabler/icons-react";
+import HireCard from "./card";
 
 export default function HireTricode({ mobile }) {
   return (
     <>
       <section
-        className="p-5 bg-gradient-to-l from-[#BBD2B3] to-stone-100 overflow-hidden"
+        className="px-8 py-5 w-full bg-gradient-to-l from-[#BBD2B3] to-stone-100 overflow-hidden justify-center items-center"
         id="intro"
       >
         <div className="px-[3vw] flex flex-col items-center border-b relative w-full md:py-5">
@@ -34,7 +35,7 @@ export default function HireTricode({ mobile }) {
           )}
         </div>
 
-        <div className="justify-start items-center mt-12 gap-[19vh] inline-flex">
+        <div className="justify-start items-center w-full mt-12 gap-[19vh] inline-flex">
           <div className="flex-col justify-start items-start gap-5 inline-flex">
             <div className="text-binance_green text-3xl md:text-5xl font-semibold font-['Poppins'] tracking-wide">
               Hire Tricode
@@ -49,6 +50,7 @@ export default function HireTricode({ mobile }) {
             <img src="/assets/lottie/bro.png" alt="" />
           </div>
         </div>
+        <HireCard />
       </section>
     </>
   );

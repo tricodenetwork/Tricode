@@ -140,6 +140,9 @@ h3 {
   line-height: normal;
 }
 
+.hirecard:hover {
+  
+}
 .listitem {
   font-family: Poppins-Regular;
   font-size: 15px;
