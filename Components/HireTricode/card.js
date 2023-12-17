@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
+import "swiper/css/effect-cards";
 import { Pagination, Autoplay } from "swiper";
 import { cards } from "./data";
 
@@ -12,7 +13,7 @@ export default function HireCard() {
       <div className="w-full gap-3">
         <Swiper
           slidesPerview={1.2}
-          spaceBetween={160}
+          spaceBetween={120}
           breakpoints={{
             799: {
               slidesPerView: 3,
