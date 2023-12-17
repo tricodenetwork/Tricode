@@ -107,20 +107,4 @@ export const careers = [
     id: 9,
     tittle: "Full Stack Developers",
   },
-
-  {
-    id: 10,
-    tittle: "UI/UX Designers",
-  },
-
-  {
-    id: 11,
-    tittle: "End-to-End Expertise",
-  },
-
-  {
-    id: 12,
-    tittle: "Security at Heart",
-  },
-
 ];

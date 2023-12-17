@@ -18,6 +18,7 @@ import useFunctions from "@/hooks/useFunctions";
 import HireTricode from "@/Components/HireTricode/hire";
 import JoinTricode from "@/Components/HireTricode/join";
 import Careers from "@/Components/HireTricode/careers";
+import WhyTricode from "@/Components/WhyTricode";
 
 export default function Home() {
   const [screenWidth, setScreenWidth] = useState(0);
@@ -71,6 +72,7 @@ export default function Home() {
         <HireTricode mobile={mobile} />
         <JoinTricode mobile={mobile} />
         <Careers />
+        <WhyTricode />
 
         <section id="intro" className="h-full">
           {/* <Lottie src={"../public/assets/lottie/greenlady.json"} /> */}
