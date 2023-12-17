@@ -15,7 +15,9 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import useFunctions from "@/hooks/useFunctions";
-import HireTricode from "@/Components/HireTricode/index";
+import HireTricode from "@/Components/HireTricode/hire";
+import JoinTricode from "@/Components/HireTricode/join";
+import Careers from "@/Components/HireTricode/careers";
 
 export default function Home() {
   const [screenWidth, setScreenWidth] = useState(0);
@@ -67,6 +69,8 @@ export default function Home() {
       <main className="relative">
         <Hero />
         <HireTricode mobile={mobile} />
+        <JoinTricode mobile={mobile} />
+        <Careers />
 
         <section id="intro" className="h-full">
           {/* <Lottie src={"../public/assets/lottie/greenlady.json"} /> */}
