@@ -62,7 +62,7 @@ const Navbar = ({ children }) => {
             width={80}
             height={40}
             quality={100}
-            className="w-[10vw]"
+            className="w-[30vw] md:w-[16vw]"
             src="/assets/images/logo.png"
           />
         </motion.div>
