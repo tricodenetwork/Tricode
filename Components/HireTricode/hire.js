@@ -15,24 +15,22 @@ export default function HireTricode({ mobile }) {
         id="intro"
       >
         <div className="px-[3vw] flex flex-col items-center border-b relative w-full md:py-5">
-          {!mobile && (
-            <div
-              className={`cButtons md:flex justify-between items-center w-full mx-[3vw]`}
-            >
-              <button>
-                <IconWifi size={22} color="gray" stroke={2} />
-                <p className={``}>Connect</p>
-              </button>
-              <button>
-                <IconUsersGroup size={22} color="gray" stroke={2} />
-                <p>Collaborate</p>
-              </button>
-              <button>
-                <IconWand size={22} stroke={2} color="gray" />
-                <p>Create</p>
-              </button>
-            </div>
-          )}
+          <div
+            className={`cButtons md:flex justify-between items-center w-full mx-[3vw]`}
+          >
+            <button>
+              <IconWifi size={22} color="gray" stroke={2} />
+              <p className={``}>Connect</p>
+            </button>
+            <button>
+              <IconUsersGroup size={22} color="gray" stroke={2} />
+              <p>Collaborate</p>
+            </button>
+            <button>
+              <IconWand size={22} stroke={2} color="gray" />
+              <p>Create</p>
+            </button>
+          </div>
         </div>
 
         <div className="flex flex-col md:flex-row justify-start items-center w-full mt-12 gap-4 md:gap-[19vh]">
