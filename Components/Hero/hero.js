@@ -58,16 +58,16 @@ export default function Home() {
             src="/assets/images/black-background.png"
           />
         </div>
-        <div className="flex flex-col md:flex-row absolute justify-between items-center gap-[4vh] md:gap-[10vh] mx-[3vw] top-[18vh] md:top-[30vh] md:bottom-[30vh]">
-          <div className="flex flex-col mx-auto items-center">
-            <div className="header relative text-center">
+        <div className="flex flex-col md:flex-row absolute justify-between items-center md:items-start gap-[4vh] md:gap-[10vh] mx-[3vw] top-[18vh] md:top-[30vh] md:bottom-[30vh]">
+          <div className="flex flex-col mx-auto items-center md:items-start">
+            <div className="header relative text-center md:text-start">
               <span className="text-white text-[53px] font-extrabold font-['Inter'] leading-[71px]">
                 Build{" "}
               </span>
               <span className="text-white text-[53px] font-normal font-['Inter'] leading-[71px]">
                 with
               </span>
-              <span className="text-white text-[53px] hidden md:flex font-extrabold font-['Inter'] leading-[71px]">
+              <span className="text-white text-[53px] font-extrabold font-['Inter'] leading-[71px]">
                 {" "}
               </span>
               <span className="text-binance_green text-[53px] font-extrabold font-['Inter'] leading-[71px]">
