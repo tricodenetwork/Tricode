@@ -10,7 +10,7 @@ import { cards } from "./data";
 export default function HireCard() {
   return (
     <>
-      <div className="w-full gap-3">
+      <div className="w-full hidden md:flex gap-3">
         <Swiper
           slidesPerview={1.2}
           spaceBetween={120}
@@ -50,6 +50,22 @@ export default function HireCard() {
             </SwiperSlide>
           ))}
         </Swiper>
+      </div>
+
+      <div className="flex flex-col md:hidden mt-12 gap-4">
+        {cards.map((card_info, i) => (
+          <div className="w-full h-80 px-5 pt-[7vh] bg-white hover:border-t-2 hover:border-binance_green justify-center items-center rounded-tl-[5px] rounded-tr-[5px] rounded-bl-[5px] rounded-br-[50px] shadow">
+            <div className="text-binance_green text-xl font-bold font-['Istok Web']">
+              {card_info.tittle}
+            </div>
+            <div className="w-[199px] mt-3 text-sm font-normal font-['Istok Web']">
+              Posuere morbi leo urna molestie at elementum eu egestas.
+            </div>
+            <button className="w-28 mt-9 text-base font-bold font-['Istok Web']">
+              LEARN MORE {">"}
+            </button>
+          </div>
+        ))}
       </div>
     </>
   );

@@ -35,7 +35,7 @@ export default function HireTricode({ mobile }) {
           )}
         </div>
 
-        <div className="justify-start items-center w-full mt-12 gap-[19vh] inline-flex">
+        <div className="flex flex-col md:flex-row justify-start items-center w-full mt-12 gap-4 md:gap-[19vh]">
           <div className="flex-col justify-start items-start gap-5 inline-flex">
             <div className="text-binance_green text-3xl md:text-5xl font-semibold font-['Poppins'] tracking-wide">
               Hire Tricode
