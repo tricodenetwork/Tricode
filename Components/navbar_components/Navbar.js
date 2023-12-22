@@ -66,69 +66,67 @@ const Navbar = ({ children }) => {
             src="/assets/images/logo.png"
           />
         </motion.div>
-
-        <motion.ul
-          className="nav-menu w-[55%] hidden xs:flex"
-          id={showmenu ? "mobile" : "hide"}
-          whileHover={controls.stop}
-        >
-          <LinkItem
-            hideMenu={hideMenu}
-            path="/about"
-            offColor={false}
-            text="About us"
-            isScrolled={isScrolled}
-          />
-          <LinkItem
-            hideMenu={hideMenu}
-            path="/services"
-            offColor={false}
-            text="Services"
-            isScrolled={isScrolled}
-          />
-          <LinkItem
-            hideMenu={hideMenu}
-            path="/projects"
-            offColor={false}
-            text="Projects"
-            isScrolled={isScrolled}
-          />
-          <LinkItem
-            hideMenu={hideMenu}
-            path="/communities"
-            text="Communities"
-            isScrolled={isScrolled}
-          />
-          <LinkItem
-            hideMenu={hideMenu}
-            path="#newsletter"
-            text="Newsletter"
-            isScrolled={isScrolled}
-          />
-        </motion.ul>
-        <motion.div
-          initial={{ width: "40%" }}
-          animate={{ width: "20%" }}
-          // transition={{ type: "spring", stiffness: 500, duration: 0.1 }}
-          transition={{ duration: 0.2 }}
-          className="icon flex w-[40%] md:w-[20%] justify-around  items-center"
-        >
-          <LinkItem
-            text={"Register"}
-            path={"/menu"}
-            className={
-              "medText p-3 rounded-lg border border-slate-500"
-            }
-            isScrolled={isScrolled}
-          />
-          <LinkItem
-            hideMenu={hideMenu}
-            path="/login"
-            text="Login"
-            className={`medText text-[white]`}
-            isScrolled={isScrolled}
-          />
-        </motion.div>
+          <div
+            className="nav-menu w-[55%] hidden md:flex"
+            id={showmenu ? "mobile" : "hide"}
+          >
+            <LinkItem
+              hideMenu={hideMenu}
+              path="/about"
+              offColor={false}
+              text="About us"
+              isScrolled={isScrolled}
+            />
+            <LinkItem
+              hideMenu={hideMenu}
+              path="/services"
+              offColor={false}
+              text="Services"
+              isScrolled={isScrolled}
+            />
+            <LinkItem
+              hideMenu={hideMenu}
+              path="/projects"
+              offColor={false}
+              text="Projects"
+              isScrolled={isScrolled}
+            />
+            <LinkItem
+              hideMenu={hideMenu}
+              path="/communities"
+              text="Communities"
+              isScrolled={isScrolled}
+            />
+            <LinkItem
+              hideMenu={hideMenu}
+              path="#newsletter"
+              text="Newsletter"
+              isScrolled={isScrolled}
+            />
+          </div>
+          <motion.div
+            initial={{ width: "40%" }}
+            animate={{ width: "20%" }}
+            // transition={{ type: "spring", stiffness: 500, duration: 0.1 }}
+            transition={{ duration: 0.2 }}
+            className="icon flex w-[40%] md:w-[20%] justify-around  items-center"
+          >
+            <LinkItem
+              text={"Register"}
+              path={"/menu"}
+              className={
+                "medText p-3 rounded-lg md:flex hidden border border-slate-500"
+              }
+              isScrolled={isScrolled}
+            />
+            <LinkItem
+              hideMenu={hideMenu}
+              path="/login"
+              text="Login"
+              className={`medText text-[white] md:flex hidden`}
+              isScrolled={isScrolled}
+            />
+          </motion.div>
       </motion.nav>
     </div>
   );
