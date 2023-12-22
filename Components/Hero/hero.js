@@ -61,20 +61,20 @@ export default function Home() {
         <div className="flex flex-col md:flex-row absolute justify-between items-center md:items-start gap-[4vh] md:gap-[10vh] mx-[3vw] top-[18vh] md:top-[30vh] md:bottom-[30vh]">
           <div className="flex flex-col mx-auto items-center md:items-start">
             <div className="header relative text-center md:text-start">
-              <span className="text-white text-[53px] font-extrabold font-['Inter'] leading-[71px]">
+              <span className="text-white text-2xl md:text-[53px] font-extrabold font-['Inter'] leading-[71px]">
                 Build{" "}
               </span>
-              <span className="text-white text-[53px] font-normal font-['Inter'] leading-[71px]">
+              <span className="text-white text-2xl md:text-[53px] font-normal font-['Inter'] leading-[71px]">
                 with
               </span>
-              <span className="text-white text-[53px] font-extrabold font-['Inter'] leading-[71px]">
+              <span className="text-white text-2xl md:text-[53px] font-extrabold font-['Inter'] leading-[71px]">
                 {" "}
               </span>
-              <span className="text-binance_green text-[53px] font-extrabold font-['Inter'] leading-[71px]">
+              <span className="text-binance_green text-2xl md:text-[53px] font-extrabold font-['Inter'] leading-[71px]">
                 Tricode
               </span>
             </div>
-            <div className="text-white text-lg font-normal font-['Inter'] leading-9">
+            <div className="text-white text-sm md:text-lg font-normal font-['Inter'] leading-9">
               The Future of Remote Collaborative space.
             </div>
             <div

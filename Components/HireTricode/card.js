@@ -5,7 +5,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-cards";
 import { Pagination, Autoplay } from "swiper";
-import { cards } from "./data";
+import { cards } from "../../Data/data";
 
 export default function HireCard() {
   return (

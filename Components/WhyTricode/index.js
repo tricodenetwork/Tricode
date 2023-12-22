@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import Card from "./card";
 
 export default function WhyTricode({ mobile }) {
   return (
@@ -10,13 +11,14 @@ export default function WhyTricode({ mobile }) {
       >
         <div className="text-center">
         <div className="w-[69px] h-[5px] text-center bg-binance_green justify-center items-center" />
-          <span className="text-gray-900 text-[35px] font-normal font-['Inter'] leading-[55px]">
+          <span className="text-gray-900 text-2xl md:text-[35px] font-normal font-['Inter'] leading-[55px]">
             Why{" "}
           </span>
-          <span className="text-gray-900 text-[35px] font-bold font-['Inter'] leading-[55px]">
+          <span className="text-gray-900 text-2xl md:text-[35px] font-bold font-['Inter'] leading-[55px]">
             Tricode?
           </span>
         </div>
+        <Card />
       </section>
     </>
   );
