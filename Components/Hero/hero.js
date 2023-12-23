@@ -58,7 +58,7 @@ export default function Home() {
             src="/assets/images/black-background.png"
           />
         </div>
-        <div className="flex flex-col md:flex-row absolute justify-between items-center md:items-start gap-[4vh] md:gap-[10vh] mx-[3vw] top-[18vh] md:top-[30vh] md:bottom-[30vh]">
+        <div className="flex flex-col md:flex-row w-full absolute justify-center md:justify-between items-center md:items-start gap-[4vh] md:gap-[10vh] top-[16vh] md:top-[30vh] md:bottom-[30vh]">
           <div className="flex flex-col mx-auto items-center md:items-start">
             <div className="header relative text-center md:text-start">
               <span className="text-white text-2xl md:text-[53px] font-extrabold font-['Inter'] leading-[71px]">
@@ -74,11 +74,11 @@ export default function Home() {
                 Tricode
               </span>
             </div>
-            <div className="text-white text-sm md:text-lg font-normal font-['Inter'] leading-9">
+            <div className="text-white text-sm md:text-lg font-normal font-['Inter']">
               The Future of Remote Collaborative space.
             </div>
             <div
-              className={`flex md:justify-between space-x-4 mt-[0vh] md:space-x-6 md:mt-[3vh]`}
+              className={`flex md:justify-between space-x-4 mt-[2vh] md:space-x-6 md:mt-[3vh]`}
             >
               <button className="font-medium hover:bg-opacity-70 hover:scale-110 transition ease-linear duration-150 shadow-sm shadow-black px-[7vw] py-[1.5vh] rounded-lg bg-binance_green text-white">
                 HIRE
@@ -92,7 +92,7 @@ export default function Home() {
             loader={imageLoader}
             width={!mobile ? 400 : 200}
             height={700}
-            className="w-full"
+            className="w-[80%] md:w-[400px]"
             src="/assets/lottie/amico.png"
             alt="hand"
           />
