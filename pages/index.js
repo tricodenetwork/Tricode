@@ -1,12 +1,12 @@
 import Image from "next/image";
-import Square from "@/Components/Square";
-import Navbar from "@/Components/navbar_components/Navbar";
-import Hero from "@/Components/Hero/hero";
+import Square from "@/components/Square";
+import Navbar from "@/components/navbar_components/Navbar";
+import Hero from "@/components/Hero/hero";
 import Lottie from "lottie-react";
 import greenLady from "@/public/assets/lottie/greenlady.json";
 import { useState } from "react";
 import { useEffect } from "react";
-import GraySquare from "@/Components/GraySquare";
+import GraySquare from "@/components/GraySquare";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useAnimation } from "framer-motion";
@@ -15,10 +15,10 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import useFunctions from "@/hooks/useFunctions";
-import HireTricode from "@/Components/HireTricode/hire";
-import JoinTricode from "@/Components/HireTricode/join";
-import Careers from "@/Components/HireTricode/careers";
-import WhyTricode from "@/Components/WhyTricode";
+import HireTricode from "@/components/HireTricode/hire";
+import JoinTricode from "@/components/HireTricode/join";
+import Careers from "@/components/HireTricode/careers";
+import WhyTricode from "@/components/WhyTricode";
 
 export default function Home() {
   const [screenWidth, setScreenWidth] = useState(0);
@@ -67,14 +67,14 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main className="relative">
+      <main className='relative'>
         <Hero />
         <HireTricode mobile={mobile} />
         <JoinTricode mobile={mobile} />
         <Careers />
         <WhyTricode />
 
-        <section id="intro" className="h-full">
+        <section id='intro' className='h-full'>
           {/* <Lottie src={"../public/assets/lottie/greenlady.json"} /> */}
           {/* 
           <Lottie
@@ -84,13 +84,10 @@ export default function Home() {
           /> */}
         </section>
 
-        <section
-          id="footer"
-          className="mt-[20vh] relative justify-center"
-        >
-          <div className="px-[2vw] flex justify-between mb-[15vh]">
-            <p className="text-black text-sm">&copy; 2023 tricode.pro</p>
-            <div className="w-[30vw]  flex justify-around">
+        <section id='footer' className='mt-[20vh] relative justify-center'>
+          <div className='px-[2vw] flex justify-between mb-[15vh]'>
+            <p className='text-black text-sm'>&copy; 2023 tricode.pro</p>
+            <div className='w-[30vw]  flex justify-around'>
               <LinkedInIcon />
               <InstagramIcon />
               <TwitterIcon />

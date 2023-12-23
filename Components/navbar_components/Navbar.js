@@ -1,14 +1,16 @@
-import React, { useCallback, useEffect } from "react";
-
-import { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
+import { MdOutlineMenu } from "react-icons/md";
+import { IoCloseSharp } from "react-icons/io5";
 import Link from "next/link";
 import { motion, useAnimation } from "framer-motion";
 import Image from "next/image";
 import LinkItem from "../LinkItem";
 import useFunctions from "@/hooks/useFunctions";
+import SideNavMobile from "./sidenavmobile";
 
 const Navbar = ({ children }) => {
   const [showmenu, setShowmenu] = useState(false);
+  const [sideNav, setSideNav] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { imageLoader } = useFunctions();
 
@@ -36,8 +38,8 @@ const Navbar = ({ children }) => {
   return (
     <div
       className={`${
-        isScrolled ? "bg-binance_green" : "bg-transparent"
-      } fixed h-[90px] w-full z-50 flex flex-col`}
+        isScrolled || sideNav ? "bg-binance_green" : "bg-transparent"
+      } fixed h-[60px] md:h-[90px] w-full z-50 flex flex-col`}
     >
       <motion.nav
         initial={{ x: 0 }}
@@ -54,7 +56,7 @@ const Navbar = ({ children }) => {
           //   repeat: 7,
           //   duration: 4,
           // }}
-          className="logos hidden  text-white"
+          className="logos text-white"
         >
           <Image
             loader={imageLoader}
@@ -62,16 +64,11 @@ const Navbar = ({ children }) => {
             width={80}
             height={40}
             quality={100}
-            className="w-[10vw]"
+            className="w-[30vw] md:w-[16vw]"
             src="/assets/images/logo.png"
           />
         </motion.div>
-
-        <motion.ul
-          className="nav-menu w-[55%] hidden xs:flex"
-          id={showmenu ? "mobile" : "hide"}
-          whileHover={controls.stop}
-        >
+        <div className="w-full gap-7 lg:gap-12 hidden md:flex justify-center items-start">
           <LinkItem
             hideMenu={hideMenu}
             path="/about"
@@ -105,7 +102,7 @@ const Navbar = ({ children }) => {
             text="Newsletter"
             isScrolled={isScrolled}
           />
-        </motion.ul>
+        </div>
         <motion.div
           initial={{ width: "40%" }}
           animate={{ width: "20%" }}
@@ -117,7 +114,7 @@ const Navbar = ({ children }) => {
             text={"Register"}
             path={"/menu"}
             className={
-              "medText p-3 rounded-lg border border-slate-500"
+              "medText p-3 rounded-lg md:flex hidden border border-slate-500"
             }
             isScrolled={isScrolled}
           />
@@ -125,10 +122,22 @@ const Navbar = ({ children }) => {
             hideMenu={hideMenu}
             path="/login"
             text="Login"
-            className={`medText text-[white]`}
+            className={`medText text-[white] md:flex hidden`}
             isScrolled={isScrolled}
           />
         </motion.div>
+
+        <div
+          onClick={() => setSideNav(!sideNav)}
+          className="text-white flex md:hidden"
+        >
+          {sideNav ? (
+            <IoCloseSharp className="text-[3vh]" />
+          ) : (
+            <MdOutlineMenu className="text-[3vh]" />
+          )}
+        </div>
+        {sideNav && <SideNavMobile />}
       </motion.nav>
     </div>
   );

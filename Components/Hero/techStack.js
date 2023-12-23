@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { marquees } from "./data";
+import { marquees } from "@/Data/data";
 import Marquee from "react-fast-marquee";
 
 export default function Marq() {
