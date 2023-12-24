@@ -35,7 +35,7 @@ export default function HireCard() {
           // modules={[Pagination, Autoplay]}
         >
           {cards.map((card_info, i) => (
-            <SwiperSlide key={i}>
+            <SwiperSlide key={i + 1}>
               <div className="w-[270px] h-80 px-5 pt-[7vh] my-9 bg-white hover:border-t-2 hover:border-binance_green justify-center items-center rounded-tl-[5px] rounded-tr-[5px] rounded-bl-[5px] rounded-br-[50px] shadow">
                 <div className="text-binance_green text-xl font-bold font-['Istok Web']">
                   {card_info.tittle}
@@ -54,7 +54,10 @@ export default function HireCard() {
 
       <div className="flex flex-col md:hidden mt-12 gap-4">
         {cards.map((card_info, i) => (
-          <div className="w-full h-80 px-5 pt-[7vh] bg-white hover:border-t-2 hover:border-binance_green justify-center items-center rounded-tl-[5px] rounded-tr-[5px] rounded-bl-[5px] rounded-br-[50px] shadow">
+          <div
+            key={i + 1}
+            className="w-full h-80 px-5 pt-[7vh] bg-white hover:border-t-2 hover:border-binance_green justify-center items-center rounded-tl-[5px] rounded-tr-[5px] rounded-bl-[5px] rounded-br-[50px] shadow"
+          >
             <div className="text-binance_green text-xl font-bold font-['Istok Web']">
               {card_info.tittle}
             </div>
