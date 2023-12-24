@@ -14,7 +14,7 @@ export default function Solution_banner() {
             src="/assets/images/solution_banner.png"
           />
         </div>
-        <div className="flex flex-row ml-5 md:ml-12 absolute justify-start items-start top-[8vh] md:top-[16vh]">
+        <div className="flex flex-row ml-5 md:ml-12 absolute justify-start items-start top-[5vh] md:top-[16vh]">
           <div className="flex flex-col mx-auto items-center md:items-start">
             <div className="w-[164px] md:w-[531px] text-white text-xs md:text-[35px] font-medium font-['Inter'] md:leading-[55px]">
               Hire the best tech solutions from around the world!
