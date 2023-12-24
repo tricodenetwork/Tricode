@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import Card from "./card";
-import Solution_banner from "./banner";
+import Card from "@/Components/WhyTricode/card";
+import Solution_banner from "@/Components/WhyTricode/banner";
 
 export default function WhyTricode({ mobile }) {
   return (

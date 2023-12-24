@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { useAnimation } from "framer-motion";
 import useFunctions from "@/hooks/useFunctions";
-import Marq from "./techStack";
+import Marq from "@/Components/Hero/techStack";
 
 export default function Home() {
   const [screenWidth, setScreenWidth] = useState(0);
