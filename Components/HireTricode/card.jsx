@@ -16,13 +16,13 @@ export default function HireCard() {
           spaceBetween={120}
           breakpoints={{
             799: {
-              SlidesPerView: 3,
+              slidesPerView: 3,
             },
             1024: {
-              SlidesPerView: 4,
+              slidesPerView: 4,
             },
             1424: {
-              SlidesPerView: 5,
+              slidesPerView: 5,
             },
           }}
           loop={true}
