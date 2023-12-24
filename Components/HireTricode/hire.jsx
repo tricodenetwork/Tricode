@@ -5,7 +5,7 @@ import { useAnimation } from "framer-motion";
 import { IconWifi } from "@tabler/icons-react";
 import { IconUsersGroup } from "@tabler/icons-react";
 import { IconWand } from "@tabler/icons-react";
-import HireCard from "@/Components/HireTricode/card";
+import HireCard from "./card";
 
 export default function HireTricode({ mobile }) {
   return (

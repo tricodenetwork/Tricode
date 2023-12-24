@@ -1,13 +1,5 @@
-import Image from "next/image";
-import Square from "@/components/Square";
-import Navbar from "@/components/navbar_components/Navbar";
-import Hero from "@/components/Hero/hero";
-import Lottie from "lottie-react";
-import greenLady from "@/public/assets/lottie/greenlady.json";
-import { useState } from "react";
-import { useEffect } from "react";
-import GraySquare from "@/components/GraySquare";
-import { motion } from "framer-motion";
+
+import { useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { useAnimation } from "framer-motion";
 import GitHubIcon from "@mui/icons-material/GitHub";
@@ -15,10 +7,19 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import useFunctions from "@/hooks/useFunctions";
+import Navbar from "@/components/navbar_components/Navbar";
+import Hero from "@/components/Hero/hero";
 import HireTricode from "@/components/HireTricode/hire";
 import JoinTricode from "@/components/HireTricode/join";
 import Careers from "@/components/HireTricode/careers";
-import WhyTricode from "@/components/WhyTricode";
+import WhyTricode from "@/components/WhyTricode/index";
+import OurServices from "@/components/OurServices/index";
+// import Image from "next/image";
+// import Square from "@/components/Square";
+// import Lottie from "lottie-react";
+// import greenLady from "@/public/assets/lottie/greenlady.json";
+// import GraySquare from "@/components/GraySquare";
+// import { motion } from "framer-motion";
 
 export default function Home() {
   const [screenWidth, setScreenWidth] = useState(0);
@@ -73,6 +74,7 @@ export default function Home() {
         <JoinTricode mobile={mobile} />
         <Careers />
         <WhyTricode />
+        <OurServices />
 
         <section id='intro' className='h-full'>
           {/* <Lottie src={"../public/assets/lottie/greenlady.json"} /> */}

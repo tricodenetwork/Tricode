@@ -1,8 +1,5 @@
-import Image from "next/image";
 import { useState, useEffect } from "react";
-import { useInView } from "react-intersection-observer";
-import { useAnimation } from "framer-motion";
-import useFunctions from "@/hooks/useFunctions";
+import Image from "next/image";
 
 export default function Solution_banner() {
   return (
