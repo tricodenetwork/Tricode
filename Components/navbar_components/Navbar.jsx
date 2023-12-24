@@ -39,7 +39,7 @@ const Navbar = ({ children }) => {
     <div
       className={`${
         isScrolled || sideNav ? "bg-binance_green" : "bg-transparent"
-      } fixed h-[60px] md:h-[90px] w-full z-50 flex flex-col`}
+      } fixed h-[90px] w-full z-50 flex flex-col`}
     >
       <motion.nav
         initial={{ x: 0 }}

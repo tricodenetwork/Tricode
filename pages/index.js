@@ -14,6 +14,7 @@ import JoinTricode from "@/components/HireTricode/join";
 import Careers from "@/components/HireTricode/careers";
 import WhyTricode from "@/components/WhyTricode/index";
 import OurServices from "@/components/OurServices/index";
+import OurNewsletter from "@/components/OurNewsletter/index";
 // import Image from "next/image";
 // import Square from "@/components/Square";
 // import Lottie from "lottie-react";
@@ -75,6 +76,7 @@ export default function Home() {
         <Careers />
         <WhyTricode />
         <OurServices />
+        <OurNewsletter />
 
         <section id='intro' className='h-full'>
           {/* <Lottie src={"../public/assets/lottie/greenlady.json"} /> */}

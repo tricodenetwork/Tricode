@@ -10,7 +10,7 @@ const SideNavMobile = ({ children }) => {
   }, []);
 
   return (
-    <div className="w-full h-[639px] z-[9999] top-[8vh] right-0 absolute bg-black m-auto justify-center items-center">
+    <div className="w-full h-[639px] z-[9999] top-[10vh] right-0 absolute bg-black m-auto justify-center items-center">
       <motion.nav
         initial={{ x: 0 }}
         animate={{ x: [200, 0] }}
