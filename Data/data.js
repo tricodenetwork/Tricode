@@ -226,3 +226,34 @@ export const WhyTricode = [
     descr: `Our remote work solutions transcend borders, connecting you with top talent worldwide.`,
   },
 ];
+
+
+export const OurServices = [
+  {
+    id: 1,
+    img: "/assets/lottie/Virtual.png",
+    tittle: "Virtual Workstation:",
+    descr: `Cloud-based workstations with dedicated resources, enabling secure and scalable remote work.`,
+  },
+
+  {
+    id: 2,
+    img: "/assets/lottie/Development.png",
+    tittle: "Development Team",
+    descr: `Experienced developers employing agile methodology to deliver custom software solutions.`,
+  },
+
+  {
+    id: 3,
+    img: "/assets/lottie/Building.png",
+    tittle: "Building and Maintaining APIs",
+    descr: `Design and development of secure and scalable APIs with microservices architecture.`,
+  },  
+  
+  {
+    id: 4,
+    img: "/assets/lottie/Automated.png",
+    tittle: "Automated Continuous Deployment (CD)",
+    descr: `Automated build, testing, and deployment for rapid and reliable software delivery.`,
+  },
+];
