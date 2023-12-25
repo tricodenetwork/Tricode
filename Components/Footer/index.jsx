@@ -11,12 +11,12 @@ export default function Footer({ mobile }) {
   return (
     <>
       <section
-        className="py-5 mx-auto px-3 md:px-8 md:py-[5vh] w-full bg-[#1B1B1B] justify-center items-end"
+        className="py-5 mx-auto px-4 md:px-8 md:py-[5vh] w-full bg-[#1B1B1B] justify-center items-end"
         id="footer"
       >
         <div className="flex flex-col md:flex-row gap-3 md:gap-9 justify-between items-start w-full">
           <div>
-            <div className="flex flex-rowgap-9 justify-between items-center w-full">
+            <div className="flex flex-row gap-[12vh] justify-between items-center w-full">
               <Image
                 loader={imageLoader}
                 alt="logo"
