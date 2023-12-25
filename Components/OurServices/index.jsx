@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import Card from "./card";
+import OurClients from "./OurClients";
 
 export default function OurServices({ mobile }) {
   return (
@@ -19,6 +20,7 @@ export default function OurServices({ mobile }) {
           </span>
         </div>
         <Card />
+        <OurClients />
       </section>
     </>
   );

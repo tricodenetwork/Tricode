@@ -15,6 +15,7 @@ import Careers from "@/components/HireTricode/careers";
 import WhyTricode from "@/components/WhyTricode/index";
 import OurServices from "@/components/OurServices/index";
 import OurNewsletter from "@/components/OurNewsletter/index";
+import Footer from "@/components/Footer/index";
 // import Image from "next/image";
 // import Square from "@/components/Square";
 // import Lottie from "lottie-react";
@@ -77,6 +78,7 @@ export default function Home() {
         <WhyTricode />
         <OurServices />
         <OurNewsletter />
+        <Footer />
 
         <section id='intro' className='h-full'>
           {/* <Lottie src={"../public/assets/lottie/greenlady.json"} /> */}
@@ -88,7 +90,7 @@ export default function Home() {
           /> */}
         </section>
 
-        <section id='footer' className='mt-[20vh] relative justify-center'>
+        {/* <section id='footer' className='mt-[20vh] relative justify-center'>
           <div className='px-[2vw] flex justify-between mb-[15vh]'>
             <p className='text-black text-sm'>&copy; 2023 tricode.pro</p>
             <div className='w-[30vw]  flex justify-around'>
@@ -98,7 +100,7 @@ export default function Home() {
               <GitHubIcon />
             </div>
           </div>
-        </section>
+        </section> */}
       </main>
     </>
   );
