@@ -14,9 +14,9 @@ export default function Footer({ mobile }) {
         className="py-5 mx-auto px-3 md:px-8 md:py-[5vh] w-full bg-[#1B1B1B] justify-center items-end"
         id="footer"
       >
-        <div className="flex flex-col md:flex-row gap-9 justify-between items-start w-full">
+        <div className="flex flex-col md:flex-row gap-3 md:gap-9 justify-between items-start w-full">
           <div>
-            <div className="flex flex-row gap-9 justify-between items-center w-full">
+            <div className="flex flex-rowgap-9 justify-between items-center w-full">
               <Image
                 loader={imageLoader}
                 alt="logo"
@@ -34,16 +34,16 @@ export default function Footer({ mobile }) {
               </div>
             </div>
 
-            <div className="text-white text-lg font-normal font-['Inter']">
+            <div className="text-white text-sm md:text-lg font-normal font-['Inter']">
               The future of remote collaborative space
             </div>
           </div>
 
           <div className="mt-6">
-            <div className="text-white text-lg font-bold font-['Inter']">
+            <div className="text-white text-base md:text-lg font-bold font-['Inter']">
               Links
             </div>
-            <div className="md:w-[16vh] text-white text-base leading-[37.81px]">
+            <div className="md:w-[16vh] text-white text-sm md:text-base leading-[37.81px]">
               {`<About Us />`}
               <br />
               {`<Services />`}
@@ -57,14 +57,14 @@ export default function Footer({ mobile }) {
           </div>
 
           <div className="mt-6">
-            <div className="text-white text-lg font-bold font-['Inter']">
+            <div className="text-white text-base md:text-lg font-bold font-['Inter']">
               Contact us
             </div>
-            <div className="text-white text-lg font-normal font-['Inter'] leading-[30px]">
+            <div className="text-white text-sm md:text-lg font-normal font-['Inter'] leading-[30px]">
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry.{" "}
             </div>
-            <div className="text-white text-lg font-normal font-['Inter'] leading-[30px]">
+            <div className="text-white text-sm md:text-lg font-normal font-['Inter'] leading-[30px]">
               +923183561921
             </div>
           </div>
