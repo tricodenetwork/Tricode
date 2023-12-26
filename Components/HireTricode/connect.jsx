@@ -15,7 +15,7 @@ export default function Connect({ mobile }) {
         id="intro"
       >
         <div
-          className={`flex flex-col md:flex-row gap-7 justify-center md:justify-between items-center w-full py-7`}
+          className={`flex flex-col md:flex-row gap-7 md:gap-3 justify-center md:justify-between items-center w-full py-7`}
         >
           <button className="flex flex-col-reverse md:flex-row gap-3 justify-center items-center">
             <div className="text-center justify-center items-center">
@@ -32,6 +32,13 @@ export default function Connect({ mobile }) {
               alt=""
             />
           </button>
+
+          <img
+            src="/assets/icons/sideLine.svg"
+            className="lg:w-[6rem] xl:w-auto hidden lg:flex"
+            alt=""
+          />
+
           <button className="flex flex-col-reverse md:flex-row gap-3 justify-center items-center">
             <div className="text-center justify-center items-center">
               <div className="text-gray-900 text-2xl font-semibold font-['Poppins']">
@@ -47,6 +54,13 @@ export default function Connect({ mobile }) {
               alt=""
             />
           </button>
+
+          <img
+            src="/assets/icons/sideLine.svg"
+            className="lg:w-[6rem] xl:w-auto hidden lg:flex"
+            alt=""
+          />
+
           <button className="flex flex-col-reverse md:flex-row gap-3 justify-center items-center">
             <div className="text-center justify-center items-center">
               <div className="text-gray-900 text-2xl font-semibold font-['Poppins']">
