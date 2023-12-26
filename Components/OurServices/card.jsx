@@ -31,7 +31,7 @@ export default function Card() {
               </div>
               <div
                 style={{ ...getColor(info.id, info.tittle) }}
-                className="flex flex-col gap-3 w-[25em] md:w-full h-[280px] py-5 px-4 bg-neutral-50 border border-zinc-200 justify-center items-start rounded-r-[30px]"
+                className="flex flex-col gap-3 w-[25em] md:w-full lg:w-[50%] h-[280px] py-5 px-4 bg-neutral-50 border border-zinc-200 justify-center items-start rounded-r-[30px]"
               >
                 <div className="text-black font-bold text-sm md:text-[25px] leading-[30px]">
                   {info.tittle}

@@ -14,23 +14,54 @@ export default function HireTricode({ mobile }) {
         className="px-8 py-5 w-full bg-gradient-to-l from-[#BBD2B3] to-stone-100 overflow-hidden justify-center items-center"
         id="intro"
       >
-        <div className="px-[3vw] flex flex-col items-center border-b relative w-full md:py-5">
-          <div
-            className={`cButtons md:flex justify-between items-center w-full mx-[3vw]`}
-          >
-            <button>
-              <IconWifi size={22} color="gray" stroke={2} />
-              <p className={``}>Connect</p>
-            </button>
-            <button>
-              <IconUsersGroup size={22} color="gray" stroke={2} />
-              <p>Collaborate</p>
-            </button>
-            <button>
-              <IconWand size={22} stroke={2} color="gray" />
-              <p>Create</p>
-            </button>
-          </div>
+        <div
+          className={`flex flex-col md:flex-row gap-7 justify-center md:justify-between items-center border-b w-full py-7`}
+        >
+          <button className="flex flex-col-reverse md:flex-row gap-3 justify-center items-center">
+            <div className="text-center justify-center items-center">
+              <div className="text-gray-900 text-2xl font-semibold font-['Poppins']">
+                Connect
+              </div>
+              <div className="w-[206px] text-gray-900 text-sm font-normal font-['Plus Jakarta Sans'] leading-normal">
+                Connect with us to get your ideas to reality
+              </div>
+            </div>
+            <img
+              src="/assets/icons/airdrop.svg"
+              className="bg-[#888484] p-3 rounded-[30px]"
+              alt=""
+            />
+          </button>
+          <button className="flex flex-col-reverse md:flex-row gap-3 justify-center items-center">
+            <div className="text-center justify-center items-center">
+              <div className="text-gray-900 text-2xl font-semibold font-['Poppins']">
+                Collaborate
+              </div>
+              <div className="w-[206px] text-gray-900 text-sm font-normal font-['Plus Jakarta Sans'] leading-normal">
+                Collaborate with a team to get solutions to any question
+              </div>
+            </div>
+            <img
+              src="/assets/icons/airdrop.svg"
+              className="bg-[#888484] p-3 rounded-[30px]"
+              alt=""
+            />
+          </button>
+          <button className="flex flex-col-reverse md:flex-row gap-3 justify-center items-center">
+            <div className="text-center justify-center items-center">
+              <div className="text-gray-900 text-2xl font-semibold font-['Poppins']">
+                Create
+              </div>
+              <div className="w-[206px] text-gray-900 text-sm font-normal font-['Plus Jakarta Sans'] leading-normal">
+                Create immediately and iterate quickly
+              </div>
+            </div>
+            <img
+              src="/assets/icons/airdrop.svg"
+              className="bg-[#888484] p-3 rounded-[30px]"
+              alt=""
+            />
+          </button>
         </div>
 
         <div className="flex flex-col md:flex-row justify-start items-center w-full mt-12 gap-4 md:gap-[19vh]">
