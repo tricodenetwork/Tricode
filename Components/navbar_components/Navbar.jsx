@@ -58,6 +58,7 @@ const Navbar = ({ children }) => {
           // }}
           className="logos text-white"
         >
+          <a href="/">
           <Image
             loader={imageLoader}
             alt="logo"
@@ -67,6 +68,7 @@ const Navbar = ({ children }) => {
             className="w-[30vw] md:w-[16vw]"
             src="/assets/images/logo.png"
           />
+          </a>
         </motion.div>
         <div className="w-full gap-7 lg:gap-12 hidden md:flex justify-center items-start">
           <LinkItem
@@ -78,7 +80,7 @@ const Navbar = ({ children }) => {
           />
           <LinkItem
             hideMenu={hideMenu}
-            path="/services"
+            path="#services"
             offColor={false}
             text="Services"
             isScrolled={isScrolled}

@@ -7,7 +7,7 @@ export default function OurNewsletter({ mobile }) {
     <>
       <section
         className="px-8 py-5 w-full bg-gradient-to-l from-[#BBD2B3] to-stone-100 overflow-hidden justify-center items-center"
-        id="ourNewsletter"
+        id="newsletter"
       >
         <div className="text-center mx-auto w-full justify-center items-center">
           <hr className="w-[69px] h-[5px] mx-auto my-5 text-center bg-binance_green justify-center items-center" />
