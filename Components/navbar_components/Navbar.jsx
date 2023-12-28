@@ -39,12 +39,12 @@ const Navbar = ({ children }) => {
     <div
       className={`${
         isScrolled || sideNav ? "bg-binance_green" : "bg-transparent"
-      } fixed h-[90px] w-full z-50 flex flex-col`}
+      } fixed h-[60px] md:h-[90px] w-full z-50 flex flex-col`}
     >
       <motion.nav
         initial={{ x: 0 }}
         animate={{ x: [200, 0] }}
-        className="navbar mx-auto top-[0vh] self-center"
+        className='navbar mx-auto top-[0vh] self-center'
       >
         <motion.div
           initial={{}}
@@ -56,52 +56,50 @@ const Navbar = ({ children }) => {
           //   repeat: 7,
           //   duration: 4,
           // }}
-          className="logos text-white"
+          className='logos text-white'
         >
-          <a href="/">
           <Image
             loader={imageLoader}
-            alt="logo"
+            alt='logo'
             width={80}
             height={40}
             quality={100}
-            className="w-[30vw] md:w-[16vw]"
-            src="/assets/images/logo.png"
+            className='w-[30vw] md:w-[16vw]'
+            src='/assets/images/logo.png'
           />
-          </a>
         </motion.div>
-        <div className="w-full gap-7 lg:gap-12 hidden md:flex justify-center items-start">
+        <div className='w-full gap-7 lg:gap-12 hidden md:flex justify-center items-start'>
           <LinkItem
             hideMenu={hideMenu}
-            path="/about"
+            path='/about'
             offColor={false}
-            text="About us"
+            text='About us'
             isScrolled={isScrolled}
           />
           <LinkItem
             hideMenu={hideMenu}
-            path="#services"
+            path='/services'
             offColor={false}
-            text="Services"
+            text='Services'
             isScrolled={isScrolled}
           />
           <LinkItem
             hideMenu={hideMenu}
-            path="/projects"
+            path='/projects'
             offColor={false}
-            text="Projects"
+            text='Projects'
             isScrolled={isScrolled}
           />
           <LinkItem
             hideMenu={hideMenu}
-            path="/communities"
-            text="Communities"
+            path='/communities'
+            text='Communities'
             isScrolled={isScrolled}
           />
           <LinkItem
             hideMenu={hideMenu}
-            path="#newsletter"
-            text="Newsletter"
+            path='#newsletter'
+            text='Newsletter'
             isScrolled={isScrolled}
           />
         </div>
@@ -110,7 +108,7 @@ const Navbar = ({ children }) => {
           animate={{ width: "20%" }}
           // transition={{ type: "spring", stiffness: 500, duration: 0.1 }}
           transition={{ duration: 0.2 }}
-          className="icon flex w-[40%] md:w-[20%] justify-around  items-center"
+          className='icon flex w-[40%] md:w-[20%] justify-around  items-center'
         >
           <LinkItem
             text={"Register"}
@@ -122,8 +120,8 @@ const Navbar = ({ children }) => {
           />
           <LinkItem
             hideMenu={hideMenu}
-            path="/login"
-            text="Login"
+            path='/login'
+            text='Login'
             className={`medText text-[white] md:flex hidden`}
             isScrolled={isScrolled}
           />
@@ -131,12 +129,12 @@ const Navbar = ({ children }) => {
 
         <div
           onClick={() => setSideNav(!sideNav)}
-          className="text-white flex md:hidden"
+          className='text-white flex md:hidden'
         >
           {sideNav ? (
-            <IoCloseSharp className="text-[3vh]" />
+            <IoCloseSharp className='text-[3vh]' />
           ) : (
-            <MdOutlineMenu className="text-[3vh]" />
+            <MdOutlineMenu className='text-[3vh]' />
           )}
         </div>
         {sideNav && <SideNavMobile />}
