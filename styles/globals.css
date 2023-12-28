@@ -59,6 +59,26 @@
   font-size: 16px;
   font-family: Poppins-Regular;
 }
+/* This will hide the scrollbar for Chrome, Safari, etc. */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* This will hide the scrollbar for Firefox */
+.scrollbar-hide {
+  scrollbar-width: none;
+}
+/* This will hide the scrollbar for Chrome, Safari, etc. */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* This will hide the scrollbar for Firefox */
+.scrollbar-hide {
+  scrollbar-width: none;
+  font-size: 16px;
+  font-family: Poppins-Regular;
+}
 body {
   overflow-x: hidden;
 }
@@ -76,7 +96,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #38A312;
+  background: #38a312;
 }
 
 ::-webkit-scrollbar-track {
@@ -88,6 +108,25 @@ h4 {
   font-size: 32px;
   line-height: normal;
   text-transform: capitalize;
+}
+.light {
+  font-size: 16;
+  font-family: "Poppins-Light";
+}
+.regular {
+  font-family: "Poppins-Regular";
+}
+.semiBold {
+  font-family: "Poppins-SemiBold";
+}
+
+h3 {
+  color: #000;
+  font-family: Poppins-SemiBold;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
 }
 .light {
   font-size: 16;
@@ -141,7 +180,6 @@ h3 {
 }
 
 .hirecard:hover {
-  
 }
 .listitem {
   font-family: Poppins-Regular;
@@ -150,7 +188,13 @@ h3 {
   font-weight: 400;
   line-height: normal;
 }
+.custom-input::placeholder {
+  color: #38a312;
+  /* Add any other styles you want for the placeholder */
+  opacity: 1; /* Required for some browsers to show color */
+}
 
+/* Navbar.css stylesheet */
 /* Style the progress container */
 .progress {
   height: 100%; /* Set the height */
@@ -347,10 +391,10 @@ h3 {
   color: #000;
   text-align: center;
   font-family: Poppins;
-  font-size: 32px;
+  font-size: 24px;
   font-style: normal;
   font-weight: 700;
-  line-height: 48px; /* 150% */
+  line-height: 32px; /* 150% */
   text-transform: uppercase;
 }
 h5 {

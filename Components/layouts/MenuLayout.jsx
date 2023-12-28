@@ -13,11 +13,14 @@ import Ellipse from "../svg/Ellipse";
 import Message from "../svg/Message";
 import Bell from "../svg/Bell";
 import Settings from "../svg/Settings";
+import Link from "next/link";
 
-const MenuLayout = (children) => {
+const MenuLayout = ({ children }) => {
   // --------------------------------------------VARIABLES
   const route = useRouter();
-  const title = route.pathname.split("/").pop();
+  const parts = route.pathname.split("menu/");
+  const title = parts.length > 1 ? parts[1].split("/")[0] : "";
+
   //-----------------------------------------------------------FUNCTIONS
   const { imageLoader } = useFunctions();
   //------------------------------------------------------------------USE EFFECTS
@@ -44,21 +47,23 @@ const MenuLayout = (children) => {
           {title}
         </motion.h4>
         <div className='space-x-4 flex items-center justify-between'>
-          <div className='relative hover:scale-90 hover:cursor-pointer transition-all ease-out duration-100'>
+          <div className='relative md:flex hidden hover:scale-90 hover:cursor-pointer transition-all ease-out duration-100'>
             <div className='absolute -top-2 -right-2'>
               <Ellipse />
             </div>
 
             <Message />
           </div>
-          <div className='relative hover:scale-90 hover:cursor-pointer transition-all ease-out duration-100'>
+          <div className='relative md:flex hidden hover:scale-90 hover:cursor-pointer transition-all ease-out duration-100'>
             <div className='absolute -top-2 -right-2'>
               <Ellipse />
             </div>
             <Bell />
           </div>
-          <div className='w-[30px]  hover:scale-90 hover:rotate-[360deg] hover:cursor-pointer transition-all ease-out duration-100 relative rounded-full h-[30px]'>
-            <Settings />
+          <div className='w-[30px] md:flex hidden  hover:scale-90 hover:rotate-[360deg] hover:cursor-pointer transition-all ease-out duration-100 relative rounded-full h-[30px]'>
+            <Link href={"/menu/settings/user"}>
+              <Settings />
+            </Link>
           </div>
 
           <div
@@ -71,8 +76,8 @@ const MenuLayout = (children) => {
           ></div>
         </div>
       </div>
-      <div className='w-full h-screen border-midorange items-center flex  max-h-screen'>
-        <div className='w-[20%] h-[80%]  border-r border-opacity-20 relative top-[5vh] border-[#000000]'>
+      <div className='w-full   h-screen border-midorange items-center flex  max-h-screen'>
+        <div className='w-[20%] h-[80%] hidden md:flex flex-col border-r border-opacity-20 relative top-[5vh] border-[#000000]'>
           <MenuList Icon={Dashboard} name={"Dashboard"} />
           <MenuList Icon={Teams} name={"Teams"} />
           <MenuList Icon={Project} name={"Project"} />
