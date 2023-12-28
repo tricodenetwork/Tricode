@@ -13,7 +13,7 @@ export default function JoinTricode({ mobile }) {
             <div className="text-binance_green text-2xl md:text-6xl font-semibold font-['Poppins'] tracking-wide">
               Join Tricode
             </div>
-            <div className="text-zinc-500 text-xs md:text-base font-['Poppins'] leading-6 tracking-tight">
+            <div className="text-zinc-500 text-xs md:text-base leading-6 tracking-tight">
               Get a partner who understands the dynamic world of technology and
               innovation.  Tricode is your gateway to harnessing the full
               potential of cutting-edge tech solutions.
