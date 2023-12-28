@@ -6,7 +6,7 @@ import { motion, useAnimation } from "framer-motion";
 import Image from "next/image";
 import LinkItem from "../LinkItem";
 import useFunctions from "@/hooks/useFunctions";
-import SideNavMobile from "./sidenavmobile";
+import SideNavMobile from "./Sidenavmobile";
 
 const Navbar = ({ children }) => {
   const [showmenu, setShowmenu] = useState(false);
@@ -73,21 +73,21 @@ const Navbar = ({ children }) => {
             hideMenu={hideMenu}
             path='/about'
             offColor={false}
-            text='About us'
+            text='<About us/>'
             isScrolled={isScrolled}
           />
           <LinkItem
             hideMenu={hideMenu}
             path='/services'
             offColor={false}
-            text='Services'
+            text='<Services/>'
             isScrolled={isScrolled}
           />
           <LinkItem
             hideMenu={hideMenu}
             path='/projects'
             offColor={false}
-            text='Projects'
+            text='<Projects/>'
             isScrolled={isScrolled}
           />
           <LinkItem
@@ -99,7 +99,7 @@ const Navbar = ({ children }) => {
           <LinkItem
             hideMenu={hideMenu}
             path='#newsletter'
-            text='Newsletter'
+            text='<Newsletter/>'
             isScrolled={isScrolled}
           />
         </div>
