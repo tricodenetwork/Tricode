@@ -17,7 +17,7 @@ export default function OurClients() {
           </span>
         </div>
         <div className="flex px-1 md:py-[5vh] py-[3vh] flex flex-wrap justify-center items-start gap-8 md:gap-12">
-          <Marquee direction="left" speed={80} delay={5}>
+          <Marquee direction="left" speed={80} delay={5} pauseOnHover={true} autoFill={true}>
             {marquees.map((marquee, i) => {
               return (
                 <div
