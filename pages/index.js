@@ -85,18 +85,6 @@ export default function Home() {
             loop={true}
           /> */}
         </section>
-
-        {/* <section id='footer' className='mt-[20vh] relative justify-center'>
-          <div className='px-[2vw] flex justify-between mb-[15vh]'>
-            <p className='text-black text-sm'>&copy; 2023 tricode.pro</p>
-            <div className='w-[30vw]  flex justify-around'>
-              <LinkedInIcon />
-              <InstagramIcon />
-              <TwitterIcon />
-              <GitHubIcon />
-            </div>
-          </div>
-        </section> */}
       </main>
     </>
   );
