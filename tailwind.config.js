@@ -26,6 +26,7 @@ module.exports = {
         background: "#F1E5C4",
         ash: "#d7d7d7",
         ash2: "#aab2c8",
+        ash3: "#6d71a",
       },
     },
   },

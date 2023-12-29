@@ -25,7 +25,7 @@ const MenuLayout = ({ children }) => {
   //------------------------------------------------------------------USE EFFECTS
 
   return (
-    <div className='w-[100vw]'>
+    <div className='w-full'>
       <div className='w-full absolute top-0 bg-binance_green flex items-center justify-between px-[2vw]  h-[9vh]'>
         <div className='flex items-center text-white'>
           <Image
@@ -69,8 +69,8 @@ const MenuLayout = ({ children }) => {
           ></div>
         </div>
       </div>
-      <div className='w-full   h-screen border-midorange items-center flex  max-h-screen'>
-        <div className='w-[20%] h-[80%] hidden md:flex flex-col border-r border-opacity-20 relative top-[5vh] border-[#000000]'>
+      <div className='w-full  mt-[10vh]   h-screen border-midorange items-center flex  max-h-screen'>
+        <div className='w-[20%] h-[80%] hidden md:flex flex-col border-r border-opacity-20 relative pt-[7vh] border-[#000000]'>
           <MenuList Icon={Dashboard} name={"Dashboard"} />
           <MenuList Icon={Teams} name={"Teams"} />
           <MenuList Icon={Project} name={"Project"} />
@@ -78,7 +78,7 @@ const MenuLayout = ({ children }) => {
           <MenuList Icon={Help} name={"Help"} />
           <MenuList Icon={Logout} name={"Logout"} />
         </div>
-        <div className='h-[91vh] absolute bottom-0 left-[20%] w-[80%] flex justify-center items-center'>
+        <div className='h-[91vh]  w-[80%] flex justify-center items-center'>
           {children}
         </div>
       </div>

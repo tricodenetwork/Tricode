@@ -16,68 +16,75 @@ function AddNew() {
     setSelectedCountry(e.target.value?.toLowerCase());
   };
   return (
-    <section className="p-10 w-[85%] m-auto overflow-scroll">
-      <h3 className={` capitalize text-start  font-bold  mb-2`}>
-        Add new project
-      </h3>
-      <p className="text-gray-500 mb-2">
+    <section className='p-10 w-[80%] m-auto scrollbar-hide overflow-scroll'>
+      <h3 className={` capitalize text-start mb-4`}>Add new project</h3>
+      <p className='lg:w-[761px] mb-4'>
         The information in this section below will be shared with tradespeople
         in order to produce estimates. Please help us to protect your privacy by
         not including any Personally Identifiable Information (e.g. your name,
         email address, etc).
       </p>
-      <h3 className={` capitalize text-start font-bold   mb-2`}>
+      <h3 className={` capitalize text-start font-bold   mb-4`}>
         How would you like to name your project?
       </h3>
 
       <input
-        className={`py-3 border-b-2 border-b-gray-400 w-full mb-5`}
-        placeholder="Type your project name"
+        className={`py-3 border-b-2 medium text-ash3 border-b-gray-400 w-full mb-5`}
+        placeholder='Type your project name'
       />
 
-      <h3 className={` capitalize text-start  font-bold  mb-2`}>
+      <h3 className={` capitalize text-start  font-bold  mb-4`}>
         Describe the work required clearly so that builders can understand.
       </h3>
 
-      <p className="text-gray-500 mb-2">
+      <p className='text-gray-500 mb-4'>
         If the style (including colors) are important please mention them
         explicitly to avoid confusion and unexpected costs. If you&apos;re
         unsure of what to write here you might find our advice on this page
-        useful: <span className="text-green-600">Suggestions</span>
+        useful: <span className='text-green-600'>Suggestions</span>
       </p>
 
       <Editor />
 
-
-      <h3 className={` capitalize text-start  font-bold  mt-5 mb-2`}>
+      <h3 className={` capitalize text-start  font-bold  mt-5 mb-4`}>
         Please upload at least one photo, video or design of the work to be
         undertaken.
       </h3>
-      <p className="text-gray-500 mb-2">
+      <p className='text-gray-500 mb-4'>
         For example if you are replacing a door lock please take a photo of the
         existing lock.
       </p>
 
-      <div className="overflow-scroll flex gap-2 items-center">
-        <SelectFile icon={TbCameraPlus} name={'Take photo/Video'} otherFiles={files} setFiles={setFiles}/>
-        <SelectFile icon={HiOutlineDocumentDuplicate} name={'Upload Files'} otherFiles={files} setFiles={setFiles}/>
-        {
-          files.map((f, key) => (
-            <div className="" key={key}>{f.name}({Math.round((f.size/1000000) * 10)/10}MB)</div>
-          ))
-          }
+      <div className='overflow-x-scroll mb-4 space-x-5 scrollbar-hide flex gap-2 items-center'>
+        <SelectFile
+          icon={TbCameraPlus}
+          name={"Take photo/Video"}
+          otherFiles={files}
+          setFiles={setFiles}
+        />
+        <SelectFile
+          icon={HiOutlineDocumentDuplicate}
+          name={"Upload Files"}
+          otherFiles={files}
+          setFiles={setFiles}
+        />
+        {files.map((f, key) => (
+          <div className='' key={key}>
+            {f.name}({Math.round((f.size / 1000000) * 10) / 10}MB)
+          </div>
+        ))}
       </div>
 
-      <h3 className={` capitalize text-start  font-bold  mb-2`}>
+      <h3 className={` capitalize text-start  font-bold  mb-4`}>
         How do we contact you?
       </h3>
 
-      <div className="flex gap-3 items-center  my-2">
-        <div className="flex justify-center gap-4">
-          <div className="flex justify-center gap-2">
+      <div className='flex gap-3 items-center  my-2'>
+        <div className='flex justify-center gap-4'>
+          <div className='flex justify-center gap-2'>
             <img
               src={`https://flagcdn.com/16x12/${selected}.png`}
-              className="w-10 rounded-full h-10"
+              className='w-10 rounded-full h-10'
               alt={selected}
             />
             <select onChange={selectedCountry}>
@@ -87,18 +94,18 @@ function AddNew() {
                 </option>
               ))}
             </select>
-            <input className="border-b-2 border-b-gray-300" type="phone" />
+            <input className='border-b-2 border-b-gray-300' type='phone' />
           </div>
 
-          <div className="flex justify-center gap-2 items-end">
+          <div className='flex justify-center gap-2 items-end'>
             <div>Email</div>
-            <input className="border-b-2 border-b-gray-300" type="email" />
+            <input className='border-b-2 border-b-gray-300' type='email' />
           </div>
         </div>
       </div>
 
-      <div className="w-full flex justify-center my-5">
-        <button className="bg-green-500 text-white rounded-full py-2 px-16 self-center">
+      <div className='w-full flex justify-center my-5'>
+        <button className='bg-green-500 text-white rounded-full py-2 px-16 self-center'>
           Submit Now
         </button>
       </div>

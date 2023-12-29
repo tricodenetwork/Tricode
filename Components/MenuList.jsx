@@ -5,7 +5,7 @@ import Link from "next/link";
 const MenuList = ({ Icon, name }) => {
   const route = useRouter();
   const routeName = route.pathname.split("/menu/").pop();
-  const active = routeName.toLowerCase() === name.toLowerCase();
+  const active = routeName.toLowerCase().includes(name.toLowerCase());
 
   return (
     <div className='w-full relative'>
@@ -26,7 +26,7 @@ const MenuList = ({ Icon, name }) => {
         </div>
         <Link href={`/menu/${name.toLowerCase()}`}>
           <p
-            className={`listitem hover:scale-110 hover:text-[#d7d7d7] duration-200 ${
+            className={`listitem hover:scale-110 hover:text-[#d7d7d7]  duration-200 ${
               active ? "text-white" : "text-binance_green"
             }`}
           >

@@ -21,6 +21,10 @@
   src: url("../public/assets/fonts/Poppins-Regular.ttf");
 }
 @font-face {
+  font-family: "Poppins-Medium";
+  src: url("../public/assets/fonts/Poppins-Medium.ttf");
+}
+@font-face {
   font-family: "Poppins-SemiBold";
   src: url("../public/assets/fonts/Poppins-SemiBold.ttf");
 }
@@ -37,6 +41,9 @@
   --that_green: #004343;
   --brown: rgb(36, 16, 8);
   --lemon: #adf802;
+}
+.bord {
+  border: 1px solid red;
 }
 
 @layer base {
@@ -87,6 +94,9 @@ h4 {
 .regular {
   font-family: "Poppins-Regular";
 }
+.medium {
+  font-family: "Poppins-Medium";
+}
 .semiBold {
   font-family: "Poppins-SemiBold";
 }
@@ -97,7 +107,15 @@ h3 {
   font-size: 24px;
   font-style: normal;
   font-weight: 600;
-  line-height: normal;
+  line-height: 36px;
+}
+p {
+  color: #6d717a;
+  font-family: Poppins-Medium;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
 }
 
 .listitem {
@@ -112,7 +130,6 @@ h3 {
   /* Add any other styles you want for the placeholder */
   opacity: 1; /* Required for some browsers to show color */
 }
-
 
 /* Navbar.css stylesheet */
 .navbar {
@@ -282,16 +299,6 @@ ul li,
   line-height: normal;
 }
 
-h3 {
-  color: #000;
-  text-align: center;
-  font-family: Poppins;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 32px; /* 150% */
-  text-transform: uppercase;
-}
 h5 {
   text-align: center;
   font-family: Poppins;
@@ -359,17 +366,6 @@ h5 {
   .auth_image {
     width: 25px;
     height: 25px;
-  }
-
-  h3 {
-    color: #000;
-    text-align: center;
-    font-family: Poppins;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 48px; /* 150% */
-    text-transform: uppercase;
   }
 
   .button {
