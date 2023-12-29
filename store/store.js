@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import formReducer from "./slice-reducers/Formslice";
+import LayoutReducer from "./slice-reducers/LayoutReducer";
 
 // import storage from "redux-persist/lib/storage";
 // import { persistReducer, persistStore } from "redux-persist";
@@ -14,7 +14,7 @@ import { createWrapper } from "next-redux-wrapper";
 // };
 
 const allReducers = combineReducers({
-  form: formReducer,
+  layout: LayoutReducer,
 });
 
 // const persistedReducer = persistReducer(persistConfig, allReducers);

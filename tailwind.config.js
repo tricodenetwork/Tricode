@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       screen: {
         s: "375px",
+        xs: "799px",
       },
       colors: {
         primary: "#25092c",
@@ -27,6 +28,8 @@ module.exports = {
         ash: "#d7d7d7",
         ash2: "#aab2c8",
         ash3: "#6d71a",
+        dark_blue: "#061A48",
+        grayText: "#6D717A",
       },
     },
   },

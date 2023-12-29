@@ -1,5 +1,6 @@
 import useFunctions from "@/hooks/useFunctions";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import MenuList from "../MenuList";
 import Dashboard from "../svg/Dashboard";
@@ -38,7 +39,13 @@ const MenuLayout = ({ children }) => {
           />
         </div>
 
-        <h4 className='text-white'>{title}</h4>
+        <motion.h4
+          transition={{ duration: 0.4 }}
+          animate={{ opacity: [0, 100], x: ["-200%", "0%"] }}
+          className='text-white '
+        >
+          {title}
+        </motion.h4>
         <div className='space-x-4 flex items-center justify-between'>
           <div className='relative md:flex hidden hover:scale-90 hover:cursor-pointer transition-all ease-out duration-100'>
             <div className='absolute -top-2 -right-2'>

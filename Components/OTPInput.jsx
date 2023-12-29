@@ -34,13 +34,13 @@ const OTPInput = ({ length, onChange }) => {
   };
 
   return (
-    <div className="flex gap-4 justify-center items-center">
+    <div className="flex md:gap-4 gap-2 justify-start items-center">
       {Array.from({ length }).map((_, index) => (
         <input
           key={index}
           type="text"
           maxLength={1}
-          className="w-12 h-12 bg-stone-50 border border-zinc-300 rounded-[5px] text-center mx-1 focus:outline-none"
+          className="w-10 h-10 md:w-12 md:h-12 bg-stone-50 border border-zinc-300 rounded-[5px] text-center mx-1 focus:outline-none"
           onChange={(e) => handleChange(e, index)}
           onKeyDown={(e) => handleKeyDown(e, index)}
           onPaste={handlePaste}

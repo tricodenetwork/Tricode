@@ -118,6 +118,22 @@ p {
   line-height: 24px;
 }
 
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.hirecard:hover {
+  
+}
 .listitem {
   font-family: Poppins-Regular;
   font-size: 15px;
@@ -129,6 +145,31 @@ p {
   color: #38a312;
   /* Add any other styles you want for the placeholder */
   opacity: 1; /* Required for some browsers to show color */
+}
+
+/* Navbar.css stylesheet */
+/* Style the progress container */
+.progress {
+  height: 100%; /* Set the height */
+  border-radius: 24px;
+  border: none; /* Remove default border in Firefox */
+  color: #38a312;
+  /* background-color: ; */
+}
+
+/* Style the background of the bar (not filled portion) */
+.progress::-webkit-progress-bar {
+  background-color: #e0e0e0; /* Light gray color for background */
+}
+
+/* Style the filled portion of the bar */
+.progress::-webkit-progress-value {
+  /* background-color: #38a312; The fill color */
+}
+
+/* For Firefox, to style the filled portion */
+.progress::-moz-progress-bar {
+  /* background-color: #38a312; */
 }
 
 /* Navbar.css stylesheet */
