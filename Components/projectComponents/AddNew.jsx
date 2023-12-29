@@ -3,8 +3,12 @@ import SelectFile from "../customInputs/SelectFile";
 import Editor from "../editor/RichTextEditor";
 import { TbCameraPlus } from "react-icons/tb";
 import { HiOutlineDocumentDuplicate } from "react-icons/hi";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import countries from "../../lib/constants/countries.json";
+import { useRouter } from "next/router";
+import Link from "next/link";
+import FileUpload from "../modals/FileUpload";
+import { useSelector } from "react-redux";
 
 function AddNew() {
   const [files, setFiles] = useState([]);
@@ -15,8 +19,32 @@ function AddNew() {
     console.log(e.target.value);
     setSelectedCountry(e.target.value?.toLowerCase());
   };
+  const router = useRouter();
+  const { filess } = useSelector((state) => state.upload);
+
+  const upload = router.query?.upload;
+  console.log("files", files);
+  // Retrieve files from localStorage on component mount
+  useEffect(() => {
+    const storedFiles = JSON.parse(localStorage.getItem("files")) || [];
+    setFiles(storedFiles);
+  }, []);
+
+  // Update localStorage when files change
+  useEffect(() => {
+    localStorage.setItem("files", JSON.stringify(files));
+  }, [files]);
   return (
-    <section className='p-10 w-[80%] m-auto scrollbar-hide overflow-scroll'>
+    <section
+      className={`p-10 w-[80%] m-auto ${
+        upload ? "h-screen overflow-hidden" : "overflow-scroll"
+      }  scrollbar-hide`}
+    >
+      {upload && (
+        <div className='bg-black bg-opacity-80 w-[99dvw] z-50  flex justify-center items-center  h-full absolute top-0 left-0 '>
+          <FileUpload files={files} setFiles={setFiles} />
+        </div>
+      )}
       <h3 className={` capitalize text-start mb-4`}>Add new project</h3>
       <p className='lg:w-[761px] mb-4'>
         The information in this section below will be shared with tradespeople
@@ -56,19 +84,15 @@ function AddNew() {
       </p>
 
       <div className='overflow-x-scroll mb-4 space-x-5 scrollbar-hide flex gap-2 items-center'>
-        <SelectFile
-          icon={TbCameraPlus}
-          name={"Take photo/Video"}
-          otherFiles={files}
-          setFiles={setFiles}
-        />
-        <SelectFile
-          icon={HiOutlineDocumentDuplicate}
-          name={"Upload Files"}
-          otherFiles={files}
-          setFiles={setFiles}
-        />
-        {files.map((f, key) => (
+        <Link href={"?upload=true"}>
+          <SelectFile
+            icon={HiOutlineDocumentDuplicate}
+            name={"Upload Files"}
+            // otherFiles={files}
+            // setFiles={setFiles}
+          />
+        </Link>
+        {filess.map((f, key) => (
           <div className='' key={key}>
             {f.name}({Math.round((f.size / 1000000) * 10) / 10}MB)
           </div>

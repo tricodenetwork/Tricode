@@ -2,12 +2,42 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Close, Cloud } from "@mui/icons-material";
+import { Router, useRouter } from "next/router";
+import { useDispatch } from "react-redux";
+import { setFilee } from "@/store/slice-reducers/uploadSlice";
 
-const FileUpload = ({ close }) => {
+const FileUpload = ({ close, files, setFiles }) => {
   const [uploadProgress, setUploadProgress] = useState(0);
   const [selectedFile, setSelectedFile] = useState(null);
 
   const inputFileRef = React.useRef(null);
+
+  const [isDragging, setIsDragging] = useState(false);
+  const dispatch = useDispatch();
+
+  const handleDragEnter = (e) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = () => {
+    setIsDragging(false);
+  };
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+  };
+
+  function handleDrop(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
+    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+      for (let i = 0; i < e.dataTransfer.files["length"]; i++) {
+        setFiles((prevState) => [...prevState, e.dataTransfer.files[i]]);
+      }
+    }
+  }
 
   const handleButtonClick = () => {
     inputFileRef.current.click();
@@ -18,13 +48,18 @@ const FileUpload = ({ close }) => {
     if (inputFileRef.current) {
       inputFileRef.current.value = ""; // Clear the input file
     }
+    router.back();
   };
 
   const handleFileChange = async (event) => {
     setUploadProgress(0); // Reset progress when a new file is chosen
     const file = event.target.files[0];
-    setSelectedFile(file);
+    setFiles((prev) => [...prev, file]);
+    dispatch(setFilee(file));
+  };
+  const handleUpload = async () => {
     const formData = new FormData();
+    const file = files.pop();
     formData.append("file", file);
 
     try {
@@ -41,12 +76,12 @@ const FileUpload = ({ close }) => {
       });
       console.log("File uploaded successfully");
     } catch (error) {
-      console.error("There was an error uploading the file.", error);
+      console.error("There was an error uploading the file.", error.response);
     }
   };
-
+  const router = useRouter();
   return (
-    <div className='flex-col  relative md:flex-row max-h-max pb-[16vh] flex w-[90vw] md:w-[838px] md:h-[590px] self-center p-7 '>
+    <div className='flex-col bg-white  relative md:flex-row max-h-max pb-[16vh] flex w-[90vw] md:w-[838px] md:h-[590px] self-center p-7 '>
       {/* Left Side */}
       <div className='w-full md:w-[55%] space-y-4'>
         <div className='flex justify-between w-full md:w-[181.82%]'>
@@ -55,7 +90,7 @@ const FileUpload = ({ close }) => {
               Upload files
             </strong>
           </p>
-          <i className='cursor-pointer' onClick={close}>
+          <i className='cursor-pointer' onClick={() => router.back()}>
             <Close sx={{ fontSize: 25, color: "#061A48" }} />
           </i>
         </div>
@@ -104,10 +139,18 @@ const FileUpload = ({ close }) => {
 
       {/* Right Side */}
       <div className='w-full md:w-[45%] relative right-[32px]  self-center pt-8  flex items-center justify-center'>
-        <div className=' bg-[#f2f2f2] w-[330px]  self-center h-[349px] flex-col flex items-center  justify-between pb-[72px] pt-[84px] border border-[#4f4f4f] rounded-[20px]'>
-          {selectedFile && (
-            <div className='self-center regular text-[15px]'>
-              {selectedFile.name}
+        <div
+          onDragEnter={handleDragEnter}
+          onDragLeave={handleDragLeave}
+          onDragOver={handleDragOver}
+          onDrop={handleDrop}
+          className={`drag-and-drop ${
+            isDragging ? "drag-over" : ""
+          } bg-[#f2f2f2] w-[330px]  self-center h-[349px] flex-col flex items-center  justify-between pb-[72px] pt-[84px] border border-[#4f4f4f] rounded-[20px]`}
+        >
+          {files && (
+            <div className='self-center text-center regular text-[15px]'>
+              {files[files.length - 1]?.name}
             </div>
           )}
           <img src='/assets/icons/clouds.png' alt='' />
@@ -129,7 +172,7 @@ const FileUpload = ({ close }) => {
                   ref={inputFileRef}
                   onChange={handleFileChange}
                   type='file'
-                  className='hidden'
+                  className='h-full hidden w-full bord'
                 />
               </label>
             </div>
@@ -161,8 +204,13 @@ const FileUpload = ({ close }) => {
         <button onClick={handleCancel} className='regular text-[15px] '>
           Cancel
         </button>
-        <button className='regular w-[100px] h-[36.64px] text-[15px] ml-6 mr-4 px-4 py-1 bg-white border border-binance_green text-[#38A312] rounded-3xl'>
-          Upload
+        <button
+          onClick={() =>
+            uploadProgress !== 100 ? handleUpload() : router.back()
+          }
+          className='regular w-[100px] h-[36.64px] text-[15px] ml-6 mr-4 px-4 py-1 bg-white border border-binance_green text-[#38A312] rounded-3xl'
+        >
+          {uploadProgress !== 100 ? "Upload" : "Done"}
         </button>
       </div>
     </div>
