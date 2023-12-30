@@ -13,9 +13,13 @@ const uploadSlice = createSlice({
     setFilee: (state, action) => {
       state.filess.push(action.payload);
     },
+    delFile: (state, action) => {
+      console.log(action.payload);
+      state.filess.splice(action.payload, 1);
+    },
   },
 });
 
-export const { setFilee } = uploadSlice.actions;
+export const { setFilee, delFile } = uploadSlice.actions;
 
 export default uploadSlice.reducer;

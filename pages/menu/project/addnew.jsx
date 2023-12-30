@@ -9,7 +9,7 @@ const Project = () => {
   //------------------------------------------------------------------USE EFFECTS
 
   return (
-    <div className='h-full flex scrollbar-hide justify-center items-center'>
+    <div className='h-max w-full'>
       <AddNew />
     </div>
   );

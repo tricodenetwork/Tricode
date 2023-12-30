@@ -1,6 +1,6 @@
 import React from "react";
 
-const Dashboard = ({ active = false }) => {
+const Dashboard = ({ active = false, isOpen }) => {
   let color = !active ? "#101828" : "white";
 
   return (
