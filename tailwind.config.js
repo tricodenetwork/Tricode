@@ -30,6 +30,7 @@ module.exports = {
         ash3: "#6d71a",
         dark_blue: "#061A48",
         grayText: "#6D717A",
+        appOrange: "#F2994A",
       },
     },
   },

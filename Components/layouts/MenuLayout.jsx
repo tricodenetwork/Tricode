@@ -91,7 +91,7 @@ const MenuLayout = ({ children }) => {
       </div>
       <div className='w-full relative max-h-[91dvh]  overflow-x-hidden  h-screen border-midorange items-start flex'>
         <div
-          className={`lg:w-[20%] w-[80vw] absolute  top-0  lg:left-0 lg:relative h-[80%] ${
+          className={`lg:w-[17%] w-[80vw] absolute   top-0  lg:left-0 lg:relative h-[80%] ${
             isOpen
               ? "bg-binance_green lg:bg-white -right-[0px]    text-white "
               : "-right-[1000px]"
@@ -104,7 +104,7 @@ const MenuLayout = ({ children }) => {
           <MenuList isOpen={isOpen} Icon={Help} name={"Help"} />
           <MenuList isOpen={isOpen} Icon={Logout} name={"Logout"} />
         </div>
-        <div className='max-h-full h-full overflow-scroll   scrollbar-hide  w-full lg:w-[80%] flex justify-center items-start'>
+        <div className='max-h-full h-full overflow-scroll   scrollbar-hide  w-full lg:w-[83%] flex justify-center items-start'>
           {children}
         </div>
       </div>

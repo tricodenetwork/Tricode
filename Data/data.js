@@ -12,8 +12,8 @@ export const cards = [
   {
     id: 3,
     tittle: "Research and Development",
-  },  
-  
+  },
+
   {
     id: 4,
     tittle: "Team Collaboration",
@@ -27,8 +27,8 @@ export const cards = [
   {
     id: 6,
     tittle: "Software Engineering",
-  },  
-  
+  },
+
   {
     id: 7,
     tittle: "Data Analysts",
@@ -58,9 +58,7 @@ export const cards = [
     id: 12,
     tittle: "Security at Heart",
   },
-
 ];
-
 
 export const careers = [
   {
@@ -76,8 +74,8 @@ export const careers = [
   {
     id: 3,
     tittle: "Research and Development",
-  },  
-  
+  },
+
   {
     id: 4,
     tittle: "Team Collaboration",
@@ -91,8 +89,8 @@ export const careers = [
   {
     id: 6,
     tittle: "Software Engineering",
-  },  
-  
+  },
+
   {
     id: 7,
     tittle: "Data Analysts",
@@ -123,8 +121,8 @@ export const marquees = [
   {
     id: 3,
     img: "/assets/stack/fire.svg",
-  },  
-  
+  },
+
   {
     id: 4,
     img: "/assets/stack/netlify.svg",
@@ -138,8 +136,8 @@ export const marquees = [
   {
     id: 6,
     img: "/assets/stack/npm.svg",
-  },  
-  
+  },
+
   {
     id: 7,
     img: "/assets/stack/a.svg",
@@ -181,35 +179,37 @@ export const marquees = [
   },
 ];
 
-
-
 export const WhyTricode = [
   {
     id: 1,
     img: "/assets/stack/html.svg",
     tittle: "End-to-End Expertise",
-    descr: "From concept to deployment, we offer a holistic approach to product development, ensuring your vision becomes a reality.",
+    descr:
+      "From concept to deployment, we offer a holistic approach to product development, ensuring your vision becomes a reality.",
   },
 
   {
     id: 2,
     img: "/assets/stack/css.svg",
     tittle: "Innovation Meets Automation",
-    descr: "Our AI-driven platform streamlines processes, matches experts to your project, and optimizes efficiency.",
+    descr:
+      "Our AI-driven platform streamlines processes, matches experts to your project, and optimizes efficiency.",
   },
 
   {
     id: 3,
     img: "/assets/stack/fire.svg",
     tittle: "Seamless Collaboration",
-    descr: "We bridge the gap between clients and developers, making sure your project is in the right hands.",
-  },  
-  
+    descr:
+      "We bridge the gap between clients and developers, making sure your project is in the right hands.",
+  },
+
   {
     id: 4,
     img: "/assets/stack/netlify.svg",
     tittle: "Security at Heart",
-    descr: "Protecting your sensitive data is our top priority, ensuring peace of mind throughout the development journey.",
+    descr:
+      "Protecting your sensitive data is our top priority, ensuring peace of mind throughout the development journey.",
   },
 
   {
@@ -226,7 +226,6 @@ export const WhyTricode = [
     descr: `Our remote work solutions transcend borders, connecting you with top talent worldwide.`,
   },
 ];
-
 
 export const OurServices = [
   {
@@ -248,12 +247,30 @@ export const OurServices = [
     img: "/assets/lottie/Building.png",
     tittle: "Building and Maintaining APIs",
     descr: `Design and development of secure and scalable APIs with microservices architecture.`,
-  },  
-  
+  },
+
   {
     id: 4,
     img: "/assets/lottie/Automated.png",
     tittle: "Automated Continuous Deployment (CD)",
     descr: `Automated build, testing, and deployment for rapid and reliable software delivery.`,
+  },
+];
+
+const projectDetails = [
+  { name: "A1 1", date: "2023-09-15", status: "Completed" },
+  { name: "A1 1", date: "2023-09-15", status: "Returned for review" },
+  { name: "A1 1", date: "2023-09-15", status: "Paused" },
+  { name: "A1 1", date: "2023-09-15", status: "Started" },
+  { name: "A1 1", date: "2023-09-15", status: "Ongoing" },
+  { name: "A1 1", date: "2023-09-15", status: "Awaiting your review" },
+];
+
+const project = [
+  {
+    name: "A1 1",
+    date: "2023-09-15",
+    manager: "Luke Kajola",
+    status: "Completed",
   },
 ];

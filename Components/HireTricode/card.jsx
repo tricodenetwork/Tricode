@@ -10,7 +10,7 @@ import { cards } from "../../Data/data";
 export default function HireCard() {
   return (
     <>
-      <div className="w-full hidden md:flex gap-3">
+      <div className='w-full hidden md:flex gap-3'>
         <Swiper
           slidesPerview={1.2}
           spaceBetween={120}
@@ -35,8 +35,8 @@ export default function HireCard() {
           // modules={[Pagination, Autoplay]}
         >
           {cards.map((card_info, i) => (
-            <SwiperSlide key={i + 1}>
-              <div className="w-[270px] h-80 px-5 pt-[7vh] my-9 bg-white hover:border-t-2 hover:border-binance_green justify-center items-center rounded-tl-[5px] rounded-tr-[5px] rounded-bl-[5px] rounded-br-[50px] shadow">
+            <SwiperSlide key={(i + 1).toString()}>
+              <div className='w-[270px] h-80 px-5 pt-[7vh] my-9 bg-white hover:border-t-2 hover:border-binance_green justify-center items-center rounded-tl-[5px] rounded-tr-[5px] rounded-bl-[5px] rounded-br-[50px] shadow'>
                 <div className="text-binance_green text-xl font-bold font-['Istok Web']">
                   {card_info.tittle}
                 </div>
@@ -52,11 +52,11 @@ export default function HireCard() {
         </Swiper>
       </div>
 
-      <div className="flex flex-col md:hidden mt-12 gap-4">
+      <div className='flex flex-col md:hidden mt-12 gap-4'>
         {cards.map((card_info, i) => (
           <div
-            key={i + 1}
-            className="w-full h-80 px-5 pt-[7vh] bg-white hover:border-t-2 hover:border-binance_green justify-center items-center rounded-tl-[5px] rounded-tr-[5px] rounded-bl-[5px] rounded-br-[50px] shadow"
+            key={(i + 1).toString()}
+            className='w-full h-80 px-5 pt-[7vh] bg-white hover:border-t-2 hover:border-binance_green justify-center items-center rounded-tl-[5px] rounded-tr-[5px] rounded-bl-[5px] rounded-br-[50px] shadow'
           >
             <div className="text-binance_green text-xl font-bold font-['Istok Web']">
               {card_info.tittle}

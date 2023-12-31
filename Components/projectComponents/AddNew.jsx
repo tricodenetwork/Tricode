@@ -30,7 +30,7 @@ function AddNew() {
 
   return (
     <section
-      className={`py-5 px-10 lg:p-10 w-full relative flex flex-col  justify-start  lg:w-[80%]  ${
+      className={`w-full relative flex flex-col  self-center  justify-start  lg:w-[80%]  ${
         upload ? "h-screen overflow-hidden" : "overflow-scroll"
       }  scrollbar-hide`}
     >
@@ -62,7 +62,7 @@ function AddNew() {
         If the style (including colors) are important please mention them
         explicitly to avoid confusion and unexpected costs. If you&apos;re
         unsure of what to write here you might find our advice on this page
-        useful: <span className='text-green-600'>Suggestions</span>
+        useful: <span className='text-binance_green text-xs'>Suggestions</span>
       </p>
 
       <Editor />
@@ -120,7 +120,7 @@ function AddNew() {
             />
             <select onChange={selectedCountry}>
               {countries.map((con, i) => (
-                <option key={i} value={con.code}>
+                <option key={i.toString()} value={con.code}>
                   {con.dial_code}
                 </option>
               ))}

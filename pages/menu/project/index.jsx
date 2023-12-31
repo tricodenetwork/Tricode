@@ -9,7 +9,7 @@ const Project = () => {
   //------------------------------------------------------------------USE EFFECTS
 
   return (
-    <div className='h-full flex justify-center items-center w-full pt-10'>
+    <div className='h-max p-5  lg:p-10 w-full flex flex-col'>
       <ProjectTable />
     </div>
   );

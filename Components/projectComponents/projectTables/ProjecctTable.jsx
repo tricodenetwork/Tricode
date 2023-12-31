@@ -12,14 +12,14 @@ const projectDetails = [
 
 function ProjectTable() {
   return (
-    <section className='w-full lg:w-[85%] px-5 lg:px-10 m-auto h-full  '>
+    <section className='w-full lg:w-[85%] px-5 lg:px-10 self-center h-full  '>
       <div className='flex  w-full justify-between'>
         <h3 className={` `}>New project (s)</h3>
         <Link
           href={"/menu/project/addnew"}
-          className='font-bold text-green flex gap-3 text-green-600  items-center'
+          className='font-bold  flex gap-3 text-binance_green hover:text-grayText duration-100 hover:scale-110  items-center'
         >
-          <PlusIcon fontSize={32} /> Add New
+          <PlusIcon fontSize={32} /> Add project
         </Link>
       </div>
       <section>
@@ -56,7 +56,7 @@ const Table = () => {
         <tbody className=''>
           {projectDetails.map((v, k) => (
             <tr
-              key={k}
+              key={k.toString()}
               className='border-y-[0.8px] border-opacity-25 border-grayText  hover:bg-gray-100'
             >
               <td className='py-5 pr-6 medium hidden lg:flex text-grayText text-base text-center whitespace-nowrap'>
@@ -88,7 +88,7 @@ const Table = () => {
               <td className='py-5 px-4 hidden lg:flex text-center'>
                 <Link
                   href={"/menu/project/projectID"}
-                  className='  border-binance_green light text-binance_green hover:bg-binance_green hover:text-white duration-300 h-[40px] text-xs w-[103px] text-center px-9 py-3 rounded-[50px]   border'
+                  className='  border-binance_green light text-binance_green hover:bg-binance_green hover:text-white duration-300 h text-xs  text-center px-9 py-3 rounded-[50px]   border'
                 >
                   View
                 </Link>
@@ -122,7 +122,10 @@ const TableHistory = () => {
         </thead>
         <tbody className=''>
           {projectDetails.map((v, k) => (
-            <tr key={k} className='border-b border-gray-200 hover:bg-gray-100'>
+            <tr
+              key={k.toString()}
+              className='border-b border-gray-200 hover:bg-gray-100'
+            >
               <td className='py-5 pr-6 medium hidden lg:flex text-grayText text-base text-center whitespace-nowrap'>
                 {k < 9 ? `0${k + 1}` : k + 1}
               </td>

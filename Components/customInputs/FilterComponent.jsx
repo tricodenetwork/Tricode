@@ -18,8 +18,9 @@ const FilterComponent = ({ items, placeholder }) => {
             animate={{ height: ["0px", "120px"] }}
             className='w-full h-[120px] z-10 absolute border scrollbar-hide bg-slate-700 overflow-y-scroll'
           >
-            {items?.map((item) => (
+            {items?.map((item, index) => (
               <p
+                key={index.toString()}
                 style={{ fontSize: 14 }}
                 className='regular border-b py-2 mb-2 px-2 text-[#aab2c8]'
               >
@@ -28,11 +29,11 @@ const FilterComponent = ({ items, placeholder }) => {
             ))}
           </motion.div>
         )}
-           <input
-      type='text'
-      placeholder={placeholder}
-      className={`custom-input w-[100px] text-binance_green  mr-2 regular text-[14px] focus:outline-none focus:border-b-2 focus:border-binance_green px-2 py-1`}
-    />
+        <input
+          type='text'
+          placeholder={placeholder}
+          className={`custom-input w-[100px] text-binance_green  mr-2 regular text-[14px] focus:outline-none focus:border-b-2 focus:border-binance_green px-2 py-1`}
+        />
         {/* <InputLine
           styles={"bg-transparent border-opacity-0 custom-input w-[100px] text-binance_green  mr-2 regular text-[14px]"}
           placeholder={placeholder}

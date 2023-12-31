@@ -1,6 +1,36 @@
 import { BackButton } from "@/Components/Button";
+import AppButton, { AppButton2 } from "@/components/AppButton";
 
 import Link from "next/link";
+
+const projectMilestones = [
+  {
+    name: "Initial Deposit",
+    amount: "$2000",
+    contingency: "$300",
+    status: "Paid",
+  },
+  { name: "Research", amount: "$2000", contingency: "$300", status: "Paid" },
+  {
+    name: "UI/UX design",
+    amount: "$2000",
+    contingency: "$200 (Max. $400)",
+    status: "Pending",
+  },
+  {
+    name: "Development",
+    amount: "$2000",
+    contingency: "$200 (Max. $400)",
+    status: "Pending",
+  },
+  {
+    name: "Testing",
+    amount: "$2000",
+    contingency: "$200 (Max. $400)",
+    status: "Pending",
+  },
+  // { name: "A1 1", amount: "$2000", contingency:"$00" status: "Awaiting your review" },
+];
 
 function ProjectTransactions() {
   return (
@@ -11,13 +41,8 @@ function ProjectTransactions() {
 
       <div className='flex gap-3 justify-center items-center my-6'>
         <BackButton />
-        <button className='  border-green-800 font-bold text-green-800  rounded-full border px-8 py-2'>
-          Pause Project
-        </button>
-
-        <button className='  text-white font-bold bg-[#38A312] rounded-full border px-8 py-2'>
-          Pay All
-        </button>
+        <AppButton href={"/"} title={"Pause project"} />
+        <AppButton2 href={"/"} title={"Pay all"} />
       </div>
     </section>
   );
@@ -27,50 +52,55 @@ export default ProjectTransactions;
 
 const TransactionHistory = () => {
   return (
-    <div className='flex justify-center items-center mt-10'>
+    <div className='flex justify-center items-center lg:scrollbar-hide overflow-x-scroll mt-10'>
       <table className='w-full bg-white  rounded'>
         <thead>
           <tr className='font-bold text-gray-600  text-sm leading-normal capitalize'>
-            <th className='py-3 pr-6 text-center uppercase'>S/N</th>
-            <th className='py-3 px-6 text-center  whitespace-nowrap'>
+            <th className='py-6 pr-6 text-center  uppercase'>S/N</th>
+            <th className='py-6 px-6 text-center  whitespace-nowrap'>
               Payment For
             </th>
-            <th className='py-3 px-6 text-center  whitespace-nowrap'>Amount</th>
-            <th className='py-3 px-6 text-center  whitespace-nowrap'></th>
-            <th className='py-3 px-6 text-center  whitespace-nowrap'>
+            <th className='py-6 px-6 text-center  whitespace-nowrap'>Amount</th>
+            <th className='py-6 px-6 text-center  whitespace-nowrap'>
               Contingency
             </th>
-            <th className='py-3 px-6 text-center'>Status</th>
-            <th className='py-3 px-6 text-center'></th>
+            <th className='py-6 px-6 text-center'>Status</th>
+            <th className='py-6 px-6 text-center'>Pay</th>
           </tr>
         </thead>
         <tbody className='text-gray-600 text-sm font-light'>
-          {[1, 2, 3, 1, 6].map((v, k) => (
-            <tr key={k} className='border-b border-gray-200 hover:bg-gray-100'>
-              <td className='py-3 pr-6 text-center whitespace-nowrap'>
-                {k + 1}
+          {projectMilestones.map((v, k) => (
+            <tr
+              key={k.toString()}
+              className='border-b border-gray-200 hover:bg-gray-100'
+            >
+              <td className='py-6 pr-6 text-center whitespace-nowrap'>
+                {k < 9 ? `0${k + 1}` : k + 1}
               </td>
-              <td className='py-3 px-6 text-center whitespace-nowrap'>
-                Milestone {k}
+              <td className='py-6 px-6 text-center whitespace-nowrap'>
+                {v.name}
               </td>
-              <td className='py-3 px-6 text-center whitespace-nowrap'>$4000</td>
-              <td className='py-3 px-6 text-center whitespace-nowrap'>
-                2023-09-15
+              <td className='py-6 px-6 text-center whitespace-nowrap'>
+                {v.amount}
               </td>
+              <td className='py-6 px-6 text-center whitespace-nowrap'>
+                {v.contingency}
+              </td>
+
               <td
-                className={`py-3 px-6 text-center whitespace-nowrap ${
-                  v == 1 ? "text-orange-700" : "text-green-400"
+                className={`py-6 px-6 text-center  medium whitespace-nowrap ${
+                  v.status == "Pending" ? "text-appOrange" : "text-[#27AE60]"
                 }`}
               >
-                {v == 1 ? "Pending" : "Paid"}
+                {v.status}
               </td>
               <td className='py-3 px-6 text-center'>
-                {v == 1 && (
+                {v.status == "Pending" && (
                   <Link
                     href={"/menu/project/projectID"}
-                    className='  border-green-800 font-bold text-green-800  rounded-full border px-8 py-2'
+                    className='  border-binance_green light text-binance_green hover:bg-binance_green hover:text-white duration-300 h text-xs  text-center px-9 py-3 rounded-[50px]   border'
                   >
-                    Pay now
+                    Pay
                   </Link>
                 )}
               </td>

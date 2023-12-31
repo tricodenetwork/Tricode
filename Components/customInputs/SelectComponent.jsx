@@ -18,8 +18,9 @@ const SelectComponent = ({ items, placeholder }) => {
             animate={{ height: ["0px", "240px"] }}
             className='w-full h-[240px] z-10 absolute border scrollbar-hide bg-slate-700 overflow-y-scroll'
           >
-            {items?.map((item) => (
+            {items?.map((item, i) => (
               <p
+                key={i.toString()}
                 style={{ fontSize: 14 }}
                 className='regular border-b py-2 mb-2 px-2 text-[#aab2c8]'
               >

@@ -83,7 +83,7 @@
 
 h4 {
   font-family: Poppins-SemiBold;
-  font-size: 32px;
+  font-size: 24px;
   line-height: normal;
   text-transform: capitalize;
 }
@@ -104,10 +104,10 @@ h4 {
 h3 {
   color: #000;
   font-family: Poppins-SemiBold;
-  font-size: 18px;
+  font-size: 24px;
   font-style: normal;
   font-weight: 600;
-  line-height: 24px;
+  line-height: 36px;
 }
 p {
   color: #6d717a;
@@ -440,6 +440,14 @@ h5 {
     font-size: 24px;
     line-height: normal;
     text-transform: capitalize;
+  }
+  h3 {
+    color: #000;
+    font-family: Poppins-SemiBold;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
   }
 }
 @media screen and (max-height: 900px) {

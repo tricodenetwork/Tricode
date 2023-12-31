@@ -8,13 +8,13 @@ const MenuList = ({ Icon, name, isOpen }) => {
   const active = routeName.toLowerCase().includes(name.toLowerCase());
 
   return (
-    <div className='w-full relative'>
+    <div className='w-full  relative'>
       <div
         className={`w-[4px]  ${
           isOpen && active ? "bg-white lg:bg-binance_green" : ""
         } rounded-sm bg-binance_green h-[95%] ${
           active ? "flex" : "hidden"
-        } absolute left-[2px] self`}
+        } absolute -left-[2px] self`}
       ></div>
       <div
         className={`flex ${
@@ -23,7 +23,7 @@ const MenuList = ({ Icon, name, isOpen }) => {
           active
             ? " bg-binance_green hover:scale-110  cursor-pointer shadow-sm shadow-binance_brightash"
             : "bg-transparent"
-        } px-2 w-[80%] duration-300 items-center ml-[3vw] rounded-lg pl-[2vw] py-4`}
+        } px-2 w-[65%] duration-300 flex items-center justify-start ml-[3vw] rounded-lg pl-[1.5vw] py-4`}
       >
         <div className='mr-4 w-[28px] hidden lg:flex justify-start items-center border-2 border-opacity-0 border-transparent h-[24px]'>
           <Icon active={active} />
