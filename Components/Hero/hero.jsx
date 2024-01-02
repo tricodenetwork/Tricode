@@ -70,7 +70,7 @@ const Home = () => {
               <span className="text-white text-2xl sm:text-[53px] font-extrabold font-['Inter'] leading-[71px]">
                 {" "}
               </span>
-              <span className="text-binance_green text-2xl sm:text-[53px] font-extrabold font-['Inter'] leading-[71px]">
+              <span className="text-white text-2xl sm:text-[53px] font-extrabold font-['Inter'] leading-[71px]">
                 Tricode
               </span>
             </div>
