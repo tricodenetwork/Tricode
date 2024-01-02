@@ -6,7 +6,7 @@ export default function OurNewsletter({ mobile }) {
   return (
     <>
       <section
-        className="px-8 py-5 w-full bg-gradient-to-l from-[#BBD2B3] to-stone-100 overflow-hidden justify-center items-center"
+        className="px-8 py-[5em] w-full bg-gradient-to-l from-[#BBD2B3] to-stone-100 overflow-hidden justify-center items-center"
         id="newsletter"
       >
         <div className="text-center mx-auto w-full justify-center items-center">

@@ -7,7 +7,7 @@ export default function WhyTricode({ mobile }) {
   return (
     <>
       <section
-        className="px-8 py-5 mx-auto w-full justify-center items-center"
+        className="px-8 py-5 mt-12 mx-auto w-full justify-center items-center"
         id="why"
       >
         <div className="text-center mx-auto w-full justify-center items-center">

@@ -5,7 +5,7 @@ export default function JoinTricode({ mobile }) {
   return (
     <>
       <section
-        className="px-8 py-5 w-full justify-center items-center"
+        className="px-8 py-5 mb-8 w-full justify-center items-center"
         id="join"
       >
         <div className="flex flex-col md:flex-row justify-center items-center w-full mt-12 gap-4 md:gap-[19vh]">
@@ -18,7 +18,7 @@ export default function JoinTricode({ mobile }) {
               innovation.  Tricode is your gateway to harnessing the full
               potential of cutting-edge tech solutions.
             </div>
-            <button className="font-medium mt-9 hover:bg-opacity-70 hover:scale-110 transition ease-linear duration-150 shadow-sm shadow-binance_green px-[7vw] py-[1.5vh] rounded-lg bg-black text-white">
+            <button className="font-bold mt-9 hover:bg-opacity-70 hover:scale-110 transition ease-linear duration-150 shadow-sm shadow-binance_green px-[7vw] py-[1.5vh] rounded-lg bg-black text-white">
               JOIN
             </button>
           </div>

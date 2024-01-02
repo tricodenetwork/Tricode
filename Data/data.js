@@ -186,42 +186,42 @@ export const marquees = [
 export const WhyTricode = [
   {
     id: 1,
-    img: "/assets/stack/html.svg",
+    img: "/assets/whyTricode/Expertise.svg",
     tittle: "End-to-End Expertise",
     descr: "From concept to deployment, we offer a holistic approach to product development, ensuring your vision becomes a reality.",
   },
 
   {
     id: 2,
-    img: "/assets/stack/css.svg",
+    img: "/assets/whyTricode/Innovation.svg",
     tittle: "Innovation Meets Automation",
     descr: "Our AI-driven platform streamlines processes, matches experts to your project, and optimizes efficiency.",
   },
 
   {
     id: 3,
-    img: "/assets/stack/fire.svg",
+    img: "/assets/whyTricode/Collaboration.svg",
     tittle: "Seamless Collaboration",
     descr: "We bridge the gap between clients and developers, making sure your project is in the right hands.",
   },  
   
   {
     id: 4,
-    img: "/assets/stack/netlify.svg",
+    img: "/assets/whyTricode/Security.svg",
     tittle: "Security at Heart",
     descr: "Protecting your sensitive data is our top priority, ensuring peace of mind throughout the development journey.",
   },
 
   {
     id: 5,
-    img: "/assets/stack/figma.svg",
+    img: "/assets/whyTricode/Job.svg",
     tittle: "Job Opportunities",
     descr: `We provide a plethora of job opportunities for talented developers, fostering a thriving tech ecosystem.`,
   },
 
   {
     id: 6,
-    img: "/assets/stack/npm.svg",
+    img: "/assets/whyTricode/Global.svg",
     tittle: "Global Reach",
     descr: `Our remote work solutions transcend borders, connecting you with top talent worldwide.`,
   },
@@ -256,4 +256,17 @@ export const OurServices = [
     tittle: "Automated Continuous Deployment (CD)",
     descr: `Automated build, testing, and deployment for rapid and reliable software delivery.`,
   },
+];
+
+
+export const OurClients = [
+  {
+    id: 1,
+    img: "/assets/ourClients/Donlife.png",
+  },
+
+  {
+    id: 2,
+    img: "/assets/ourClients/RunaM.png",
+  }
 ];

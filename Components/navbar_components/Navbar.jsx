@@ -73,33 +73,33 @@ const Navbar = ({ children }) => {
             hideMenu={hideMenu}
             path='/about'
             offColor={false}
-            text='About us'
+            text='<About us/>'
             isScrolled={isScrolled}
           />
           <LinkItem
             hideMenu={hideMenu}
             path='/services'
             offColor={false}
-            text='Services'
+            text='<Services/>'
             isScrolled={isScrolled}
           />
           <LinkItem
             hideMenu={hideMenu}
             path='/projects'
             offColor={false}
-            text='Projects'
+            text='<Projects/>'
             isScrolled={isScrolled}
           />
           <LinkItem
             hideMenu={hideMenu}
             path='/communities'
-            text='Communities'
+            text='<Communities/>'
             isScrolled={isScrolled}
           />
           <LinkItem
             hideMenu={hideMenu}
             path='#newsletter'
-            text='Newsletter'
+            text='<Newsletter/>'
             isScrolled={isScrolled}
           />
         </div>

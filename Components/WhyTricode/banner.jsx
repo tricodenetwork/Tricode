@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function Solution_banner() {
   return (
     <>
-      <section className="relative mt-[3vh] overflow-hidden" id="hero">
+      <section className="relative mt-[5vh] overflow-hidden" id="hero">
         <div>
           <img
             className="h-[184px] md:h-[458px] w-full"
@@ -17,7 +17,7 @@ export default function Solution_banner() {
               Hire the best tech solutions from around the world!
             </div>
             <div className={`flex justify-start mt-[2vh] md:mt-[3vh] w-full`}>
-              <button className="font-medium hover:bg-opacity-70 hover:scale-110 transition ease-linear duration-150 shadow-sm shadow-black px-[7vw] py-[1.5vh] rounded-lg bg-white text-black">
+              <button className="font-bold hover:bg-opacity-70 hover:scale-110 transition ease-linear duration-150 shadow-sm shadow-black px-[7vw] py-[1.5vh] rounded-lg bg-white text-black">
                 HIRE
               </button>
               {/* <button className="font-medium hover:bg-opacity-70 hover:scale-110 transition ease-linear duration-150 shadow-sm shadow-binance_green px-[7vw] py-[1.5vh] rounded-lg bg-black text-white">

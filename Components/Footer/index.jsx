@@ -43,15 +43,15 @@ export default function Footer({ mobile }) {
             <div className="text-white text-base md:text-lg font-bold font-['Inter']">
               Links
             </div>
-            <div className="md:w-[16vh] text-white text-sm md:text-base leading-[37.81px]">
+            <div className="md:w-[16vh] mt-6 text-white text-sm md:text-base leading-[37.81px]">
               {`<About Us />`}
-              <br />
+              <br /><br />
               {`<Services />`}
-              <br />
+              <br /><br />
               {`<Projects />`}
-              <br />
+              <br /><br />
               {`<Communities />`}
-              <br />
+              <br /><br />
               {`<Newsletter />`}
             </div>
           </div>
@@ -61,7 +61,7 @@ export default function Footer({ mobile }) {
               Contact us
             </div>
             <div className="text-white text-sm md:text-lg font-normal font-['Inter'] leading-[30px]">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
+              Lorem Ipsum is simply dummy text of the <br />printing and typesetting
               industry.{" "}
             </div>
             <div className="text-white text-sm md:text-lg font-normal font-['Inter'] leading-[30px]">
