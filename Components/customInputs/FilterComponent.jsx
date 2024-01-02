@@ -32,7 +32,7 @@ const FilterComponent = ({ items, placeholder }) => {
         <input
           type='text'
           placeholder={placeholder}
-          className={`custom-input w-[100px] text-binance_green  mr-2 regular text-[14px] focus:outline-none focus:border-b-2 focus:border-binance_green px-2 py-1`}
+          className={`custom-input w-[100px] text-binance_green  mr-2 regular text-xs lg:text-[14px] focus:outline-none focus:border-b-2 focus:border-binance_green px-2 py-1`}
         />
         {/* <InputLine
           styles={"bg-transparent border-opacity-0 custom-input w-[100px] text-binance_green  mr-2 regular text-[14px]"}

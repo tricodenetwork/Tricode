@@ -7,13 +7,12 @@ const InputWithHeader = ({ placeholder, header }) => {
 
   //------------------------------------------------------------------USE EFFECTS
   return (
-    <div className='mb-1'>
+    <div className='my-2'>
       <p className='light text-ash2'>{header}</p>
       <input
         type='text'
         placeholder={placeholder}
-        style={{ fontSize: 16, color: "black" }}
-        className='bg-white rounded-sm semiBold pb-2 my-[20px] md:my-[5px]  focus:outline-none focus:border-b-2 focus:border-binance_green w-[85%] px-2 py-1'
+        className='bg-white text-sm lg:text-base rounded-sm semiBold pb-2 my-[5px] md:my-[5px]  focus:outline-none focus:border-b-2 focus:border-binance_green w-[85%] px-2 py-1'
       />
     </div>
   );

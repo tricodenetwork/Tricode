@@ -5,7 +5,7 @@ import React from "react";
 
 const Settings = () => {
   return (
-    <div className='flex-1 h-full overflow-y-auto scrollbar-hide'>
+    <div className='flex-1 h-full overflow-y-scroll  scrollbar-hide'>
       <User />
     </div>
   );

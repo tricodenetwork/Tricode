@@ -13,7 +13,7 @@ const TeamCard = ({ title, src }) => {
           alt='team-member'
         />
       </div>
-      <button className='w-[129px] mt-8 medium text-[12px] self-center border border-binance_green text-binance_green h-[33px] rounded-3xl'>
+      <button className='w-[129px] mt-5 hover:bg-binance_green duration-300 hover:text-white medium text-[12px] self-center border border-binance_green text-binance_green h-[33px] rounded-3xl'>
         View Profile
       </button>
     </div>
@@ -46,24 +46,26 @@ const Teams = () => {
 
   //------------------------------------------------------------------USE EFFECTS
   return (
-    <div className='h-full w-full flex flex-col  justify-start items-start'>
-      <div className='flex mx-7 mt-8 justify-between w-[90%]'>
-        <div className='w-[40%]'>
+    <div className='h-max p-5  lg:p-10 w-full flex flex-col'>
+      <div className='flex lg:mx-7 mt-8 justify-between w-[90%]'>
+        <div className=' w-[60%] lg:w-[40%]'>
           <SearchComponent />
         </div>
         <div className='flex mr-10  items-center'>
-          <p className='regular text-[#131418] mr-6 text-[12px]'>
+          <p className='regular hidden lg:flex text-[#131418] mr-6 text-[12px]'>
             16 Result(s) Found
           </p>
-          <p className='regular text-[#131418] mr-2 text-[14px]'>Filter By</p>
+          <p className='regular text-[#131418] mr-2 text-xs lg:text-[14px]'>
+            Filter By
+          </p>
           <FilterComponent
             placeholder={"Latest"}
             items={["Latest", "Highest", "Level"]}
           />
         </div>
       </div>
-      <section className='w-[996px] mt-8 overflow-y-scroll scrollbar-hide h-[621px] border-[#EFEFEF] border-[0.5px] rounded-3xl self-center'>
-        <h6 className='semiBold text-[24px] my-4 text-[#2b2b2b] text-center w-full'>
+      <section className=' w-full lg:w-[996px] mt-8   py-4  scrollbar-hide h-max border-[#EFEFEF] border-[0.5px] rounded-3xl self-center'>
+        <h6 className='semiBold text-lg lg:text-[24px] mb-3 text-[#2b2b2b] text-center w-full'>
           FinTechXperience
         </h6>
         <div className='w-full flex flex-wrap gap-3 justify-center'>

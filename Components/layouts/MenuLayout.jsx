@@ -54,7 +54,7 @@ const MenuLayout = ({ children }) => {
         <motion.h4
           transition={{ duration: 0.4 }}
           animate={{ opacity: [0, 100], x: ["-200%", "0%"] }}
-          className='hidden md:flex text-white'
+          className='flex text-white'
         >
           {title}
         </motion.h4>

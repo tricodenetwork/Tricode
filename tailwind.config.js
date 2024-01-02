@@ -7,7 +7,7 @@ module.exports = {
   ],
   theme: {
     extend: {
-      screen: {
+      screens: {
         s: "375px",
         xs: "799px",
       },
@@ -31,6 +31,7 @@ module.exports = {
         dark_blue: "#061A48",
         grayText: "#6D717A",
         appOrange: "#F2994A",
+        appBlue: "#061a48",
       },
     },
   },

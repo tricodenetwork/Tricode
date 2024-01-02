@@ -13,7 +13,7 @@ const AppButton = ({ href, title, style }) => {
   );
 };
 
-export default AppButton;
+export default AppButton
 
 export const AppButton2 = ({ href, title, style }) => {
   return (

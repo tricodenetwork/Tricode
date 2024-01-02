@@ -15,15 +15,14 @@ const SettingsNav = ({ Icon, name }) => {
           active
             ? " bg-[#f2f2f2] hover:scale-110  cursor-pointer"
             : "bg-transparent"
-        } pl-8 pr-4 w-full duration-300 justify-between items-center rounded-xl py-4`}
+        } pl-8 pr-4 lg:w-full duration-300 justify-between  w-[100%] mx-auto items-center rounded-xl py-4`}
       >
         <div className='mr-4 w-[28px] flex justify-start items-center border-2 border-opacity-0 border-transparent h-[24px]'>
           <Icon active={active} />
         </div>
         <Link style={{ flex: 1 }} href={`${name.toLowerCase().split(" ")[0]}`}>
           <p
-            style={{ fontSize: 16, fontFamily: "Poppins-SemiBold" }}
-            className={`listitem  flex-1 hover:scale-110 relative hover:left-4 text-ash2 hover:text-[#d7d7d7] duration-200`}
+            className={`flex-1 hover:scale-110 semiBold text-sm lg:text-base relative hover:left-4 text-ash2 hover:text-[#d7d7d7] duration-200`}
           >
             {name}
           </p>

@@ -54,7 +54,7 @@ const Payment = () => {
         <p style={{ fontSize: 18 }} className='light mb-3'>
           Card Details
         </p>
-        <div className='flex  justify-between w-full '>
+        <div className='flex flex-col lg:flex-row space-y-5 lg:space-y-0  justify-between w-full '>
           <div>
             <p style={{ fontSize: 18 }} className='regular mb-1 text-[#8c8888]'>
               Card Number
@@ -83,7 +83,7 @@ const Payment = () => {
             />
             <p
               style={{ fontSize: 12 }}
-              className='semiBold hover:scale-110  duration-75 hover:opacity-50 cursor-pointer absolute top-[55%] -right-12 text-[#288893]'
+              className='semiBold hover:scale-110  duration-75 hover:opacity-50 cursor-pointer absolute top-[55%] right-0 lg:-right-12 text-[#288893]'
             >
               Save
             </p>

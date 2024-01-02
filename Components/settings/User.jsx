@@ -11,27 +11,22 @@ const Regular = {
 
 const User = () => {
   return (
-    <div className='flex-1 bg-[#f2f2f2] h-full w-[90%] self-center pt-10  flex justify-center  rounded-md mr-5 pl-10 '>
-      <div className='w-[70%] h-full'>
-        <div className='h-[70px] flex-col flex justify-between mb-2'>
-          <h6 style={semiBold} className='text-black'>
+    <div className='flex-1 bg-[#f2f2f2] h-max w-[95%] self-center py-5 lg:py-10  flex justify-center  rounded-md mr-5 pl-5 lg:pl-10 '>
+      <div className=' w-full lg:w-[70%] h-full'>
+        <div className='h-[70px] flex-col flex justify-around mb-2'>
+          <h6 className='text-black semiBold text-lg lg:text-2xl'>
             User Management
           </h6>
-          <p
-            style={{ fontSize: 20, fontFamily: "Poppins-SemiBold" }}
-            className='text-black'
-          >
-            Profile
-          </p>
+          <p className='text-black semiBold text-base lg:text-xl'>Profile</p>
         </div>
-        <div className='border-b pb-4 space-y-3 w-[100%] border-black'>
+        <div className='border-b  pb-4 flex flex-col justify-between w-[100%] border-black'>
           <InputWithHeader header={"First Name"} placeholder={"John"} />
           <InputWithHeader header={"Surname"} placeholder={"Cena"} />
           <InputWithHeader
             header={"Email address"}
             placeholder={"johncena@gmail.com"}
           />
-          <div className='flex mt-7'>
+          <div className='flex mt-5'>
             <SmallButton
               Action={"Cancel"}
               styles={
@@ -70,7 +65,7 @@ const User = () => {
           <SmallButton
             Action={"Deactivate"}
             styles={
-              "w-[180px] absolute -right-1  top-0 bg-binance_green text-white border-2 border-binance_green"
+              "w-[140px] lg:w-[180px] absolute right-1  top-0 bg-binance_green text-white border-2 border-binance_green"
             }
           />
         </div>
