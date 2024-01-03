@@ -43,37 +43,33 @@ export default function Footer({ mobile }) {
             <div className="text-white text-base md:text-lg font-bold font-['Inter']">
               Links
             </div>
-            <div className="md:w-[16vh] mt-6 text-white text-sm md:text-base leading-[37.81px]">
-              {`<About Us />`}
-              <br /><br />
-              {`<Services />`}
-              <br /><br />
-              {`<Projects />`}
-              <br /><br />
-              {`<Communities />`}
-              <br /><br />
-              {`<Newsletter />`}
+            <div className="flex flex-col md:w-[16vh] mt-6 md:gap-4 text-white text-sm md:text-base leading-[37.81px]">
+              <div>{`<About Us />`}</div>
+              <div>{`<Services />`}</div>
+              <div>{`<Projects />`}</div>
+              <div>{`<Communities />`}</div>
+              <div>{`<Newsletter />`}</div>
             </div>
           </div>
 
-          <div className="mt-6">
+          <div className="mt-6 items-start justify-start">
             <div className="text-white text-base md:text-lg font-bold font-['Inter']">
               Contact us
             </div>
             <div className="text-white text-sm md:text-lg font-normal font-['Inter'] leading-[30px]">
-              Lorem Ipsum is simply dummy text of the <br />printing and typesetting
-              industry.{" "}
+              Lorem Ipsum is simply dummy text of the <br />
+              printing and typesetting industry.{" "}
             </div>
             <div className="text-white text-sm md:text-lg font-normal font-['Inter'] leading-[30px]">
               +923183561921
             </div>
+            <div className="w-[30vw] mt-[6em] md:flex hidden text-white items-start justify-around">
+              <LinkedInIcon />
+              <InstagramIcon />
+              <TwitterIcon />
+              <GitHubIcon />
+            </div>
           </div>
-        </div>
-        <div className="w-[30vw] md:flex hidden text-white items-end justify-around">
-          <LinkedInIcon />
-          <InstagramIcon />
-          <TwitterIcon />
-          <GitHubIcon />
         </div>
       </section>
     </>
