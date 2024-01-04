@@ -8,7 +8,7 @@ export default function JoinTricode({ mobile }) {
         className="px-8 py-5 mb-8 w-full justify-center items-center"
         id="join"
       >
-        <div className="flex flex-col md:flex-row justify-center items-center w-full mt-12 gap-4 md:gap-[19vh]">
+        <div className="flex flex-col md:flex-row justify-center items-center w-full mt-12 gap-4 md:gap-[5vh]">
           <div className="flex-col justify-start items-start gap-3 inline-flex">
             <div className="text-binance_green text-2xl md:text-6xl font-semibold font-['Poppins'] tracking-wide">
               Join Tricode
@@ -23,7 +23,7 @@ export default function JoinTricode({ mobile }) {
             </button>
           </div>
           <div className="">
-            <img className="w-[70vh] h-[40vh]" src="/assets/lottie/join.png" alt="" />
+            <img className="w-[55vh] h-[40vh]" src="/assets/lottie/join.png" alt="" />
           </div>
         </div>
       </section>
