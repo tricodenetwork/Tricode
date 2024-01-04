@@ -6,7 +6,7 @@ export default function Card() {
   return (
     <>
       <section className="w-full justify-center items-center" id="careers">
-        <div className="px-3 md:p-[4vh] py-[3vh] flex flex-wrap justify-center items-start gap-8">
+        <div className="md:p-[4vh] py-[3vh] flex flex-wrap justify-center items-start gap-8">
           {WhyTricode.map((info, i) => (
             <div
               key={i + 1}

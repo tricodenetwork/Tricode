@@ -6,7 +6,7 @@ export default function Careers() {
   return (
     <>
       <section className="w-full justify-center items-center" id="careers">
-        <div className="px-3 md:px-[4vh] py-[5vh] bg-[#92BE82] flex flex-wrap justify-center items-start gap-8">
+        <div className="md:px-[4vh] py-[5vh] bg-[#92BE82] flex flex-wrap justify-center items-start gap-6">
           {careers.map((careers_info, i) => (
             <div
               key={i + 1}
