@@ -4,6 +4,9 @@ import { useInView } from "react-intersection-observer";
 import { useAnimation } from "framer-motion";
 import useFunctions from "@/hooks/useFunctions";
 import Marq from "./techStack";
+import { Inter } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"] });
 
 const Home = () => {
   const [screenWidth, setScreenWidth] = useState(0);
@@ -51,53 +54,79 @@ const Home = () => {
 
   return (
     <>
-      <section className="h-screen relative overflow-hidden" id="hero">
-        <div>
-          <img
-            className="h-screen w-full"
-            src="/assets/images/black-background.png"
+      <section
+        className='h-[100vh]   flex items-center justify-center relative overflow-hidden'
+        id='hero'
+      >
+        <div className='w-full h-full -z-20 absolute top-0 bottom-0'>
+          <Image
+            fill
+            className='object-cover hidden lg:flex'
+            src='/assets/images/bg.svg'
+            alt='background'
+          />
+          <Image
+            fill
+            className='object-cover flex lg:hidden'
+            src='/assets/images/mobilebackground.svg'
+            alt='background'
           />
         </div>
-        <div className="flex flex-col md:flex-row w-full mx-auto absolute justify-center md:justify-between items-center gap-[4vh] md:gap-[10vh] top-[16vh] md:top-[30vh] md:bottom-[30vh]">
-          <div className="flex flex-col md:mx-12 items-center md:items-start w-full">
-            <div className="header relative text-center md:text-start">
-              <span className="text-white text-2xl sm:text-[53px] font-extrabold font-['Inter'] leading-[71px]">
+        <div className='flex flex-col lg:flex-row w-[80vw] h-[70vh] lg:h-max   justify-between items-center'>
+          <div className='flex flex-col  h-[35%] relative  items-center lg:items-start w-max'>
+            <div
+              style={inter.style}
+              className='relative text-center mb-[3px] lg:mb-[10px] lg:text-start'
+            >
+              <span
+                style={inter.style}
+                className='text-white text-2xl sm:text-[53px] font-extrabold  leading-[71px]'
+              >
                 Build{" "}
               </span>
-              <span className="text-white text-2xl sm:text-[53px] font-normal font-['Inter'] leading-[71px]">
+              <span
+                style={inter.style}
+                className='text-white text-2xl sm:text-[53px] font-normal  leading-[71px]'
+              >
                 with
               </span>
-              <span className="text-white text-2xl sm:text-[53px] font-extrabold font-['Inter'] leading-[71px]">
+              <span className='text-white text-2xl sm:text-[53px] font-extrabold  leading-[71px]'>
                 {" "}
               </span>
-              <span className="text-white text-2xl sm:text-[53px] font-extrabold font-['Inter'] leading-[71px]">
+              <span
+                style={inter.style}
+                className='text-white text-2xl sm:text-[53px] font-extrabold  leading-[71px]'
+              >
                 Tricode
               </span>
             </div>
-            <div className="text-white text-sm sm:text-lg font-normal font-['Inter']">
-              The Future of Remote Collaborative space.
-            </div>
-            <div
-              className={`flex md:justify-between space-x-4 mt-[2vh] sm:space-x-6 sm:mt-[3vh]`}
+            <p
+              style={inter.style}
+              className='font-normal text-white text-sm lg:text-lg tracking-[0] leading-[36px] whitespace-nowrap'
             >
-              <button className="font-bold hover:bg-opacity-70 hover:scale-110 transition ease-linear duration-150 shadow-sm shadow-black px-[7vw] py-[1.5vh] rounded-lg bg-binance_green text-white">
-                HIRE
+              The Future of Remote Collaborative space.
+            </p>
+            <div
+              className={`flex justify-around lg:justify-start w-full mt-[4vh] self-center  absolute lg:relative bottom-0`}
+            >
+              <button className=' semiBold lg:w-[38%] w-[40%] mr-[22px] text-sm lg:text-base lg:Bold hover:bg-opacity-70 hover:scale-110 transition ease-linear duration-150 shadow-sm shadow-black  py-[1.5vh] rounded-lg bg-binance_green text-white'>
+                Hire
               </button>
-              <button className="font-bold hover:bg-opacity-70 hover:scale-110 transition ease-linear duration-150 shadow-sm shadow-binance_green px-[7vw] py-[1.5vh] rounded-lg bg-black text-white">
-                JOIN
+              <button className=' semiBold lg:w-[38%] w-[40%] text-sm lg:text-base lg:Bold hover:bg-opacity-70 hover:scale-110 transition ease-linear duration-150 shadow-s shadow-binance_green  py-[1.5vh] rounded-lg bg-black text-white'>
+                Join
               </button>
             </div>
           </div>
-          <Image
-            loader={imageLoader}
-            width={!mobile ? 400 : 200}
-            height={700}
-            className="w-[80%] sm:w-[60%] md:w-[400px] md:mr-12"
-            src="/assets/lottie/amico.png"
-            alt="hand"
-          />
+          <div className='w-full lg:w-[472px] relative h-[50%] lg:h-[409px]'>
+            <Image
+              fill
+              className=''
+              src='/assets/lottie/amico.png'
+              alt='hand'
+            />
+          </div>
         </div>
-        <div className="absolute bottom-5 mx-3 w-full overflow-hidden">
+        <div className='absolute bottom-5 mx-3 w-full overflow-hidden'>
           <Marq />
         </div>
       </section>

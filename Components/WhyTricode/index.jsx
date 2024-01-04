@@ -2,24 +2,35 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import Card from "@/Components/WhyTricode/card";
 import Solution_banner from "./banner";
+import { Inter } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export default function WhyTricode({ mobile }) {
   return (
     <>
       <section
-        className="px-8 py-5 mt-12 mx-auto w-full justify-center items-center"
-        id="why"
+        className='px-8 py-5 mt-12 mx-auto w-full justify-center items-center'
+        id='why'
       >
-        <div className="text-center mx-auto w-full justify-center items-center">
-          <hr className="w-[69px] h-[5px] mx-auto my-5 text-center bg-binance_green justify-center items-center"/>
-          <span className="text-gray-900 text-2xl md:text-[35px] font-normal font-['Inter'] leading-[55px]">
+        <div className='text-center mx-auto w-full justify-center items-center'>
+          <hr className='w-[69px] h-[5px] mx-auto my-5 text-center bg-binance_green justify-center items-center' />
+          <span
+            style={inter.style}
+            className='text-[#1a202c] text-2xl md:text-[35px] font-normal leading-[55px]'
+          >
             Why{" "}
           </span>
-          <span className="text-gray-900 text-2xl md:text-[35px] font-bold font-['Inter'] leading-[55px]">
+          <span
+            style={inter.style}
+            className='text-[#1a202c] text-2xl md:text-[35px] font-bold leading-[55px]'
+          >
             Tricode?
           </span>
         </div>
-        <Card />
+        <div className='w-full flex flex-col'>
+          <Card />
+        </div>
       </section>
       <Solution_banner />
     </>

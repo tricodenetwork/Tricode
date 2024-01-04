@@ -34,6 +34,12 @@
   font-family: "Poppins-Light";
   src: url("../public/assets/fonts/Poppins-Light.ttf");
 }
+/* For extra bold weight */
+
+@font-face {
+  font-family: "Poppins-Light";
+  src: url("../public/assets/fonts/Poppins-ExtraBold.ttf");
+}
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -63,24 +69,22 @@ body {
   overflow-x: hidden;
 }
 /* This will hide the scrollbar for Chrome, Safari, etc. */
-::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
 
-::-webkit-scrollbar-thumb {
-  /* display: none; */
-  border-radius: 1rem;
-  /* background: rgba(220, 146, 73, 1); */
-  transition: all 0.5s ease-in-out;
+/* This will hide the scrollbar for Firefox */
+.scrollbar-hide {
+  scrollbar-width: none;
+}
+/* This will hide the scrollbar for Chrome, Safari, etc. */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #38A312;
-}
-
-::-webkit-scrollbar-track {
-  background: #000000;
+/* This will hide the scrollbar for Firefox */
+.scrollbar-hide {
+  scrollbar-width: none;
 }
 
 h4 {
@@ -103,6 +107,9 @@ h4 {
   font-family: "Poppins-SemiBold";
 }
 .Bold {
+  font-family: "Poppins";
+}
+.extraBold {
   font-family: "Poppins";
 }
 .modal {
@@ -141,7 +148,6 @@ h3 {
 }
 
 .hirecard:hover {
-  
 }
 .listitem {
   font-family: Poppins-Regular;
@@ -447,4 +453,8 @@ h5 {
     position: relative;
     top: 4vh;
   }
+}
+
+.bord {
+  border: 2px solid salmon;
 }

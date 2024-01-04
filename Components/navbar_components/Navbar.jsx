@@ -7,6 +7,7 @@ import Image from "next/image";
 import LinkItem from "../LinkItem";
 import useFunctions from "@/hooks/useFunctions";
 import SideNavMobile from "./sidenavmobile";
+import LinkItem2 from "../LinkItem2";
 
 const Navbar = ({ children }) => {
   const [showmenu, setShowmenu] = useState(false);
@@ -39,7 +40,7 @@ const Navbar = ({ children }) => {
     <div
       className={`${
         isScrolled || sideNav ? "bg-binance_green" : "bg-transparent"
-      } fixed h-[60px] md:h-[90px] w-full z-50 flex flex-col`}
+      } fixed h-[60px] sm:h-[90px] lg:h-[90px] w-full z-50 flex flex-col`}
     >
       <motion.nav
         initial={{ x: 0 }}
@@ -64,72 +65,66 @@ const Navbar = ({ children }) => {
             width={80}
             height={40}
             quality={100}
-            className='w-[30vw] md:w-[16vw]'
+            className='w-[30vw] lg:w-[16vw]'
             src='/assets/images/logo.png'
           />
         </motion.div>
-        <div className='w-full gap-7 lg:gap-12 hidden md:flex justify-center items-start'>
+        <div className='w-[55%]  gap-7 lg:gap-12 hidden lg:flex justify-around items-start'>
           <LinkItem
             hideMenu={hideMenu}
             path='/about'
             offColor={false}
-            text='<About us/>'
+            text='About us'
             isScrolled={isScrolled}
           />
           <LinkItem
             hideMenu={hideMenu}
             path='/services'
             offColor={false}
-            text='<Services/>'
+            text='Services'
             isScrolled={isScrolled}
           />
           <LinkItem
             hideMenu={hideMenu}
             path='/projects'
             offColor={false}
-            text='<Projects/>'
-            isScrolled={isScrolled}
-          />
-          <LinkItem
-            hideMenu={hideMenu}
-            path='/communities'
-            text='<Communities/>'
+            text='Projects'
             isScrolled={isScrolled}
           />
           <LinkItem
             hideMenu={hideMenu}
             path='#newsletter'
-            text='<Newsletter/>'
+            text='Newsletter'
             isScrolled={isScrolled}
           />
         </div>
         <motion.div
-          initial={{ width: "40%" }}
-          animate={{ width: "20%" }}
+          initial={{ width: "30%" }}
+          animate={{ width: "17%" }}
           // transition={{ type: "spring", stiffness: 500, duration: 0.1 }}
           transition={{ duration: 0.2 }}
-          className='icon flex w-[40%] md:w-[20%] justify-around  items-center'
+          className='icon flex w-[40%] lg:w-[20%] justify-around  items-center'
         >
-          <LinkItem
+          <LinkItem2
             text={"Register"}
             path={"/menu"}
             className={
-              "medText p-3 rounded-lg md:flex hidden border border-slate-500"
+              "medText p-3 rounded-lg lg:flex hidden border border-slate-500"
             }
             isScrolled={isScrolled}
           />
-          <LinkItem
+          <LinkItem2
             hideMenu={hideMenu}
             path='/login'
             text='Login'
-            className={`medText text-[white] md:flex hidden`}
+            className={`medText text-[white] lg:flex hidden`}
             isScrolled={isScrolled}
           />
         </motion.div>
 
         <div
           onClick={() => setSideNav(!sideNav)}
-          className='text-white flex md:hidden'
+          className='text-white flex lg:hidden'
         >
           {sideNav ? (
             <IoCloseSharp className='text-[3vh]' />
