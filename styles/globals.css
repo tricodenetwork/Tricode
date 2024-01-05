@@ -44,6 +44,9 @@
     display: contents;
   }
 }
+.bord {
+  border: 2px solid salmon;
+}
 
 /* Navbar.css stylesheet */
 
@@ -74,8 +77,8 @@
   scrollbar-width: none;
 }
 
-h4 {
-  font-family: Poppins-SemiBold;
+h3 {
+  font-family: Poppins;
   font-size: 32px;
   line-height: normal;
   text-transform: capitalize;
@@ -91,7 +94,7 @@ h4 {
   font-family: "Poppins-SemiBold";
 }
 
-h3 {
+h4 {
   color: #000;
   font-family: Poppins-SemiBold;
   font-size: 24px;
@@ -276,16 +279,7 @@ ul li,
   line-height: normal;
 }
 
-h3 {
-  color: #000;
-  text-align: center;
-  font-family: Poppins;
-  font-size: 32px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 48px; /* 150% */
-  text-transform: uppercase;
-}
+/*  */
 h5 {
   text-align: center;
   font-family: Poppins;
