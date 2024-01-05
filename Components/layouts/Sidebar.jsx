@@ -1,7 +1,7 @@
 import useFunctions from "@/hooks/useFunctions";
 import Image from "next/image";
 
-const Sidebar = ({Header}) => {
+const Sidebar = ({ Header, Message }) => {
   // --------------------------------------------VARIABLES
 
   //-----------------------------------------------------------FUNCTIONS
@@ -10,8 +10,8 @@ const Sidebar = ({Header}) => {
   //------------------------------------------------------------------USE EFFECTS
 
   return (
-    <div className='w-[429px] hidden md:flex flex-col items-center pb-5 justify-end bg-[#2b2b2b] min-h-screen'>
-      <div className='logos absolute top-0 left-3  text-white'>
+    <div className='w-[35%] hidden md:flex flex-col  items-center  justify-center bg-[#2b2b2b] min-h-screen'>
+      <div className='logos absolute top-[3vh] left-[2vw]  text-white'>
         <Image
           loader={imageLoader}
           alt='logo'
@@ -22,18 +22,18 @@ const Sidebar = ({Header}) => {
           src='/assets/images/logo.png'
         />
       </div>
-      <div className='relative -top-[7vh]'>
-        <div className='absolute right-[70px]  -bottom-[18px] z-40'>
-          <Image
-            className=''
-            loader={imageLoader}
-            alt='ellipse'
-            width={214.338}
-            height={47.995}
-            src='/assets/images/ellipse.png'
-          />
-        </div>
-        <div className='relative z-50'>
+      <div className='relative  w-[70%]  flex flex-col items-center top-[5vh]'>
+        <div className='relative  mb-[44px] z-50'>
+          <div className='absolute left-1/3 -translate-x-1/2  bottom-0 translate-y-1/2 -z-10'>
+            <Image
+              className=''
+              loader={imageLoader}
+              alt='ellipse'
+              width={214.338}
+              height={47.995}
+              src='/assets/images/ellipse.png'
+            />
+          </div>
           <Image
             loader={imageLoader}
             alt='world hand'
@@ -42,17 +42,11 @@ const Sidebar = ({Header}) => {
             src='/assets/images/hand.png'
           />
         </div>
-      </div>
-      <div className='  flex-col flex items-center max-w-[268px]'>
-        <h3 className='text- mb- text-white'>{Header}</h3>
-        <h5 className='text-white uppercase'>
-          Lorem ipsum dolor sit amet consectetur.
-        </h5>
-        <p className='smallText mt-3'>
-          Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-          sint. Velit officia consequat duis enim velit mollit. Exercitation
-          veniam consequat
-        </p>
+        <div className='flex-col flex items-center - uppercase[268px]'>
+          <h4 className='mb- uppercase text-center text-white'>{Header}</h4>
+
+          <p className='smallText text-left mt-3'>{Message}</p>
+        </div>
       </div>
     </div>
   );
