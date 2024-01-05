@@ -8,7 +8,7 @@ import createEmotionCache from "../config/createEmotionCache";
 import { wrapper } from "../store/store";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { Provider } from "react-redux";
-
+import { SessionProvider } from "next-auth/react";
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
 
@@ -26,7 +26,8 @@ function App({ Component, ...rest }) {
   };
 
   return (
-    <GoogleOAuthProvider clientId='704139097438-0r081l07jdsiru0ktse80r813pm6mlm3.apps.googleusercontent.com'>
+    // <GoogleOAuthProvider clientId='704139097438-0r081l07jdsiru0ktse80r813pm6mlm3.apps.googleusercontent.com'>
+    <SessionProvider>
       <Provider store={store}>
         <CacheProvider value={emotionCache}>
           <Head>
@@ -42,7 +43,8 @@ function App({ Component, ...rest }) {
           </ThemeProvider>
         </CacheProvider>
       </Provider>
-    </GoogleOAuthProvider>
+    </SessionProvider>
+    // </GoogleOAuthProvider>
   );
 }
 

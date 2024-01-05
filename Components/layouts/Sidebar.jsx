@@ -10,7 +10,7 @@ const Sidebar = ({ Header, Message }) => {
   //------------------------------------------------------------------USE EFFECTS
 
   return (
-    <div className='w-[35%] hidden md:flex flex-col  items-center  justify-center bg-[#2b2b2b] min-h-screen'>
+    <div className='w-[35%] hidden lg:flex flex-col  items-center  justify-center bg-[#2b2b2b] min-h-screen'>
       <div className='logos absolute top-[3vh] left-[2vw]  text-white'>
         <Image
           loader={imageLoader}

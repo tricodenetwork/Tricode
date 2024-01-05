@@ -7,16 +7,30 @@ import InputLine from "@/Components/InputLine";
 import RadioInput from "@/Components/RadioInput";
 import { useState } from "react";
 import CountryCode from "@/Components/CountryCode/Countries";
-import ShowHidePassword, { ConfirmPassword } from "@/Components/ShowHidePassword";
+import ShowHidePassword, {
+  ConfirmPassword,
+} from "@/Components/ShowHidePassword";
+import axios from "axios";
 
 const Index = () => {
   // --------------------------------------------VARIABLES
+  const [fullName, setFullName] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPass, setConfirmPass] = useState("");
+  const [email, setEmail] = useState("");
+  const [mobilePhone, setMobilePhone] = useState("");
   const [checked, setChecked] = useState(false);
   const [selectedOption, setSelectedOption] = useState("company");
   const [showPasswordToggle, setShowPasswordToggle] = useState(false);
   const [confirmPasswordToggle, setConfirmPasswordToggle] = useState(false);
 
   //-----------------------------------------------------------FUNCTIONS
+  const handleFullNameChange = (e) => setFullName(e.target.value);
+  const handlePasswordChange = (e) => setPassword(e.target.value);
+  const handleConfirmPasswordChange = (e) => setConfirmPass(e.target.value);
+  const handleEmailChange = (e) => setEmail(e.target.value);
+  const handleMobilePhoneChange = (e) => setMobilePhone(e.target.value);
+
   const handleChange = (event) => {
     setChecked(event.target.checked);
   };
@@ -33,13 +47,32 @@ const Index = () => {
     setConfirmPasswordToggle(!confirmPasswordToggle);
   };
 
+  const handleSubmit = async () => {
+    try {
+      const response = await axios.post("/api/register", {
+        fullName,
+        password,
+        email,
+        mobilePhone,
+        isCompany: selectedOption === "company", // Assuming selectedOption represents "Company or Talent" field
+        // Other fields if needed
+      });
+
+      // Handle successful response
+      console.log("Response:", response.data);
+    } catch (error) {
+      // Handle error
+      console.error("Error:", error);
+    }
+  };
+
   //------------------------------------------------------------------USE EFFECTS
 
   return (
     <div className='h-full login justify-around px-3 flex flex-col items-center'>
       <div className=''>
         <h3>Create an Account</h3>
-        <div className='flex mt-[4px] mb-[10px] md:mt-[7px] md:mb-[20px] items-center'>
+        <div className='flex mt-[4px]  md:mt-[7px] items-center'>
           <p className='mr-1 md:mr-3 member text-black'>
             Already have an account?
           </p>
@@ -48,37 +81,59 @@ const Index = () => {
           </Link>
         </div>
       </div>
-      <div className='md:w-[487px]  h-[70%] relative flex flex-col justify-between'>
-        <div className='h-[55%] py-2 flex flex-col justify-between'>
-          <InputLine placeholder={"Full Name"} />
+      <div className='md:w-[487px]   h-[70%] relative flex flex-col justify-between'>
+        <div className='h-[55%] py- flex flex-col justify-between'>
+          <InputLine
+            value={fullName}
+            onChange={handleFullNameChange}
+            placeholder={"Full Name"}
+          />
           <div>
-            <InputLine placeholder={"Password*"} type={showPasswordToggle ? "text" : "password"} />
+            <InputLine
+              value={password}
+              onChange={handlePasswordChange}
+              placeholder={"Password*"}
+              type={showPasswordToggle ? "text" : "password"}
+            />
             <ShowHidePassword
-              className="absolute ml-[-2.5rem] mt-[1rem]"
+              className='absolute ml-[-2.5rem] mt-[1rem]'
               onClick={showPassword}
               showPasswordToggle={showPasswordToggle}
             />
           </div>
           <div>
-            <InputLine placeholder={"Confirm Password*"} type={confirmPasswordToggle ? "text" : "password"} />
+            <InputLine
+              value={confirmPass}
+              onChange={handleConfirmPasswordChange}
+              placeholder={"Confirm Password*"}
+              type={confirmPasswordToggle ? "text" : "password"}
+            />
             <ConfirmPassword
-              className="absolute ml-[-2.5rem] mt-[1rem]"
+              className='absolute ml-[-2.5rem] mt-[1rem]'
               onClick={confirmPassword}
               confirmPasswordToggle={confirmPasswordToggle}
             />
           </div>
-          <InputLine placeholder={"Email"} />
+          <InputLine
+            value={email}
+            onChange={handleEmailChange}
+            placeholder={"Email"}
+          />
           <div className='flex'>
             <div className='mr-4 mt-2'>
               <CountryCode />
             </div>
             <div className='w-[82%]'>
-              <InputLine placeholder={"Mobile phone"} />
+              <InputLine
+                value={mobilePhone}
+                onChange={handleMobilePhoneChange}
+                placeholder={"Mobile phone"}
+              />
             </div>
           </div>
         </div>
 
-        <div className='relative mt-4 md:mt-0 bottom-4'>
+        <div className='relative mt-3 md:mt-0 '>
           <div className='text-[#000000] mb-1 text-sm md:text-lg font-medium'>
             Are you a Company or Talent?
           </div>
@@ -102,7 +157,7 @@ const Index = () => {
         </div>
 
         <div className='flex flex-col relative mb-3 justify-center '>
-          <div className='flex items-center'>
+          <div className='flex relative bottom-1 items-center'>
             <Checkbox
               sx={{ padding: 0, marginLeft: 0, marginRight: 2 }}
               onChange={handleChange}
@@ -131,7 +186,7 @@ const Index = () => {
         </div>
       </div>
       <div className=''>
-        <p className='signin mb-1 text-center '>Or sign in with</p>
+        <p className='signin mb-2 text-center '>Or sign in with</p>
         <AuthComponent />
       </div>
     </div>
