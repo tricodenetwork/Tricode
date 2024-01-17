@@ -4,7 +4,7 @@ import { useAnimation } from "framer-motion";
 import useFunctions from "@/hooks/useFunctions";
 import Navbar from "@/Components/navbar_components/Navbar";
 import Hero from "@/Components/Hero/hero";
-import HireTricode from "@/C`omponents/HireTricode/hire";
+import HireTricode from "@/Components/HireTricode/hire";
 import JoinTricode from "@/Components/HireTricode/join";
 import Careers from "@/Components/HireTricode/careers";
 import WhyTricode from "@/Components/WhyTricode/index";
