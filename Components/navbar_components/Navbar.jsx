@@ -79,14 +79,14 @@ const Navbar = ({ children }) => {
           />
           <LinkItem
             hideMenu={hideMenu}
-            path='/services'
+            path='#services'
             offColor={false}
             text='Services'
             isScrolled={isScrolled}
           />
           <LinkItem
             hideMenu={hideMenu}
-            path='/projects'
+            path='#projects'
             offColor={false}
             text='Projects'
             isScrolled={isScrolled}
@@ -107,7 +107,7 @@ const Navbar = ({ children }) => {
         >
           <LinkItem2
             text={"Register"}
-            path={"/menu"}
+            path={"/auth/register"}
             className={
               "medText p-3 rounded-lg lg:flex hidden border border-slate-500"
             }
@@ -115,7 +115,7 @@ const Navbar = ({ children }) => {
           />
           <LinkItem2
             hideMenu={hideMenu}
-            path='/login'
+            path='/auth/login'
             text='Login'
             className={`medText text-[white] lg:flex hidden`}
             isScrolled={isScrolled}

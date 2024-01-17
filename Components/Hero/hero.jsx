@@ -5,6 +5,7 @@ import { useAnimation } from "framer-motion";
 import useFunctions from "@/hooks/useFunctions";
 import Marq from "./techStack";
 import { Inter } from "next/font/google";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -109,12 +110,18 @@ const Home = () => {
             <div
               className={`flex justify-around lg:justify-start w-full mt-[4vh] self-center  absolute lg:relative bottom-0`}
             >
-              <button className=' semiBold lg:w-[38%] w-[40%] mr-[22px] text-sm lg:text-base lg:Bold hover:bg-opacity-70 hover:scale-110 transition ease-linear duration-150 shadow-sm shadow-black  py-[1.5vh] rounded-lg bg-binance_green text-white'>
-                Hire
-              </button>
-              <button className=' semiBold lg:w-[38%] w-[40%] text-sm lg:text-base lg:Bold hover:bg-opacity-70 hover:scale-110 transition ease-linear duration-150 shadow-s shadow-binance_green  py-[1.5vh] rounded-lg bg-black text-white'>
-                Join
-              </button>
+              <Link
+                href={"/auth/register"}
+                className=' semiBold lg:w-[38%] flex justify-center w-[40%] mr-[22px] text-sm lg:text-base lg:Bold hover:bg-opacity-70 hover:scale-110 transition ease-linear duration-150 shadow-sm shadow-black  py-[1.5vh] rounded-lg bg-binance_green text-white'
+              >
+                <button>Hire</button>
+              </Link>
+              <Link
+                href={"/auth/register"}
+                className=' semiBold lg:w-[38%] flex justify-center w-[40%] text-sm lg:text-base lg:Bold hover:bg-opacity-70 hover:scale-110 transition ease-linear duration-150 shadow-s shadow-binance_green  py-[1.5vh] rounded-lg bg-black text-white'
+              >
+                <button>Join</button>
+              </Link>
             </div>
           </div>
           <div className='w-full lg:w-[472px] relative h-[50%] lg:h-[409px]'>

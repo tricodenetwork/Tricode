@@ -2,6 +2,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { WhyTricode } from "../../Data/data";
 import { Istok_Web } from "next/font/google";
+import Link from "next/link";
 
 const font = Istok_Web({
   weight: ["400", "700"],
@@ -95,12 +96,18 @@ export default function Card() {
         <div
           className={`flex justify-center space-x-4 mt-[0vh] md:space-x-6 md:mt-[3vh]`}
         >
-          <button className='Bold hover:bg-opacity-70 hover:scale-110 transition ease-linear duration-150 shadow-sm shadow-black px-[7vw] py-[1.5vh] rounded-lg bg-binance_green text-white'>
-            Hire
-          </button>
-          <button className='Bold hover:bg-opacity-70 hover:scale-110 transition ease-linear duration-150 shadow-sm shadow-binance_green px-[7vw] py-[1.5vh] rounded-lg bg-black text-white'>
-            Join
-          </button>
+          <Link
+            href={"/auth/register"}
+            className='Bold hover:bg-opacity-70 flex justify-center hover:scale-110 transition ease-linear duration-150 shadow-sm shadow-black px-[7vw] py-[1.5vh] rounded-lg bg-binance_green text-white'
+          >
+            <button>Hire</button>
+          </Link>
+          <Link
+            href={"/auth/register"}
+            className='Bold hover:bg-opacity-70 flex justify-center hover:scale-110 transition ease-linear duration-150 shadow-sm shadow-binance_green px-[7vw] py-[1.5vh] rounded-lg bg-black text-white'
+          >
+            <button>Join</button>
+          </Link>
         </div>
       </section>
     </>

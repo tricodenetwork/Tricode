@@ -1,4 +1,3 @@
-import ChangePassword from "@/components/modals/ChangePassword";
 import React, { useState } from "react";
 import Modal from "react-modal";
 

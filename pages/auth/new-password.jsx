@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Sidebar from "@/Components/layouts/Sidebar";
 import Button from "@/Components/Button";
+import InputLine from "@/Components/InputLine";
+import Image from "next/image";
 
 const inputStyles = `border-b-2 my-[20px] md:my-[10px] pb-2border-gray-400 focus:outline-none focus:border-b-2 
       focus:border-binance_green w-full px-1 py-1`;
