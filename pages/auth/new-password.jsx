@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Sidebar from "@/Components/layouts/Sidebar";
 import Button from "@/Components/Button";
 import InputLine from "@/components/InputLine";
+import Image from "next/image";
 
 const inputStyles = `border-b-2 my-[20px] md:my-[10px] pb-2border-gray-400 focus:outline-none focus:border-b-2 
       focus:border-binance_green w-full px-1 py-1`;
@@ -119,7 +120,7 @@ const Index = () => {
             </h4>
             <div className='relative mb-4 space-y-3'>
               <div className='flex items-center h-6 gap-3'>
-                <Image src={passwordCharacters} className='w-4 h-4' />
+                <img src={passwordCharacters} className='w-4 h-4' />
                 <div style={{ fontSize: 16 }} className='light text-zinc-500'>
                   8-32 characters
                 </div>
