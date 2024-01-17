@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Inter } from "next/font/google";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,9 +24,12 @@ export default function Solution_banner() {
               Hire the best tech solutions from around the world!
             </div>
             <div className={`flex justify-start mt-[2vh] md:mt-[3vh] w-full`}>
-              <button className='Bold hover:bg-opacity-70 hover:scale-110 transition ease-linear duration-150 shadow-sm shadow-black px-[7vw] py-[1.5vh] rounded-lg bg-white text-black'>
-                Hire
-              </button>
+              <Link
+                href={"/auth/register"}
+                className='Bold hover:bg-opacity-70 flex justify-center hover:scale-110 transition ease-linear duration-150 shadow-sm shadow-black px-[7vw] py-[1.5vh] rounded-lg bg-white text-black'
+              >
+                <button>Hire</button>
+              </Link>
               {/* <button className="font-medium hover:bg-opacity-70 hover:scale-110 transition ease-linear duration-150 shadow-sm shadow-binance_green px-[7vw] py-[1.5vh] rounded-lg bg-black text-white">
                 JOIN
               </button> */}

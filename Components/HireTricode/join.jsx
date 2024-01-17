@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 
 export default function JoinTricode({ mobile }) {
@@ -19,9 +20,13 @@ export default function JoinTricode({ mobile }) {
               <br /> Tricode is your gateway to harnessing the full potential of
               cutting-edge tech solutions.
             </div>
-            <button className='semiBold lg:text-2xl mt-4 lg:mt-9 hover:bg-opacity-70 hover:scale-110 transition ease-linear duration-150 shadow-sm shadow-binance_green w-[30vw] lg:w-[22vw] py-[1.5vh] rounded-lg bg-black text-white'>
-              Join
-            </button>
+
+            <Link
+              href={"/auth/register"}
+              className='semiBold lg:text-2xl flex justify-center mt-4 lg:mt-9 hover:bg-opacity-70 hover:scale-110 transition ease-linear duration-150 shadow-sm shadow-binance_green w-[30vw] lg:w-[22vw] py-[1.5vh] rounded-lg bg-black text-white'
+            >
+              <button>Join</button>
+            </Link>
           </div>
           <div className='w-[80vw] h-[50vh]  lg:w-[590px] lg:h-[555px] relative'>
             <Image

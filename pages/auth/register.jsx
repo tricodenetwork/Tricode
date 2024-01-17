@@ -71,8 +71,8 @@ const Index = () => {
 
   return (
     <div className='h-full login justify-around px-3 flex flex-col items-center'>
-      <div className=''>
-        <h3>Create an Account</h3>
+      <div className='flex flex-col items-center'>
+        <h3 className='uppercase'>Create an Account</h3>
         <div className='flex mt-[4px]  md:mt-[7px] items-center'>
           <p className='mr-1 md:mr-3 member text-black'>
             Already have an account?
@@ -188,7 +188,7 @@ const Index = () => {
         </div>
       </div>
       <div className=''>
-        <p className='signin mb-2 text-center '>Or sign in with</p>
+        <p className='signin mb-2 text-center '>Or sign up with</p>
         <AuthComponent />
       </div>
     </div>
