@@ -21,10 +21,25 @@
   src: url("../public/assets/fonts/Poppins-Regular.ttf");
 }
 @font-face {
+  font-family: "Poppins-Medium";
+  src: url("../public/assets/fonts/Poppins-Medium.ttf");
+}
+@font-face {
   font-family: "Poppins-SemiBold";
   src: url("../public/assets/fonts/Poppins-SemiBold.ttf");
 }
 /* For Light weight */
+
+@font-face {
+  font-family: "Poppins-Light";
+  src: url("../public/assets/fonts/Poppins-Light.ttf");
+}
+/* For extra bold weight */
+
+@font-face {
+  font-family: "Poppins-Light";
+  src: url("../public/assets/fonts/Poppins-ExtraBold.ttf");
+}/* For Light weight */
 
 @font-face {
   font-family: "Poppins-Light";
@@ -55,6 +70,29 @@
   margin: 0;
   box-sizing: border-box;
   /* border: 1px solid black; */
+  font-size: 16px;
+  font-family: Poppins-Regular;
+}
+body {
+  overflow-x: hidden;
+}
+/* This will hide the scrollbar for Chrome, Safari, etc. */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* This will hide the scrollbar for Firefox */
+.scrollbar-hide {
+  scrollbar-width: none;
+}
+/* This will hide the scrollbar for Chrome, Safari, etc. */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* This will hide the scrollbar for Firefox */
+.scrollbar-hide {
+  scrollbar-width: none;
   font-size: 16px;
   font-family: Poppins-Regular;
 }
@@ -90,11 +128,45 @@ h3 {
 .regular {
   font-family: "Poppins-Regular";
 }
+.medium {
+  font-family: "Poppins-Medium";
+}
 .semiBold {
   font-family: "Poppins-SemiBold";
 }
+.Bold {
+  font-family: "Poppins";
+}
+.extraBold {
+  font-family: "Poppins";
+}
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  /* padding: 10px; */
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 15px;
+  border: none;
+}
 
-h4 {
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+h3 {
   color: #000;
   font-family: Poppins-SemiBold;
   font-size: 24px;
@@ -103,12 +175,38 @@ h4 {
   line-height: normal;
 }
 
+.hirecard:hover {
+}
 .listitem {
   font-family: Poppins-Regular;
   font-size: 15px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+
+/* Style the progress container */
+.progress {
+  height: 100%; /* Set the height */
+  border-radius: 24px;
+  border: none; /* Remove default border in Firefox */
+  color: #38a312;
+  /* background-color: ; */
+}
+
+/* Style the background of the bar (not filled portion) */
+.progress::-webkit-progress-bar {
+  background-color: #e0e0e0; /* Light gray color for background */
+}
+
+/* Style the filled portion of the bar */
+.progress::-webkit-progress-value {
+  /* background-color: #38a312; The fill color */
+}
+
+/* For Firefox, to style the filled portion */
+.progress::-moz-progress-bar {
+  /* background-color: #38a312; */
 }
 
 /* Navbar.css stylesheet */
