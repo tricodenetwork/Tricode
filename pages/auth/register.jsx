@@ -48,13 +48,14 @@ const Index = () => {
   };
 
   const handleSubmit = async () => {
+    console.log("submitting");
     try {
       const response = await axios.post("/api/register", {
         fullName,
         password,
         email,
         mobilePhone,
-        isCompany: selectedOption === "company", // Assuming selectedOption represents "Company or Talent" field
+        role: selectedOption, // Assuming selectedOption represents "Company or Talent" field
         // Other fields if needed
       });
 
@@ -179,7 +180,8 @@ const Index = () => {
           </div>
           <div className='w-full mt-4'>
             <Button
-              styles={"hover:opacity-90 w-full mx-auto"}
+              click={handleSubmit}
+              styles={"hover:opacity-90 active:bg-gray-300 w-full mx-auto"}
               Action={"Register"}
             />
           </div>

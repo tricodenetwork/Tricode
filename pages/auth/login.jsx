@@ -24,8 +24,8 @@ const Index = () => {
   //------------------------------------------------------------------USE EFFECTS
 
   return (
-    <div className='bord'>
-      {/* <div className='md:mt-0 flex flex-col items-center mt-[-4em]'>
+    <>
+      <div className='md:mt-0 flex flex-col items-center mt-[-4em]'>
         <h3>SIGN IN</h3>
         <div className='flex mt-[4px] mb-[15px] md:mt-[16px] md:mb-[30px] items-center w-full'>
           <p className=' mr-1 md:mr-3 member '>Not a member?</p>
@@ -74,8 +74,8 @@ const Index = () => {
       <div className='mt-[70px]'>
         <p className='signin mb-3 text-center '>Or sign in with</p>
         <AuthComponent />
-      </div> */}
-    </div>
+      </div>
+    </>
   );
 };
 

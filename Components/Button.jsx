@@ -1,9 +1,10 @@
 import React from "react";
 
-const Button = ({ Action, styles }) => {
+const Button = ({ Action, styles, click }) => {
   return (
     <button
-      type="submit"
+      onClick={click}
+      type='submit'
       className={`${styles} rounded-3xl button py-2 cursor-pointer bg-binance_green text-center`}
     >
       {Action}
