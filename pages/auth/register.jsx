@@ -82,7 +82,7 @@ const Index = () => {
           </Link>
         </div>
       </div>
-      <div className='md:w-[487px]   h-[70%] relative flex flex-col justify-between'>
+      <div className='lg:w-[487px]  w-[80%]  h-[70%] relative flex flex-col justify-between'>
         <div className='h-[55%] py- flex flex-col justify-between'>
           <InputLine
             value={fullName}
