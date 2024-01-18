@@ -15,8 +15,9 @@ const InputLine = ({ placeholder, type, value, onChange }) => {
       onChange={onChange}
       type={type}
       placeholder={placeholder}
-      className={`border-b-2 ${
-        isRegister ? "my-[10px] md:my-[5px]" : "my-[20px] md:my-[10px] pb-2"
+      // className={`border-b-2  pb-2 my-[20px] md:my-[10px] border-gray-400 focus:outline-none focus:border-b-2 focus:border-binance_green px-2 py-1`}
+      className={`border-b-2 ${styles} ${
+        isRegister ? "my-[10px]  md:my-[5px]" : "my-[20px] md:my-[10px] pb-2"
       }
       border-gray-400 focus:outline-none focus:border-b-2 
       focus:border-binance_green w-full px-1 py-1`}

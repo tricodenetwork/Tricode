@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import LayoutReducer from "./slice-reducers/LayoutReducer";
+import uploadReducer from "./slice-reducers/uploadSlice";
 
 // import storage from "redux-persist/lib/storage";
 // import { persistReducer, persistStore } from "redux-persist";
 import thunk from "redux-thunk";
 import { combineReducers } from "@reduxjs/toolkit";
 import { createWrapper } from "next-redux-wrapper";
+
 // import { useDispatch, useSelector } from 'react-redux'
 
 // const persistConfig = {
@@ -15,6 +17,7 @@ import { createWrapper } from "next-redux-wrapper";
 
 const allReducers = combineReducers({
   layout: LayoutReducer,
+  upload: uploadReducer,
 });
 
 // const persistedReducer = persistReducer(persistConfig, allReducers);

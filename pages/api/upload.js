@@ -1,11 +1,40 @@
 // pages/api/upload.js
-export default function handler(req, res) {
-  if (req.method === "POST") {
-    // Simulate a file upload
-    setTimeout(() => {
-      res.status(200).json({ status: "success" });
-    }, 2000);
-  } else {
-    res.status(405).end(); // Method Not Allowed
+import { writeFile } from "fs/promises";
+import { NextRequest, NextResponse } from "next/server";
+import formidable from "formidable";
+import path from "path";
+import fs from "fs/promises";
+
+const readFile = (req, saveLocally) => {
+  const options = {};
+  if (saveLocally) {
+    options.uploadDir = path.join(process.cwd(), "/public/files");
+    options.filename = (name, ext, path, form) => {
+      return Date.now().toString() + "_" + path.originalFilename;
+    };
   }
+  const form = formidable(options);
+
+  return new Promise((res, rej) => {
+    form.parse(req, (err, fields, files) => {
+      if (err) {
+        rej(err);
+      }
+      console.log("files", files);
+      res({ fields, files });
+    });
+  });
+};
+
+export default async function handler(req, res) {
+  try {
+    await fs.readdir(path.join(process.cwd(), "/public", "/files"));
+  } catch (error) {
+    await fs.mkdir(path.join(process.cwd(), "/public", "/files"));
+  }
+  console.log("test");
+  await readFile(req, true);
+  res.json({ done: "ok" });
 }
+
+export const config = { api: { bodyParser: false } };
