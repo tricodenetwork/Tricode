@@ -5,7 +5,7 @@ import Image from "next/image";
 import LinkItem from "../LinkItem";
 import LinkItem2 from "../LinkItem2";
 
-const SideNavMobile = ({ children }) => {
+const SideNavMobile = ({ setShowmenu }) => {
   const hideMenu = useCallback(() => {
     setShowmenu(false);
   }, []);
@@ -26,21 +26,17 @@ const SideNavMobile = ({ children }) => {
           />
           <LinkItem
             hideMenu={hideMenu}
-            path='/services'
+            path='#services'
             offColor={false}
             text='Services'
           />
           <LinkItem
             hideMenu={hideMenu}
-            path='/projects'
+            path='#projects'
             offColor={false}
             text='Projects'
           />
-          <LinkItem
-            hideMenu={hideMenu}
-            path='/communities'
-            text='Communities'
-          />
+
           <LinkItem hideMenu={hideMenu} path='#newsletter' text='Newsletter' />
         </div>
         <motion.div
@@ -51,13 +47,14 @@ const SideNavMobile = ({ children }) => {
           className='icon flex flex-col gap-6 mx-auto mt-12 justify-center items-center'
         >
           <LinkItem2
+            hideMenu={hideMenu}
             text={"Register"}
-            path={"/menu"}
+            path={"/auth/register"}
             className={"medText p-3 rounded-lg border border-slate-500"}
           />
           <LinkItem2
             hideMenu={hideMenu}
-            path='/login'
+            path='/auth/login'
             text='Login'
             className={`medText text-[white]`}
           />

@@ -132,7 +132,7 @@ const Navbar = ({ children }) => {
             <MdOutlineMenu className='text-[3vh]' />
           )}
         </div>
-        {sideNav && <SideNavMobile />}
+        {sideNav && <SideNavMobile setShowmenu={setShowmenu} />}
       </motion.nav>
     </div>
   );

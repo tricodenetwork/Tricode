@@ -11,18 +11,16 @@ import WhyTricode from "@/Components/WhyTricode/index";
 import OurServices from "@/Components/OurServices/index";
 import OurNewsletter from "@/Components/OurNewsletter/index";
 import Footer from "@/Components/Footer/index";
-// import Image from "next/image";
-// import Square from "@/components/Square";
-// import Lottie from "lottie-react";
-// import greenLady from "@/public/assets/lottie/greenlady.json";
-// import GraySquare from "@/components/GraySquare";
-// import { motion } from "framer-motion";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 export default function Home() {
   const [screenWidth, setScreenWidth] = useState(0);
   const { ref, inView } = useInView({ threshold: 0.2 });
   const animation = useAnimation();
   const animation2 = useAnimation();
+  const { data: session } = useSession();
+  console.log("session:", session);
+
   useEffect(() => {
     console.log("inView", inView);
 
