@@ -15,6 +15,12 @@ const projectDetails = [
 
 const Dashboard = () => {
   // --------------------------------------------VARIABLES
+  const currentDate = new Date();
+  const options = { weekday: "long", month: "long", day: "numeric" };
+
+  const formattedDate = new Intl.DateTimeFormat("en-US", options).format(
+    currentDate
+  );
 
   //-----------------------------------------------------------FUNCTIONS
 
@@ -30,7 +36,7 @@ const Dashboard = () => {
             <span className='text-[#666666]'>👋🏾</span>
           </p>
           <div className='text-[#8c8787] text-[15px] tracking-[0] leading-[normal]'>
-            August 17, Wednesday
+            {formattedDate.toString()}
           </div>
           <div className='relative w-[90vw] lg:w-[383px] h-[377px] mt-[116px] bg-white rounded-[32px] border-2 border-solid border-[#efeeee]'>
             <div className="absolute top-[134px] left-[85px] [font-family:'Poppins-Medium',Helvetica] font-medium text-[#2b2b2b] text-[20px] tracking-[0] leading-[normal]">

@@ -33,13 +33,15 @@ export default NextAuth({
     }),
   ],
   callbacks: {
-    async redirect({ url, baseUrl }) {
-      // Allows relative callback URLs
-      //   if (url.startsWith("/")) return `${baseUrl}${url}`;
-      // Allows callback URLs on the same origin
-      //   else if (new URL(url).origin === baseUrl) return url;
-      //   console.log(baseUrl);
-      return `${baseUrl}/`;
+    async signIn(user, account, profile) {
+      // Redirect based on user role
+      if (user.role === "talent") {
+        return "/menu/dashboard"; // Replace with your talent dashboard route
+      } else if (user.role === "company") {
+        return "/menu/dashboard"; // Replace with your company dashboard route
+      } else {
+        return "/role"; // Default redirect URL
+      }
     },
   },
 });

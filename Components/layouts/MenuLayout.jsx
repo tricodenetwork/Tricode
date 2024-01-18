@@ -73,7 +73,7 @@ const MenuLayout = ({ children }) => {
             <Bell />
           </div>
           <div className='w-[30px] lg:flex hidden  hover:scale-90 hover:rotate-[360deg] hover:cursor-pointer transition-all ease-out duration-100 relative rounded-full h-[30px]'>
-            <Link href={"/menu/settings/user"}>
+            <Link href={"/settings/user"}>
               <Settings />
             </Link>
           </div>

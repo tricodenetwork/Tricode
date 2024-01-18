@@ -1,7 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
 
-const InputLine = ({ placeholder, type, value, onChange }) => {
+const InputLine = ({ placeholder, type, value, onChange, styles }) => {
   // --------------------------------------------VARIABLES
   const location = useRouter();
   const isRegister = location.pathname.split("/").pop() === `register`;
