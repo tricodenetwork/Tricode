@@ -3,45 +3,56 @@ import { extractHoursAndMinutes } from "@/lib/utils/dateFunctions";
 import Image from "next/image";
 import SearchComponent from "../editor/SearchComponent";
 import { useState } from "react";
+import Link from "next/link";
+import { ChatItem } from "react-chat-elements";
 
 export default function MessageList() {
   const [val, setVal] = useState("");
 
   return (
-    <section className=' w-full h-full scrollbar-hide border-r border-grayText overflow-scroll '>
-      <div className=' w-[90%] mb-5 space-x-3 px-2 py-2 border-b border-[#e0e0e0] flex items-center justify-start rounded-md'>
-        <div className='w-[24px] h-[24px] relative'>
-          <Image src={"/assets/icons/glass.svg"} fill alt='glass' />
+    <section className=" w-full h-full scrollbar-hide border-r border-grayText overflow-scroll ">
+      <div className=" w-[90%] mb-5 space-x-3 px-2 py-2 border-b border-[#e0e0e0] flex items-center justify-start rounded-md">
+        <div className="w-[24px] h-[24px] relative">
+          <Image src={"/assets/icons/glass.svg"} fill alt="glass" />
         </div>
         <input
-          placeholder='Find tradesperson...'
+          placeholder="Find tradesperson..."
           value={val}
-          className='bg-transparent font-medium text-sm tracking-[0] leading-[normal] whitespace-nowrap outline-none text-[#e0e0e0]'
+          className="bg-transparent font-medium text-sm tracking-[0] leading-[normal] whitespace-nowrap outline-none text-[#e0e0e0]"
           onChange={(e) => {
             setVal(e.target.value);
           }}
-          type='text'
+          type="text"
         />
       </div>
       {userArray.map((user, key) => (
-        <div
-          className='flex items-center gap-2 hover:bg-gray-100 p-2 rounded-sm'
+        <Link
+          href={`/menu/project/chat/?name=${user.fullName}`}
+          className="flex w-full items-start gap-2 hover:bg-gray-100 p-2 rounded-sm"
           key={(key + user.lastOnline).toString()}
         >
+          {/* <ChatItem
+          avatar={"/assets/icons/Ellipse.png"}
+          alt={"Reactjs"}
+          title={user.fullName}
+          subtitle={"What are you doing?"}
+          date={new Date()}
+          unread={0}
+        /> */}
           <Image
             src={"/assets/icons/Ellipse.png"}
-            alt=''
+            alt=""
             width={34}
             height={34}
-            className='w-[45px] h-[45px] rounded-full'
+            className="w-[45px] h-[45px] rounded-full"
           />
           <div>
-            <div className='font-bold text-sm capitalize'>{user.fullName}</div>
-            <p className='text-xs text-[#bdbdbd]'>
+            <div className="font-bold text-sm capitalize">{user.fullName}</div>
+            <p className="text-xs text-[#bdbdbd]">
               {extractHoursAndMinutes(user.lastOnline)}
             </p>
           </div>
-        </div>
+        </Link>
       ))}
     </section>
   );
