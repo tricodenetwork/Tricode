@@ -8,6 +8,7 @@ import createEmotionCache from "../config/createEmotionCache";
 import { wrapper } from "../store/store";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { Provider } from "react-redux";
+import 'react-chat-elements/dist/main.css'
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
