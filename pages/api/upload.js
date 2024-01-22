@@ -10,7 +10,7 @@ const readFile = (req, saveLocally) => {
   if (saveLocally) {
     options.uploadDir = path.join(process.cwd(), "/public/files");
     options.filename = (name, ext, path, form) => {
-      return Date.now().toString() + "_" + path.originalFilename;
+      return req?.query?.company + "_" + path.originalFilename;
     };
   }
   const form = formidable(options);
@@ -32,7 +32,6 @@ export default async function handler(req, res) {
   } catch (error) {
     await fs.mkdir(path.join(process.cwd(), "/public", "/files"));
   }
-  console.log("test");
   await readFile(req, true);
   res.json({ done: "ok" });
 }

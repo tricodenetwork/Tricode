@@ -10,23 +10,51 @@ import Link from "next/link";
 import FileUpload from "../modals/FileUpload";
 import { useDispatch, useSelector } from "react-redux";
 import Close from "@mui/icons-material/Close";
-import { delFile } from "@/store/slice-reducers/uploadSlice";
+import {
+  delFile,
+  setDescription,
+  setName,
+} from "@/store/slice-reducers/uploadSlice";
+import useProjects from "@/hooks/useProjects";
+import axios from "axios";
 
 function AddNew() {
   const [files, setFiles] = useState([]);
   const [selected, setSelectedCountry] = useState(
     countries[0]?.code.toLowerCase()
   );
-  const selectedCountry = (e) => {
-    console.log(e.target.value);
-    setSelectedCountry(e.target.value?.toLowerCase());
-  };
+  const { data } = useProjects();
   const router = useRouter();
-  const { filess } = useSelector((state) => state.upload);
+  const upload = router.query?.upload;
+  const company = data?.email;
+  let allFiles = [];
+  const { filess, name, description } = useSelector((state) => state.upload);
   const dispatch = useDispatch();
 
-  const upload = router.query?.upload;
+  filess.forEach((item) =>
+    allFiles.push(company?.concat("_").concat(item.name))
+  );
+
   console.log("files", files);
+
+  const handleSubmit = async () => {
+    console.log("submittin");
+    try {
+      const response = await axios.post("/api/new_project", {
+        company: data?.name,
+        name,
+        description,
+        files: allFiles,
+      });
+
+      // Handle successful response
+      console.log("Response:", response.data);
+      router.push("/menu/project");
+    } catch (error) {
+      // Handle error
+      console.error("Error:", error);
+    }
+  };
 
   return (
     <section
@@ -35,7 +63,7 @@ function AddNew() {
       }  scrollbar-hide`}
     >
       {upload && (
-        <div className='bg-black bg-opacity-80 w-full z-50  flex justify-center items-center  h-full absolute top-0 left-0 '>
+        <div className='bg-black bg-opacity-80 w-full z-50  flex justify-center items-center  h-full fixed top-0 left-0 '>
           <FileUpload files={files} setFiles={setFiles} />
         </div>
       )}
@@ -53,6 +81,8 @@ function AddNew() {
       <input
         className={`py-3 border-b-2 medium text-ash3 text-sm px-3 lg:text-base border-b-gray-400 w-full mb-5`}
         placeholder='Type your project name'
+        onChange={(e) => dispatch(setName(e.target.value))}
+        value={name}
       />
       <h3 className={` capitalize text-start  mb-1 lg:mb-2`}>
         Describe the work required clearly so that builders can understand.
@@ -106,7 +136,7 @@ function AddNew() {
         ))}
       </div>
 
-      <h3 className={` capitalize text-start  mb-2 lg:mb-4`}>
+      {/* <h3 className={` capitalize text-start  mb-2 lg:mb-4`}>
         How do we contact you?
       </h3>
 
@@ -126,23 +156,28 @@ function AddNew() {
               ))}
             </select>
             <input
-              className='border-b-2 w-full border-b-gray-300'
+              className='border-b-2 outline-none w-full border-b-gray-300'
               type='phone'
+              onChange={(e) => setMobilePhone(e.target.value)}
             />
           </div>
 
           <div className='flex justify-center gap-2 items-end'>
             <div>Email</div>
             <input
-              className='border-b-2 w-full border-b-gray-300'
+              className='border-b-2 w-full outline-none border-b-gray-300'
               type='email'
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className='w-full flex justify-center my-5'>
-        <button className='bg-green-500 text-white rounded-full py-2 px-16 self-center'>
+        <button
+          onClick={handleSubmit}
+          className='bg-green-500 text-white rounded-full py-2 px-16 self-center'
+        >
           Submit Now
         </button>
       </div>

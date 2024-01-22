@@ -9,7 +9,7 @@ const Project = () => {
   //------------------------------------------------------------------USE EFFECTS
 
   return (
-    <div className='h-max p-5 bord lg:p-10 w-full flex flex-col'>
+    <div className='h-max p-5 lg:p-10 w-full flex flex-col'>
       <AddNew />
     </div>
   );

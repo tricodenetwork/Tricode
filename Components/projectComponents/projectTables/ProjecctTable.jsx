@@ -1,3 +1,4 @@
+import useProjects from "@/hooks/useProjects";
 import { PlusIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 
@@ -14,7 +15,7 @@ function ProjectTable() {
   return (
     <section className='w-full lg:w-[85%] px-5 lg:px-10 self-center h-full  '>
       <div className='flex  w-full justify-between'>
-        <h3 className={` `}>New project (s)</h3>
+        <h3 className={` `}>Projects</h3>
         <Link
           href={"/menu/project/addnew"}
           className='font-bold  flex gap-3 text-binance_green hover:text-grayText duration-100 hover:scale-110  items-center'
@@ -25,11 +26,6 @@ function ProjectTable() {
       <section>
         <Table />
       </section>
-
-      <section className='my-10'>
-        <h3 className={` capitalize text-start`}>Project History</h3>
-        <TableHistory />
-      </section>
     </section>
   );
 }
@@ -37,6 +33,8 @@ function ProjectTable() {
 export default ProjectTable;
 
 const Table = () => {
+  const { projects, convertObjectIdToDate } = useProjects();
+
   return (
     <div className='flex justify-center items-center mt-10'>
       <table className='w-full bg-white  rounded'>
@@ -54,7 +52,7 @@ const Table = () => {
           </tr>
         </thead>
         <tbody className=''>
-          {projectDetails.map((v, k) => (
+          {projects?.map((v, k) => (
             <tr
               key={k.toString()}
               className='border-y-[0.8px] border-opacity-25 border-grayText  hover:bg-gray-100'
@@ -66,7 +64,7 @@ const Table = () => {
                 {v.name}
               </td>
               <td className='py-5 px-4 medium hidden lg:flex text-grayText text-base text-center whitespace-nowrap'>
-                {v.date}
+                {convertObjectIdToDate(v._id)}
               </td>
               <td
                 className={`py-5 px-4 text-center text-base font-semibold whitespace-nowrap ${
@@ -87,7 +85,7 @@ const Table = () => {
               </td>
               <td className='py-5 px-4 hidden lg:flex text-center'>
                 <Link
-                  href={"/menu/project/projectID"}
+                  href={`/menu/project/${v._id}`}
                   className='  border-binance_green light text-binance_green hover:bg-binance_green hover:text-white duration-300 h text-xs  text-center px-9 py-3 rounded-[50px]   border'
                 >
                   View

@@ -32,11 +32,11 @@ const projectMilestones = [
   // { name: "A1 1", amount: "$2000", contingency:"$00" status: "Awaiting your review" },
 ];
 
-function ProjectTransactions() {
+function ProjectTransactions({ project }) {
   return (
     <section className='   '>
       <section className='my-10'>
-        <TransactionHistory />
+        <TransactionHistory project={project} />
       </section>
 
       <div className='flex gap-3 justify-center items-center my-6'>
@@ -50,7 +50,7 @@ function ProjectTransactions() {
 
 export default ProjectTransactions;
 
-const TransactionHistory = () => {
+const TransactionHistory = ({ project }) => {
   return (
     <div className='flex justify-center items-center lg:scrollbar-hide overflow-x-scroll mt-10'>
       <table className='w-full bg-white  rounded'>
@@ -69,7 +69,7 @@ const TransactionHistory = () => {
           </tr>
         </thead>
         <tbody className='text-gray-600 text-sm font-light'>
-          {projectMilestones.map((v, k) => (
+          {project?.milestones?.map((v, k) => (
             <tr
               key={k.toString()}
               className='border-b border-gray-200 hover:bg-gray-100'
@@ -78,7 +78,7 @@ const TransactionHistory = () => {
                 {k < 9 ? `0${k + 1}` : k + 1}
               </td>
               <td className='py-6 px-6 text-center whitespace-nowrap'>
-                {v.name}
+                {v.payment}
               </td>
               <td className='py-6 px-6 text-center whitespace-nowrap'>
                 {v.amount}
@@ -88,14 +88,14 @@ const TransactionHistory = () => {
               </td>
 
               <td
-                className={`py-6 px-6 text-center  medium whitespace-nowrap ${
-                  v.status == "Pending" ? "text-appOrange" : "text-[#27AE60]"
+                className={`py-6 px-6 text-center capitalize   medium whitespace-nowrap ${
+                  v.status == "pending" ? "text-appOrange" : "text-[#27AE60]"
                 }`}
               >
                 {v.status}
               </td>
               <td className='py-3 px-6 text-center'>
-                {v.status == "Pending" && (
+                {v.status == "pending" && (
                   <Link
                     href={"/menu/project/projectID"}
                     className='  border-binance_green light text-binance_green hover:bg-binance_green hover:text-white duration-300 h text-xs  text-center px-9 py-3 rounded-[50px]   border'

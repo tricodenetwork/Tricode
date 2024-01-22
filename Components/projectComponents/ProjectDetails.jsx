@@ -5,7 +5,7 @@ import useFunctions from "@/hooks/useFunctions";
 import { BackButton } from "../Button";
 import { AppButton2 } from "../AppButton";
 
-function ProjectDetails() {
+function ProjectDetails({ project }) {
   const { imageLoader } = useFunctions();
 
   return (
@@ -23,7 +23,7 @@ function ProjectDetails() {
       </div>
       <div>
         <h3 className={`text-start mb-4 text-grayText uppercase `}>
-          Luke Kajola
+          {project?.manager}
         </h3>
         <div className=' flex lg:flex-row flex-col gap-2 lg:text-[5px] text-[#38A312]'>
           <div className='flex gap-1 text-xs  lg:text-sm items-center '>
@@ -43,32 +43,24 @@ function ProjectDetails() {
           <div className='text-xs medium  lg:text-sm'>
             Status:{" "}
             <span className='text-[#38A312] text-xs  lg:text-sm medium'>
-              Completed
+              {project?.status}
             </span>
           </div>
         </div>
 
         <div className='flex flex-col items-start'>
           <p className=' text-grayText medium'>
-            Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-            sint. Velit officia consequat duis enim velit mollit. Exercitation
-            veniam consequat sunt nostrud amet. Amet minim mollit non deserunt
-            ullamco est sit aliqua dolor do amet sint. Velit officia consequat
-            duis enim velit mollit. Exercitation veniam consequat sunt nostrud
-            amet
+            {project?.report[project?.report.length - 1]?.summary}
           </p>
           <ol className='text-grayText ml-4 medium list-decimal'>
             <li className='my-4 medium'>
-              Amet minim mollit non deserunt ullamco est sit aliqua dolor do
-              amet sint.{" "}
+              {project?.report[project?.report.length - 1]?.highlights[0]}
             </li>
             <li className='my-4 medium'>
-              Amet minim mollit non deserunt ullamco est sit aliqua dolor do
-              amet sint.{" "}
+              {project?.report[project?.report.length - 1]?.highlights[1]}
             </li>
             <li className='my-4 medium'>
-              Amet minim mollit non deserunt ullamco est sit aliqua dolor do
-              amet sint.{" "}
+              {project?.report[project?.report.length - 1]?.highlights[2]}
             </li>
           </ol>
         </div>

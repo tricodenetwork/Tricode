@@ -98,7 +98,6 @@ const MenuLayout = ({ children }) => {
           } lg:flex flex-col border-r z-20 border-opacity-20  duration-700 ease-out  pt-[4vh] lg:pt-0 lg:mt-[7vh]  border-[#000000]`}
         >
           <MenuList isOpen={isOpen} Icon={Dashboard} name={"Dashboard"} />
-          <MenuList isOpen={isOpen} Icon={Teams} name={"Teams"} />
           <MenuList isOpen={isOpen} Icon={Project} name={"Project"} />
           <MenuList isOpen={isOpen} Icon={Payment} name={"Payment"} />
           <MenuList isOpen={isOpen} Icon={Help} name={"Help"} />

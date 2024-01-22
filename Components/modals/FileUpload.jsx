@@ -5,10 +5,12 @@ import { Close, Cloud } from "@mui/icons-material";
 import { Router, useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { setFilee } from "@/store/slice-reducers/uploadSlice";
+import useProjects from "@/hooks/useProjects";
 
 const FileUpload = ({ close, files, setFiles }) => {
   const [uploadProgress, setUploadProgress] = useState(0);
   const [selectedFile, setSelectedFile] = useState(null);
+  const { data } = useProjects();
 
   const inputFileRef = React.useRef(null);
 
@@ -63,7 +65,7 @@ const FileUpload = ({ close, files, setFiles }) => {
     formData.append("file", file);
 
     try {
-      await axios.post("/api/upload", formData, {
+      await axios.post(`/api/upload?company=${data?.email}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

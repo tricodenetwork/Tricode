@@ -4,12 +4,72 @@ import Link from "next/link";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ProjectDetails from "@/Components/projectComponents/ProjectDetails";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
+import useProjects from "@/hooks/useProjects";
+import Image from "next/image";
+
+const TeamCard = ({ member }) => {
+  return (
+    <div className='w-[217px] flex flex-col items-center h-[250px] relative'>
+      <h6 className='regular mb-2 text-[16px] text-[#131418]'>{member.dept}</h6>
+      <p className='regular mb-2 text-xs text-binance_ash medium'>
+        {member.name}
+      </p>
+      <div className='w-[90%] h-[140px] flex  justify-center items-center rounded-[20px] shadow-md shadow-slate-400'>
+        <div
+          className='w-[88px] relative mx-auto mt-4 self-center h-[88px]'
+          src={member.image}
+          alt='team-member'
+        >
+          <Image
+            src={"/assets/images/team.png"}
+            fill
+            alt='profile_pic'
+            className='object-cover'
+          />
+        </div>
+      </div>
+      <button className='w-[129px] mt-5 hover:bg-binance_green duration-300 hover:text-white medium text-[12px] self-center border border-binance_green text-binance_green h-[33px] rounded-3xl'>
+        View Profile
+      </button>
+    </div>
+  );
+};
+
+const members = [
+  { title: "Project Manager", src: "/assets/images/team.png" },
+  { title: "Researcher", src: "/assets/images/team.png" },
+  { title: "Marketer", src: "/assets/images/team.png" },
+  { title: "Front-end Dev", src: "/assets/images/team.png" },
+  { title: "UI/UX Designer", src: "/assets/images/team.png" },
+  { title: "Researcher", src: "/assets/images/team.png" },
+  { title: "Marketer", src: "/assets/images/team.png" },
+  { title: "Front-end Dev", src: "/assets/images/team.png" },
+  { title: "Project Manager", src: "/assets/images/team.png" },
+  { title: "Researcher", src: "/assets/images/team.png" },
+  { title: "Marketer", src: "/assets/images/team.png" },
+  { title: "Front-end Dev", src: "/assets/images/team.png" },
+  { title: "UI/UX Designer", src: "/assets/images/team.png" },
+  { title: "Researcher", src: "/assets/images/team.png" },
+  { title: "Marketer", src: "/assets/images/team.png" },
+  { title: "Front-end Dev", src: "/assets/images/team.png" },
+];
 
 const ProjectID = () => {
   // --------------------------------------------VARIABLES
   const [navto, setNav] = useState("milestone");
+  const router = useRouter();
+  const { projectId } = router.query;
+  const { projects, allUsers } = useProjects();
+  let teamMembers = [];
 
   //-----------------------------------------------------------FUNCTIONS
+
+  const project = projects?.filter((item) => item._id == projectId)[0];
+  allUsers?.forEach((item) => {
+    project?.teams.includes(item.name) && teamMembers.push(item);
+  });
 
   //------------------------------------------------------------------USE EFFECTS
   return (
@@ -17,19 +77,14 @@ const ProjectID = () => {
       <section className='bg-[#F2F2F2] rounded-[5px] p-6 mt-[19px] mb-[44px]'>
         <div className='grid grid-cols-[1.5fr,3fr] lg:grid-cols-[1fr,5fr] gap-3 mb-[14px] '>
           <div className='font-semibold text-black'>Project name</div>
-          <div className='light text-base'>AI Platform</div>
+          <div className='light text-base '>{project?.name}</div>
         </div>
 
         <div className='grid grid-cols-[1.5fr,3fr] lg:grid-cols-[1fr,5fr] gap-3 '>
           <div className='font-semibold  flex justify-start items-center text-black'>
             Description
           </div>
-          <div className='light text-xs text-black'>
-            Lorem ipsum dolor sit amet consectetur. At netus in integer nec. Ac
-            non diam venenatis aenean nulla eu sagittis scelerisque facilisi.
-            Mattis eget amet vulputate augue et orci. Tristique fringilla congue
-            sollicitudin
-          </div>
+          <div className='light text-xs text-black'>{project?.description}</div>
         </div>
       </section>
       <section className='shadow-[0px_0px_10px_#d9d9d9]  flex flex-row lg:flex-col border rounded-[10px] p-6 py-5 h-[50vh] lg:h-max lg:py-10 mb-[44px] w-full'>
@@ -125,7 +180,7 @@ const ProjectID = () => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -50 }}
               >
-                <ProjectTransactions />
+                <ProjectTransactions project={project} />
               </motion.div>
             ) : navto === "details" ? (
               <motion.div
@@ -134,10 +189,21 @@ const ProjectID = () => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -50 }}
               >
-                <ProjectDetails />
+                <ProjectDetails project={project} />
               </motion.div>
             ) : null}
           </AnimatePresence>
+        </div>
+      </section>
+      <div className='bg-[#DADADA] w-[50%] h-[2px] mx-auto mt-12 mb-14' />
+      <section className=' w-full lg:w-[996px] mt-8   py-4  scrollbar-hide h-max border-[#EFEFEF] border-[0.5px] rounded-3xl self-center'>
+        <h6 className='semiBold text-lg lg:text-[24px] my-5 text-left text-[#2b2b2b] pl-10 w-full'>
+          {"Team"}
+        </h6>
+        <div className='w-full flex mt-10 flex-wrap gap-3 justify-center'>
+          {teamMembers?.map((member, i) => {
+            return <TeamCard key={i.toString()} member={member} />;
+          })}
         </div>
       </section>
     </section>
