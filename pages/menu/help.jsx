@@ -1,6 +1,6 @@
 import MenuLayout from "@/Components/layouts/MenuLayout";
 import ProjectTable from "@/Components/projectComponents/projectTables/ProjecctTable";
-import MessageItem from "@/components/chatComponents/MessageItem";
+import MessageItem from "@/Components/chatComponents/MessageItem";
 
 const Project = () => {
   // --------------------------------------------VARIABLES
