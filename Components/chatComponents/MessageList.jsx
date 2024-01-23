@@ -17,11 +17,34 @@ export default function MessageList() {
   const { createChatRoom } = useChatroom();
   const { projects, allUsers } = useDatabase();
   const { data: session } = useSession();
+  // Retrieve team from sessionStorage on component mount
+
   const [team, setTeam] = useState(() => {
-    // Retrieve team from sessionStorage on component mount
-    const storedTeam = sessionStorage.getItem("team");
-    return storedTeam ? JSON.parse(storedTeam) : null;
+    if (typeof window !== "undefined") {
+      const storedTeam = sessionStorage.getItem("team");
+      return storedTeam ? JSON.parse(storedTeam) : null;
+    }
+    return null;
   });
+
+  useEffect(() => {
+    if (projects && allUsers && typeof window !== "undefined") {
+      // Concatenate teams' names from projects
+      const teamMembers = projects
+        .filter((item) => item.company === session?.user?.name)
+        .map((project) => project.teams)
+        .flat();
+
+      // Filter allUsers based on concatenated team names
+      const newTeam = allUsers.filter((user) =>
+        teamMembers.includes(user.name)
+      );
+
+      // Update state and store in sessionStorage
+      setTeam(newTeam);
+      sessionStorage.setItem("team", JSON.stringify(newTeam));
+    }
+  }, [projects, allUsers, session]);
 
   useEffect(() => {
     if (projects && allUsers) {

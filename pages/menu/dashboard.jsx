@@ -20,6 +20,7 @@ const Dashboard = () => {
   // --------------------------------------------VARIABLES
   const currentDate = new Date();
   const { data: session } = useSession();
+  const { projects, user } = useDatabase();
   console.log("image", session?.user?.name);
   const imageUrl = user?.image ? data.image : "/assets/images/company.svg";
 
@@ -27,7 +28,6 @@ const Dashboard = () => {
   const formattedDate = new Intl.DateTimeFormat("en-US", options).format(
     currentDate
   );
-  const { projects, user } = useDatabase();
 
   //-----------------------------------------------------------FUNCTIONS
 
