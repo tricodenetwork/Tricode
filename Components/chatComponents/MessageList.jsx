@@ -40,9 +40,9 @@ export default function MessageList() {
             avatar={"/assets/icons/Ellipse.png"}
             alt={""}
             title={user.fullName}
-            subtitle={"What are you doing?"}
-            date={new Date()}
-            unread={0}
+            subtitle={`"What are you doing?"`}
+            date={extractHoursAndMinutes(user.lastOnline)}
+            unread={user.unread}
           />
           {/* <Image
             src={"/assets/icons/Ellipse.png"}
