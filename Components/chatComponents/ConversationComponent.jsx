@@ -17,7 +17,7 @@ export const ConversationMessaging = () => {
   return (
     <div className="w-full h-full">
       {/* Header */}
-      <div className="pb-[20px] pl-[50px] w-[80%] mb-[50px] flex items-center gap-2 relative border-b border-b-[#eoeoeo]">
+      <div className="pb-[20px] pl-[20px] w-full mb-[50px] flex items-center gap-2 relative border-b border-b-[#eoeoeo]">
         <div className="relative w-[45px] h-[45px] ">
           <Image
             src={"/assets/icons/Ellipse.png"}
@@ -57,6 +57,14 @@ export const ConversationMessaging = () => {
           />
         </div>
 
+        <div className="flex flex-row my-5 items-center justify-center">
+          <hr />
+          <span className="px-[2em] py-[6px] bg-zinc-100 rounded-[50px]">
+            Today
+          </span>
+          <hr />
+        </div>
+
         {/***SENDERS MESSAGE BUBBLE */}
         <div className="flex flex-col justify-end mb-2 ml-[20%] mr-4 items-end gap-2">
           <div className="flex flex-row gap-3 items-center">
@@ -75,9 +83,8 @@ export const ConversationMessaging = () => {
             onReplyMessageClick={() => console.log("reply clicked!")}
             position={"right"}
             type={"text"}
-            text={
-              "Tempor duis do voluptate enim duis velit veniam aute ullamco dolore duis irure."
-            }
+            text={`Tempor duis do voluptate enim duis velit veniam aute ullamco dolore duis irure. 
+              Tempor duis do voluptate enim duis velit veniam aute ullamco dolore duis irure.`}
           />
         </div>
       </div>
