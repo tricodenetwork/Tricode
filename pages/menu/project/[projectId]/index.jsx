@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import ProjectDetails from "@/Components/projectComponents/ProjectDetails";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import useProjects from "@/hooks/useProjects";
+import useDatabase from "@/hooks/useDatabase";
 import Image from "next/image";
 
 const TeamCard = ({ member }) => {
@@ -61,14 +61,14 @@ const ProjectID = () => {
   const [navto, setNav] = useState("milestone");
   const router = useRouter();
   const { projectId } = router.query;
-  const { projects, allUsers } = useProjects();
+  const { projects, allUsers } = useDatabase();
   let teamMembers = [];
 
   //-----------------------------------------------------------FUNCTIONS
 
   const project = projects?.filter((item) => item._id == projectId)[0];
   allUsers?.forEach((item) => {
-    project?.teams.includes(item.name) && teamMembers.push(item);
+    project?.teams?.includes(item.name) && teamMembers.push(item);
   });
 
   //------------------------------------------------------------------USE EFFECTS

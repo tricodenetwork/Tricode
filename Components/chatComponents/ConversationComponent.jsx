@@ -2,7 +2,11 @@ import Image from "next/image";
 import { BiDotsVertical } from "react-icons/bi";
 import { IoCheckmarkDoneOutline } from "react-icons/io5";
 import { formatDate } from "@/lib/utils/dateFunctions";
+import { ChatItem } from "react-chat-elements";
+import { useSession } from "next-auth/react";
+
 export const ConversationMessaging = () => {
+  const { data: session } = useSession();
   return (
     <div className='w-full h-full '>
       {/* Header */}
@@ -20,6 +24,15 @@ export const ConversationMessaging = () => {
           Uche Livingstone
         </div>
       </div>
+      {/* 
+      <ChatItem
+        avatar={session?.user?.image}
+        alt={"Reactjs"}
+        title={"Facebook"}
+        subtitle={"What are you doing?"}
+        date={new Date()}
+        unread={4}
+      /> */}
 
       {/* Conversation */}
       <div className='flex-1 overflow-y-scroll ml-[50px]  py-2'>

@@ -1,4 +1,4 @@
-import useProjects from "@/hooks/useProjects";
+import useDatabase from "@/hooks/useDatabase";
 import { PlusIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 
@@ -33,7 +33,7 @@ function ProjectTable() {
 export default ProjectTable;
 
 const Table = () => {
-  const { projects, convertObjectIdToDate } = useProjects();
+  const { projects, convertObjectIdToDate } = useDatabase();
 
   return (
     <div className='flex justify-center items-center mt-10'>

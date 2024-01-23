@@ -2,11 +2,12 @@ import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import axios from "axios";
 
-const useProjects = () => {
+const useDatabase = () => {
   const { data: session } = useSession();
-  const [data, setData] = useState(null);
+  const [user, setUser] = useState(null);
   const [allUsers, setAllUsers] = useState(null);
   const [projects, setProjects] = useState(null);
+  const [rooms, setRooms] = useState(null);
 
   function convertObjectIdToDate(oid) {
     const timestamp = parseInt(oid.substring(0, 8), 16) * 1000;
@@ -28,9 +29,12 @@ const useProjects = () => {
           const res2 = await axios.post("/api/projects", {
             name: session.user.name,
           });
-          const res3 = await axios.post("/api/users");
+          const res3 = await axios.get("/api/users");
+          const res4 = await axios.get("/api/get/chatrooms");
+
+          setRooms(res4.data.data);
           setAllUsers(res3.data.data);
-          setData(res.data.data);
+          setUser(res.data.data);
           setProjects(res2.data.data);
           console.log("projects", res2.data.data);
         } catch (error) {
@@ -44,7 +48,7 @@ const useProjects = () => {
     }
   }, [session]);
 
-  return { data, projects, convertObjectIdToDate, allUsers };
+  return { user, projects, convertObjectIdToDate, allUsers, rooms };
 };
 
-export default useProjects;
+export default useDatabase;

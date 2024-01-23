@@ -190,6 +190,23 @@ h3 {
   line-height: normal;
 } */
 
+.rce-mtitem-date {
+  color: red; 
+  font-size: 14px;
+}
+.rce-mtmg-date {
+  color: green;
+  font-size: 14px;
+
+}
+
+.chat-item .rce-citem-body--top-time {
+  font-size: 12px;
+  font-family: "Poppins-Medium";
+    color: rgba(0, 0, 0, 0.4);
+
+}
+
 .hirecard:hover {
 }
 .listitem {

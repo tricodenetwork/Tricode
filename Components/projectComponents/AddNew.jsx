@@ -15,7 +15,7 @@ import {
   setDescription,
   setName,
 } from "@/store/slice-reducers/uploadSlice";
-import useProjects from "@/hooks/useProjects";
+import useDtabase from "@/hooks/useDatabase";
 import axios from "axios";
 
 function AddNew() {
@@ -23,7 +23,7 @@ function AddNew() {
   const [selected, setSelectedCountry] = useState(
     countries[0]?.code.toLowerCase()
   );
-  const { data } = useProjects();
+  const { data } = useDtabase();
   const router = useRouter();
   const upload = router.query?.upload;
   const company = data?.email;
