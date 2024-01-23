@@ -26,9 +26,9 @@ const Chat = () => {
   });
 
   return (
-    <div {...handlers} className='h-full flex gap-4 items-center w-full p-10'>
+    <div {...handlers} className='h-full flex gap-4 items-center w-full mt-10'>
       {showMessageList && (
-        <div className='w-full lg:w-[22%] h-full'>
+        <div className='w-full lg:w-[320px] h-full'>
           <MessageList />
         </div>
       )}

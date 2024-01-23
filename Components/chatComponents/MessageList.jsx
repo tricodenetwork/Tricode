@@ -11,7 +11,7 @@ export default function MessageList() {
 
   return (
     <section className=" w-full h-full scrollbar-hide border-r border-grayText overflow-scroll ">
-      <div className=" w-[90%] mb-5 space-x-3 px-2 py-2 border-b border-[#e0e0e0] flex items-center justify-start rounded-md">
+      <div className="mb-5 space-x-3 mx-5 px-2 py-2 border-b border-[#e0e0e0] flex items-center justify-center rounded-md">
         <div className="w-[24px] h-[24px] relative">
           <Image src={"/assets/icons/glass.svg"} fill alt="glass" />
         </div>
@@ -31,15 +31,15 @@ export default function MessageList() {
           className="flex w-full items-start gap-2 hover:bg-gray-100 p-2 rounded-sm"
           key={(key + user.lastOnline).toString()}
         >
-          {/* <ChatItem
-          avatar={"/assets/icons/Ellipse.png"}
-          alt={"Reactjs"}
-          title={user.fullName}
-          subtitle={"What are you doing?"}
-          date={new Date()}
-          unread={0}
-        /> */}
-          <Image
+          <ChatItem
+            avatar={"/assets/icons/Ellipse.png"}
+            alt={""}
+            title={user.fullName}
+            subtitle={"What are you doing?"}
+            date={new Date()}
+            unread={0}
+          />
+          {/* <Image
             src={"/assets/icons/Ellipse.png"}
             alt=""
             width={34}
@@ -51,7 +51,7 @@ export default function MessageList() {
             <p className="text-xs text-[#bdbdbd]">
               {extractHoursAndMinutes(user.lastOnline)}
             </p>
-          </div>
+          </div> */}
         </Link>
       ))}
     </section>
