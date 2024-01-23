@@ -22,7 +22,7 @@ const Dashboard = () => {
   const { data: session } = useSession();
   const { projects, user } = useDatabase();
   console.log("image", session?.user?.name);
-  const imageUrl = user?.image ? data.image : "/assets/images/company.svg";
+  const imageUrl = user?.image ? user?.image : "/assets/images/company.svg";
 
   const options = { weekday: "long", month: "long", day: "numeric" };
   const formattedDate = new Intl.DateTimeFormat("en-US", options).format(
