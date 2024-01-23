@@ -181,29 +181,39 @@ h3 {
   z-index: 999;
 }
 
-/* h3 {
-  color: #000;
-  font-family: Poppins-SemiBold;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-} */
 
-.rce-mtitem-date {
-  color: red; 
-  font-size: 14px;
-}
-.rce-mtmg-date {
-  color: green;
-  font-size: 14px;
-
-}
 
 .chat-item .rce-citem-body--top-time {
   font-size: 12px;
   font-family: "Poppins-Medium";
     color: rgba(0, 0, 0, 0.4);
+
+}
+
+.message-item-left .rce-mbox {
+width: fit-content;
+max-width: 400px;
+}
+.message-item .rce-mbox {
+  background-color: #38A312;
+  color: white;
+  width: fit-content;
+  max-width: 400px;
+}
+.message-item .rce-mbox-text {
+  font-family: "Poppins-Regular";
+}
+.message-item .rce-mbox-time{
+  color: white;
+  font-family: "Poppins-Light";
+}
+
+.message-item .rce-mbox-right-notch {
+  display: none;
+
+}
+.message-item-left .rce-mbox-left-notch {
+  display: none;
 
 }
 

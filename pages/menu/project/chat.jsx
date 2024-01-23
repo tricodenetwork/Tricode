@@ -31,7 +31,7 @@ const Chat = () => {
       className='h-full flex gap-4 items-center w-full pt-10 pl-5 overflow-clip scrollbar-hide'
     >
       {showMessageList && (
-        <div className='w-full lg:w-[30%] h-full'>
+        <div className='w-full lg:w-[25%] h-full'>
           <MessageList />
         </div>
       )}

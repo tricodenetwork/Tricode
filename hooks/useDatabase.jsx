@@ -36,7 +36,6 @@ const useDatabase = () => {
           setAllUsers(res3.data.data);
           setUser(res.data.data);
           setProjects(res2.data.data);
-          console.log("projects", res2.data.data);
         } catch (error) {
           console.log(error.message);
         }
