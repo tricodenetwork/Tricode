@@ -42,7 +42,7 @@ export const ConversationMessaging = () => {
               height={45}
               className="w-[45px] h-[45px] rounded-full"
             />
-            <div className="text-appBlue medium text-base my-2">Jan Cooper</div>
+            <div className="text-appBlue medium text-base my-2">{fullName}</div>
             <div className="text-stone-300 text-[12px] font-medium font-['Poppins']">
               10:30
             </div>

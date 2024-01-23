@@ -5,8 +5,11 @@ import SearchComponent from "../editor/SearchComponent";
 import { useState } from "react";
 import Link from "next/link";
 import { ChatItem } from "react-chat-elements";
+import { useRouter } from "next/router";
 
 export default function MessageList() {
+  const router = useRouter();
+
   const [val, setVal] = useState("");
 
   return (
@@ -26,8 +29,10 @@ export default function MessageList() {
         />
       </div>
       {userArray.map((user, key) => (
-        <Link
-          href={`/menu/project/chat/?name=${user.fullName}`}
+        <div
+          onClick={() =>
+            router.push(`/menu/project/chat/?name=${user.fullName}`)
+          }
           className="flex w-full items-start gap-2 hover:bg-gray-100 p-2 rounded-sm"
           key={(key + user.lastOnline).toString()}
         >
@@ -52,7 +57,7 @@ export default function MessageList() {
               {extractHoursAndMinutes(user.lastOnline)}
             </p>
           </div> */}
-        </Link>
+        </div>
       ))}
     </section>
   );
