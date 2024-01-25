@@ -20,7 +20,6 @@ const readFile = (req, saveLocally) => {
       if (err) {
         rej(err);
       }
-      console.log("files", files);
       res({ fields, files });
     });
   });

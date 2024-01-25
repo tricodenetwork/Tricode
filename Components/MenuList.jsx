@@ -28,7 +28,13 @@ const MenuList = ({ Icon, name, isOpen }) => {
         <div className='mr-4 w-[28px] hidden lg:flex justify-start items-center border-2 border-opacity-0 border-transparent h-[24px]'>
           <Icon active={active} />
         </div>
-        <Link href={`/menu/${name.toLowerCase()}`}>
+        <Link
+          href={
+            name.toLowerCase() == "logout"
+              ? `?logout=true`
+              : `/menu/${name.toLowerCase()}`
+          }
+        >
           <p
             className={`listitem hover:scale-110 hover:text-[#d7d7d7]  duration-200 ${
               active ? "text-binance_green lg:text-white" : "text-binance_green"

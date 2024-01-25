@@ -48,7 +48,6 @@ const Index = () => {
   };
 
   const handleSubmit = async () => {
-    console.log("submitting");
     try {
       const response = await axios.post("/api/register", {
         fullName,
@@ -60,7 +59,6 @@ const Index = () => {
       });
 
       // Handle successful response
-      console.log("Response:", response.data);
     } catch (error) {
       // Handle error
       console.error("Error:", error);

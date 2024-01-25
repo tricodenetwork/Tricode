@@ -13,7 +13,7 @@ export default async function handler(req, res) {
     const existingUser = await db
       .collection("users")
       .findOne({ email: req.body.email });
-
+    console.log(existingUser, "user");
     if (existingUser) {
       // If the user exists, update the role if it's not already set
       if (existingUser.role) {

@@ -35,9 +35,9 @@ export default NextAuth({
   callbacks: {
     async signIn(user, account, profile) {
       // Redirect based on user role
-      if (user.role === "talent") {
+      if (user?.user?.role === "talent") {
         return "/menu/dashboard"; // Replace with your talent dashboard route
-      } else if (user.role === "company") {
+      } else if (user?.user?.role === "company") {
         return "/menu/dashboard"; // Replace with your company dashboard route
       } else {
         return "/role"; // Default redirect URL

@@ -22,8 +22,6 @@ export default function Home() {
   console.log("session:", session);
 
   useEffect(() => {
-    console.log("inView", inView);
-
     if (inView) {
       animation.start({
         x: 0,

@@ -15,6 +15,8 @@ import Bell from "../svg/Bell";
 import Settings from "../svg/Settings";
 import Link from "next/link";
 import { useState } from "react";
+import ModalComponent from "../modals/ModalComponent";
+import LogOut from "../modals/LogOut";
 
 const MenuLayout = ({ children }) => {
   // --------------------------------------------VARIABLES
@@ -22,6 +24,7 @@ const MenuLayout = ({ children }) => {
   const parts = route.pathname.split("menu/");
   const title = parts.length > 1 ? parts[1].split("/")[0] : "";
   const [isOpen, setIsOpen] = useState(false);
+  const logout = route?.query?.logout;
 
   //-----------------------------------------------------------FUNCTIONS
   const { imageLoader } = useFunctions();
@@ -29,6 +32,7 @@ const MenuLayout = ({ children }) => {
 
   return (
     <div className='w-full flex  flex-col justify-start'>
+      {logout && <ModalComponent Content={LogOut} />}
       <div className='w-full  bg-binance_green  flex items-center justify-between px-[3vw] lg:px-[2vw]  h-[9vh]'>
         <div className='items-center hidden lg:flex text-white'>
           <Image

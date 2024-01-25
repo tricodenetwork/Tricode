@@ -6,13 +6,52 @@ import { IoCheckmarkDoneOutline } from "react-icons/io5";
 import { formatDate } from "@/lib/utils/dateFunctions";
 import InputLine from "@/Components/InputLine";
 import { MessageBox } from "react-chat-elements";
+import { useCallback, useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
+import useChatroom from "@/hooks/useChatroom";
+import axios from "axios";
 
 export const ConversationMessaging = () => {
   const router = useRouter();
-  const { name } = router.query;
+  const { name, id } = router.query;
+  const [message, setMessage] = useState("");
+  const [chats, setChats] = useState([]);
   // Assuming the name is in the format "firstname-lastname"
   const [firstName, lastName] = name ? name.split("-") : ["", ""];
   const fullName = `${firstName}`;
+  const { data: session } = useSession();
+  const { fetchChatsByRoomId } = useChatroom();
+
+  const getChats = async () => {
+    const allChats = await fetchChatsByRoomId(id);
+    setChats(allChats);
+  };
+
+  const sendChat = useCallback(async () => {
+    const chatMessage = {
+      roomId: id,
+      text: message,
+      user: session?.user?.email,
+      read: false,
+    };
+    try {
+      await axios.post(`/api/post/chat`, chatMessage);
+      setMessage("");
+      getChats();
+    } catch (error) {
+      console.log(error);
+    }
+  }, [session, message]);
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter" && message.trim() !== "") {
+      sendChat();
+    }
+  };
+
+  useEffect(() => {
+    getChats();
+  }, []);
 
   return (
     <div className='w-full h-full'>
@@ -33,46 +72,63 @@ export const ConversationMessaging = () => {
       {/* Conversation */}
       <div className='flex-1 overflow-y-auto h-screen py-2'>
         {/*** MESSAGE BUBBLE */}
-        <MessageBox
-          className='message-item-left'
-          onReplyMessageClick={() => console.log("reply clicked!")}
-          date={new Date()}
-          position={"left"}
-          type={"text"}
-          text={
-            "Tempor duis do voluptate enim duis velit veniam aute ullamco dolore duis irure."
-          }
-        />
+        {chats?.map((item, ind) => {
+          const timestamp = parseInt(item._id.substring(0, 8), 16) * 1000;
 
-        <div className='flex flex-row my-5 items-center justify-center'>
+          if (item.user === session?.user?.email) {
+            return (
+              <MessageBox
+                key={item.roomId.toString()}
+                className='message-item-left'
+                onReplyMessageClick={() => console.log("reply clicked!")}
+                date={new Date(timestamp)}
+                position={"left"}
+                type={"text"}
+                text={item.text}
+              />
+            );
+          } else {
+            return (
+              <MessageBox
+                key={item.roomId.toString()}
+                className='message-item'
+                onReplyMessageClick={() => console.log("reply clicked!")}
+                position={"right"}
+                date={new Date(timestamp)}
+                type={"text"}
+                text={item.text}
+              />
+            );
+          }
+        })}
+
+        {/* <div className='flex flex-row my-5 items-center justify-center'>
           <hr />
           <span className='px-[2em] py-[6px] bg-zinc-100 rounded-[50px]'>
             Today
           </span>
           <hr />
-        </div>
+        </div> */}
 
         {/***SENDERS MESSAGE BUBBLE */}
-        <MessageBox
-          className='message-item'
-          onReplyMessageClick={() => console.log("reply clicked!")}
-          position={"right"}
-          date={new Date()}
-          type={"text"}
-          text={`Tempor duis do voluptate enim duis velit veniam aute ullamco dolore duis irure. 
-              Tempor duis do voluptate enim duis velit veniam aute ullamco dolore duis irure.`}
-        />
       </div>
 
       <div className='flex fixed mx-auto bottom-3 w-[65vh] lg:w-[65vh] xl:w-[77vh] px-7 py-3 gap-4 bg-zinc-100 justify-between items-center rounded-[5px]'>
         <FiLink className='text-[22px] font-bold cursor-pointer hover:text-binance_green' />
         <InputLine
+          onKeyDown={handleKeyPress}
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
           type='text'
           styles={`bg-zinc-100`}
           name='message'
           placeholder='Type here...'
         />
-        <FiSend className='text-[22px] font-bold cursor-pointer text-binance_green' />
+
+        <FiSend
+          onClick={sendChat}
+          className='text-[22px] font-bold cursor-pointer text-binance_green'
+        />
       </div>
     </div>
   );

@@ -76,7 +76,6 @@ const FileUpload = ({ close, files, setFiles }) => {
           setUploadProgress(percentCompleted);
         },
       });
-      console.log("File uploaded successfully");
     } catch (error) {
       console.error("There was an error uploading the file.", error.response);
     }

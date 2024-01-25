@@ -21,9 +21,8 @@ const Dashboard = () => {
   const currentDate = new Date();
   const { data: session } = useSession();
   const { projects, user } = useDatabase();
-  console.log("image", session?.user?.name);
   const imageUrl = user?.image ? user?.image : "/assets/images/company.svg";
-
+  console.log(session, "sessio");
   const options = { weekday: "long", month: "long", day: "numeric" };
   const formattedDate = new Intl.DateTimeFormat("en-US", options).format(
     currentDate
@@ -118,7 +117,6 @@ const Dashboard = () => {
             </div>
             <div className='inline-flex flex-col items-start gap-[10px] relative flex-[0_0_auto]'>
               {projects?.map((project, index) => {
-                console.log("meetings", project?.meetings);
                 return project?.meetings?.map((item, i) => (
                   <div
                     key={i.toString}

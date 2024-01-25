@@ -6,7 +6,6 @@ const SelectFile = ({ name, icon, setFiles, otherFiles }) => {
   const Icon = icon;
   const handleFileChange = (e) => {
     otherFiles = [...e.target.files, ...otherFiles];
-    console.log(otherFiles);
     return setFiles(otherFiles);
   };
 

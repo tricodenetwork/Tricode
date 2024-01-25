@@ -35,10 +35,7 @@ function AddNew() {
     allFiles.push(company?.concat("_").concat(item.name))
   );
 
-  console.log("files", files);
-
   const handleSubmit = async () => {
-    console.log("submittin");
     try {
       const response = await axios.post("/api/new_project", {
         company: data?.name,
@@ -48,7 +45,6 @@ function AddNew() {
       });
 
       // Handle successful response
-      console.log("Response:", response.data);
       router.push("/menu/project");
     } catch (error) {
       // Handle error
