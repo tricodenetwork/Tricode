@@ -27,7 +27,6 @@ const Index = () => {
         role: selectedOption, // Assuming selectedOption represents "Company or Talent" field
         // Other fields if needed
       });
-      session?.user?.role = selectedOption
 
       // Handle successful response
       router.push("/menu/dashboard");
