@@ -6,11 +6,14 @@ import { Checkbox } from "@mui/material";
 import InputLine from "@/Components/InputLine";
 import { useState } from "react";
 import ShowHidePassword from "@/Components/ShowHidePassword";
+import { useSession } from "next-auth/react";
 
 const Index = () => {
   // --------------------------------------------VARIABLES
   const [checked, setChecked] = useState(false);
   const [showPasswordToggle, setShowPasswordToggle] = useState(false);
+  const { data: session } = useSession();
+  console.log(session);
 
   //-----------------------------------------------------------FUNCTIONS
   const handleChange = (event) => {

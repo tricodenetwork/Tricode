@@ -17,6 +17,8 @@ import Link from "next/link";
 import { useState } from "react";
 import ModalComponent from "../modals/ModalComponent";
 import LogOut from "../modals/LogOut";
+import Notifications from "../modals/Notifications";
+import NotificationModal from "../modals/NotificationModal";
 
 const MenuLayout = ({ children }) => {
   // --------------------------------------------VARIABLES
@@ -25,6 +27,7 @@ const MenuLayout = ({ children }) => {
   const title = parts.length > 1 ? parts[1].split("/")[0] : "";
   const [isOpen, setIsOpen] = useState(false);
   const logout = route?.query?.logout;
+  const notification = route?.query?.notification;
 
   //-----------------------------------------------------------FUNCTIONS
   const { imageLoader } = useFunctions();
@@ -33,6 +36,7 @@ const MenuLayout = ({ children }) => {
   return (
     <div className='w-full flex  flex-col justify-start'>
       {logout && <ModalComponent Content={LogOut} />}
+      {notification && <NotificationModal Content={Notifications} />}
       <div className='w-full  bg-binance_green  flex items-center justify-between px-[3vw] lg:px-[2vw]  h-[9vh]'>
         <div className='items-center hidden lg:flex text-white'>
           <Image
@@ -71,10 +75,12 @@ const MenuLayout = ({ children }) => {
             <Message />
           </div>
           <div className='relative lg:flex hidden hover:scale-90 hover:cursor-pointer transition-all ease-out duration-100'>
-            <div className='absolute -top-2 -right-2'>
-              <Ellipse />
-            </div>
-            <Bell />
+            <Link href={"?notification=true"}>
+              <div className='absolute -top-2 -right-2'>
+                <Ellipse />
+              </div>
+              <Bell />
+            </Link>
           </div>
           <div className='w-[30px] lg:flex hidden  hover:scale-90 hover:rotate-[360deg] hover:cursor-pointer transition-all ease-out duration-100 relative rounded-full h-[30px]'>
             <Link href={"/settings/user"}>

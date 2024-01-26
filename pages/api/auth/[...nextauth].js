@@ -19,13 +19,6 @@ export default NextAuth({
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
       checks: "both",
-      // authorization: {
-      //   params: {
-      //     prompt: "consent",
-      //     access_type: "offline",
-      //     response_type: "code",
-      //   },
-      // },
     }),
     SlackProvider({
       clientId: process.env.SLACK_ID,
@@ -33,15 +26,15 @@ export default NextAuth({
     }),
   ],
   callbacks: {
-    async signIn(user, account, profile) {
-      // Redirect based on user role
-      if (user?.user?.role === "talent") {
-        return "/menu/dashboard"; // Replace with your talent dashboard route
-      } else if (user?.user?.role === "company") {
-        return "/menu/dashboard"; // Replace with your company dashboard route
-      } else {
-        return "/role"; // Default redirect URL
-      }
+    async redirect({ url, baseUrl }) {
+      return `${baseUrl}/menu/dashboard`;
+    },
+
+    async session({ session, token, user }) {
+      console.log("user", user);
+      session.user.role = user.role;
+
+      return session;
     },
   },
 });

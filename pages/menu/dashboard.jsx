@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import useDatabase from "@/hooks/useDatabase";
+import { useRouter } from "next/router";
 const projectDetails = [
   { name: "A1 1", date: "2023-09-15", status: "Completed" },
   { name: "A1 1", date: "2023-09-15", status: "Returned for review" },
@@ -21,6 +22,7 @@ const Dashboard = () => {
   const currentDate = new Date();
   const { data: session } = useSession();
   const { projects, user } = useDatabase();
+  const router = useRouter();
   const imageUrl = user?.image ? user?.image : "/assets/images/company.svg";
   console.log(session, "sessio");
   const options = { weekday: "long", month: "long", day: "numeric" };
@@ -41,6 +43,15 @@ const Dashboard = () => {
   }
 
   //------------------------------------------------------------------USE EFFECTS
+  useEffect(() => {
+    if (session) {
+      if (
+        !(session?.user?.role === "talent" || session?.user?.role === "company")
+      ) {
+        router.push("/role");
+      }
+    }
+  }, [session]);
 
   return (
     <div className='h-max p-5  lg:p-10 w-full  flex flex-col'>
@@ -167,8 +178,9 @@ const Dashboard = () => {
               <tbody className=''>
                 {projects?.map((v, k) => (
                   <tr
+                    onClick={() => router.push(`/menu/project/${v._id}`)}
                     key={k.toString()}
-                    className='border-b  border-gray-200 hover:bg-gray-100'
+                    className='border-b hover:cursor-pointer  border-gray-200 hover:bg-gray-100'
                   >
                     <td className='py-5 pr-6 medium hidden lg:flex text-grayText text-base text-center whitespace-nowrap'>
                       {k < 9 ? `0${k + 1}` : k + 1}
