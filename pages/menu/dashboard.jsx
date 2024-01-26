@@ -44,14 +44,12 @@ const Dashboard = () => {
 
   //------------------------------------------------------------------USE EFFECTS
   useEffect(() => {
-    if (session) {
-      if (
-        !(session?.user?.role === "talent" || session?.user?.role === "company")
-      ) {
+    if (user) {
+      if (!(user?.role === "talent" || user?.role === "company")) {
         router.push("/role");
       }
     }
-  }, [session]);
+  }, [user]);
 
   return (
     <div className='h-max p-5  lg:p-10 w-full  flex flex-col'>
