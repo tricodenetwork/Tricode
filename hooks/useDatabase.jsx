@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useSession } from "next-auth/react";
 import axios from "axios";
 
@@ -18,6 +18,9 @@ const useDatabase = () => {
 
     return formattedDate;
   }
+
+  const cachedUser = useMemo(() => user, [user]);
+  const cachedProjects = useMemo(() => projects, [projects]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -47,7 +50,13 @@ const useDatabase = () => {
     }
   }, [session]);
 
-  return { user, projects, convertObjectIdToDate, allUsers, rooms };
+  return {
+    user: cachedUser,
+    projects: cachedProjects,
+    convertObjectIdToDate,
+    allUsers,
+    rooms,
+  };
 };
 
 export default useDatabase;

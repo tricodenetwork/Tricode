@@ -10,6 +10,8 @@ const Index = () => {
   // --------------------------------------------VARIABLES
   const [selectedOption, setSelectedOption] = useState("company");
   const { data: session, status } = useSession();
+  const [email, setEmail] = useState("");
+
   const router = useRouter();
 
   //-----------------------------------------------------------FUNCTIONS
@@ -18,12 +20,14 @@ const Index = () => {
     setSelectedOption(e.target.value);
   };
 
+  const handleEmailChange = (e) => setEmail(e.target.value);
+
   const handleSubmit = async () => {
     console.log(session?.user?.email);
     console.log(status);
     try {
       await axios.post("/api/register", {
-        email: session?.user?.email,
+        email: session?.user?.email || email,
         role: selectedOption, // Assuming selectedOption represents "Company or Talent" field
         // Other fields if needed
       });
@@ -64,6 +68,11 @@ const Index = () => {
           onChange={handleOptionChange}
         />
       </div>
+      <InputLine
+        value={email}
+        onChange={handleEmailChange}
+        placeholder={"Email"}
+      />
       <div className='w-full mt-4'>
         <Button
           click={handleSubmit}

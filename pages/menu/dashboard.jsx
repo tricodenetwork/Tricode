@@ -45,7 +45,9 @@ const Dashboard = () => {
   //------------------------------------------------------------------USE EFFECTS
   useEffect(() => {
     if (user) {
-      if (!(user?.role === "talent" || user?.role === "company")) {
+      if (
+        !(user?.role === "talent" || user?.role === "company" || user?.email)
+      ) {
         router.push("/role");
       }
     }
@@ -111,13 +113,15 @@ const Dashboard = () => {
                 alt='Group'
                 src='/assets/icons/edit.svg'
               />
-              <Image
-                width={40}
-                height={40}
-                className='absolute top-[13px] left-[111px]'
-                alt='Group'
-                src='/assets/icons/verified.svg'
-              />
+              {user?.verified && (
+                <Image
+                  width={40}
+                  height={40}
+                  className='absolute top-[13px] left-[111px]'
+                  alt='Group'
+                  src='/assets/icons/verified.svg'
+                />
+              )}
             </div>
           </div>
           <div className='inline-flex mt-[74px] flex-col items-start gap-[10px] relative'>
