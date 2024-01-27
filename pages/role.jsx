@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import InputLine from "@/components/InputLine";
+import InputLine from "@/Components/InputLine";
 
 const Index = () => {
   // --------------------------------------------VARIABLES
