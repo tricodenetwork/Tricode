@@ -1,5 +1,4 @@
 import MenuLayout from "@/Components/layouts/MenuLayout";
-import ProjectTable from "@/Components/projectComponents/projectTables/ProjecctTable";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -8,7 +7,7 @@ import axios from "axios";
 import { useSession } from "next-auth/react";
 import useDatabase from "@/hooks/useDatabase";
 import { useRouter } from "next/router";
-import FileUpload from "@/components/modals/FileUpload";
+import FileUpload from "@/Components/modals/FileUpload";
 import { useSelector } from "react-redux";
 const projectDetails = [
   { name: "A1 1", date: "2023-09-15", status: "Completed" },
