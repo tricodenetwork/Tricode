@@ -1,16 +1,21 @@
 import React from "react";
 import { useRouter } from "next/router";
+import Loading from "./Loading";
 
-const Button = ({ Action, styles, click }) => {
-  return (
-    <button
-      onClick={click}
-      type='submit'
-      className={`${styles} rounded-3xl button py-2 cursor-pointer bg-binance_green text-center`}
-    >
-      {Action}
-    </button>
-  );
+const Button = ({ Action, styles, click, isLoading }) => {
+  if (isLoading) {
+    return <Loading loading={isLoading} />;
+  } else {
+    return (
+      <button
+        onClick={click}
+        type='submit'
+        className={`${styles} rounded-3xl button py-2 cursor-pointer hover:bg-white duration:300 hover:text-binance_green hover:border-binance_green hover:border bg-binance_green text-center`}
+      >
+        {isLoading ? "..." : Action}
+      </button>
+    );
+  }
 };
 
 export default Button;

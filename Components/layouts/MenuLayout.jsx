@@ -61,7 +61,7 @@ const MenuLayout = ({ children }) => {
 
         <motion.h4
           transition={{ duration: 0.4 }}
-          animate={{ opacity: [0, 100], x: ["-200%", "0%"] }}
+          animate={{ opacity: [0, 100], x: ["0%", "0%"] }}
           className='flex text-white'
         >
           {title}
@@ -99,19 +99,46 @@ const MenuLayout = ({ children }) => {
           ></div>
         </div>
       </div>
-      <div className='w-full relative max-h-[91dvh]  overflow-x-hidden  h-screen border-midorange items-start flex'>
+      <div
+        className='w-full relative max-h-[91dvh]   overflow-clip borde
+        h-screen border-midorange items-start flex'
+      >
         <div
-          className={`lg:w-[17%] w-[80vw] absolute   top-0  lg:left-0 lg:relative h-[80%] ${
+          className={`lg:w-[17%] w-[80vw] absolute   top-0  lg:left-0 lg:relative lg:h-full h-[80%] ${
             isOpen
               ? "bg-binance_green lg:bg-white -right-[0px]    text-white "
               : "-right-[1000px]"
-          } lg:flex flex-col border-r z-20 border-opacity-20  duration-700 ease-out  pt-[4vh] lg:pt-0 lg:mt-[7vh]  border-[#000000]`}
+          } flex flex-col justify-between border-r z-20 border-opacity-20  duration-700 ease-out  pt-[4vh] lg:pt-0 lg:mt-[7vh]  border-[#000000]`}
         >
-          <MenuList isOpen={isOpen} Icon={Dashboard} name={"Dashboard"} />
-          <MenuList isOpen={isOpen} Icon={Project} name={"Project"} />
-          <MenuList isOpen={isOpen} Icon={Payment} name={"Payment"} />
-          <MenuList isOpen={isOpen} Icon={Help} name={"Help"} />
-          <MenuList isOpen={isOpen} Icon={Logout} name={"Logout"} />
+          <div className='bod'>
+            <MenuList isOpen={isOpen} Icon={Dashboard} name={"Dashboard"} />
+            <MenuList isOpen={isOpen} Icon={Project} name={"Project"} />
+            <MenuList isOpen={isOpen} Icon={Payment} name={"Payment"} />
+            <MenuList isOpen={isOpen} Icon={Help} name={"Help"} />
+            <MenuList isOpen={isOpen} Icon={Logout} name={"Logout"} />
+          </div>
+          {/* <div className='lg:space-x-4 mb-10 flex lg:hidden bord items-center justify-center lg:justify-between'>
+            <div className='relative flex hover:scale-90 hover:cursor-pointer transition-all ease-out duration-100'>
+              <div className='absolute -top-2 -right-2'>
+                <Ellipse />
+              </div>
+
+              <Message />
+            </div>
+            <div className='relative flex hover:scale-90 hover:cursor-pointer transition-all ease-out duration-100'>
+              <Link href={"?notification=true"}>
+                <div className='absolute -top-2 -right-2'>
+                  <Ellipse />
+                </div>
+                <Bell />
+              </Link>
+            </div>
+            <div className='w-[30px] flex  hover:scale-90 hover:rotate-[360deg] hover:cursor-pointer transition-all ease-out duration-100 relative rounded-full h-[30px]'>
+              <Link href={"/settings/user"}>
+                <Settings />
+              </Link>
+            </div>
+          </div> */}
         </div>
         <div className='max-h-full h-full overflow-scroll   scrollbar-hide  w-full lg:w-[83%] flex justify-center items-start'>
           {children}

@@ -55,7 +55,7 @@ const Table = () => {
           {projects?.map((v, k) => (
             <tr
               key={k.toString()}
-              className='border-y-[0.8px] border-opacity-25 border-grayText  hover:bg-gray-100'
+              className='border-y-[0.8px] border-opacity-25 border-grayText'
             >
               <td className='py-5 pr-6 medium hidden lg:flex text-grayText text-base text-center whitespace-nowrap'>
                 {k < 9 ? `0${k + 1}` : k + 1}

@@ -380,7 +380,7 @@ ul li,
 }
 
 .drag-and-drop {
-  border: 2px dashed #ccc;
+  border: 2px solid #061A48;
   padding: 20px;
   text-align: center;
   cursor: pointer;

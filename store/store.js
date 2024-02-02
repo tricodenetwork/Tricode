@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import LayoutReducer from "./slice-reducers/LayoutReducer";
+import UserReducer from "./slice-reducers/UserReducer";
 import uploadReducer from "./slice-reducers/uploadSlice";
 
 // import storage from "redux-persist/lib/storage";
@@ -16,7 +16,7 @@ import { createWrapper } from "next-redux-wrapper";
 // };
 
 const allReducers = combineReducers({
-  layout: LayoutReducer,
+  user: UserReducer,
   upload: uploadReducer,
 });
 

@@ -17,16 +17,20 @@ import {
 } from "@/store/slice-reducers/uploadSlice";
 import useDtabase from "@/hooks/useDatabase";
 import axios from "axios";
+import Loading from "../Loading";
+import Button from "../Button";
 
 function AddNew() {
   const [files, setFiles] = useState([]);
+  const [loading, setLoading] = useState(false);
+
   const [selected, setSelectedCountry] = useState(
     countries[0]?.code.toLowerCase()
   );
-  const { data } = useDtabase();
+  const { user } = useDtabase();
   const router = useRouter();
   const upload = router.query?.upload;
-  const company = data?.email;
+  const company = user?.email;
   let allFiles = [];
   const { filess, name, description } = useSelector((state) => state.upload);
   const dispatch = useDispatch();
@@ -36,9 +40,10 @@ function AddNew() {
   );
 
   const handleSubmit = async () => {
+    setLoading(true);
     try {
-      const response = await axios.post("/api/new_project", {
-        company: data?.name,
+      await axios.post("/api/new_project", {
+        company: user?.name,
         name,
         description,
         files: allFiles,
@@ -49,6 +54,8 @@ function AddNew() {
     } catch (error) {
       // Handle error
       console.error("Error:", error);
+      Alert("Error Submiting");
+      setLoading(!true);
     }
   };
 
@@ -170,12 +177,18 @@ function AddNew() {
       </div> */}
 
       <div className='w-full flex justify-center my-5'>
-        <button
+        {/* <button
           onClick={handleSubmit}
           className='bg-green-500 text-white rounded-full py-2 px-16 self-center'
         >
-          Submit Now
-        </button>
+        
+        </button> */}
+        <Button
+          styles={"rounded-full py-2 px-16 self-center"}
+          Action={"Submit now"}
+          click={handleSubmit}
+          isLoading={loading}
+        />{" "}
       </div>
     </section>
   );

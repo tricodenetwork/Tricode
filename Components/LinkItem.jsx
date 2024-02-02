@@ -23,7 +23,7 @@ const LinkItem = ({
         <span className='text-sm'>{"<"}</span>
         <motion.li
           whileHover={{ scale: 1.1, y: -3 }}
-          whileTap={{ scale: 0.8 }}
+          whileTap={{ scale: 1 }}
           transition={{ type: "spring", stiffness: 500, duration: 0.1 }}
           onClick={hideMenu}
           className={`${bgColor} ${

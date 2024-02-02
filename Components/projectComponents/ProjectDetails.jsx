@@ -50,7 +50,8 @@ function ProjectDetails({ project }) {
 
         <div className='flex flex-col items-start'>
           <p className=' text-grayText medium'>
-            {project?.report[project?.report.length - 1]?.summary}
+            {project?.report &&
+              project?.report[project?.report?.length - 1]?.summary}
           </p>
           <ol className='text-grayText ml-4 medium list-decimal'>
             <li className='my-4 medium'>

@@ -8,6 +8,8 @@ import axios from "axios";
 import { useSession } from "next-auth/react";
 import useDatabase from "@/hooks/useDatabase";
 import { useRouter } from "next/router";
+import FileUpload from "@/components/modals/FileUpload";
+import { useSelector } from "react-redux";
 const projectDetails = [
   { name: "A1 1", date: "2023-09-15", status: "Completed" },
   { name: "A1 1", date: "2023-09-15", status: "Returned for review" },
@@ -20,15 +22,24 @@ const projectDetails = [
 const Dashboard = () => {
   // --------------------------------------------VARIABLES
   const currentDate = new Date();
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const { projects, user } = useDatabase();
   const router = useRouter();
-  const imageUrl = user?.image ? user?.image : "/assets/images/company.svg";
-  console.log(session, "sessio");
+  // const { user } = useSelector((state) => state);
+  const upload = router.query?.imageUpload;
+  const imageUrl = user?.profile_pic
+    ? `/profile_pics/${user?.email + "_" + user?.profile_pic}`
+    : user?.image
+    ? user?.image
+    : "/assets/images/company.svg";
+  // console.log(session, "sessio");
+  // console.log(status, "status");
+  console.log(imageUrl, "urlimage");
   const options = { weekday: "long", month: "long", day: "numeric" };
   const formattedDate = new Intl.DateTimeFormat("en-US", options).format(
     currentDate
   );
+  const [files, setFiles] = useState([]);
 
   //-----------------------------------------------------------FUNCTIONS
 
@@ -45,16 +56,24 @@ const Dashboard = () => {
   //------------------------------------------------------------------USE EFFECTS
   useEffect(() => {
     if (user) {
+      console.log(user);
       if (
         !(user?.role === "talent" || user?.role === "company" || user?.email)
       ) {
         router.push("/role");
+      } else {
+        return;
       }
     }
   }, [user]);
 
   return (
     <div className='h-max p-5  lg:p-10 w-full  flex flex-col'>
+      {upload && (
+        <div className='bg-black bg-opacity-80 w-full z-50  flex justify-center items-center  h-full fixed top-0 left-0 '>
+          <FileUpload files={files} setFiles={setFiles} />
+        </div>
+      )}
       <div className='flex flex-col justify-around lg:flex-row'>
         <div>
           <p className='text-transparent text-[20px] tracking-[0] leading-[normal]'>
@@ -102,17 +121,19 @@ const Dashboard = () => {
             >
               <Image
                 fill
-                className='border border-gray-400 rounded-full'
+                className='border object-cover border-gray-400 rounded-full'
                 alt='Group'
                 src={imageUrl}
               />
-              <Image
-                width={24}
-                height={24}
-                className='absolute top-[98px] left-[116px]'
-                alt='Group'
-                src='/assets/icons/edit.svg'
-              />
+              <Link href={"?imageUpload=true"}>
+                <Image
+                  width={24}
+                  height={24}
+                  className='absolute top-[98px] left-[116px]'
+                  alt='Group'
+                  src='/assets/icons/edit.svg'
+                />
+              </Link>
               {user?.verified && (
                 <Image
                   width={40}
@@ -182,7 +203,7 @@ const Dashboard = () => {
                   <tr
                     onClick={() => router.push(`/menu/project/${v._id}`)}
                     key={k.toString()}
-                    className='border-b hover:cursor-pointer  border-gray-200 hover:bg-gray-100'
+                    className='border-b hover:cursor-pointer  border-gray-200'
                   >
                     <td className='py-5 pr-6 medium hidden lg:flex text-grayText text-base text-center whitespace-nowrap'>
                       {k < 9 ? `0${k + 1}` : k + 1}

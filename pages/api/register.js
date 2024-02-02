@@ -13,12 +13,12 @@ export default async function handler(req, res) {
     // If the user does not exist, check if the name exists
     const userByName = await db
       .collection("users")
-      .findOne({ fullName: req.body.fullName });
+      .findOne({ name: req.body.fullName });
 
     if (userByName) {
       // If the name exists, update the user by name
       await db.collection("users").updateOne(
-        { fullName: req.body.fullName },
+        { name: req.body.fullName },
         {
           $set: {
             email: req.body.email,
@@ -48,10 +48,10 @@ export default async function handler(req, res) {
 
     // If the user does not exist by email or name, create a new user object with the provided data
     const newUser = {
-      fullName: req.body.fullName,
+      name: req.body.fullName,
       password: req.body.password,
       email: req.body.email,
-      mobilePhone: req.body.mobilePhone,
+      phone: req.body.mobilePhone,
       role: req.body.role,
       // Add other fields as needed
     };

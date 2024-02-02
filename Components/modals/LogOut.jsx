@@ -1,3 +1,4 @@
+import { baseUrl } from "@/config/config";
 import { signIn, signOut } from "next-auth/react";
 import { useRouter } from "next/router";
 import React from "react";
@@ -5,7 +6,7 @@ import React from "react";
 const LogOut = () => {
   const router = useRouter();
   const leave = async () => {
-    await signOut({ callbackUrl: "http://localhost:3000/" });
+    await signOut({ callbackUrl: `${baseUrl}/auth/login` });
   };
 
   return (

@@ -11,6 +11,7 @@ import ShowHidePassword, {
   ConfirmPassword,
 } from "@/Components/ShowHidePassword";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 const Index = () => {
   // --------------------------------------------VARIABLES
@@ -23,6 +24,7 @@ const Index = () => {
   const [selectedOption, setSelectedOption] = useState("company");
   const [showPasswordToggle, setShowPasswordToggle] = useState(false);
   const [confirmPasswordToggle, setConfirmPasswordToggle] = useState(false);
+  const router = useRouter();
 
   //-----------------------------------------------------------FUNCTIONS
   const handleFullNameChange = (e) => setFullName(e.target.value);
@@ -49,7 +51,7 @@ const Index = () => {
 
   const handleSubmit = async () => {
     try {
-      const response = await axios.post("/api/register", {
+      await axios.post("/api/register", {
         fullName,
         password,
         email,
@@ -57,6 +59,8 @@ const Index = () => {
         role: selectedOption, // Assuming selectedOption represents "Company or Talent" field
         // Other fields if needed
       });
+
+      router.push("/menu/dashboard");
 
       // Handle successful response
     } catch (error) {
