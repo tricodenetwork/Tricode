@@ -2,6 +2,7 @@ import React from "react";
 import SettingsLayout from "../layouts/SettingsLayout";
 import InputWithHeader from "../customInputs/InputWithHeader";
 import SmallButton from "../customInputs/SmallButton";
+import useDatabase from "@/hooks/useDatabase";
 const semiBold = { fontSize: 24, fontFamily: "Poppins-SemiBold" };
 const Bold = { fontSize: 12, fontFamily: "Poppins" };
 const Regular = {
@@ -10,6 +11,7 @@ const Regular = {
 };
 
 const User = () => {
+  const { user } = useDatabase();
   return (
     <div className='flex-1 bg-[#f2f2f2] h-max w-[95%] self-center py-5 lg:py-10  flex justify-center  rounded-md mr-5 pl-5 lg:pl-10 '>
       <div className=' w-full lg:w-[70%] h-full'>
@@ -20,11 +22,16 @@ const User = () => {
           <p className='text-black semiBold text-base lg:text-xl'>Profile</p>
         </div>
         <div className='border-b  pb-4 flex flex-col justify-between w-[100%] border-black'>
-          <InputWithHeader header={"First Name"} placeholder={"John"} />
-          <InputWithHeader header={"Surname"} placeholder={"Cena"} />
+          <InputWithHeader
+            header={"Full Name"}
+            placeholder={"John Okafor Cena"}
+            value={user?.name}
+          />
+          {/* <InputWithHeader header={"Surname"} placeholder={"Cena"} /> */}
           <InputWithHeader
             header={"Email address"}
             placeholder={"johncena@gmail.com"}
+            value={user?.email}
           />
           <div className='flex mt-5'>
             <SmallButton
@@ -36,7 +43,7 @@ const User = () => {
             <SmallButton
               Action={"Save"}
               styles={
-                "border-2 border-binance_green duration-200 bg-binance_green w-[110px] text-white"
+                "border-2 border-binance_green hover:bg-binance_ash duration-200 bg-binance_green w-[110px] text-white"
               }
             />
           </div>

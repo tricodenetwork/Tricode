@@ -237,7 +237,7 @@ const Dashboard = () => {
           </div>
           <div className='mt-[58px]'>
             <div className='flex relative justify-between'>
-              <div className="[font-family:'Poppins-SemiBold',Helvetica] font-semibold text-[#2e2c2c] text-[20px] tracking-[0] leading-[normal]">
+              <div className="[font-family:'Poppins-SemiBold',Helvetica] text-[#2e2c2c] text-[20px] tracking-[0] leading-[normal]">
                 Project Manager Responses
               </div>
               <div className="[font-family:'Poppins-Regular',Helvetica] hidden font-normal text-[#37a212] text-[14px] tracking-[0] leading-[normal]">

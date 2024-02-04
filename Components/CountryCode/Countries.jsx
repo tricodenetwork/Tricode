@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { v4 as uuidv4 } from "uuid";
 import { countries } from "./data";
+import InputLine from "../InputLine";
 
 const Countries = () => {
   const [searchCountry, setSearchCountry] = useState(false);
@@ -22,19 +23,30 @@ const Countries = () => {
   };
 
   return (
-    <div className="w-auto border-b-[2px] border-gray-400 h-[34px] pr-2 space-x-2">
-      <div className="relative cursor-pointer">
-        <div onClick={() => setSearchCountry(!searchCountry)}>
+    <div className='w-full border-b-[2px] relative top-[5.5px] border-gray-400 my-[10px] '>
+      <div className='relative w-full cursor-pointer'>
+        <div
+          className='w-full'
+          onClick={() => setSearchCountry(!searchCountry)}
+        >
           {searchSelectedCountry ? (
-            <div className="flex items-center justify-around gap-2 text-[15px] h-[44px]">
+            <div className='flex items-center   justify-around  text-[15px]'>
               {/* {searchSelectedCountry.shortName} */}
-              <img src={searchSelectedCountry.flag} className="w-[25px] rounded-sm" alt="" />
+              <img
+                src={searchSelectedCountry.flag}
+                className='w-[20px] mb-2 rounded-sm'
+                alt='flag'
+              />
               <span>{searchSelectedCountry.phoneCode}</span>
             </div>
           ) : (
-            <div className="flex items-center justify-around gap-2 h-[44px]">
+            <div className='flex items-center justify-around w-full'>
               {/* {countries[158]?.shortName} */}
-              <img src={countries[158]?.flag} className="w-[25px] mb-2 rounded-sm" alt="" />
+              <img
+                src={countries[158]?.flag}
+                className='w-[20px]  rounded-sm'
+                alt=''
+              />
               <span>{countries[158]?.phoneCode}</span>
             </div>
           )}
@@ -42,32 +54,29 @@ const Countries = () => {
 
         {searchCountry && (
           <motion.ul
-            className="absolute top-[50px] h-[200px] w-[270px] z-50 overflow-y-auto overflow-x-hidden scroll-m-0 scroll-p-0 bg-[white] rounded-[8px] shadow-lg  border"
+            className='absolute top-[50px] h-[200px] w-[270px] z-50 overflow-y-auto overflow-x-hidden scroll-m-0 scroll-p-0 bg-[white] rounded-[8px] shadow-lg  border'
             initial={{
               x: 1000,
             }}
             animate={{ x: 0 }}
             transition={{ duration: 0.08 }}
           >
-            <div className="bg-white mb-3 w-full">
-              <input
-                type="text"
-                placeholder="Search..."
-                className="p-3 border-b outline-none"
-                value={searchTerm}
-                onChange={(e) => handleSearch(e.target.value)}
-              />
-            </div>
+            <InputLine
+              type='text'
+              placeholder='Search...'
+              value={searchTerm}
+              onChange={(e) => handleSearch(e.target.value)}
+            />
             {filteredHistory.map((country) => (
               <motion.li
                 key={uuidv4()}
-                className="flex items-center mb-[10px] hover:bg-gray-200 p-[10px] cursor-pointer text-[15px]"
+                className='flex items-center mb-[10px] hover:bg-gray-200 p-[10px]  cursor-pointer text-[15px]'
                 onClick={() => setSearchSelectedCountry(country)}
                 whileHover={{ scale: 1.1, originX: 0 }}
                 transition={{ stiffness: 300 }}
               >
-                <img src={country.flag} width="30px" alt="" />
-                <p className="mx-[10px]">{country.fullname}</p>
+                <img src={country.flag} width='30px' alt='' />
+                <p className='mx-[10px]'>{country.fullname}</p>
                 <span>{country.phoneCode}</span>
               </motion.li>
             ))}

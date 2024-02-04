@@ -13,7 +13,7 @@ const Loading = ({ loading }) => {
     },
   };
   return (
-    <div>
+    <div className=''>
       <AnimatePresence>
         {loading && (
           <motion.div
@@ -24,7 +24,7 @@ const Loading = ({ loading }) => {
               staggerChildren: 0.5,
               delayChildren: 0.3,
             }}
-            className={`w-full h-[95%] rounded-md text-center  bg-[rgb(248,255,233)]`}
+            className={`text-center rounded-3xl`}
           >
             {Array.from({ length: 5 }).map((_, i) => (
               <motion.div
@@ -35,7 +35,7 @@ const Loading = ({ loading }) => {
                   repeat: Infinity,
                   repeatType: "reverse",
                 }}
-                className={`inline-block w-3 h-3 m-2 rounded-full bg-binance_green`}
+                className={`inline-block w-2 h-2 m-1 lg:m-2 rounded-full bg-binance_green`}
               ></motion.div>
             ))}
           </motion.div>

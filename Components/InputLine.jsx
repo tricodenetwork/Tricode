@@ -28,7 +28,7 @@ const InputLine = ({
         isRegister ? "my-[10px]  md:my-[5px]" : "my-[20px] md:my-[10px] pb-2"
       }
       border-gray-400 focus:outline-none focus:border-b-2 
-      focus:border-binance_green w-full px-1 py-1`}
+      focus:border-binance_green  w-full px-1 py-1`}
     />
   );
 };

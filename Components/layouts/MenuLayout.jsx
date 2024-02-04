@@ -68,9 +68,11 @@ const MenuLayout = ({ children }) => {
         </motion.h4>
         <div className='lg:space-x-4 flex items-center justify-center lg:justify-between'>
           <div className='relative lg:flex hidden hover:scale-90 hover:cursor-pointer transition-all ease-out duration-100'>
-            <div className='absolute -top-2 -right-2'>
-              <Ellipse />
-            </div>
+            <Link href={"/menu/chat"}>
+              <div className='absolute -top-2 -right-2'>
+                <Ellipse />
+              </div>
+            </Link>
 
             <Message />
           </div>
