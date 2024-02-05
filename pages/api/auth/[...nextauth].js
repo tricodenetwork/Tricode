@@ -6,6 +6,7 @@ import SlackProvider from "next-auth/providers/slack";
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 import clientPromise from "@/lib/mongodb";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { baseUrl } from "@/config/config";
 
 // add providers with NextAuth
 export default NextAuth({
@@ -21,7 +22,7 @@ export default NextAuth({
         // console.log(credentials);
         // Your authentication logic here
         const { email, password } = credentials;
-        const res = await fetch("http://localhost:3000/api/login", {
+        const res = await fetch(`${baseUrl}api/login`, {
           method: "POST",
           body: JSON.stringify(credentials),
           headers: { "Content-Type": "application/json" },
