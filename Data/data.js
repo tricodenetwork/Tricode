@@ -65,47 +65,32 @@ export const cards = [
 export const careers = [
   {
     id: 1,
-    tittle: "Full Stack Developers",
+    tittle: "Software Engineering",
   },
 
   {
     id: 2,
-    tittle: "Product Management",
+    tittle: "Full Stack Developers",
   },
 
   {
     id: 3,
-    tittle: "Research and Development",
+    tittle: "Product Management",
   },  
   
   {
     id: 4,
-    tittle: "Team Collaboration",
+    tittle: "Product Management",
   },
 
   {
     id: 5,
-    tittle: "Agile Methodology",
+    tittle: "UI/UX Designers",
   },
 
   {
     id: 6,
-    tittle: "Software Engineering",
-  },  
-  
-  {
-    id: 7,
     tittle: "Data Analysts",
-  },
-
-  {
-    id: 8,
-    tittle: "Project Management",
-  },
-
-  {
-    id: 9,
-    tittle: "Full Stack Developers",
   },
 ];
 
@@ -268,5 +253,10 @@ export const OurClients = [
   {
     id: 2,
     img: "/assets/ourClients/RunaM.png",
+  },
+
+  {
+    id: 2,
+    img: "/assets/ourClients/+logo.png",
   }
 ];

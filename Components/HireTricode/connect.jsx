@@ -14,7 +14,7 @@ export default function Connect({ mobile }) {
   return (
     <>
       <section
-        className='lg:pb-[10px] px-8 xl:px-[12vh] py-10 w-full bg-gradient-to-b lg:bg-gradient-to-r from-stone-100 to-[#BBD2B3] overflow-hidden justify-center items-center'
+        className='lg:pb-[10px] px-8 xl:px-[3vh] py-10 w-full bg-gradient-to-b lg:bg-gradient-to-r from-stone-100 to-[#BBD2B3] overflow-hidden justify-center items-center'
         id='intro'
       >
         <div

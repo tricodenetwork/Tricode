@@ -57,7 +57,7 @@ export default function HireCard() {
         </Swiper>
       </div> */}
 
-      <div className='flex w-screen absolute bottom-[45px]  mx-auto scrollbar-hide overflow-scroll left-0  mt-12 gap-4'>
+      <div className='flex w-screen absolute bottom-[45px] px-3 md:pl-5 md:pr-9 overflow-x-auto left-0  mt-12 gap-4'>
         {cards.map((card_info, i) => (
           <div
             key={i + 1}

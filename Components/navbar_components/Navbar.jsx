@@ -69,7 +69,7 @@ const Navbar = ({ children }) => {
             src='/assets/images/logo.png'
           />
         </motion.div>
-        <div className='w-[55%]  gap-7 lg:gap-12 hidden lg:flex justify-around items-start'>
+        <div className='w-[55%] gap-4 xl:gap-10 hidden lg:flex justify-around items-start'>
           <LinkItem
             hideMenu={hideMenu}
             path='/about'
@@ -79,7 +79,7 @@ const Navbar = ({ children }) => {
           />
           <LinkItem
             hideMenu={hideMenu}
-            path='/services'
+            path='#services'
             offColor={false}
             text='Services'
             isScrolled={isScrolled}
@@ -91,6 +91,13 @@ const Navbar = ({ children }) => {
             text='Projects'
             isScrolled={isScrolled}
           />
+          {/* <LinkItem
+            hideMenu={hideMenu}
+            path='/faq'
+            offColor={false}
+            text='FAQ'
+            isScrolled={isScrolled}
+          /> */}
           <LinkItem
             hideMenu={hideMenu}
             path='#newsletter'
