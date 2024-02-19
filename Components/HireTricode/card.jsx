@@ -61,7 +61,7 @@ export default function HireCard() {
         {cards.map((card_info, i) => (
           <div
             key={i + 1}
-            className=" min-w-[270px] h-[420px] relative pt-[12px] border-t-4 border-binance_green p-[15px] bg-white rounded-[5px_5px_50px_5px] shadow-[0px_0px_20px_#f7edff]"
+            className="flex flex-col min-w-[270px] h-[497px] relative pt-[12px] border-t-4 border-binance_green p-[15px] bg-white rounded-[5px_5px_50px_5px] shadow-[0px_0px_20px_#f7edff]"
           >
             <div
               style={font.style}
