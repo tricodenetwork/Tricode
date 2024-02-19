@@ -116,7 +116,7 @@ const Navbar = ({ children }) => {
             text={"Register"}
             path={"/menu"}
             className={
-              "medText p-3 rounded-lg lg:flex hidden border border-slate-500"
+              "medText p-3 rounded-lg lg:flex hidden text-white border border-white"
             }
             isScrolled={isScrolled}
           />
@@ -124,7 +124,7 @@ const Navbar = ({ children }) => {
             hideMenu={hideMenu}
             path='/login'
             text='Login'
-            className={`medText text-[white] lg:flex hidden`}
+            className={`medText text-white lg:flex hidden`}
             isScrolled={isScrolled}
           />
         </motion.div>
