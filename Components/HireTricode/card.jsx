@@ -57,34 +57,34 @@ export default function HireCard() {
         </Swiper>
       </div> */}
 
-      <div className='flex w-screen absolute bottom-[45px] px-3 md:pl-5 md:pr-9 overflow-x-auto left-0  mt-12 gap-4'>
+      <div className="flex w-screen px-3 md:pl-5 md:pr-9 overflow-x-auto left-0  mt-12 gap-4">
         {cards.map((card_info, i) => (
           <div
             key={i + 1}
-            className=' min-w-[270px] h-[320px] relative pt-[66px] border-t-4 border-binance_green p-[35px] bg-white rounded-[5px_5px_50px_5px] shadow-[0px_0px_20px_#f7edff]'
+            className=" min-w-[270px] h-[420px] relative pt-[12px] border-t-4 border-binance_green p-[15px] bg-white rounded-[5px_5px_50px_5px] shadow-[0px_0px_20px_#f7edff]"
           >
             <div
               style={font.style}
-              className='text-binance_green text-xl font-bold'
+              className="text-binance_green text-xl font-bold"
             >
               {card_info.tittle}
             </div>
             <div
               style={font.style}
-              className='w-[199px] mt-3 absolute bottom-32 text-sm font-normal '
+              className="w-[199px] mt-3 text-sm font-normal "
             >
-              Posuere morbi leo urna molestie at elementum eu egestas.
+              {card_info.discr}
             </div>
             <button
               style={font.style}
-              className='w-28 absolute bottom-16 flex items-center mt-9 '
+              className="w-28 flex items-center mt-9 "
             >
-              <p className='text-base font-bold mr-2 whitespace-nowrap '>
+              <a href={card_info.link} className="text-base font-bold mr-2 whitespace-nowrap ">
                 LEARN MORE
-              </p>
+              </a>
               <Image
                 src={"/assets/icons/right.svg"}
-                alt='icon'
+                alt="icon"
                 width={19}
                 height={19}
               />
