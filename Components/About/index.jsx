@@ -7,7 +7,7 @@ export default function About({ mobile }) {
         className="px-8 lg:px-14 py-7 w-full lg:py-[90px] bg-gradient-to-l from-[#BBD2B3] to-stone-100 overflow-hidden justify-center items-center"
         id="about"
       >
-        <div className="flex flex-col md:flex-row pt-5 gap-3 md:gap-28 justify-center items-center w-full">
+        <div className="flex flex-col md:flex-row pt-[5em] md:pt-5 gap-3 md:gap-28 justify-center items-center w-full">
           <div>
             <div className="text-binance_green text-2xl md:text-5xl semiBold tracking-wide">
               About Tricode
