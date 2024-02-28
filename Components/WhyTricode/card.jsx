@@ -3,13 +3,51 @@ import { useState, useEffect } from "react";
 import { WhyTricode } from "../../Data/data";
 import { Istok_Web } from "next/font/google";
 import Link from "next/link";
+import { useInView } from "react-intersection-observer";
+import { useAnimation } from "framer-motion";
 
 const font = Istok_Web({
   weight: ["400", "700"],
   subsets: ["cyrillic", "latin"],
 });
 
+const initialInfo = [
+  { number: 0, targetNumber: 782, text: "WORLDWIDE CUSTOMERS" },
+  { number: 0, targetNumber: 12, text: "PROJECTS DONE" },
+  { number: 0, targetNumber: 5, text: "IT PRODUCTS" },
+  { number: 0, targetNumber: 809, text: "AMOUNT SPEND" },
+];
+
+const incrementSpeed = 10; // milliseconds
+
 export default function Card() {
+  const [info, setInfo] = useState(initialInfo);
+  const { ref, inView } = useInView({ threshold: 0.4 });
+  const animation = useAnimation();
+
+  useEffect(() => {
+    const incrementNumbers = () => {
+      setInfo((prevInfo) =>
+        prevInfo.map((item) => {
+          // Check if the number has reached its target
+          if (item.number >= item.targetNumber) {
+            return item; // Don't increment anymore
+          }
+          return {
+            ...item,
+            number: Math.min(item.number + 1, item.targetNumber), // Increment and clamp to target
+          };
+        })
+      );
+    };
+
+    const intervalId = setInterval(() => {
+      inView && incrementNumbers();
+    }, incrementSpeed); // Set increment interval
+
+    return () => clearInterval(intervalId); // Clear interval on unmount
+  }, [inView]);
+
   return (
     <>
       <section
@@ -19,10 +57,14 @@ export default function Card() {
         <div className='md:p-[4vh] py-[3vh] grid  grid-cols-1 md:grid-cols-[1fr,1fr] place-items-center place-content-center gap-[30px]'>
           {WhyTricode.map((info, i) => (
             <div
-              key={i + 1}
+              key={i.toString()}
               className='flex gap-3 w-[95vw] pt-[16px] lg:pt-[59px] pl-[10px] lg:pl-[34px] md:w-[40vw]  min-h-[145px] md:min-h-[237px] py-5 px-4 bg-neutral-50 border border-zinc-200 justify-center items-start'
             >
-              <img className='w-[52px] h-12' src={info.img} alt='icon' />
+              <img
+                className='w-[52px] animate-pulse h-12'
+                src={info.img}
+                alt='icon'
+              />
               <div className='ml-[16px] lg:ml-[25px]'>
                 <div className='text-black semiBold  mb-[8px] lg:mb-[10px] text-base md:text-xl'>
                   {info.tittle}
@@ -35,63 +77,30 @@ export default function Card() {
           ))}
         </div>
 
-        <div className='px-1 md:p-[2vh] py-[3vh] grid grid-cols-[1fr,1fr] place-content-center place-items-center lg:flex lg:flex-row flex-wrap justify-around lg:w-[80%] mx-auto items-start gap-8 md:gap-12'>
-          <div className='w-full lg:w-max'>
-            <div
-              style={font.style}
-              className='text-center text-binance_green text-2xl md:text-4xl font-bold '
-            >
-              782
-            </div>
-            <div
-              style={font.style}
-              className='text-center whitespace-nowrap text-zinc-600 text-xs md:text-base font-bold '
-            >
-              WORLDWIDE CUSTOMERS
-            </div>
-          </div>
-          <div className='w-full lg:w-max'>
-            <div
-              style={font.style}
-              className='text-center text-binance_green text-2xl md:text-4xl font-bold '
-            >
-              12K
-            </div>
-            <div
-              style={font.style}
-              className='text-center text-zinc-600 text-xs md:text-base font-bold '
-            >
-              PROJECTS DONE
-            </div>
-          </div>
-          <div className='w-full lg:w-max'>
-            <div
-              style={font.style}
-              className='text-center text-binance_green text-2xl md:text-4xl font-bold '
-            >
-              5K
-            </div>
-            <div
-              style={font.style}
-              className='text-center text-zinc-600 text-xs md:text-base font-bold '
-            >
-              IT PRODUCTS
-            </div>
-          </div>
-          <div className='w-full lg:w-max'>
-            <div
-              style={font.style}
-              className='text-center text-binance_green text-2xl md:text-4xl font-bold '
-            >
-              $890K
-            </div>
-            <div
-              style={font.style}
-              className='text-center text-zinc-600 text-xs md:text-base font-bold '
-            >
-              AMOUNT SPEND
-            </div>
-          </div>
+        <div
+          ref={ref}
+          className='px-1 md:p-[2vh] py-[3vh] grid grid-cols-[1fr,1fr] place-content-center place-items-center lg:flex lg:flex-row flex-wrap justify-around lg:w-[80%] mx-auto items-start gap-8 md:gap-12'
+        >
+          {info.map((item, i) => {
+            return (
+              <div key={i.toString()} className='w-full lg:w-max'>
+                <div
+                  style={font.style}
+                  className='text-center text-binance_green text-2xl md:text-4xl font-extrabold '
+                >
+                  {item.text == "AMOUNT SPEND"
+                    ? `$${item.number}`
+                    : item.number}
+                </div>
+                <div
+                  style={font.style}
+                  className='text-center whitespace-nowrap text-zinc-600 text-xs md:text-base font-bold '
+                >
+                  {item.text}
+                </div>
+              </div>
+            );
+          })}
         </div>
         <div
           className={`flex justify-center space-x-4 mt-[0vh] md:space-x-6 md:mt-[3vh]`}

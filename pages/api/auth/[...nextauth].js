@@ -64,14 +64,14 @@ export default NextAuth({
     async jwt({ token, user }) {
       // Persist the OAuth access_token and or the user id to the token right after signin
 
-      console.log("jwt-user", user);
+      // console.log("jwt-user", user);
       if (user) {
         token.id = user.id;
       }
       return token;
     },
     async session({ session, token, user }) {
-      console.log("user", user);
+      // console.log("user", user);
       if (user) {
         session.user.role = user.role;
       }

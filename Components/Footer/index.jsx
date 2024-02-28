@@ -82,8 +82,8 @@ export default function Footer({ mobile }) {
               style={inter.style}
               className='text-white text-sm md:text-lg mb-3 font-normal  leading-[30px]'
             >
-              Lorem Ipsum is simply dummy text of the <br />
-              printing and typesetting industry.{" "}
+              Contact us through any of the <br />
+              following channels{" "}
             </div>
             <div
               style={inter.style}
@@ -92,16 +92,16 @@ export default function Footer({ mobile }) {
               +923183561921
             </div>
             <div className='w-[20vw] absolute bottom-14 right-10 mt-[6em] md:flex hidden text-white items-start justify-around'>
-              <div className='hover:scale-125 duration-75 hover:cursor-pointer'>
+              <div className='hover:scale-125 duration-150 hover:cursor-pointer'>
                 <LinkedInIcon />
               </div>
-              <div className='hover:scale-125 duration-75 hover:cursor-pointer'>
+              <div className='hover:scale-125 duration-150 hover:cursor-pointer'>
                 <InstagramIcon />
               </div>
-              <div className='hover:scale-125 duration-75 hover:cursor-pointer'>
+              <div className='hover:scale-125 duration-150 hover:cursor-pointer'>
                 <TwitterIcon />
               </div>
-              <div className='hover:scale-125 duration-75 hover:cursor-pointer'>
+              <div className='hover:scale-125 duration-150 hover:cursor-pointer'>
                 <GitHubIcon />
               </div>
             </div>

@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react";
-import { useInView } from "react-intersection-observer";
-import { useAnimation } from "framer-motion";
 import useFunctions from "@/hooks/useFunctions";
 import Navbar from "@/Components/navbar_components/Navbar";
 import Hero from "@/Components/Hero/hero";
@@ -15,33 +13,8 @@ import { useSession, signIn, signOut } from "next-auth/react";
 
 export default function Home() {
   const [screenWidth, setScreenWidth] = useState(0);
-  const { ref, inView } = useInView({ threshold: 0.2 });
-  const animation = useAnimation();
-  const animation2 = useAnimation();
   const { data: session } = useSession();
-  console.log("session:", session);
-
-  useEffect(() => {
-    if (inView) {
-      animation.start({
-        x: 0,
-        transition: { type: "spring", duration: 1.5, bounce: 0.3 },
-      });
-      animation2.start({
-        scale: 1,
-        opacity: 1,
-        transition: { type: "tween", duration: 2.5 },
-      });
-    } else {
-      animation.start({
-        x: `100vw`,
-      });
-      animation2.start({
-        scale: 0,
-        opacity: 0,
-      });
-    }
-  }, [inView, animation, animation2]);
+  // console.log("session:", session);
 
   useEffect(() => {
     const handleResize = () => {
@@ -55,7 +28,6 @@ export default function Home() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-  const { imageLoader } = useFunctions();
   const mobile = screenWidth < 798;
 
   return (
