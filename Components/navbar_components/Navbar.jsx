@@ -69,7 +69,7 @@ const Navbar = ({ children }) => {
             src='/assets/images/logo.png'
           />
         </motion.div>
-        <div className='w-[55%]  gap-7 lg:gap-12 hidden lg:flex justify-around items-start'>
+        <div className='w-[55%] gap-4 xl:gap-10 hidden lg:flex justify-around items-start'>
           <LinkItem
             hideMenu={hideMenu}
             path='/about'
@@ -91,6 +91,13 @@ const Navbar = ({ children }) => {
             text='Projects'
             isScrolled={isScrolled}
           />
+          {/* <LinkItem
+            hideMenu={hideMenu}
+            path='/faq'
+            offColor={false}
+            text='FAQ'
+            isScrolled={isScrolled}
+          /> */}
           <LinkItem
             hideMenu={hideMenu}
             path='#newsletter'
@@ -109,7 +116,7 @@ const Navbar = ({ children }) => {
             text={"Register"}
             path={"/auth/register"}
             className={
-              "medText p-3 rounded-lg lg:flex hidden border border-slate-500"
+              "medText p-3 rounded-lg lg:flex hidden text-white border border-white"
             }
             isScrolled={isScrolled}
           />
@@ -117,7 +124,7 @@ const Navbar = ({ children }) => {
             hideMenu={hideMenu}
             path='/auth/login'
             text='Login'
-            className={`medText text-[white] lg:flex hidden`}
+            className={`medText text-white lg:flex hidden`}
             isScrolled={isScrolled}
           />
         </motion.div>

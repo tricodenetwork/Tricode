@@ -40,7 +40,7 @@ export default function Home() {
         <Careers />
         <WhyTricode />
         <OurServices />
-        <OurNewsletter />
+        {/* <OurNewsletter /> */}
         <Footer />
 
         <section id='intro' className='h-full'>

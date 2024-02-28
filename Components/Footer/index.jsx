@@ -89,7 +89,12 @@ export default function Footer({ mobile }) {
               style={inter.style}
               className='text-white text-sm md:text-lg font-normal  leading-[30px]'
             >
-              +923183561921
+              <a href='tel:+2349060700888'>+234 906 070 0888</a>
+              <br />
+
+              <a href='tel:+27682311138'>+27 68 231 1138</a>
+              <br />
+              <a href='mailto:contact@tricode.pro'>contact@tricode.pro</a>
             </div>
             <div className='w-[20vw] absolute bottom-14 right-10 mt-[6em] md:flex hidden text-white items-start justify-around'>
               <div className='hover:scale-125 duration-150 hover:cursor-pointer'>

@@ -87,12 +87,12 @@ export const cards = [
 export const careers = [
   {
     id: 1,
-    tittle: "Full Stack Developers",
+    tittle: "Software Engineering",
   },
 
   {
     id: 2,
-    tittle: "Product Management",
+    tittle: "Full Stack Developers",
   },
 
   {
@@ -118,16 +118,6 @@ export const careers = [
   {
     id: 7,
     tittle: "Data Analysts",
-  },
-
-  {
-    id: 8,
-    tittle: "Project Management",
-  },
-
-  {
-    id: 9,
-    tittle: "Full Stack Developers",
   },
 ];
 
