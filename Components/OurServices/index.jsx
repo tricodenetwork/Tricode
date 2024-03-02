@@ -10,7 +10,7 @@ export default function OurServices({ mobile }) {
   return (
     <>
       <section
-        className='px-3 lg:px-8 py-5 mt-12 lg:mx-auto w-full justify-center items-center'
+        className='px-3 lg:px-8 overflow-hidden py-5 mt-12 lg:mx-auto w-full justify-center items-center'
         id='services'
       >
         <div className='text-center mx-auto w-full justify-center items-center'>

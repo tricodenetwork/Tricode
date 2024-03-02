@@ -8,12 +8,15 @@ import LinkItem from "../LinkItem";
 import useFunctions from "@/hooks/useFunctions";
 import SideNavMobile from "./sidenavmobile";
 import LinkItem2 from "../LinkItem2";
+import { useRouter } from "next/router";
 
 const Navbar = ({ children }) => {
   const [showmenu, setShowmenu] = useState(false);
   const [sideNav, setSideNav] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { imageLoader } = useFunctions();
+  const router = useRouter();
+  const gray = router.pathname === "/about";
 
   const controls = useAnimation();
   const hideMenu = useCallback(() => {
@@ -39,13 +42,17 @@ const Navbar = ({ children }) => {
   return (
     <div
       className={`${
-        isScrolled || sideNav ? "bg-binance_green" : "bg-transparent"
-      } fixed h-[60px] sm:h-[90px] lg:h-[90px] w-full z-50 flex flex-col`}
+        isScrolled || sideNav
+          ? "bg-binance_green"
+          : gray
+          ? "bg-binance_ash bg-opacity-10"
+          : "bg-transparent"
+      } fixed h-[60px] sm:h-[90px] lg:h-[90px]  z-50 flex flex-col`}
     >
       <motion.nav
         initial={{ x: 0 }}
         animate={{ x: [200, 0] }}
-        className='navbar mx-auto top-[0vh] self-center'
+        className=' navbar top-[0vh]'
       >
         <motion.div
           initial={{}}
@@ -59,17 +66,19 @@ const Navbar = ({ children }) => {
           // }}
           className='logos text-white'
         >
-          <Image
-            loader={imageLoader}
-            alt='logo'
-            width={80}
-            height={40}
-            quality={100}
-            className='w-[30vw] lg:w-[16vw]'
-            src='/assets/images/logo.png'
-          />
+          <Link href={"/"}>
+            <Image
+              loader={imageLoader}
+              alt='logo'
+              width={80}
+              height={40}
+              quality={100}
+              className='w-[30vw] lg:w-[16vw]'
+              src='/assets/images/logo.png'
+            />
+          </Link>
         </motion.div>
-        <div className='w-[55%] gap-4 xl:gap-10 hidden lg:flex justify-around items-start'>
+        <div className='w-[55%] gap-4 hidden lg:flex justify-around items-start'>
           <LinkItem
             hideMenu={hideMenu}
             path='/about'

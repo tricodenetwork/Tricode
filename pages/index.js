@@ -33,26 +33,16 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main className='relative'>
-        <Hero />
-        <HireTricode mobile={mobile} />
-        <JoinTricode mobile={mobile} />
-        <Careers />
-        <WhyTricode />
-        <OurServices />
-        {/* <OurNewsletter /> */}
-        <Footer />
-
-        <section id='intro' className='h-full'>
-          {/* <Lottie src={"../public/assets/lottie/greenlady.json"} /> */}
-          {/* 
-          <Lottie
-            className="relative  md:bottom-[15vh] left-[64vw]  md:left-[57vw]  w-[35vw] md:w-[15vw]"
-            animationData={greenLady}
-            loop={true}
-          /> */}
-        </section>
-      </main>
+      {/* <main className='relative'> */}
+      <Hero />
+      <HireTricode mobile={mobile} />
+      <JoinTricode mobile={mobile} />
+      <Careers />
+      <WhyTricode />
+      <OurServices />
+      <OurNewsletter />
+      <Footer />
+      {/* </main> */}
     </>
   );
 }

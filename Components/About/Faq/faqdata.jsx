@@ -8,20 +8,19 @@ export const faqdata = [
   {
     id: 2,
     question: "What are the benefits of using Tricode? ",
-    including: `Tricode offers numerous benefits, including:`,
+    answer: `Tricode offers numerous benefits, including:`,
     Businesses: `For Businesses`,
   },
 
   {
     id: 3,
     question: "What cloud infrastructure does Tricode utilize?",
-    answer:`We leverage a multi-cloud approach, primarily utilizing AWS and Google Cloud Platform for scalability, reliability, and global reach.`,
+    answer: `We leverage a multi-cloud approach, primarily utilizing AWS and Google Cloud Platform for scalability, reliability, and global reach.`,
   },
 
   {
     id: 4,
-    question:
-      "What technologies power Tricode's virtual workspaces?",
+    question: "What technologies power Tricode's virtual workspaces?",
     answer:
       "Vitae congue eu consequat ac felis placerat vestibulum lectus mauris ultrices. Cursus sit amet dictum sit amet justo donec enim diam porttitor lacus luctus accumsan tortor posuere.",
   },

@@ -281,6 +281,10 @@ export const OurClients = [
     id: 2,
     img: "/assets/ourClients/RunaM.png",
   },
+  {
+    id: 3,
+    img: "/assets/ourClients/+logo.png",
+  },
 ];
 const projectDetails = [
   { name: "A1 1", date: "2023-09-15", status: "Completed" },

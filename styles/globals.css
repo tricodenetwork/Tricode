@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 /* styles/fonts.css */
+/* 
+*{
+  border:1px solid black
+} */
 
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 /* @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"); */
@@ -37,13 +41,8 @@
 /* For extra bold weight */
 
 @font-face {
-  font-family: "Poppins-Light";
+  font-family: "Poppins-Extra";
   src: url("../public/assets/fonts/Poppins-ExtraBold.ttf");
-}/* For Light weight */
-
-@font-face {
-  font-family: "Poppins-Light";
-  src: url("../public/assets/fonts/Poppins-Light.ttf");
 }
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -143,6 +142,10 @@ h3 {
 .semiBold {
   font-family: "Poppins-SemiBold";
 }
+.extraBold {
+  font-family: "Poppins-Extra";
+}
+
 
 h3 {
   color: #000;
@@ -151,9 +154,6 @@ h3 {
   font-style: normal;
   font-weight: 600;
   line-height: 36px;
-}
-.extraBold {
-  font-family: "Poppins";
 }
 .modal {
   position: absolute;
@@ -271,7 +271,7 @@ max-width: 400px;
 
 /* Navbar.css stylesheet */
 .navbar {
-  width: 95%;
+  width: 99vw;
   height: 12vh;
   display: flex;
   z-index: 50;

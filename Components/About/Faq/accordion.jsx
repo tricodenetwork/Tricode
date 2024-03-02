@@ -1,5 +1,6 @@
 import React from "react";
 import open from "./faq.svg";
+import { AnimatePresence, motion } from "framer-motion";
 // import close from "../../assets/accordionclose.svg";
 
 const Accordion = ({
@@ -12,10 +13,10 @@ const Accordion = ({
   including,
 }) => {
   return (
-    <div className='flex max-w-[40vw] duration-300 flex-col text-black py-2 justify-center'>
+    <div className='flex w-[70vw] lg:max-w-[40vw] duration-300 flex-col text-black pt-2 my-2 justify-center'>
       <div
         onClick={() => toggleAccordion(accordionId)}
-        className='bg-stone-100 cursor-pointer flex flex-row mb-2 p-5 gap-y-34 rounded-md justify-between items-center'
+        className='bg-stone-100 w-full cursor-pointer flex flex-row  p-5 space-x-3 rounded-md justify-between items-center'
       >
         <p className={`text-[15px] md:text-[18.687px] font-bold`}>{question}</p>
         <div>
@@ -30,19 +31,22 @@ const Accordion = ({
           )}
         </div>
       </div>
-
-      <div className='flex flex-col duration-300 text-black justify-center items-center'>
+      {/* <div className='flex flex-col bord text-black justify-center items-center'> */}
+      <AnimatePresence>
         {isOpen && (
-          <div
-            className='bg-stone-100 w-[95%] flex flex-col mb-2 p-5 bg-opacity-30 gap-y-34 rounded-md justify-center items-center'
+          <motion.div
+            initial={{ height: 0, opacity: 0, scale: 0 }}
+            animate={{ height: 100, opacity: 1, scale: 1 }}
+            exit={{ height: 0, opacity: 0, scale: 0 }}
+            transition={{ type: "tween", duration: 0.5 }}
+            className='bg-stone-100 flex mt-2 flex-col  w-full bg-opacity-30 rounded-md justify-center items-center'
             id='content'
           >
-            <p className='text-[15.29px] m-3'>{answer}</p>
-            {/* <p className="text-[15.29px] m-3">{including}</p>
-              <p className="text-[15.29px] m-3">{Businesses}</p> */}
-          </div>
+            <p className='text-[15.29px] p-2 '>{isOpen ? answer : ""}</p>
+          </motion.div>
         )}
-      </div>
+      </AnimatePresence>
+      {/* </div> */}
     </div>
   );
 };

@@ -14,20 +14,24 @@ export default function About({ mobile }) {
             <div className='text-binance_green text-2xl md:text-5xl semiBold tracking-wide'>
               About Tricode
             </div>
-            <div className='text-zinc-500 text-xs lg:text-base text-center mt-3 lg:text-left leading-6 tracking-tight'>
-              <span className='text-[16px] font-bold'>TRICODE </span>
+            <div className='text-binance_ash text-xs lg:text-base text-center mt-3 lg:text-left leading-6 tracking-tight'>
+              <span className='text-[16px] text-zinc-700 font-bold'>
+                TRICODE{" "}
+              </span>
               is a hybrid workstation for both software and hardware Product
               Research, Development and Management that enhances the user Remote
               working experiences with the implementation of healthy working
               habits and social ecosystem factors.
               <br />
               <br />
-              <span className='text-[16px] font-bold'>A PaaS powerhouse: </span>
+              <span className='text-[16px] text-zinc-700 font-bold'>
+                A PaaS powerhouse:{" "}
+              </span>
               Recruiting and nurturing top-tier tech talent, equipping them with
               cutting-edge tools and secure cloud environments.
               <br />
               <br />
-              <span className='text-[16px] font-bold'>
+              <span className='text-[16px] text-zinc-700 font-bold'>
                 Your agile development arm:{" "}
               </span>
               Businesses, tap into our elite pool of developers, architects, and
@@ -35,7 +39,7 @@ export default function About({ mobile }) {
               your digital ambitions.
               <br />
               <br />
-              <span className='text-[16px] font-bold'>
+              <span className='text-[16px] text-zinc-700 font-bold'>
                 Collaboration reimagined:{" "}
               </span>
               Real-time communication, dedicated project managers, and robust
@@ -47,7 +51,7 @@ export default function About({ mobile }) {
               <br />
               <br />
               Our goal is to simply be the homepage for
-              <span className='text-[16px] font-bold'>
+              <span className='text-[16px] text-zinc-700 font-bold'>
                 {" "}
                 Agile Methodology{" "}
               </span>{" "}
@@ -55,7 +59,7 @@ export default function About({ mobile }) {
             </div>
           </div>
           <Lottie
-            className='relative   w-[35vw] md:w-[35vw]'
+            className='relative   w-[35vw] md:w-[60vw]'
             animationData={greenLady}
             loop={true}
           />{" "}
