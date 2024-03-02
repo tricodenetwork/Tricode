@@ -16,7 +16,7 @@ const FAQs = () => {
       className="px-8 lg:px-14 py-7 w-full lg:py-[90px] bg-white overflow-hidden justify-center items-center"
       id="faq"
     >
-      <div className="flex flex-col md:flex-row gap-3 md:gap-28 justify-center items-center w-full">
+      <div className="flex flex-col lg:flex-row gap-3 md:gap-28 justify-center items-center w-full">
         <div>
           <div className="text-binance_green text-2xl md:text-5xl semiBold tracking-wide">
             FAQ’S

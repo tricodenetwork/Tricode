@@ -4,8 +4,7 @@ import open from "./faq.svg";
 
 const Accordion = ({ accordionId, question, answer, isOpen, toggleAccordion, Businesses, including }) => {
   return (
-    <div>
-      <div className="flex flex-col text-black py-2 justify-center">
+      <div className="flex flex-col md:w-[500px] xl:w-[50em] text-black py-2 justify-center">
         <div
           onClick={() => toggleAccordion(accordionId)}
           className="bg-stone-100 cursor-pointer flex flex-row mb-2 p-5 gap-y-34 rounded-md justify-between items-center"
@@ -29,7 +28,6 @@ const Accordion = ({ accordionId, question, answer, isOpen, toggleAccordion, Bus
         </div>
         
       </div>
-    </div>
   );
 };
 
