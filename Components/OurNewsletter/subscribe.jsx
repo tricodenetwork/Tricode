@@ -14,7 +14,7 @@ export default function Subscribe() {
         </div>
         <div className='flex flex-row h-[60px] mb-[31px] w-full md:w-[683px] pl-3 bg-none rounded-2xl border border-binance_green justify-center items-center gap-2  focus-within:ring-1 ring-binance_green'>
           <input
-            className='w-full bg-transparent regular focus:outline-none border-none'
+            className='w-full text-xs lg:text-base bg-transparent regular focus:outline-none border-none'
             type='email'
             placeholder='Enter Your Email Address'
             // onChange={(e) => setEmail(e.target.value)}

@@ -47,25 +47,14 @@ const Navbar = ({ children }) => {
           : gray
           ? "bg-binance_ash bg-opacity-10"
           : "bg-transparent"
-      } fixed h-[60px] sm:h-[90px] lg:h-[90px]  z-50 flex flex-col`}
+      } fixed h-[60px] sm:h-[90px] lg:h-[90px]   z-50 flex flex-col`}
     >
       <motion.nav
         initial={{ x: 0 }}
         animate={{ x: [200, 0] }}
-        className=' navbar top-[0vh]'
+        className=' navbar px-[1.5vw] mx-auto top-[0vh]'
       >
-        <motion.div
-          initial={{}}
-          // animate={{
-          //   y: [0, -15, 0, -15, 0, -17, 0, -12, 0],
-          // }}
-          // transition={{
-          //   delay: 0.1,
-          //   repeat: 7,
-          //   duration: 4,
-          // }}
-          className='logos text-white'
-        >
+        <div className='logos '>
           <Link href={"/"}>
             <Image
               loader={imageLoader}
@@ -77,7 +66,7 @@ const Navbar = ({ children }) => {
               src='/assets/images/logo.png'
             />
           </Link>
-        </motion.div>
+        </div>
         <div className='w-[55%] gap-4 hidden lg:flex justify-around items-start'>
           <LinkItem
             hideMenu={hideMenu}

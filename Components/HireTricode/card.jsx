@@ -26,7 +26,7 @@ export default function HireCard() {
   };
 
   return (
-    <div className='flex w-screen relative duration-300 transition-all h-auto bottom-[45px] overflow-x-scroll scrollbar-hide mt-12 gap-4'>
+    <div className='flex w-screen  relative duration-300 transition-all h-auto mt-[40%] lg:mt-[10%] overflow-x-scroll scrollbar-hide gap-4'>
       {cards.map((card_info, i) => (
         <motion.div
           key={i + 1}

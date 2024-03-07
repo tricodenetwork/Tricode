@@ -14,7 +14,7 @@ export default function Footer({ mobile }) {
   return (
     <>
       <section
-        className='mx-auto px-4 relative md:px-[105px] pt-5  h-max   lg:h-[496px] w-full bg-[#1B1B1B]'
+        className='mx-auto px-4 py-[3vh] relative md:px-[105px] pt-5  h-max   lg:h-[496px] w-full bg-[#1B1B1B]'
         id='footer'
       >
         <div className='flex flex-col md:flex-row gap-3 md:gap-32 justify-start items-start w-full'>

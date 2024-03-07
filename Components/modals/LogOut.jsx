@@ -18,13 +18,13 @@ const LogOut = () => {
       <div className='space-x-[20px]'>
         <button
           onClick={() => router.back()}
-          className='w-[145px] h-[37px] border border-binance_green bg-white hover:bg-binance_green duration-300 hover:text-white text-binance_green rounded-3xl'
+          className='w-[145px] h-[37px] border hover:scale-90 active:scale-100 border-binance_green bg-white  duration-150  text-binance_green rounded-3xl'
         >
           No
         </button>
         <button
           onClick={leave}
-          className='w-[145px] h-[37px] border hover:scale-110 border-binance_green hover:bg-white hover:text-binance_green duration-300 bg-binance_green text-white rounded-3xl'
+          className='w-[145px] h-[37px] border hover:scale-90 active:scale-100 border-binance_green  duration-150 bg-binance_green text-white rounded-3xl'
         >
           Yes, Log me out
         </button>
