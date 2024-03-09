@@ -458,3 +458,22 @@ h5 {
 .bord {
   border: 2px solid salmon;
 }
+
+/* scroll */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 1rem;
+  transition: all 0.5s ease-in-out;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #38A312;
+}
+
+::-webkit-scrollbar-track {
+  background: #ffffff84;
+} /**/
