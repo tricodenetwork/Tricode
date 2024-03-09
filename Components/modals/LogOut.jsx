@@ -1,6 +1,14 @@
+import { baseUrl } from "@/config/config";
+import { signIn, signOut } from "next-auth/react";
+import { useRouter } from "next/router";
 import React from "react";
 
 const LogOut = () => {
+  const router = useRouter();
+  const leave = async () => {
+    await signOut({ callbackUrl: `${baseUrl}/auth/login` });
+  };
+
   return (
     <div className='flex w-[438px] h-[515px] flex-col justify-center items-center space-y-3'>
       <p className='medium text-2xl text-grayText'>Log Out</p>
@@ -8,10 +16,16 @@ const LogOut = () => {
         Do you really want to log out?
       </p>
       <div className='space-x-[20px]'>
-        <button className='w-[145px] h-[37px] border border-binance_green bg-white text-binance_green rounded-3xl'>
+        <button
+          onClick={() => router.back()}
+          className='w-[145px] h-[37px] border hover:scale-90 active:scale-100 border-binance_green bg-white  duration-150  text-binance_green rounded-3xl'
+        >
           No
         </button>
-        <button className='w-[145px] h-[37px] border border-binance_green bg-binance_green text-white rounded-3xl'>
+        <button
+          onClick={leave}
+          className='w-[145px] h-[37px] border hover:scale-90 active:scale-100 border-binance_green  duration-150 bg-binance_green text-white rounded-3xl'
+        >
           Yes, Log me out
         </button>
       </div>

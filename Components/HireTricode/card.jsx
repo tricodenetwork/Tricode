@@ -1,97 +1,73 @@
 import Image from "next/image";
-import { useState, useEffect } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/effect-cards";
-import { Pagination, Autoplay } from "swiper";
+import { useState } from "react";
 import { cards } from "../../Data/data";
 import { Istok_Web } from "next/font/google";
+import { motion } from "framer-motion";
+import { MdArrowRightAlt } from "react-icons/md";
 
 const font = Istok_Web({
   weight: ["400", "700"],
   subsets: ["cyrillic", "latin"],
 });
-export default function HireCard() {
-  return (
-    <>
-      {/* <div className='w-screen bord hidden md:flex gap-3'>
-        <Swiper
-          slidesPerview={1.2}
-          spaceBetween={120}
-          breakpoints={{
-            799: {
-              slidesPerView: 3,
-            },
-            1024: {
-              slidesPerView: 4,
-            },
-            1424: {
-              slidesPerView: 5,
-            },
-          }}
-          loop={true}
-          autoplay={{
-            delay: 3000,
-          }}
-          // pagination={{
-          //   clickable: false,
-          // }}
-          // modules={[Pagination, Autoplay]}
-        >
-          {cards.map((card_info, i) => (
-            <SwiperSlide key={i + 1}>
-              <div className='w-[270px] h-80 px-5 pt-[7vh] my-9 bg-white hover:border-t-2 hover:border-binance_green justify-center items-center rounded-tl-[5px] rounded-tr-[5px] rounded-bl-[5px] rounded-br-[50px] shadow'>
-                <div className="text-binance_green text-xl font-bold font-['Istok Web']">
-                  {card_info.tittle}
-                </div>
-                <div className="w-[199px] mt-3 text-sm font-normal font-['Istok Web']">
-                  Posuere morbi leo urna molestie at elementum eu egestas.
-                </div>
-                <button className="w-28 mt-9 text-base font-bold font-['Istok Web']">
-                  LEARN MORE {">"}
-                </button>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div> */}
 
-      <div className='flex w-screen absolute bottom-[45px]  mx-auto scrollbar-hide overflow-scroll left-0  mt-12 gap-4'>
-        {cards.map((card_info, i) => (
+export default function HireCard() {
+  // Create state for tracking expansion status of each card
+  const [expandedCards, setExpandedCards] = useState(
+    Array(cards.length).fill(false)
+  );
+
+  // Function to toggle expansion status of a specific card
+  const toggleExpansion = (index) => {
+    // Close all other cards except the one being toggled
+    const newExpandedCards = expandedCards.map((card, idx) =>
+      idx === index ? !card : false
+    );
+    setExpandedCards(newExpandedCards);
+  };
+
+  return (
+    <div className='flex w-screen  relative duration-300 transition-all h-auto mt-[40%] lg:mt-[10%] overflow-x-scroll scrollbar-hide gap-4'>
+      {cards.map((card_info, i) => (
+        <motion.div
+          key={i + 1}
+          className={`min-w-[350px]  ${
+            expandedCards[i] ? "h-[400px]" : "h-[320px]"
+          }  pt-[30px] justify-around flex flex-col transition-all border-t-4 ease-linear duration-200 border-binance_green p-[35px] bg-white rounded-[5px_5px_50px_5px] shadow-[0px_0px_20px_#f7edff]`}
+        >
           <div
-            key={i + 1}
-            className=' min-w-[270px] h-[320px] relative pt-[66px] border-t-4 border-binance_green p-[35px] bg-white rounded-[5px_5px_50px_5px] shadow-[0px_0px_20px_#f7edff]'
+            style={font.style}
+            className='text-binance_green  flex items-center h-[70px] text-xl font-bold'
           >
-            <div
-              style={font.style}
-              className='text-binance_green text-xl font-bold'
-            >
-              {card_info.tittle}
-            </div>
-            <div
-              style={font.style}
-              className='w-[199px] mt-3 absolute bottom-32 text-sm font-normal '
-            >
-              Posuere morbi leo urna molestie at elementum eu egestas.
-            </div>
-            <button
-              style={font.style}
-              className='w-28 absolute bottom-16 flex items-center mt-9 '
-            >
-              <p className='text-base font-bold mr-2 whitespace-nowrap '>
-                LEARN MORE
-              </p>
-              <Image
-                src={"/assets/icons/right.svg"}
-                alt='icon'
-                width={19}
-                height={19}
-              />
-            </button>
+            {card_info.tittle}
           </div>
-        ))}
-      </div>
-    </>
+          <div
+            style={font.style}
+            className={`w-auto duration-200 transition-all text-sm font-normal`}
+          >
+            {expandedCards[i]
+              ? card_info.discr
+              : card_info.discr.slice(0, 120).concat("...")}
+          </div>
+          <button
+            style={font.style}
+            className='w-28 flex mt-3 items-center'
+            onClick={() => toggleExpansion(i)}
+          >
+            <div className='flex items-center  hover:text-binance_green '>
+              <p className='text-base  flex items-center font-bold  whitespace-nowrap'>
+                {expandedCards[i] ? "Read Less" : "Learn More"}
+              </p>
+              <div
+                className={`${
+                  expandedCards[i] ? "rotate-180" : ""
+                } duration-300 hover:text-binance_green hover:rotate-180 ml-1 `}
+              >
+                <MdArrowRightAlt />
+              </div>
+            </div>
+          </button>
+        </motion.div>
+      ))}
+    </div>
   );
 }

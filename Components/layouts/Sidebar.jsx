@@ -10,8 +10,8 @@ const Sidebar = ({ Header, Message }) => {
   //------------------------------------------------------------------USE EFFECTS
 
   return (
-    <div className='w-[35%] hidden lg:flex flex-col  items-center  justify-center bg-[#2b2b2b] min-h-screen'>
-      <div className='logos absolute top-[3vh] left-[2vw]  text-white'>
+    <div className='lg:w-[35%] w-full relative   h-[25%] flex lg:flex-col lg:items-center  lg:justify-center bg-binance_ash lg:h-full'>
+      <div className='logos absolute top-[2vh] lg:top-[3vh] left-[2vw] righ-[2vw]  text-white'>
         <Image
           loader={imageLoader}
           alt='logo'
@@ -22,8 +22,8 @@ const Sidebar = ({ Header, Message }) => {
           src='/assets/images/logo.png'
         />
       </div>
-      <div className='relative  w-[70%]  flex flex-col items-center top-[5vh]'>
-        <div className='relative  mb-[44px] z-50'>
+      <div className='lg:relative h-auto   absolute top-1/2 -translate-y-1/2 lg:-translate-y-0 w-full justify-center  lg:w-[70%]  flex lg:flex-col items-center lg:top-[5vh]'>
+        <div className='relative hidden  lg:flex lg:mb-[44px] z-50'>
           <div className='absolute left-1/3 -translate-x-1/2  bottom-0 translate-y-1/2 -z-10'>
             <Image
               className=''
@@ -42,10 +42,14 @@ const Sidebar = ({ Header, Message }) => {
             src='/assets/images/hand.png'
           />
         </div>
-        <div className='flex-col flex items-center - uppercase[268px]'>
-          <h4 className='mb- uppercase text-center text-white'>{Header}</h4>
+        <div className='flex-col  lg:left-0 relative   self-center w-full flex items-start lg:items-center'>
+          <h4 className='text-lg lg:uppercase text-center w-[50%]  self-center lg:w-[70%] text-white'>
+            {Header}
+          </h4>
 
-          <p className='smallText text-left mt-3'>{Message}</p>
+          <p className='smallText hidden lg:flex break-normal   lg:w-full text-left lg:text-ceter mt-3'>
+            {Message}
+          </p>
         </div>
       </div>
     </div>

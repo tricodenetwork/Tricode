@@ -8,12 +8,12 @@ const LoginLayout = (children) => {
   //------------------------------------------------------------------USE EFFECTS
 
   return (
-    <div className='flex h-[100vh] max-h-screen w-full '>
+    <div className='flex flex-col lg:flex-row space-y-5 lg:space-y-0 h-[100vh] max-h-screen w-full '>
       <Sidebar
-        Header='Join US'
+        Header='Join us'
         Message="Signing up for TRICODE's <Dev/> Network is your gateway to connecting with a diverse community of programmers,experts, and more."
       />
-      <div className='w-full h-[100%]  flex flex-col px-3 justify-center items-center'>
+      <div className='w-full h-auto overflow-y-scroll  flex flex-col  justify-center items-center'>
         {children}
       </div>
     </div>

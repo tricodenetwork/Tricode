@@ -20,7 +20,6 @@ const ModalComponent = ({ Content }) => {
       >
         <Content close={closeModal} />
       </Modal>
-      <button onClick={openModal}>On modal</button>
     </div>
   );
 };

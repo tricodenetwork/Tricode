@@ -1,10 +1,6 @@
 import clientPromise from "@/lib/mongodb";
-// import { useCors } from "@/hooks/useCors";
 
 export default async function handler(req, res) {
-  // Use the cors middleware and pass the origin you want to accept
-  //   await useCors("https://bandb-ovodo.vercel.app")(req, res);
-
   try {
     const client = await clientPromise;
     const db = client.db("Tricode");
@@ -14,24 +10,26 @@ export default async function handler(req, res) {
       .collection("users")
       .findOne({ email: req.body.email });
 
-    if (existingUser) {
-      // If the user exists, update the role if it's not already set
-      if (existingUser.role) {
-        return res.status(200).json({ message: "Email already exists" });
-      } else {
-        await db.collection("users").updateOne(
-          { email: req.body.email },
-          {
-            $set: {
-              role: req.body.role,
-              // Add other fields to update as needed
-            },
-          }
-        );
-        return res
-          .status(200)
-          .json({ message: "User role updated successfully" });
-      }
+    // If the user does not exist, check if the name exists
+    const userByName = await db
+      .collection("users")
+      .findOne({ name: req.body.fullName });
+
+    if (userByName) {
+      // If the name exists, update the user by name
+      await db.collection("users").updateOne(
+        { name: req.body.fullName },
+        {
+          $set: {
+            email: req.body.email,
+            role: req.body.role,
+            // Add other fields to update as needed
+          },
+        }
+      );
+      return res
+        .status(200)
+        .json({ message: "User updated successfully by name" });
     }
 
     // Check if any required field is missing
@@ -47,12 +45,13 @@ export default async function handler(req, res) {
         return res.status(400).json({ error: `${field} is required` });
       }
     }
-    // If the user does not exist, create a new user object with the provided data
+
+    // If the user does not exist by email or name, create a new user object with the provided data
     const newUser = {
-      fullName: req.body.fullName,
+      name: req.body.fullName,
       password: req.body.password,
       email: req.body.email,
-      mobilePhone: req.body.mobilePhone,
+      phone: req.body.mobilePhone,
       role: req.body.role,
       // Add other fields as needed
     };
@@ -60,7 +59,9 @@ export default async function handler(req, res) {
     // Insert the new user into the database
     await db.collection("users").insertOne(newUser);
 
-    res.status(200).json({ message: "User registered successfully" });
+    res
+      .status(200)
+      .json({ message: "User registered or updated successfully" });
   } catch (error) {
     console.error("API Error:", error);
     res

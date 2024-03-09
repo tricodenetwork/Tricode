@@ -14,7 +14,7 @@ export default function Footer({ mobile }) {
   return (
     <>
       <section
-        className='mx-auto px-4 md:px-[105px] pt-5  h-[542px] lg:h-[496px] w-full bg-[#1B1B1B]'
+        className='mx-auto px-4 py-[3vh] relative md:px-[105px] pt-5  h-max   lg:h-[496px] w-full bg-[#1B1B1B]'
         id='footer'
       >
         <div className='flex flex-col md:flex-row gap-3 md:gap-32 justify-start items-start w-full'>
@@ -52,7 +52,7 @@ export default function Footer({ mobile }) {
             >
               Links
             </div>
-            <div className='flex flex-col md:w-max mt-3 md:gap-4 text-white regular text-sm md:text-base leading-[37.81px]'>
+            <div className='flex flex-col md:w-max mt-3 lg:space-y-7 md:gap-4 text-white regular text-sm md:text-base leading-[37.81px]'>
               <Link href={"/about"}>
                 <div className='regular hover:text-binance_green hover:scale-110 duration-150 hover:cursor-pointer'>{`<About Us />`}</div>
               </Link>
@@ -82,26 +82,29 @@ export default function Footer({ mobile }) {
               style={inter.style}
               className='text-white text-sm md:text-lg mb-3 font-normal  leading-[30px]'
             >
-              Lorem Ipsum is simply dummy text of the <br />
-              printing and typesetting industry.{" "}
+              Contact us through any of the <br />
+              following channels{" "}
             </div>
             <div
               style={inter.style}
-              className='text-white text-sm md:text-lg font-normal  leading-[30px]'
+              className='text-white text-sm md:text-lg lg:mt-5 flex flex-col  lg:space-y-5 font-normal  leading-[30px]'
             >
-              +923183561921
+              <a href='tel:+2349060700888'>+234 906 070 0888</a>
+
+              <a href='tel:+27682311138'>+27 68 231 1138</a>
+              <a href='mailto:contact@tricode.pro'>contact@tricode.pro</a>
             </div>
             <div className='w-[20vw] absolute bottom-14 right-10 mt-[6em] md:flex hidden text-white items-start justify-around'>
-              <div className='hover:scale-125 duration-75 hover:cursor-pointer'>
+              <div className='hover:scale-125 duration-150 hover:cursor-pointer'>
                 <LinkedInIcon />
               </div>
-              <div className='hover:scale-125 duration-75 hover:cursor-pointer'>
+              <div className='hover:scale-125 duration-150 hover:cursor-pointer'>
                 <InstagramIcon />
               </div>
-              <div className='hover:scale-125 duration-75 hover:cursor-pointer'>
+              <div className='hover:scale-125 duration-150 hover:cursor-pointer'>
                 <TwitterIcon />
               </div>
-              <div className='hover:scale-125 duration-75 hover:cursor-pointer'>
+              <div className='hover:scale-125 duration-150 hover:cursor-pointer'>
                 <GitHubIcon />
               </div>
             </div>

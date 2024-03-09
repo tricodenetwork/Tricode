@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 /* styles/fonts.css */
+/* 
+*{
+  border:1px solid black
+} */
 
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 /* @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"); */
@@ -37,13 +41,8 @@
 /* For extra bold weight */
 
 @font-face {
-  font-family: "Poppins-Light";
+  font-family: "Poppins-Extra";
   src: url("../public/assets/fonts/Poppins-ExtraBold.ttf");
-}/* For Light weight */
-
-@font-face {
-  font-family: "Poppins-Light";
-  src: url("../public/assets/fonts/Poppins-Light.ttf");
 }
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -143,23 +142,36 @@ h3 {
 .semiBold {
   font-family: "Poppins-SemiBold";
 }
+.extraBold {
+  font-family: "Poppins-Extra";
+}
+
 
 h3 {
   color: #000;
-  font-family: Poppins-SemiBold;
+  font-family: Poppins;
   font-size: 24px;
   font-style: normal;
   font-weight: 600;
   line-height: 36px;
-}
-.extraBold {
-  font-family: "Poppins";
 }
 .modal {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  background-color: white;
+  /* padding: 10px; */
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 15px;
+  border: none;
+}
+.notification-modal {
+  position: fixed;
+  top: 9vh;
+  right: 9vh;
+  /* transform: translate(-50%, -50%); */
   background-color: white;
   /* padding: 10px; */
   max-width: 100%;
@@ -181,14 +193,41 @@ h3 {
   z-index: 999;
 }
 
-/* h3 {
-  color: #000;
-  font-family: Poppins-SemiBold;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-} */
+
+
+.chat-item .rce-citem-body--top-time {
+  font-size: 12px;
+  font-family: "Poppins-Medium";
+    color: rgba(0, 0, 0, 0.4);
+
+}
+
+.message-item-left .rce-mbox {
+width: fit-content;
+max-width: 400px;
+}
+.message-item .rce-mbox {
+  background-color: #38A312;
+  color: white;
+  width: fit-content;
+  max-width: 400px;
+}
+.message-item .rce-mbox-text {
+  font-family: "Poppins-Regular";
+}
+.message-item .rce-mbox-time{
+  color: white;
+  font-family: "Poppins-Light";
+}
+
+.message-item .rce-mbox-right-notch {
+  display: none;
+
+}
+.message-item-left .rce-mbox-left-notch {
+  display: none;
+
+}
 
 .hirecard:hover {
 }
@@ -232,7 +271,7 @@ h3 {
 
 /* Navbar.css stylesheet */
 .navbar {
-  width: 95%;
+  width: 99vw;
   height: 12vh;
   display: flex;
   z-index: 50;
@@ -277,6 +316,8 @@ ul li,
 @media screen and (max-width: 520px) {
   .navbar {
     height: 9vh;
+    padding-left: 5vw;
+    padding-right: 5vw;
   }
 
   .nav-menu {
@@ -341,7 +382,7 @@ ul li,
 }
 
 .drag-and-drop {
-  border: 2px dashed #ccc;
+  border: 2px solid #061A48;
   padding: 20px;
   text-align: center;
   cursor: pointer;
@@ -512,7 +553,7 @@ h5 {
   }
   h3 {
     color: #000;
-    font-family: Poppins-SemiBold;
+    font-family: Poppins;
     font-size: 18px;
     font-style: normal;
     font-weight: 600;

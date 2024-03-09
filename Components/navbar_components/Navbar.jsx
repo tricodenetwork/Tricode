@@ -8,12 +8,15 @@ import LinkItem from "../LinkItem";
 import useFunctions from "@/hooks/useFunctions";
 import SideNavMobile from "./sidenavmobile";
 import LinkItem2 from "../LinkItem2";
+import { useRouter } from "next/router";
 
 const Navbar = ({ children }) => {
   const [showmenu, setShowmenu] = useState(false);
   const [sideNav, setSideNav] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { imageLoader } = useFunctions();
+  const router = useRouter();
+  const gray = router.pathname === "/about";
 
   const controls = useAnimation();
   const hideMenu = useCallback(() => {
@@ -39,37 +42,32 @@ const Navbar = ({ children }) => {
   return (
     <div
       className={`${
-        isScrolled || sideNav ? "bg-binance_green" : "bg-transparent"
-      } fixed h-[60px] sm:h-[90px] lg:h-[90px] w-full z-50 flex flex-col`}
+        isScrolled || sideNav
+          ? "bg-binance_green"
+          : gray
+          ? "bg-binance_ash bg-opacity-10"
+          : "bg-transparent"
+      } fixed h-[60px] sm:h-[90px] lg:h-[90px]   z-50 flex flex-col`}
     >
       <motion.nav
         initial={{ x: 0 }}
         animate={{ x: [200, 0] }}
-        className='navbar mx-auto top-[0vh] self-center'
+        className=' navbar px-[1.5vw] mx-auto top-[0vh]'
       >
-        <motion.div
-          initial={{}}
-          // animate={{
-          //   y: [0, -15, 0, -15, 0, -17, 0, -12, 0],
-          // }}
-          // transition={{
-          //   delay: 0.1,
-          //   repeat: 7,
-          //   duration: 4,
-          // }}
-          className='logos text-white'
-        >
-          <Image
-            loader={imageLoader}
-            alt='logo'
-            width={80}
-            height={40}
-            quality={100}
-            className='w-[30vw] lg:w-[16vw]'
-            src='/assets/images/logo.png'
-          />
-        </motion.div>
-        <div className='w-[55%]  gap-7 lg:gap-12 hidden lg:flex justify-around items-start'>
+        <div className='logos '>
+          <Link href={"/"}>
+            <Image
+              loader={imageLoader}
+              alt='logo'
+              width={80}
+              height={40}
+              quality={100}
+              className='w-[30vw] lg:w-[16vw]'
+              src='/assets/images/logo.png'
+            />
+          </Link>
+        </div>
+        <div className='w-[55%] gap-4 hidden lg:flex justify-around items-start'>
           <LinkItem
             hideMenu={hideMenu}
             path='/about'
@@ -91,6 +89,13 @@ const Navbar = ({ children }) => {
             text='Projects'
             isScrolled={isScrolled}
           />
+          {/* <LinkItem
+            hideMenu={hideMenu}
+            path='/faq'
+            offColor={false}
+            text='FAQ'
+            isScrolled={isScrolled}
+          /> */}
           <LinkItem
             hideMenu={hideMenu}
             path='#newsletter'
@@ -109,7 +114,7 @@ const Navbar = ({ children }) => {
             text={"Register"}
             path={"/auth/register"}
             className={
-              "medText p-3 rounded-lg lg:flex hidden border border-slate-500"
+              "medText p-3 rounded-lg lg:flex hidden text-white border border-white"
             }
             isScrolled={isScrolled}
           />
@@ -117,7 +122,7 @@ const Navbar = ({ children }) => {
             hideMenu={hideMenu}
             path='/auth/login'
             text='Login'
-            className={`medText text-[white] lg:flex hidden`}
+            className={`medText text-white lg:flex hidden`}
             isScrolled={isScrolled}
           />
         </motion.div>

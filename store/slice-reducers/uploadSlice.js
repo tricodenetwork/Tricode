@@ -22,7 +22,6 @@ const uploadSlice = createSlice({
       state.filess.push(action.payload);
     },
     delFile: (state, action) => {
-      console.log(action.payload);
       state.filess.splice(action.payload, 1);
     },
   },

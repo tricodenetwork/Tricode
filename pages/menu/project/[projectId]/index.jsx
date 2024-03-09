@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import ProjectDetails from "@/Components/projectComponents/ProjectDetails";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import useProjects from "@/hooks/useProjects";
+import useDatabase from "@/hooks/useDatabase";
 import Image from "next/image";
 
 const TeamCard = ({ member }) => {
@@ -61,14 +61,14 @@ const ProjectID = () => {
   const [navto, setNav] = useState("milestone");
   const router = useRouter();
   const { projectId } = router.query;
-  const { projects, allUsers } = useProjects();
+  const { projects, allUsers } = useDatabase();
   let teamMembers = [];
 
   //-----------------------------------------------------------FUNCTIONS
 
   const project = projects?.filter((item) => item._id == projectId)[0];
   allUsers?.forEach((item) => {
-    project?.teams.includes(item.name) && teamMembers.push(item);
+    project?.teams?.includes(item.name) && teamMembers.push(item);
   });
 
   //------------------------------------------------------------------USE EFFECTS
@@ -108,16 +108,16 @@ const ProjectID = () => {
         <div className='flex justify-between flex-col lg:flex-row items-center w-full relative'>
           <div className='lg:grid flex  items-center justify-around lg:grid-cols-5 lg:grid-rows-1 flex-col place-items-start lg:place-items-center place-content-center w-20 lg:w-full h-full lg:h-20'>
             <div className='w-6  h-6 bg-[#38A312] rounded-full' />
-            <div className='w-6  h-6 bg-[#38A312] rounded-full' />
-            <div className='w-6  h-6 bg-[#38A312] rounded-full' />
+            <div className='w-6  h-6 bg-gray-200 rounded-full' />
+            <div className='w-6  h-6 bg-gray-200 rounded-full' />
             <div className='w-6  h-6 bg-gray-200 rounded-full' />
             <div className='w-6  h-6 bg-gray-200 rounded-full' />
           </div>
           <div className='w-[80%] hidden lg:flex left-0 right-0 m-auto h-2  bg-gray-300 absolute -z-10 '>
-            <div className='w-[50%] h-full bg-[#38A312]  ' />
+            <div className='w-[1%] h-full bg-[#38A312]  ' />
           </div>
           <div className='w-2 h-[80%] flex lg:hidden self-center justify-self-center top-1/2 -translate-y-1/2   bg-gray-300 absolute -z-10 '>
-            <div className='w-full h-[50%] bg-[#38A312]  ' />
+            <div className='w-full h-[1%] bg-[#38A312]  ' />
           </div>
         </div>
         <div className='lg:grid flex flex-col items-center justify-around lg:grid-cols-5 place-items-center w-full'>

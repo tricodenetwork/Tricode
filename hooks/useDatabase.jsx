@@ -1,12 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useSession } from "next-auth/react";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { initializeUser } from "@/store/slice-reducers/UserReducer";
 
-const useProjects = () => {
+const useDatabase = () => {
   const { data: session } = useSession();
-  const [data, setData] = useState(null);
+  const [user, setUser] = useState(null);
   const [allUsers, setAllUsers] = useState(null);
   const [projects, setProjects] = useState(null);
+  const [rooms, setRooms] = useState(null);
+  const dispatch = useDispatch();
 
   function convertObjectIdToDate(oid) {
     const timestamp = parseInt(oid.substring(0, 8), 16) * 1000;
@@ -18,21 +22,27 @@ const useProjects = () => {
     return formattedDate;
   }
 
+  const cachedUser = useMemo(() => user, [user]);
+  const cachedProjects = useMemo(() => projects, [projects]);
+
   useEffect(() => {
     const fetchData = async () => {
       if (session?.user?.email) {
         try {
           const res = await axios.post("/api/user", {
-            email: session.user.email,
+            email: session?.user?.email,
           });
           const res2 = await axios.post("/api/projects", {
-            name: session.user.name,
+            name: session?.user?.name,
           });
-          const res3 = await axios.post("/api/users");
+          const res3 = await axios.get("/api/users");
+          const res4 = await axios.get("/api/get/chatrooms");
+
+          setRooms(res4.data.data);
           setAllUsers(res3.data.data);
-          setData(res.data.data);
+          setUser(res.data.data);
+          dispatch(initializeUser(res.data.data));
           setProjects(res2.data.data);
-          console.log("projects", res2.data.data);
         } catch (error) {
           console.log(error.message);
         }
@@ -44,7 +54,13 @@ const useProjects = () => {
     }
   }, [session]);
 
-  return { data, projects, convertObjectIdToDate, allUsers };
+  return {
+    user: cachedUser,
+    projects: cachedProjects,
+    convertObjectIdToDate,
+    allUsers,
+    rooms,
+  };
 };
 
-export default useProjects;
+export default useDatabase;

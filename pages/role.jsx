@@ -1,15 +1,18 @@
 import SignupLayout from "@/Components/layouts/SignupLayout";
 import Button from "@/Components/Button";
 import RadioInput from "@/Components/RadioInput";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
+import InputLine from "@/Components/InputLine";
 
 const Index = () => {
   // --------------------------------------------VARIABLES
   const [selectedOption, setSelectedOption] = useState("company");
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
+  const [email, setEmail] = useState("");
+
   const router = useRouter();
 
   //-----------------------------------------------------------FUNCTIONS
@@ -18,23 +21,29 @@ const Index = () => {
     setSelectedOption(e.target.value);
   };
 
+  const handleEmailChange = (e) => setEmail(e.target.value);
+
   const handleSubmit = async () => {
-    console.log("submitting");
+    console.log(session?.user?.email);
+    console.log(status);
     try {
-      const response = await axios.post("/api/register", {
-        email: session?.user?.email,
+      await axios.post("/api/register", {
+        email: session?.user?.email || email,
         role: selectedOption, // Assuming selectedOption represents "Company or Talent" field
         // Other fields if needed
       });
 
       // Handle successful response
-      console.log("Response:", response.data);
       router.push("/menu/dashboard");
     } catch (error) {
       // Handle error
       console.error("Error:", error);
     }
   };
+
+  useEffect(() => {
+    console.log(session, "sessioin");
+  }, [session]);
 
   //------------------------------------------------------------------USE EFFECTS
 
@@ -60,6 +69,11 @@ const Index = () => {
           onChange={handleOptionChange}
         />
       </div>
+      <InputLine
+        value={email}
+        onChange={handleEmailChange}
+        placeholder={"Email"}
+      />
       <div className='w-full mt-4'>
         <Button
           click={handleSubmit}

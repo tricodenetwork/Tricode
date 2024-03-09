@@ -8,6 +8,12 @@ import createEmotionCache from "../config/createEmotionCache";
 import { wrapper } from "../store/store";
 import { Provider } from "react-redux";
 import { SessionProvider } from "next-auth/react";
+import "react-chat-elements/dist/main.css";
+import Modal from "react-modal";
+import { useEffect } from "react";
+
+Modal.setAppElement("#__next");
+
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
 
@@ -26,6 +32,13 @@ function App({ Component, ...rest }) {
       return <Component {...pageProps} />;
     }
   };
+
+  useEffect(() => {
+    // Clean up function to be called on component unmount
+    return () => {
+      Modal.setAppElement(null); // Set app element back to null when component unmounts
+    };
+  }, []);
 
   return (
     // <GoogleOAuthProvider clientId='704139097438-0r081l07jdsiru0ktse80r813pm6mlm3.apps.googleusercontent.com'>

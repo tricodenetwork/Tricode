@@ -13,10 +13,10 @@ export default function HireTricode({ mobile }) {
     <>
       <Connect />
       <section
-        className='px-8 lg:px-14 h-screen  lg:h-[110vh] py-5 w-full  relative lg:py-[90px] bg-gradient-to-l from-[#BBD2B3] to-stone-100 overflow-hidden justify-center items-center'
+        className='py-5 w-full h-[120vh]  relative lg:py-[90px] bg-gradient-to-l from-[#BBD2B3] to-stone-100 overflow-hidden justify-center items-center'
         id='intro'
       >
-        <div className='flex flex-col lg:flex-row   justify-start lg:justify-between  items-center w-full  gap-[38px] sm:gap-[50px] lg:gap-[19vh]'>
+        <div className='flex px-8  lg:px-14 flex-col lg:flex-row   justify-start lg:justify-between  items-center w-full  gap-[38px] sm:gap-[50px] lg:gap-[19vh]'>
           <div className='flex-col justify-start items-center lg:items-start gap-5 inline-flex'>
             <div className='text-binance_green text-2xl md:text-6xl semiBold tracking-wide'>
               Hire Tricode

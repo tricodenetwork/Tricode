@@ -1,11 +1,15 @@
 import MenuLayout from "@/Components/layouts/MenuLayout";
-import ProjectTable from "@/Components/projectComponents/projectTables/ProjecctTable";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 // import { LiaAngleLeftSolid, LiaAngleRightSolid } from "react-icons/lia";
 import axios from "axios";
 import { useSession } from "next-auth/react";
+import useDatabase from "@/hooks/useDatabase";
+import { useRouter } from "next/router";
+import FileUpload from "@/Components/modals/FileUpload";
+import { useSelector } from "react-redux";
+import { CircleLoader } from "react-spinners";
 const projectDetails = [
   { name: "A1 1", date: "2023-09-15", status: "Completed" },
   { name: "A1 1", date: "2023-09-15", status: "Returned for review" },
@@ -18,16 +22,24 @@ const projectDetails = [
 const Dashboard = () => {
   // --------------------------------------------VARIABLES
   const currentDate = new Date();
-  const [data, setData] = useState(null);
-  const [projects, setProjects] = useState(null);
-  const { data: session } = useSession();
-  console.log("image", session?.user?.name);
-  const imageUrl = data?.image ? data.image : "/assets/images/company.svg";
-
+  const { data: session, status } = useSession();
+  const { projects, user } = useDatabase();
+  const router = useRouter();
+  // const { user } = useSelector((state) => state);
+  const upload = router.query?.imageUpload;
+  const imageUrl = user?.profile_pic
+    ? `/profile_pics/${user?.email + "_" + user?.profile_pic}`
+    : user?.image
+    ? user?.image
+    : "/assets/images/company.svg";
+  // console.log(session, "sessio");
+  // console.log(status, "status");
+  console.log(imageUrl, "urlimage");
   const options = { weekday: "long", month: "long", day: "numeric" };
   const formattedDate = new Intl.DateTimeFormat("en-US", options).format(
     currentDate
   );
+  const [files, setFiles] = useState([]);
 
   //-----------------------------------------------------------FUNCTIONS
 
@@ -42,42 +54,45 @@ const Dashboard = () => {
   }
 
   //------------------------------------------------------------------USE EFFECTS
-
   useEffect(() => {
-    const fetchData = async () => {
-      // Check if the session is available
-      if (session?.user?.email) {
-        try {
-          const res = await axios.post("/api/user", {
-            email: session.user.email,
-          });
-          const res2 = await axios.post("/api/projects", {
-            name: session.user.name,
-          });
-
-          setData(res.data.data);
-          setProjects(res2.data.data);
-          console.log("projects", res2.data.data);
-        } catch (error) {
-          console.log(error.message);
-        }
+    if (user) {
+      console.log(user);
+      if (
+        !(user?.role === "talent" || user?.role === "company" || user?.email)
+      ) {
+        router.push("/role");
+      } else {
+        return;
       }
-    };
-
-    // Check if the session is available before making the API call
-    if (session) {
-      fetchData();
     }
-  }, [session]);
+  }, [user]);
+
+  if (!user) {
+    return (
+      <div className='flex flex-col justify-center items-center w-full h-full'>
+        <CircleLoader
+          className='w-[300px] lg:w-[500px]'
+          loading={!false}
+          color='green'
+        />
+        <p className='medium lg:text-xl mt-5 text-binance_green'>Loading</p>
+      </div>
+    );
+  }
 
   return (
     <div className='h-max p-5  lg:p-10 w-full  flex flex-col'>
+      {upload && (
+        <div className='bg-black bg-opacity-80 w-full z-50  flex justify-center items-center  h-full fixed top-0 left-0 '>
+          <FileUpload files={files} setFiles={setFiles} />
+        </div>
+      )}
       <div className='flex flex-col justify-around lg:flex-row'>
         <div>
           <p className='text-transparent text-[20px] tracking-[0] leading-[normal]'>
             <span className='text-[#666666]'>Welcome Back, </span>
             <span className='text-[#2b2b2b] medium text-[24px]'>
-              {data?.name?.split(" ")[0]}
+              {user?.name?.split(" ")[0]}
             </span>
             <span className='text-[#666666]'>👋🏾</span>
           </p>
@@ -103,13 +118,13 @@ const Dashboard = () => {
                 </div>
                 <div className='absolute w-[243px] h-[153px] top-0 left-[104px]'>
                   <div className="absolute top-0 left-0 [font-family:'Poppins-SemiBold',Helvetica] font-semibold text-[#2b2b2b]  text-xs s:text-sm  lg:text-[16px] tracking-[0] leading-[normal]">
-                    {data?.name}
+                    {user?.name}
                   </div>
                   <div className="absolute top-[43px] left-0 [font-family:'Poppins-SemiBold',Helvetica] font-semibold text-[#2b2b2b]  text-xs s:text-sm  lg:text-[16px] tracking-[0] leading-[normal]">
                     @monry
                   </div>
                   <div className="absolute top-[86px] left-0 [font-family:'Poppins-SemiBold',Helvetica] font-semibold text-[#37a212]  text-xs s:text-sm  lg:text-[16px] tracking-[0] leading-[normal]">
-                    {data?.email}
+                    {user?.email}
                   </div>
                 </div>
               </div>
@@ -119,24 +134,28 @@ const Dashboard = () => {
             >
               <Image
                 fill
-                className='border border-gray-400 rounded-full'
+                className='border object-cover border-gray-400 rounded-full'
                 alt='Group'
                 src={imageUrl}
               />
-              <Image
-                width={24}
-                height={24}
-                className='absolute top-[98px] left-[116px]'
-                alt='Group'
-                src='/assets/icons/edit.svg'
-              />
-              <Image
-                width={40}
-                height={40}
-                className='absolute top-[13px] left-[111px]'
-                alt='Group'
-                src='/assets/icons/verified.svg'
-              />
+              <Link href={"?imageUpload=true"}>
+                <Image
+                  width={24}
+                  height={24}
+                  className='absolute top-[98px] left-[116px]'
+                  alt='Group'
+                  src='/assets/icons/edit.svg'
+                />
+              </Link>
+              {user?.verified && (
+                <Image
+                  width={40}
+                  height={40}
+                  className='absolute top-[13px] left-[111px]'
+                  alt='Group'
+                  src='/assets/icons/verified.svg'
+                />
+              )}
             </div>
           </div>
           <div className='inline-flex mt-[74px] flex-col items-start gap-[10px] relative'>
@@ -145,10 +164,9 @@ const Dashboard = () => {
             </div>
             <div className='inline-flex flex-col items-start gap-[10px] relative flex-[0_0_auto]'>
               {projects?.map((project, index) => {
-                console.log("meetings", project?.meetings);
-                return project?.meetings.map((item, i) => (
+                return project?.meetings?.map((item, i) => (
                   <div
-                    key={i}
+                    key={i.toString}
                     className='relative w-[376px] h-[78px] bg-white rounded-[14px] shadow-[0px_4px_10px_#0000000d]'
                   >
                     <p className='absolute top-[43px] left-[63px] medium text-[#8c8787] text-[10px] tracking-[0] leading-[normal]'>
@@ -196,8 +214,9 @@ const Dashboard = () => {
               <tbody className=''>
                 {projects?.map((v, k) => (
                   <tr
+                    onClick={() => router.push(`/menu/project/${v._id}`)}
                     key={k.toString()}
-                    className='border-b  border-gray-200 hover:bg-gray-100'
+                    className='border-b hover:cursor-pointer  border-gray-200'
                   >
                     <td className='py-5 pr-6 medium hidden lg:flex text-grayText text-base text-center whitespace-nowrap'>
                       {k < 9 ? `0${k + 1}` : k + 1}
@@ -232,7 +251,7 @@ const Dashboard = () => {
           </div>
           <div className='mt-[58px]'>
             <div className='flex relative justify-between'>
-              <div className="[font-family:'Poppins-SemiBold',Helvetica] font-semibold text-[#2e2c2c] text-[20px] tracking-[0] leading-[normal]">
+              <div className="[font-family:'Poppins-SemiBold',Helvetica] text-[#2e2c2c] text-[20px] tracking-[0] leading-[normal]">
                 Project Manager Responses
               </div>
               <div className="[font-family:'Poppins-Regular',Helvetica] hidden font-normal text-[#37a212] text-[14px] tracking-[0] leading-[normal]">

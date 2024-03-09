@@ -15,6 +15,10 @@ import Bell from "../svg/Bell";
 import Settings from "../svg/Settings";
 import Link from "next/link";
 import { useState } from "react";
+import ModalComponent from "../modals/ModalComponent";
+import LogOut from "../modals/LogOut";
+import Notifications from "../modals/Notifications";
+import NotificationModal from "../modals/NotificationModal";
 
 const MenuLayout = ({ children }) => {
   // --------------------------------------------VARIABLES
@@ -22,6 +26,8 @@ const MenuLayout = ({ children }) => {
   const parts = route.pathname.split("menu/");
   const title = parts.length > 1 ? parts[1].split("/")[0] : "";
   const [isOpen, setIsOpen] = useState(false);
+  const logout = route?.query?.logout;
+  const notification = route?.query?.notification;
 
   //-----------------------------------------------------------FUNCTIONS
   const { imageLoader } = useFunctions();
@@ -29,8 +35,10 @@ const MenuLayout = ({ children }) => {
 
   return (
     <div className='w-full flex  flex-col justify-start'>
+      {logout && <ModalComponent Content={LogOut} />}
+      {notification && <NotificationModal Content={Notifications} />}
       <div className='w-full  bg-binance_green  flex items-center justify-between px-[3vw] lg:px-[2vw]  h-[9vh]'>
-        <div className='items-center hidden lg:flex text-white'>
+        <Link href={"/"} className='items-center hidden lg:flex text-white'>
           <Image
             loader={imageLoader}
             alt='logo'
@@ -39,7 +47,7 @@ const MenuLayout = ({ children }) => {
             quality={100}
             src='/assets/images/logo.png'
           />
-        </div>
+        </Link>
         <div className='flex  lg:hidden items-center text-white'>
           <Image
             loader={imageLoader}
@@ -53,24 +61,28 @@ const MenuLayout = ({ children }) => {
 
         <motion.h4
           transition={{ duration: 0.4 }}
-          animate={{ opacity: [0, 100], x: ["-200%", "0%"] }}
+          animate={{ opacity: [0, 100], x: ["0%", "0%"] }}
           className='flex text-white'
         >
           {title}
         </motion.h4>
         <div className='lg:space-x-4 flex items-center justify-center lg:justify-between'>
           <div className='relative lg:flex hidden hover:scale-90 hover:cursor-pointer transition-all ease-out duration-100'>
-            <div className='absolute -top-2 -right-2'>
-              <Ellipse />
-            </div>
+            <Link href={"/menu/chat"}>
+              <div className='absolute -top-2 -right-2'>
+                <Ellipse />
+              </div>
+            </Link>
 
             <Message />
           </div>
           <div className='relative lg:flex hidden hover:scale-90 hover:cursor-pointer transition-all ease-out duration-100'>
-            <div className='absolute -top-2 -right-2'>
-              <Ellipse />
-            </div>
-            <Bell />
+            <Link href={"?notification=true"}>
+              <div className='absolute -top-2 -right-2'>
+                <Ellipse />
+              </div>
+              <Bell />
+            </Link>
           </div>
           <div className='w-[30px] lg:flex hidden  hover:scale-90 hover:rotate-[360deg] hover:cursor-pointer transition-all ease-out duration-100 relative rounded-full h-[30px]'>
             <Link href={"/settings/user"}>
@@ -89,19 +101,46 @@ const MenuLayout = ({ children }) => {
           ></div>
         </div>
       </div>
-      <div className='w-full relative max-h-[91dvh]  overflow-x-hidden  h-screen border-midorange items-start flex'>
+      <div
+        className='w-full relative max-h-[91dvh]   overflow-clip borde
+        h-screen border-midorange items-start flex'
+      >
         <div
-          className={`lg:w-[17%] w-[80vw] absolute   top-0  lg:left-0 lg:relative h-[80%] ${
+          className={`lg:w-[17%] w-[80vw] absolute   top-0  lg:left-0 lg:relative lg:h-full h-[80%] ${
             isOpen
               ? "bg-binance_green lg:bg-white -right-[0px]    text-white "
               : "-right-[1000px]"
-          } lg:flex flex-col border-r z-20 border-opacity-20  duration-700 ease-out  pt-[4vh] lg:pt-0 lg:mt-[7vh]  border-[#000000]`}
+          } flex flex-col justify-between border-r z-20 border-opacity-20  duration-700 ease-out  pt-[4vh] lg:pt-0 lg:mt-[7vh]  border-[#000000]`}
         >
-          <MenuList isOpen={isOpen} Icon={Dashboard} name={"Dashboard"} />
-          <MenuList isOpen={isOpen} Icon={Project} name={"Project"} />
-          <MenuList isOpen={isOpen} Icon={Payment} name={"Payment"} />
-          <MenuList isOpen={isOpen} Icon={Help} name={"Help"} />
-          <MenuList isOpen={isOpen} Icon={Logout} name={"Logout"} />
+          <div className='bod'>
+            <MenuList isOpen={isOpen} Icon={Dashboard} name={"Dashboard"} />
+            <MenuList isOpen={isOpen} Icon={Project} name={"Project"} />
+            <MenuList isOpen={isOpen} Icon={Payment} name={"Payment"} />
+            <MenuList isOpen={isOpen} Icon={Help} name={"Help"} />
+            <MenuList isOpen={isOpen} Icon={Logout} name={"Logout"} />
+          </div>
+          {/* <div className='lg:space-x-4 mb-10 flex lg:hidden bord items-center justify-center lg:justify-between'>
+            <div className='relative flex hover:scale-90 hover:cursor-pointer transition-all ease-out duration-100'>
+              <div className='absolute -top-2 -right-2'>
+                <Ellipse />
+              </div>
+
+              <Message />
+            </div>
+            <div className='relative flex hover:scale-90 hover:cursor-pointer transition-all ease-out duration-100'>
+              <Link href={"?notification=true"}>
+                <div className='absolute -top-2 -right-2'>
+                  <Ellipse />
+                </div>
+                <Bell />
+              </Link>
+            </div>
+            <div className='w-[30px] flex  hover:scale-90 hover:rotate-[360deg] hover:cursor-pointer transition-all ease-out duration-100 relative rounded-full h-[30px]'>
+              <Link href={"/settings/user"}>
+                <Settings />
+              </Link>
+            </div>
+          </div> */}
         </div>
         <div className='max-h-full h-full overflow-scroll   scrollbar-hide  w-full lg:w-[83%] flex justify-center items-start'>
           {children}

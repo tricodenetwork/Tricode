@@ -2,7 +2,7 @@ import React from "react";
 import GreatText from "./GreatText";
 const Great = () => {
   return (
-    <div className='w-[438px] flex flex-col justify-between items-center relative h-[429px]'>
+    <div className='w-[438px] bg-binance_ash flex flex-col justify-between items-center relative h-[429px]'>
       <div className='flex flex-col justify-between items-center mt-[64px]'>
         <div
           id='Image_div'

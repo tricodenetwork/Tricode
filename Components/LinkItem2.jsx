@@ -22,7 +22,7 @@ const LinkItem = ({
       <motion.ul className='flex medText items-center  text-white'>
         <motion.li
           whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.8 }}
+          whileTap={{ scale: 1 }}
           transition={{ type: "spring", stiffness: 500, duration: 0.1 }}
           onClick={hideMenu}
           className={`${bgColor} ${

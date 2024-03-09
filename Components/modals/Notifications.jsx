@@ -13,7 +13,7 @@ const Notifications = () => {
   //------------------------------------------------------------------USE EFFECTS
 
   return (
-    <div className=''>
+    <div className='w-[530px]'>
       <h3
         style={{ textTransform: "capitalize", color: "#2e2c2c" }}
         className='w-full rounded-[15px] bg-[#ECF5F7] h-[60px] text-center capitalize'
