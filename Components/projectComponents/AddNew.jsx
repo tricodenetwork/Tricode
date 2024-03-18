@@ -23,10 +23,6 @@ import Button from "../Button";
 function AddNew() {
   const [files, setFiles] = useState([]);
   const [loading, setLoading] = useState(false);
-
-  const [selected, setSelectedCountry] = useState(
-    countries[0]?.code.toLowerCase()
-  );
   const { user } = useDtabase();
   const router = useRouter();
   const upload = router.query?.upload;
@@ -49,12 +45,18 @@ function AddNew() {
         files: allFiles,
       });
 
+      const newBlob = await upload(filess.name, filess, {
+        access: "public",
+        handleUploadUrl: `/api/upload?company=${user?.email}&image=${false}`,
+        token: process.env.BLOB_READ_WRITE_TOKEN,
+      });
+
       // Handle successful response
       router.push("/menu/project");
     } catch (error) {
       // Handle error
       console.error("Error:", error);
-      Alert("Error Submiting");
+      alert("Error Submiting");
       setLoading(!true);
     }
   };

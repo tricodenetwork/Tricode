@@ -9,6 +9,7 @@ import useDatabase from "@/hooks/useDatabase";
 import { useRouter } from "next/router";
 import FileUpload from "@/Components/modals/FileUpload";
 import { useSelector } from "react-redux";
+import { CircleLoader } from "react-spinners";
 const projectDetails = [
   { name: "A1 1", date: "2023-09-15", status: "Completed" },
   { name: "A1 1", date: "2023-09-15", status: "Returned for review" },
@@ -26,10 +27,10 @@ const Dashboard = () => {
   const router = useRouter();
   // const { user } = useSelector((state) => state);
   const upload = router.query?.imageUpload;
-  const imageUrl = user?.profile_pic
-    ? `/profile_pics/${user?.email + "_" + user?.profile_pic}`
-    : user?.image
+  const imageUrl = user?.image
     ? user?.image
+    : user?.profile_pic
+    ? `/profile_pics/${user?.email + "_" + user?.profile_pic}`
     : "/assets/images/company.svg";
   // console.log(session, "sessio");
   // console.log(status, "status");
@@ -65,6 +66,19 @@ const Dashboard = () => {
       }
     }
   }, [user]);
+
+  if (!user) {
+    return (
+      <div className='flex flex-col justify-center items-center w-full h-full'>
+        <CircleLoader
+          className='w-[300px] lg:w-[500px]'
+          loading={!false}
+          color='green'
+        />
+        <p className='medium lg:text-xl mt-5 text-binance_green'>Loading</p>
+      </div>
+    );
+  }
 
   return (
     <div className='h-max p-5  lg:p-10 w-full  flex flex-col'>

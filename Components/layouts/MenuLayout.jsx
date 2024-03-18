@@ -38,7 +38,7 @@ const MenuLayout = ({ children }) => {
       {logout && <ModalComponent Content={LogOut} />}
       {notification && <NotificationModal Content={Notifications} />}
       <div className='w-full  bg-binance_green  flex items-center justify-between px-[3vw] lg:px-[2vw]  h-[9vh]'>
-        <div className='items-center hidden lg:flex text-white'>
+        <Link href={"/"} className='items-center hidden lg:flex text-white'>
           <Image
             loader={imageLoader}
             alt='logo'
@@ -47,7 +47,7 @@ const MenuLayout = ({ children }) => {
             quality={100}
             src='/assets/images/logo.png'
           />
-        </div>
+        </Link>
         <div className='flex  lg:hidden items-center text-white'>
           <Image
             loader={imageLoader}

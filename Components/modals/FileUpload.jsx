@@ -5,11 +5,17 @@ import { Close, Cloud } from "@mui/icons-material";
 import { Router, useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { setFilee } from "@/store/slice-reducers/uploadSlice";
+import { upload } from "@vercel/blob/client";
+
 import useDatabase from "@/hooks/useDatabase";
+import Loading from "../Loading";
 
 const FileUpload = ({ close, files, setFiles }) => {
   const [uploadProgress, setUploadProgress] = useState(0);
   const [selectedFile, setSelectedFile] = useState(null);
+  const [blob, setBlob] = useState(null);
+  const [isUploading, setIsUploading] = useState(false);
+
   const { user } = useDatabase();
 
   const inputFileRef = React.useRef(null);
@@ -62,52 +68,50 @@ const FileUpload = ({ close, files, setFiles }) => {
     dispatch(setFilee(file));
   };
   const handleUpload = async () => {
-    const formData = new FormData();
     const file = files.pop();
-    formData.append("file", file);
 
     try {
-      await axios.post(
-        `/api/upload?company=${user?.email}&image=${imageUpload}&profile_pic=${file?.name}`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-          onUploadProgress: (progressEvent) => {
-            const percentCompleted = Math.round(
-              (progressEvent.loaded * 100) / progressEvent.total
-            );
-            setUploadProgress(percentCompleted);
-          },
-        }
-      );
+      setIsUploading(true);
+      const newBlob = await upload(file.name, file, {
+        access: "public",
+        handleUploadUrl: `/api/upload?company=${user?.email}&image=${imageUpload}`,
+        token: process.env.BLOB_READ_WRITE_TOKEN,
+      });
+
+      setBlob(newBlob);
+      setIsUploading(false);
+      setUploadProgress(100);
+      console.log(blob);
     } catch (error) {
+      setIsUploading(false);
+      alert("Error uploading");
       console.error("There was an error uploading the file.", error.response);
     }
   };
   return (
     <div
       className={`flex-col ${
-        imageUpload ? " lg:flex-col lg:w-[30vw]" : "lg:w-[838px] lg:flex-row "
-      } bg-white relative  max-h-max pb-[16vh] flex w-[90vw]  mx-auto lg:h-[590px] self-center p-7 `}
+        imageUpload
+          ? " lg:flex-col justify-center lg:w-[30vw]"
+          : "lg:w-[838px] lg:flex-row "
+      } bg-white relative  items-center flex  lg:h-[590px] p-7 `}
     >
+      <div className='flex absolute px-7 top-5 left-0 justify-between  w-full'>
+        <p>
+          <strong className='semiBold text-binance_green text-[18px] md:text-[24px]'>
+            {imageUpload ? "Change profile photo" : "Upload files"}
+          </strong>
+        </p>
+        <i className='cursor-pointer' onClick={() => router.back()}>
+          <Close sx={{ fontSize: 25, color: "#061A48" }} />
+        </i>
+      </div>
       {/* Left Side */}
       <div
-        className={`w-full md:w-[55%] ${
+        className={`w-full ${
           imageUpload && "md:w-full"
         } hiddn flex flex-col space-y-4`}
       >
-        <div className='flex justify-between w-full'>
-          <p>
-            <strong className='extraBold text-binance_green text-[18px] md:text-[24px]'>
-              {imageUpload ? "Change profile photo" : "Upload files"}
-            </strong>
-          </p>
-          <i className='cursor-pointer' onClick={() => router.back()}>
-            <Close sx={{ fontSize: 25, color: "#061A48" }} />
-          </i>
-        </div>
         <p>
           <strong
             className={`regular ${
@@ -193,7 +197,7 @@ const FileUpload = ({ close, files, setFiles }) => {
       <div
         className={`w-full md:w-[45%] ${
           imageUpload && "md:w-[85%]"
-        } relative   max-h-max h-full  self-center flex items-center justify-center`}
+        } relative max-h-max   self-center flex items-center justify-center`}
       >
         <div
           onDragEnter={handleDragEnter}
@@ -202,11 +206,13 @@ const FileUpload = ({ close, files, setFiles }) => {
           onDrop={handleDrop}
           className={`drag-and-drop ${
             isDragging ? "drag-over" : ""
-          } bg-[#f2f2f2] w-[330px] my-auto bord  self-center h-[300px] lg:h-[349px] flex-col flex items-center  justify-center  border border-[#4f4f4f] rounded-[20px]`}
+          } bg-[#f2f2f2] w-[330px] focus:outline-none my-auto bord  self-center h-[300px] lg:h-[349px] flex-col flex items-center  justify-center  border border-[#4f4f4f] rounded-[20px]`}
         >
           {files && (
             <div className='self-center mb-[3vh] text-grayText text-center regular text-base'>
-              {uploadProgress !== 100
+              {isUploading
+                ? "Uploading..."
+                : uploadProgress !== 100
                 ? files[files.length - 1]?.name
                 : "Successfull"}
             </div>
@@ -222,7 +228,7 @@ const FileUpload = ({ close, files, setFiles }) => {
               <label className='cursor-pointer mx-auto'>
                 <button
                   onClick={handleButtonClick}
-                  className='regular w-[163px] h-[37px] hover:bg-green-700 hover:border-white hover:text-white duration-200 border-solid text-[16px] bg-white  py-1 border border-binance_green text-binance_green rounded-3xl'
+                  className='medium w-[163px] h-[37px] hover:bg-green-700 hover:border-white hover:text-white duration-200 border-solid text-[16px] bg-white  py-1 border border-binance_green text-binance_green rounded-3xl'
                 >
                   Browse files
                 </button>
@@ -256,20 +262,33 @@ const FileUpload = ({ close, files, setFiles }) => {
           )}
         </div>
       </div>
-      <div
-        style={{ borderBottomLeftRadius: 20, borderBottomRightRadius: 20 }}
-        className='absolute left-0 flex items-center justify-end w-full lg:w-full  bottom-0 bg-[#e0e0e0]  h-[64px]'
-      >
-        <button onClick={handleCancel} className='regular text-[15px] '>
+      {/* Bottom bar */}
+      <div className='absolute left-0 flex items-center  justify-end w-full lg:w-full  bottom-0 bg-[#e0e0e0]  h-[64px]'>
+        <button
+          onClick={handleCancel}
+          className='medium hover:scale-95 active:scale-100 duration-200 text-[15px] '
+        >
           Cancel
         </button>
         <button
           onClick={() =>
-            uploadProgress !== 100 ? handleUpload() : router.back()
+            uploadProgress !== 100 && imageUpload
+              ? handleUpload()
+              : router.back()
           }
-          className='regular w-[100px] h-[36.64px] hover:bg-green-700 hover:border-white hover:text-white duration-200 border-solid text-[16px] ml-6 mr-4 px-4 py-1 bg-white border border-binance_green text-[#38A312] rounded-3xl'
+          className={` w-[100px] h-[36.64px] ${
+            isUploading ? "bg-binance_ash" : " bg-white"
+          } focus:outline-none medium hover:bg-green-700  hover:text-white duration-200 border-solid text-[16px] ml-6 mr-4 px-4 py-1 border border-binance_green text-[#38A312] rounded-3xl`}
         >
-          {uploadProgress !== 100 ? "Upload" : "Done"}
+          {!imageUpload ? (
+            "Done"
+          ) : isUploading ? (
+            <Loading length={3} loading={true} />
+          ) : uploadProgress !== 100 ? (
+            "Change"
+          ) : (
+            "Done"
+          )}
         </button>
       </div>
     </div>
