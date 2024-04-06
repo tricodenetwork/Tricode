@@ -10,7 +10,7 @@ const Sidebar = ({ Header, Message }) => {
   //------------------------------------------------------------------USE EFFECTS
 
   return (
-    <div className='w-[429px] hidden md:flex flex-col items-center pb-5 justify-end bg-[#2b2b2b] min-h-screen'>
+    <div className='w-[429px] lg:w-[529px] hidden md:flex flex-col items-center pb-5 justify-end bg-[#2b2b2b] h-screen'>
       <div className='logos absolute top-0 left-3  text-white'>
         <Image
           loader={imageLoader}
@@ -22,8 +22,8 @@ const Sidebar = ({ Header, Message }) => {
           src='/assets/images/logo.png'
         />
       </div>
-      <div className='relative -top-[7vh]'>
-        <div className='absolute right-[70px]  -bottom-[18px] z-40'>
+      <div className='relative top-[19vh] left-[10vh]'>
+        <div className='absolute top-[4em] z-40'>
           <Image
             className=''
             loader={imageLoader}
@@ -43,11 +43,8 @@ const Sidebar = ({ Header, Message }) => {
           />
         </div>
       </div>
-      <div className='flex-col flex items-center max-w-[268px]'>
-        <h3 className='text- mb- text-white'>{Header}</h3>
-        {/* <h5 className='text-white uppercase'>
-          Lorem ipsum dolor sit amet consectetur.
-        </h5> */}
+      <div className='flex-col flex items-left w-[318px]'>
+        <h3 className='text-left mb- mt-[2em] text-white'>{Header}</h3>
         <p className='smallText mt-3'>
           {Message}
         </p>

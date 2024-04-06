@@ -57,14 +57,14 @@ const Index = () => {
         <div className=' w-full'>
           <Button styles={"w-full mx-auto"} Action={"Sign in"} />
           <Link href='/auth/forgot-password'>
-            <p className='register mt-[12px]  text-binance_green text-center'>
+            <p className='register mt-[12px] mb-7 text-binance_green text-center'>
               Forgot password?
             </p>
           </Link>
         </div>
       </div>
-      <div className='mt-[70px]'>
-        <p className='signin mb-3 text-center '>Or sign in with</p>
+      <div className=''>
+        <p className='signin mb-3 text-center'>Or sign in with</p>
         <AuthComponent />
       </div>
     </>
