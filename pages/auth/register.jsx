@@ -39,7 +39,7 @@ const Index = () => {
     <div className='h-full login justify-around px-3 flex flex-col items-center'>
       <div className=''>
         <h3>Create an Account</h3>
-        <div className='flex mt-[4px] mb-[10px] md:mt-[7px] md:mb-[20px] items-center'>
+        <div className='flex mt-[4px] mb-[10px] items-center'>
           <p className='mr-1 md:mr-3 member text-black'>
             Already have an account?
           </p>
@@ -48,8 +48,8 @@ const Index = () => {
           </Link>
         </div>
       </div>
-      <div className='md:w-[487px]  h-[70%] relative flex flex-col justify-between'>
-        <div className='h-[55%] py-2 flex flex-col justify-between'>
+      <div className='md:w-[487px] relative flex flex-col justify-between'>
+        <div className='py-2 flex flex-col justify-between'>
           <InputLine placeholder={"Full Name"} />
           <div>
             <InputLine placeholder={"Password*"} type={showPasswordToggle ? "text" : "password"} />
@@ -78,7 +78,7 @@ const Index = () => {
           </div>
         </div>
 
-        <div className='relative mt-4 md:mt-0 bottom-4'>
+        <div className='relative mt-4 md:mt-3'>
           <div className='text-[#000000] mb-1 text-sm md:text-lg font-medium'>
             Are you a Company or Talent?
           </div>
