@@ -4,25 +4,43 @@ import OutsideClickHandler from "react-outside-click-handler";
 
 import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
 import InputLine from "../InputLine";
-const SelectComponent = ({ items, placeholder }) => {
+const SelectComponent = ({ items, placeholder, onChange }) => {
   const [open, setOpen] = useState(false);
+  const [value, setVal] = useState("");
   return (
     <OutsideClickHandler
       onOutsideClick={() => {
         setOpen(false);
       }}
     >
-      <div className='flex items-center  max-w-max relative'>
+      <div className='flex items-center z-50   max-w-max relative'>
         {open && (
           <motion.div
-            animate={{ height: ["0px", "240px"] }}
-            className='w-full h-[240px] z-10 absolute border scrollbar-hide bg-slate-700 overflow-y-scroll'
+            // animate={{ height: ["0%", "100%"] }}
+            className='w-full h-max z-10 absolute -bottom-[290%] border scrollbar-hide bg-white overflow-y-scroll'
           >
             {items?.map((item, i) => (
               <p
                 key={i.toString()}
                 style={{ fontSize: 14 }}
-                className='regular border-b py-2 mb-2 px-2 text-[#aab2c8]'
+                onClick={() => {
+                  onChange(item);
+                  setVal(item);
+                  setOpen(false);
+                }}
+                className={`regular cursor-pointer border-b py-2 mb-2 px-2 text-binance_ash medium ${
+                  item == "Completed"
+                    ? "text-binance_green"
+                    : item == "Paused"
+                    ? "text-[#d9d9d9]"
+                    : item == "Awaiting your review"
+                    ? "text-purple-800"
+                    : item == "Started"
+                    ? "text-cyan-400"
+                    : item == "Ongoing"
+                    ? "text-amber-400"
+                    : "text-gray-800"
+                }`}
               >
                 {item}
               </p>
@@ -30,8 +48,21 @@ const SelectComponent = ({ items, placeholder }) => {
           </motion.div>
         )}
         <InputLine
-          styles={"bg-transparent  mr-2 regular text-[16px]"}
+          styles={`bg-transparent ${
+            value == "Completed"
+              ? "text-binance_green"
+              : value == "Paused"
+              ? "text-[#d9d9d9]"
+              : value == "Awaiting your review"
+              ? "text-purple-800"
+              : value == "Started"
+              ? "text-cyan-400"
+              : value == "Ongoing"
+              ? "text-amber-400"
+              : "text-gray-800"
+          }  mr-2 regular text-[16px]`}
           placeholder={placeholder}
+          value={value}
         />
         <div
           onClick={() => {

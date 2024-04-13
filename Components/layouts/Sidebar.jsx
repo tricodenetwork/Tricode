@@ -18,6 +18,7 @@ const Sidebar = ({ Header, Message }) => {
           width={80}
           height={40}
           quality={100}
+          priority={true}
           className='w-[10vw]'
           src='/assets/images/logo.png'
         />
@@ -31,11 +32,13 @@ const Sidebar = ({ Header, Message }) => {
               alt='ellipse'
               width={214.338}
               height={47.995}
+              priority={true}
               src='/assets/images/ellipse.png'
             />
           </div>
           <Image
             loader={imageLoader}
+            priority={true}
             alt='world hand'
             width={216}
             height={355.433}

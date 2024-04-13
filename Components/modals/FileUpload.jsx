@@ -5,6 +5,7 @@ import { Close, Cloud } from "@mui/icons-material";
 import { Router, useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { setFilee } from "@/store/slice-reducers/uploadSlice";
+import { setProjectFiles as setFile } from "@/store/slice-reducers/reportSlice";
 import { upload } from "@vercel/blob/client";
 
 import useDatabase from "@/hooks/useDatabase";
@@ -65,7 +66,9 @@ const FileUpload = ({ close, files, setFiles }) => {
     setUploadProgress(0); // Reset progress when a new file is chosen
     const file = event.target.files[0];
     setFiles((prev) => [...prev, file]);
-    dispatch(setFilee(file));
+    !router.pathname.includes("report")
+      ? dispatch(setFilee(file))
+      : dispatch(setFile(file));
   };
   const handleUpload = async () => {
     const file = files.pop();
@@ -272,9 +275,10 @@ const FileUpload = ({ close, files, setFiles }) => {
         </button>
         <button
           onClick={() =>
-            uploadProgress !== 100 && imageUpload
-              ? handleUpload()
-              : router.back()
+            // uploadProgress !== 100 && imageUpload
+            //   ? handleUpload()
+            //   :
+            router.back()
           }
           className={` w-[100px] h-[36.64px] ${
             isUploading ? "bg-binance_ash" : " bg-white"

@@ -48,23 +48,25 @@ function ProjectDetails({ project }) {
           </div>
         </div>
 
-        <div className='flex flex-col items-start'>
-          <p className=' text-grayText medium'>
-            {project?.report &&
-              project?.report[project?.report?.length - 1]?.summary}
-          </p>
-          <ol className='text-grayText ml-4 medium list-decimal'>
-            <li className='my-4 medium'>
-              {project?.report[project?.report.length - 1]?.highlights[0]}
-            </li>
-            <li className='my-4 medium'>
-              {project?.report[project?.report.length - 1]?.highlights[1]}
-            </li>
-            <li className='my-4 medium'>
-              {project?.report[project?.report.length - 1]?.highlights[2]}
-            </li>
-          </ol>
-        </div>
+        {project?.report && (
+          <div className='flex flex-col items-start'>
+            <p className=' text-grayText medium'>
+              {project?.report &&
+                project?.report[project?.report?.length - 1]?.summary}
+            </p>
+            <ol className='text-grayText ml-4 medium list-decimal'>
+              <li className='my-4 medium'>
+                {project?.report[project?.report?.length - 1]?.highlights[0]}
+              </li>
+              <li className='my-4 medium'>
+                {project?.report[project?.report?.length - 1]?.highlights[1]}
+              </li>
+              <li className='my-4 medium'>
+                {project?.report[project?.report?.length - 1]?.highlights[2]}
+              </li>
+            </ol>
+          </div>
+        )}
       </section>
 
       <div className='mb-4'>

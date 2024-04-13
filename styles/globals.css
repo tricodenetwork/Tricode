@@ -123,12 +123,13 @@
   scrollbar-width: none;
 }
 
-h3 {
+/* h3 {
   font-family: Poppins;
-  font-size: 32px;
+  font-size: 30px;
   line-height: normal;
   text-transform: capitalize;
-}
+  color: #2E2C2C;
+} */
 .light {
   /* font-size: 16; */
   font-family: "Poppins-Light";
@@ -148,9 +149,9 @@ h3 {
 
 
 h3 {
-  color: #000;
+  color: #2E2C2C;
   font-family: Poppins;
-  font-size: 24px;
+  font-size: 22px;
   font-style: normal;
   font-weight: 600;
   line-height: 36px;

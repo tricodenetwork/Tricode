@@ -41,25 +41,20 @@ function App({ Component, ...rest }) {
   }, []);
 
   return (
-    // <GoogleOAuthProvider clientId='704139097438-0r081l07jdsiru0ktse80r813pm6mlm3.apps.googleusercontent.com'>
     <SessionProvider session={session}>
       <Provider store={store}>
         <CacheProvider value={emotionCache}>
-          <Head>
-            <meta
-              name='viewport'
-              content='initial-scale=1, width=device-width'
-            />
-          </Head>
           <ThemeProvider theme={theme}>
-            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon.*/}
             <CssBaseline />
+            <Head>
+              <title>Tricode Remote Workstation</title>
+            </Head>
             <Layout Component={Component} pageProps={pageProps} />
           </ThemeProvider>
         </CacheProvider>
       </Provider>
     </SessionProvider>
-    // </GoogleOAuthProvider>
   );
 }
 

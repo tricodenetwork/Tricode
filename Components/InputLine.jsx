@@ -18,8 +18,8 @@ const InputLine = ({
   //------------------------------------------------------------------USE EFFECTS
   return (
     <input
-      value={value}
-      onChange={onChange}
+      defaultValue={value}
+      onInput={onChange}
       type={type}
       onKeyDown={onKeyDown}
       placeholder={placeholder}

@@ -33,17 +33,25 @@ const projectMilestones = [
 ];
 
 function ProjectTransactions({ project }) {
+  let PM = true;
   return (
     <section className='   '>
-      <section className='my-10'>
+      <section className='my-10 '>
         <TransactionHistory project={project} />
       </section>
 
-      <div className='flex gap-3 justify-center items-center my-6'>
-        <BackButton />
-        <AppButton href={"/"} title={"Pause project"} />
-        <AppButton2 href={"/"} title={"Pay all"} />
-      </div>
+      {!PM ? (
+        <div className='flex gap-3 justify-center items-center my-6'>
+          <BackButton />
+          <AppButton href={"/"} title={"Pause project"} />
+          <AppButton2 href={"/"} title={"Pay all"} />
+        </div>
+      ) : (
+        <div className='flex gap-3 justify-center items-center my-6'>
+          <AppButton href={"/"} title={"Pause project"} />
+          <AppButton2 href={"report"} title={"Project Report"} />
+        </div>
+      )}
     </section>
   );
 }
@@ -52,7 +60,7 @@ export default ProjectTransactions;
 
 const TransactionHistory = ({ project }) => {
   return (
-    <div className='flex justify-center items-center lg:scrollbar-hide overflow-x-scroll mt-10'>
+    <div className='flex justify-center items-center lg:scrollbar-hide overflow-x-scroll lg:overflow-x-clip mt-10'>
       <table className='w-full bg-white  rounded'>
         <thead>
           <tr className='font-bold text-gray-600  text-sm leading-normal capitalize'>

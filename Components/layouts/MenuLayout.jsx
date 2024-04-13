@@ -19,10 +19,12 @@ import ModalComponent from "../modals/ModalComponent";
 import LogOut from "../modals/LogOut";
 import Notifications from "../modals/Notifications";
 import NotificationModal from "../modals/NotificationModal";
+import useDatabase from "@/hooks/useDatabase";
 
 const MenuLayout = ({ children }) => {
   // --------------------------------------------VARIABLES
   const route = useRouter();
+  const { user } = useDatabase();
   const parts = route.pathname.split("menu/");
   const title = parts.length > 1 ? parts[1].split("/")[0] : "";
   const [isOpen, setIsOpen] = useState(false);
@@ -92,17 +94,19 @@ const MenuLayout = ({ children }) => {
 
           <div
             onClick={() => setIsOpen(!isOpen)}
-            style={{
-              background: "url(/assets/icons/Ellipse.png)",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
             className='w-[40px] hover:scale-90  hover:cursor-pointer transition-all ease-out duration-100 relative rounded-full h-[40px]'
-          ></div>
+          >
+            <Image
+              src={user?.image ? user?.image : "/assets/icons/Ellipse.png"}
+              className='rounded-full'
+              alt='profile_pic '
+              fill
+            />
+          </div>
         </div>
       </div>
       <div
-        className='w-full relative max-h-[91dvh]   overflow-clip borde
+        className='w-full relative max-h-[91dvh]   borde
         h-screen border-midorange items-start flex'
       >
         <div
@@ -142,7 +146,7 @@ const MenuLayout = ({ children }) => {
             </div>
           </div> */}
         </div>
-        <div className='max-h-full h-full overflow-scroll   scrollbar-hide  w-full lg:w-[83%] flex justify-center items-start'>
+        <div className='max-h-full  h-full overflow-y-scroll   scrollbar-hide  w-full lg:w-[83%] flex justify-center items-start'>
           {children}
         </div>
       </div>
