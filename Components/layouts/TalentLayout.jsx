@@ -112,6 +112,7 @@ const TalentLayout = ({ children }) => {
           <div className='bod'>
             <TalentMenu isOpen={isOpen} Icon={Dashboard} name={"Dashboard"} />
             <TalentMenu isOpen={isOpen} Icon={Project} name={"Project"} />
+            <TalentMenu isOpen={isOpen} Icon={Teams} name={"Teams"} />
             <TalentMenu isOpen={isOpen} Icon={Payment} name={"Payment"} />
             <TalentMenu isOpen={isOpen} Icon={Help} name={"Help"} />
             <TalentMenu isOpen={isOpen} Icon={Logout} name={"Logout"} />
