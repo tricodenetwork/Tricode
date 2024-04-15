@@ -163,11 +163,13 @@ return (
              <section className=" overflow-x-scroll">
                <table >
                <thead className=" font-bold " >
-                    <td className="p-3 mx-3">S/N</td>
+                   <tr>
+                   <td className="p-3 mx-3">S/N</td>
                     <td className=" whitespace-nowrap p-3 mx-3">Project Name</td>
                     <td className="p-3 mx-3">Date</td>
                     <td className="p-3 mx-3">Discription</td>
                     <td className="p-3 mx-3">Status</td>
+                   </tr>
                 </thead>
                 <tbody>
                     <tr>
