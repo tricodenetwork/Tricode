@@ -1,4 +1,3 @@
-import MenuLayout from "@/Components/layouts/MenuLayout";
 import MessageItem from "@/Components/chatComponents/MessageItem";
 import { FiPaperclip } from "react-icons/fi";
 import { BsEmojiSmile } from "react-icons/bs";

@@ -91,7 +91,7 @@ const Chat =()=> {
             <div className="p-6 border-b flex gap-4 items-center w-full relative ">
                 <div className=" relative">
                     <Image
-                    alt='logo'
+                    alt='avatar'
                     width={80}
                     height={40}
                     quality={100}
