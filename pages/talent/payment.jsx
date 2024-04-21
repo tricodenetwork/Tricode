@@ -1,5 +1,8 @@
+import PaymentButton from "@/Components/buttons/general";
 import TalentLayout from "@/Components/layouts/TalentLayout";
+import { useState } from "react";
 import { IoMdAdd } from "react-icons/io";
+import { MdPayment } from "react-icons/md";
 import { RiEqualFill } from "react-icons/ri";
 const Payments = () => {
   // --------------------------------------------VARIABLES
@@ -91,6 +94,9 @@ const Payments = () => {
                </div>
         </div>
 
+
+        <Payment/>
+
     </div>
   );
 };
@@ -99,3 +105,42 @@ Payments.getLayout = function getLayout(page) {
   };
 
 export default Payments;
+
+
+function Payment() {
+  const [amount, setAmount] = useState('');
+  async function paymentFunc(){
+        try {
+          const url = "/api/lemon";
+           //product key is the variant id
+          const data = { productId: "347731", amount:amount };
+          const options = {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          };
+      
+          const response = await fetch(url, options);
+          if (!response.ok) {
+            throw new Error(`API request failed with status ${response.status}`);
+          }
+          const responseData = await response.json();
+         console.log(responseData);
+          window.open(responseData, "_blank");
+        } catch (error) {
+        //  console.error("Error buying product:", error);
+          alert("Failed to buy product #1");
+        }
+ }
+  return (
+    <section className=" flex gap-4 flex-col md:flex-row justify-center items-center my-16">
+       <div>
+       <input className=" border rounded-md px-10 py-2" placeholder="Enter Amount" value={amount} onChange={(e)=>setAmount(e.target.value)}/><br/>
+        <PaymentButton className="flex gap-4" onClick={paymentFunc}><span>Make Payment</span><MdPayment/></PaymentButton>
+       </div>
+
+    </section>
+  );
+}
