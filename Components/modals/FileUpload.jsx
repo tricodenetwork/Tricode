@@ -11,11 +11,12 @@ import { upload } from "@vercel/blob/client";
 import useDatabase from "@/hooks/useDatabase";
 import Loading from "../Loading";
 
-const FileUpload = ({ close, files, setFiles }) => {
+const FileUpload = ({ close }) => {
   const [uploadProgress, setUploadProgress] = useState(0);
   const [selectedFile, setSelectedFile] = useState(null);
   const [blob, setBlob] = useState(null);
   const [isUploading, setIsUploading] = useState(false);
+  const [files, setFiles] = useState([]);
 
   const { user } = useDatabase();
 
@@ -54,7 +55,7 @@ const FileUpload = ({ close, files, setFiles }) => {
     inputFileRef.current.click();
   };
   const handleCancel = () => {
-    setSelectedFile(null); // Reset the selected file
+    setFiles(null); // Reset the selected file
     setUploadProgress(0); // Reset the progress
     if (inputFileRef.current) {
       inputFileRef.current.value = ""; // Clear the input file
@@ -93,12 +94,13 @@ const FileUpload = ({ close, files, setFiles }) => {
   };
   return (
     <div
-      className={`flex-col ${
+      className={`flex-col z-[100] ${
         imageUpload
           ? " lg:flex-col justify-center lg:w-[30vw]"
           : "lg:w-[838px] lg:flex-row "
       } bg-white relative  items-center flex  lg:h-[590px] p-7 `}
     >
+      {/* Header */}
       <div className='flex absolute px-7 top-5 left-0 justify-between  w-full'>
         <p>
           <strong className='semiBold text-binance_green text-[18px] md:text-[24px]'>

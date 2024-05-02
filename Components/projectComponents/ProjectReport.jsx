@@ -18,6 +18,8 @@ import SelectComponent from "../customInputs/SelectComponent";
 import AppButton, { AppButton2 } from "../AppButton";
 import DatePicker from "react-datepicker";
 import { DtPicker } from "react-calendar-datetime-picker";
+import { upload } from "@vercel/blob/client";
+
 import "react-calendar-datetime-picker/dist/style.css";
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -34,8 +36,8 @@ import {
 } from "@/store/slice-reducers/reportSlice";
 
 function ProjectReport() {
-  const [files, setFiles] = useState([]);
   const [loading, setLoading] = useState(false);
+
   const [highlight, setHighlight] = useState("");
 
   const { user } = useDtabase();
@@ -66,8 +68,8 @@ function ProjectReport() {
     try {
       await axios.post("/api/report", data);
 
-      for (i = 0; i < files.length - 1; i++) {
-        await upload(files[i].name, files[i], {
+      for (i = 0; i < filess.length - 1; i++) {
+        await upload(filess[i].name, filess[i], {
           access: "public",
           handleUploadUrl: `/api/upload?company=${user?.email}&image=${false}`,
           token: process.env.BLOB_READ_WRITE_TOKEN,
@@ -93,7 +95,7 @@ function ProjectReport() {
     >
       {upload && (
         <div className='bg-black bg-opacity-80 w-full z-50  flex justify-center items-center  h-full fixed top-0 left-0 '>
-          <FileUpload files={files} setFiles={setFiles} />
+          <FileUpload />
         </div>
       )}
       <div>

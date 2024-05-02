@@ -13,7 +13,7 @@ const SelectComponent = ({ items, placeholder, onChange }) => {
         setOpen(false);
       }}
     >
-      <div className='flex items-center z-50   max-w-max relative'>
+      <div className='flex items-center z-10   max-w-max relative'>
         {open && (
           <motion.div
             // animate={{ height: ["0%", "100%"] }}

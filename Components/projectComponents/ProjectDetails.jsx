@@ -54,17 +54,19 @@ function ProjectDetails({ project }) {
               {project?.report &&
                 project?.report[project?.report?.length - 1]?.summary}
             </p>
-            <ol className='text-grayText ml-4 medium list-decimal'>
-              <li className='my-4 medium'>
-                {project?.report[project?.report?.length - 1]?.highlights[0]}
-              </li>
-              <li className='my-4 medium'>
-                {project?.report[project?.report?.length - 1]?.highlights[1]}
-              </li>
-              <li className='my-4 medium'>
-                {project?.report[project?.report?.length - 1]?.highlights[2]}
-              </li>
-            </ol>
+            {project?.report[project?.report?.length - 1]?.highlights && (
+              <ol className='text-grayText ml-4 medium list-decimal'>
+                <li className='my-4 medium'>
+                  {project?.report[project?.report?.length - 1]?.highlights[0]}
+                </li>
+                <li className='my-4 medium'>
+                  {project?.report[project?.report?.length - 1]?.highlights[1]}
+                </li>
+                <li className='my-4 medium'>
+                  {project?.report[project?.report?.length - 1]?.highlights[2]}
+                </li>
+              </ol>
+            )}
           </div>
         )}
       </section>

@@ -140,44 +140,6 @@ function AddNew() {
           </div>
         ))}
       </div>
-
-      {/* <h3 className={` capitalize text-start  mb-2 lg:mb-4`}>
-        How do we contact you?
-      </h3>
-
-      <div className='flex gap-3  items-center  my-2'>
-        <div className='flex flex-col lg:flex-row justify-center gap-4'>
-          <div className='flex justify-center gap-2'>
-            <img
-              src={`https://flagcdn.com/16x12/${selected}.png`}
-              className='w-10 rounded-full h-10'
-              alt={selected}
-            />
-            <select onChange={selectedCountry}>
-              {countries.map((con, i) => (
-                <option key={i.toString()} value={con.code}>
-                  {con.dial_code}
-                </option>
-              ))}
-            </select>
-            <input
-              className='border-b-2 outline-none w-full border-b-gray-300'
-              type='phone'
-              onChange={(e) => setMobilePhone(e.target.value)}
-            />
-          </div>
-
-          <div className='flex justify-center gap-2 items-end'>
-            <div>Email</div>
-            <input
-              className='border-b-2 w-full outline-none border-b-gray-300'
-              type='email'
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-        </div>
-      </div> */}
-
       <div className='w-full flex justify-center my-5'>
         {/* <button
           onClick={handleSubmit}
