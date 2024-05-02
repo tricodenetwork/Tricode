@@ -10,12 +10,12 @@ const LogOut = () => {
   };
 
   return (
-    <div className='flex w-[438px] h-[515px] flex-col justify-center items-center space-y-3'>
+    <div className='flex w-[438px] h-[280px] flex-col justify-center items-center space-y-3'>
       <p className='medium text-2xl text-grayText'>Log Out</p>
       <p className='medium text-[16px] text-[#bdbdbd]'>
         Do you really want to log out?
       </p>
-      <div className='space-x-[20px]'>
+      <div className='space-x-[20px] mt-3'>
         <button
           onClick={() => router.back()}
           className='w-[145px] h-[37px] border hover:scale-90 active:scale-100 border-binance_green bg-white  duration-150  text-binance_green rounded-3xl'

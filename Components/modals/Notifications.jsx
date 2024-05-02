@@ -13,14 +13,14 @@ const Notifications = () => {
   //------------------------------------------------------------------USE EFFECTS
 
   return (
-    <div className='w-[530px]'>
+    <div className='w-[430px] h-[480px]'>
       <h3
         style={{ textTransform: "capitalize", color: "#2e2c2c" }}
-        className='w-full rounded-[15px] bg-[#ECF5F7] h-[60px] text-center capitalize'
+        className='w-full rounded-t-[15px] pt-3 bg-[#ECF5F7] h-[60px] text-center capitalize'
       >
         Notifications
       </h3>
-      <div className='px-5 pb-3 pt-3'>
+      <div className='w-[430px] h-[420px] px-5 pb-3 pt-3 overflow-y-auto'>
         <NotifyItem
           // Icon={Alert}
           notificationType={"Reminder"}
