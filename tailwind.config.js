@@ -10,6 +10,8 @@ module.exports = {
       screens: {
         s: "375px",
         xs: "799px",
+        xl: "1300px",
+        xxl: "1500px",
       },
       colors: {
         primary: "#25092c",
@@ -32,6 +34,7 @@ module.exports = {
         grayText: "#6D717A",
         appOrange: "#F2994A",
         appBlue: "#061a48",
+        appRed: "#C53A3A",
       },
     },
   },

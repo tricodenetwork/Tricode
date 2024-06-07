@@ -20,6 +20,12 @@ import LogOut from "../modals/LogOut";
 import Notifications from "../modals/Notifications";
 import NotificationModal from "../modals/NotificationModal";
 import useDatabase from "@/hooks/useDatabase";
+import { ViewHorizontalIcon, ViewVerticalIcon } from "@radix-ui/react-icons";
+import { Inter } from "next/font/google";
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
 
 const MenuLayout = ({ children }) => {
   // --------------------------------------------VARIABLES
@@ -28,6 +34,7 @@ const MenuLayout = ({ children }) => {
   const parts = route.pathname.split("menu/");
   const title = parts.length > 1 ? parts[1].split("/")[0] : "";
   const [isOpen, setIsOpen] = useState(false);
+  const [viewHorizontal, setViewHorizontal] = useState(false);
   const logout = route?.query?.logout;
   const notification = route?.query?.notification;
 
@@ -36,7 +43,10 @@ const MenuLayout = ({ children }) => {
   //------------------------------------------------------------------USE EFFECTS
 
   return (
-    <div className='w-full flex  flex-col justify-start'>
+    <div
+      style={inter.style}
+      className='w-full flex overflow-hidden flex-col justify-start'
+    >
       {logout && <ModalComponent Content={LogOut} />}
       {notification && <NotificationModal Content={Notifications} />}
       <div className='w-full  bg-binance_green  flex items-center justify-between px-[3vw] lg:px-[2vw]  h-[9vh]'>
@@ -106,17 +116,21 @@ const MenuLayout = ({ children }) => {
         </div>
       </div>
       <div
-        className='w-full relative max-h-[91dvh]   borde
-        h-screen border-midorange items-start flex'
+        className='w-full  relative max-h-[91dvh] h-screen   
+         border-midorange items-start flex'
       >
-        <div
-          className={`lg:w-[17%] w-[80vw] absolute   top-0  lg:left-0 lg:relative lg:h-full h-[80%] ${
-            isOpen
-              ? "bg-binance_green lg:bg-white -right-[0px]    text-white "
-              : "-right-[1000px]"
-          } flex flex-col justify-between border-r z-20 border-opacity-20  duration-700 ease-out  pt-[4vh] lg:pt-0 lg:mt-[7vh]  border-[#000000]`}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className='absolute top-2 left-2'
         >
-          <div className='bod'>
+          {!isOpen ? <ViewHorizontalIcon /> : <ViewVerticalIcon />}
+        </button>
+        <div
+          className={` ${
+            !isOpen ? "w-[0%] xxl:w-[0%]" : "lg:w-[15%] xxl:w-[17%] "
+          }   absolute   top-0  lg:left-0 lg:relative lg:h-full h-[80%] flex flex-col justify-between  border-r z-20 border-opacity-20  duration-700 ease-out  pt-[4vh] lg:pt-0 lg:mt-[7vh]  border-[#000000]`}
+        >
+          <div className=''>
             <MenuList isOpen={isOpen} Icon={Dashboard} name={"Dashboard"} />
             <MenuList isOpen={isOpen} Icon={Project} name={"Project"} />
             <MenuList isOpen={isOpen} Icon={Payment} name={"Payment"} />
@@ -146,7 +160,7 @@ const MenuLayout = ({ children }) => {
             </div>
           </div> */}
         </div>
-        <div className='max-h-full  h-full overflow-y-scroll   scrollbar-hide  w-full lg:w-[83%] flex justify-center items-start'>
+        <div className='max-h-full  h-full overflow-y-scroll  scrollbar-hid flex-1 flex justify-center items-start'>
           {children}
         </div>
       </div>

@@ -6,9 +6,11 @@ export default async function handler(req, res) {
   //   await useCors("https://bandb-ovodo.vercel.app")(req, res);
 
   try {
+    // Instanting the Database client
     const client = await clientPromise;
     const db = client.db("Tricode");
     // Check if any required field is missing
+
     const requiredFields = ["name"];
     for (const field of requiredFields) {
       if (!req.body[field]) {
