@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import Navbar from "@/components/navbar_components/Navbar";
-import About from "@/components/about/index";
-import FAQ from "@/components/about/faq/faqs";
+import About from "@/components/About/index";
+import FAQ from "@/components/About/Faq/faqs";
 import OurNewsletter from "@/components/OurNewsletter/index";
-import Footer from "@/components/footer/index";
+import Footer from "@/components/Footer/index";
 
 export default function Aboutus() {
   return (
