@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
 
-const ModalComponent = ({ Content }) => {
+const ModalComponent = ({ Content, close }) => {
   const [isModalOpen, setIsModalOpen] = useState(true);
   const openModal = () => {
     setIsModalOpen(true);
@@ -14,11 +14,11 @@ const ModalComponent = ({ Content }) => {
     <div className='flex justify-center items-center'>
       <Modal
         isOpen={isModalOpen}
-        onRequestClose={closeModal}
+        onRequestClose={close}
         className='modal w-auto  bg-transparent'
         overlayClassName='overlay'
       >
-        <Content close={closeModal} />
+        {Content}
       </Modal>
     </div>
   );

@@ -1,5 +1,5 @@
-import MenuLayout from "@/Components/layouts/MenuLayout";
-import AddNew from "@/Components/projectComponents/AddNew";
+import MenuLayout from "@/components/layouts/MenuLayout";
+import AddNew from "@/components/projectComponents/AddNew";
 import ProjectReport from "@/components/projectComponents/ProjectReport";
 
 const report = () => {

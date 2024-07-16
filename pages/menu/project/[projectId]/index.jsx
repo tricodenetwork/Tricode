@@ -1,9 +1,9 @@
-import MenuLayout from "@/Components/layouts/MenuLayout";
-import ProjectTransactions from "@/Components/projectComponents/projectTables/ProjectTransactions";
+import MenuLayout from "@/components/layouts/MenuLayout";
+import ProjectTransactions from "@/components/projectComponents/projectTables/ProjectTransactions";
 import Link from "next/link";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import ProjectDetails from "@/Components/projectComponents/ProjectDetails";
+import ProjectDetails from "@/components/projectComponents/ProjectDetails";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import useDatabase from "@/hooks/useDatabase";
@@ -11,48 +11,40 @@ import Image from "next/image";
 import AddTalentsComponent from "@/components/projectComponents/AddTalentsComponent";
 import OutsideClickHandler from "react-outside-click-handler";
 
-const TeamCard = ({ member }) => {
+export const TeamCard = ({ member, removeTalent, action = "View Profile" }) => {
   return (
-    <div className='w-[217px] flex flex-col items-center h-[250px] relative'>
-      <h6 className='regular mb-2 text-[16px] text-[#131418]'>{member.dept}</h6>
-      <p className='regular mb-2 text-xs text-binance_ash medium'>
-        {member.name}
-      </p>
-      <div className='w-[90%] h-[140px] flex  justify-center items-center rounded-[20px] shadow-md shadow-slate-400'>
+    <div className='w-[25%]  flex  my-[3vh] flex-col items-center h-[270px] relative'>
+      <div className='flex items-center justify-between mx-auto w-[80%]'>
+        <h6 className='medium mb-[.3vh] self-start  text-[16px] text-[#1b1b1b]'>
+          {member.dept}
+        </h6>
+        <button
+          onClick={() => removeTalent(member)}
+          className='rounded-full w-[22px] active:scale-90 bg-white text-binance_green duration-75 cursor-pointer border-binance_green border text-xs h-[22px] flex items-center justify-center hover:bg-binance_green hover:text-white medium'
+        >
+          ×
+        </button>
+      </div>
+
+      <div className='w-[90%] h-[140px] bg-binance_green/30 flex flex-col  justify-center items-center rounded-[20px] shadow-[0px_4px_4px] shadow-black/25'>
         <div className='w-[88px] relative mx-auto mt-4 self-center h-[88px]'>
           <Image
-            src={"/assets/images/team.png"}
+            src={member.image ?? "/assets/images/team.png"}
             fill
             alt='profile_pic'
-            className='object-cover'
+            className='object-cover rounded-full'
           />
         </div>
+        <p className='regular capitalize mt-2 text-sm text-[#1b1b1b] '>
+          {member.name.toLowerCase()}
+        </p>
       </div>
       <button className='w-[129px] mt-5 hover:bg-binance_green duration-300 hover:text-white medium text-[12px] self-center border border-binance_green text-binance_green h-[33px] rounded-3xl'>
-        View Profile
+        {action}
       </button>
     </div>
   );
 };
-
-const members = [
-  { title: "Project Manager", src: "/assets/images/team.png" },
-  { title: "Researcher", src: "/assets/images/team.png" },
-  { title: "Marketer", src: "/assets/images/team.png" },
-  { title: "Front-end Dev", src: "/assets/images/team.png" },
-  { title: "UI/UX Designer", src: "/assets/images/team.png" },
-  { title: "Researcher", src: "/assets/images/team.png" },
-  { title: "Marketer", src: "/assets/images/team.png" },
-  { title: "Front-end Dev", src: "/assets/images/team.png" },
-  { title: "Project Manager", src: "/assets/images/team.png" },
-  { title: "Researcher", src: "/assets/images/team.png" },
-  { title: "Marketer", src: "/assets/images/team.png" },
-  { title: "Front-end Dev", src: "/assets/images/team.png" },
-  { title: "UI/UX Designer", src: "/assets/images/team.png" },
-  { title: "Researcher", src: "/assets/images/team.png" },
-  { title: "Marketer", src: "/assets/images/team.png" },
-  { title: "Front-end Dev", src: "/assets/images/team.png" },
-];
 
 const ProjectID = () => {
   // --------------------------------------------VARIABLES

@@ -3,14 +3,19 @@ import { useSession } from "next-auth/react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { initializeUser } from "@/store/slice-reducers/UserReducer";
+import { setTalents } from "@/store/slice-reducers/usersSlice";
+import { useRouter } from "next/router";
 
 const useDatabase = () => {
   const { data: session } = useSession();
   const [user, setUser] = useState(null);
   const [allUsers, setAllUsers] = useState(null);
   const [projects, setProjects] = useState(null);
+  const [project, setProject] = useState(null);
   const [rooms, setRooms] = useState(null);
   const dispatch = useDispatch();
+  const router = useRouter();
+  const { projectId } = router.query;
 
   function convertObjectIdToDate(oid) {
     const timestamp = parseInt(oid.substring(0, 8), 16) * 1000;
@@ -40,11 +45,14 @@ const useDatabase = () => {
 
           setRooms(res4.data.data);
           setAllUsers(res3.data.data);
+          dispatch(setTalents(res3.data.data));
           setUser(res.data.data);
           dispatch(initializeUser(res.data.data));
           setProjects(res2.data.data);
+          const data = res2.data.data.find((item) => item._id === projectId);
+          setProject(data);
         } catch (error) {
-          console.log(error.message);
+          console.log("Error from useDatabase", error.message);
         }
       }
     };
@@ -60,6 +68,7 @@ const useDatabase = () => {
     convertObjectIdToDate,
     allUsers,
     rooms,
+    project,
   };
 };
 

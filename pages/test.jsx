@@ -1,5 +1,5 @@
-import ModalComponent from "@/Components/modals/ModalComponent";
-import PicUpload from "@/Components/modals/PicUpload";
+import ModalComponent from "@/components/modals/ModalComponent";
+import PicUpload from "@/components/modals/PicUpload";
 
 const test = () => {
   // --------------------------------------------VARIABLES

@@ -1,4 +1,4 @@
-import MenuLayout from "@/Components/layouts/MenuLayout";
+import MenuLayout from "@/components/layouts/MenuLayout";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -7,9 +7,10 @@ import axios from "axios";
 import { useSession } from "next-auth/react";
 import useDatabase from "@/hooks/useDatabase";
 import { useRouter } from "next/router";
-import FileUpload from "@/Components/modals/FileUpload";
+import FileUpload from "@/components/modals/FileUpload";
 import { useSelector } from "react-redux";
 import { CircleLoader } from "react-spinners";
+import Loader from "@/components/Loader";
 const projectDetails = [
   { name: "A1 1", date: "2023-09-15", status: "Completed" },
   { name: "A1 1", date: "2023-09-15", status: "Returned for review" },
@@ -68,16 +69,7 @@ const Dashboard = () => {
   }, [user]);
 
   if (!user) {
-    return (
-      <div className='flex flex-col justify-center items-center w-full h-full'>
-        <CircleLoader
-          className='w-[300px] lg:w-[500px]'
-          loading={!false}
-          color='green'
-        />
-        <p className='medium lg:text-xl mt-5 text-binance_green'>Loading</p>
-      </div>
-    );
+    return <Loader />;
   }
 
   return (

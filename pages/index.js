@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import useFunctions from "@/hooks/useFunctions";
-import Navbar from "@/Components/navbar_components/Navbar";
-import Hero from "@/Components/Hero/hero";
-import HireTricode from "@/Components/HireTricode/hire";
-import JoinTricode from "@/Components/HireTricode/join";
-import Careers from "@/Components/HireTricode/careers";
-import WhyTricode from "@/Components/WhyTricode/index";
-import OurServices from "@/Components/OurServices/index";
-import OurNewsletter from "@/Components/OurNewsletter/index";
-import Footer from "@/Components/Footer/index";
+import Navbar from "components/navbar_components/Navbar";
+import Hero from "@/components/Hero/hero";
+import HireTricode from "@/components/HireTricode/hire";
+import JoinTricode from "@/components/HireTricode/join";
+import Careers from "@/components/HireTricode/careers";
+import WhyTricode from "@/components/WhyTricode/index";
+import OurServices from "@/components/OurServices/index";
+import OurNewsletter from "@/components/OurNewsletter/index";
+import Footer from "@/components/Footer/index";
 import { useSession, signIn, signOut } from "next-auth/react";
 
 export default function Home() {

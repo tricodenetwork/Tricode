@@ -3,7 +3,6 @@ import { AiOutlineMail } from "react-icons/ai";
 import Image from "next/image";
 import useFunctions from "@/hooks/useFunctions";
 import { BackButton } from "../Button";
-import { AppButton2 } from "../AppButton";
 
 function ProjectDetails({ project }) {
   const { imageLoader } = useFunctions();
@@ -157,7 +156,7 @@ function ProjectDetails({ project }) {
         {/* <button className='  text-white font-bold bg-[#38A312] rounded-full border px-8 py-2'>
           Download Report
         </button> */}
-        <AppButton2 href={"/"} title={"Download report"} />
+        <AppButton dark={false} href={"/"} title={"Download report"} />
       </div>
     </section>
   );

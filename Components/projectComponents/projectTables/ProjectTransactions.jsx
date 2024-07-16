@@ -1,5 +1,5 @@
-import { BackButton } from "@/Components/Button";
-import AppButton, { AppButton2 } from "@/Components/AppButton";
+import { BackButton } from "@/components/Button";
+import AppButton from "@/components/AppButton";
 
 import Link from "next/link";
 
@@ -44,12 +44,12 @@ function ProjectTransactions({ project }) {
         <div className='flex gap-3 justify-center items-center my-6'>
           <BackButton />
           <AppButton href={"/"} title={"Pause project"} />
-          <AppButton2 href={"/"} title={"Pay all"} />
+          <AppButton dark={false} href={"/"} title={"Pay all"} />
         </div>
       ) : (
         <div className='flex gap-3 justify-center items-center my-6'>
           <AppButton href={"/"} title={"Pause project"} />
-          <AppButton2 href={"report"} title={"Project Report"} />
+          <AppButton dark={false} href={"report"} title={"Project Report"} />
         </div>
       )}
     </section>

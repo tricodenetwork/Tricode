@@ -15,7 +15,7 @@ import axios from "axios";
 import Loading from "../Loading";
 import Button from "../Button";
 import SelectComponent from "../customInputs/SelectComponent";
-import AppButton, { AppButton2 } from "../AppButton";
+import AppButton from "../AppButton";
 import DatePicker from "react-datepicker";
 import { DtPicker } from "react-calendar-datetime-picker";
 import { upload } from "@vercel/blob/client";
@@ -231,7 +231,7 @@ function ProjectReport() {
               showTimeInput
             />
           </div>
-          <AppButton2 href={"report"} title={"Send Notification"} />
+          <AppButton dark={false} href={"report"} title={"Send Notification"} />
         </div>
         <div className='flex items-end mt-10 gap-4'>
           <p className='medium'>Meeting Link</p>
@@ -259,7 +259,7 @@ function ProjectReport() {
 
         <div className='flex gap-3 justify-center items-center my-6'>
           <AppButton href={"/"} title={"Cancel"} />
-          <AppButton2 href={"report"} title={"Submit"} />
+          <AppButton dark={false} href={"report"} title={"Submit"} />
         </div>
       </div>
     </section>

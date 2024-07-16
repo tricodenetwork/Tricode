@@ -1,4 +1,4 @@
-import MenuLayout from "@/Components/layouts/MenuLayout";
+import MenuLayout from "@/components/layouts/MenuLayout";
 import { FlutterWaveButton, closePaymentModal } from "flutterwave-react-v3";
 const config = {
   public_key: "FLWPUBK_TEST-fae61d03498ae9059ded435a0eb17bf3-X",

@@ -1,12 +1,12 @@
-import MenuLayout from "@/Components/layouts/MenuLayout";
-import ProjectTable from "@/Components/projectComponents/projectTables/ProjecctTable";
+import MenuLayout from "@/components/layouts/MenuLayout";
+import ProjectTable from "@/components/projectComponents/projectTables/ProjecctTable";
+import Loader from "@/components/Loader";
 import SearchComponent from "@/components/editor/SearchComponent";
 import ProjectCard from "@/components/projectComponents/ProjectCard";
 import useDatabase from "@/hooks/useDatabase";
 import { PlusIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 import { useState } from "react";
-
 const Project = () => {
   // --------------------------------------------VARIABLES
   const { projects, convertObjectIdToDate } = useDatabase();
@@ -17,11 +17,7 @@ const Project = () => {
   //------------------------------------------------------------------USE EFFECTS
 
   if (!projects) {
-    return (
-      <div className='w-full h-full flex items-center justify-center text-3xl semiBold'>
-        No Projects
-      </div>
-    );
+    return <Loader />;
   }
 
   return (
@@ -37,11 +33,9 @@ const Project = () => {
       </div>
       <div className='w-full mt-[2%] flex-wrap h-full  justify-center gap-[5%] flex'>
         {projects
-          ?.filter(
-            (item) => item?.name?.toLowerCase()?.includes(search) ?? true
-          )
-          .map((items, i) => {
-            return <ProjectCard key={i.toString()} items={items} />;
+          .filter((item) => item?.name?.toLowerCase()?.includes(search) ?? true)
+          .map((project, i) => {
+            return <ProjectCard key={i.toString()} project={project} />;
           })}
       </div>
     </div>
