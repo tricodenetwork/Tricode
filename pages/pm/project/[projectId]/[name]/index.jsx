@@ -392,6 +392,7 @@ const Project = () => {
           </AnimatePresence>
           {project?.team?.map((item, i) => (
             <TeamCard
+              key={i.toString()}
               removeTalent={removeFromProject}
               action='Asign Task'
               member={item}
