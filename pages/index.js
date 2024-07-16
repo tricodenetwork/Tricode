@@ -8,7 +8,7 @@ import Careers from "@/components/HireTricode/careers";
 import WhyTricode from "@/components/WhyTricode/index";
 import OurServices from "@/components/OurServices/index";
 import OurNewsletter from "@/components/OurNewsletter/index";
-import Footer from "@/components/Footer/index";
+import Footer from "@/components/footer/index";
 import { useSession, signIn, signOut } from "next-auth/react";
 
 export default function Home() {
