@@ -13,6 +13,12 @@ const nextConfig = {
       },
       {
         protocol: "https",
+        hostname: "afxkeiua4oauvagy.public.blob.vercel-storage.com",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
         hostname: "scontent.fabv2-2.fna.fbcdn.net",
         port: "",
         pathname: "/v/**",

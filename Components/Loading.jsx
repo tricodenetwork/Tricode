@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import React from "react";
 
-const Loading = ({ loading }) => {
+const Loading = ({ loading, length = 5 }) => {
   const dotVariants = {
     start: {
       x: "-100%",
@@ -13,7 +13,7 @@ const Loading = ({ loading }) => {
     },
   };
   return (
-    <div className=''>
+    <div className=' w-full h-full'>
       <AnimatePresence>
         {loading && (
           <motion.div
@@ -26,7 +26,7 @@ const Loading = ({ loading }) => {
             }}
             className={`text-center rounded-3xl`}
           >
-            {Array.from({ length: 5 }).map((_, i) => (
+            {Array.from({ length: length }).map((_, i) => (
               <motion.div
                 key={i}
                 variants={dotVariants}
@@ -35,7 +35,7 @@ const Loading = ({ loading }) => {
                   repeat: Infinity,
                   repeatType: "reverse",
                 }}
-                className={`inline-block w-2 h-2 m-1 lg:m-2 rounded-full bg-binance_green`}
+                className={`inline-block w-2 h-2 m-1 rounded-full bg-binance_green`}
               ></motion.div>
             ))}
           </motion.div>

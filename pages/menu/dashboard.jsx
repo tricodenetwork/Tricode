@@ -27,10 +27,10 @@ const Dashboard = () => {
   const router = useRouter();
   // const { user } = useSelector((state) => state);
   const upload = router.query?.imageUpload;
-  const imageUrl = user?.profile_pic
-    ? `/profile_pics/${user?.email + "_" + user?.profile_pic}`
-    : user?.image
+  const imageUrl = user?.image
     ? user?.image
+    : user?.profile_pic
+    ? `/profile_pics/${user?.email + "_" + user?.profile_pic}`
     : "/assets/images/company.svg";
   // console.log(session, "sessio");
   // console.log(status, "status");
