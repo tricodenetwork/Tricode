@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import useFunctions from "@/hooks/useFunctions";
+// import useFunctions from "@/hooks/useFunctions";
 import Navbar from "@/components/navbar_components/Navbar";
 import Hero from "@/components/Hero/hero";
 import HireTricode from "@/components/HireTricode/hire";
@@ -8,7 +8,7 @@ import Careers from "@/components/HireTricode/careers";
 import WhyTricode from "@/components/WhyTricode/index";
 import OurServices from "@/components/OurServices/index";
 import OurNewsletter from "@/components/OurNewsletter/index";
-import Footer from "@/components/Footer/index";
+import Footer from "@/components/footer/index";
 import { useSession, signIn, signOut } from "next-auth/react";
 
 export default function Home() {

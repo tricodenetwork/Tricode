@@ -6,9 +6,11 @@ export default async function handler(req, res) {
   //   await useCors("https://bandb-ovodo.vercel.app")(req, res);
 
   try {
+    // Instanting the Database client
     const client = await clientPromise;
     const db = client.db("Tricode");
     // Check if any required field is missing
+
     const requiredFields = ["name"];
     for (const field of requiredFields) {
       if (!req.body[field]) {
@@ -16,18 +18,24 @@ export default async function handler(req, res) {
       }
     }
 
-    // Check if the email already exists in the database
-    const projects = await db
-      .collection("Projects")
-      .find({ company: req.body.name });
-    const projects2 = await projects.toArray();
+    let projects;
+
+    if (!req.body.name) {
+      projects = await db
+        .collection("Projects")
+        .find({ company: req.body.name })
+        .toArray();
+    } else {
+      projects = await db.collection("Projects").find({}).toArray();
+    }
 
     if (!projects) {
       res.status(400).json({ error: "No Project for this company" });
     } else {
+      // console.log("projec", projects);
       res
         .status(200)
-        .json({ data: projects2, message: "projects retrieved from database" });
+        .json({ data: projects, message: "projects retrieved from database" });
     }
   } catch (error) {
     console.error("API Error:", error);

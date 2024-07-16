@@ -55,7 +55,7 @@ const Navbar = ({ children }) => {
         className=' navbar px-[1.5vw] mx-auto top-[0vh]'
       >
         <div className='logos '>
-          <Link href={"/"}>
+          <Link href={"http://talent.localhost:3000/help"}>
             <Image
               loader={imageLoader}
               alt='logo'

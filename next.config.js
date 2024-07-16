@@ -19,6 +19,18 @@ const nextConfig = {
       },
       {
         protocol: "https",
+        hostname: "t3.ftcdn.net",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
         hostname: "scontent.fabv2-2.fna.fbcdn.net",
         port: "",
         pathname: "/v/**",
@@ -30,6 +42,25 @@ const nextConfig = {
         pathname: "/u/**",
       },
     ],
+  },
+  rewrites: async () => {
+    console.log("NODE_ENV:", process.env.NODE_ENV);
+    console.log("Rewrites being applied");
+    return [
+      {
+        source: "/:path*",
+        has: [
+          {
+            type: "host",
+            value:
+              process.env.NODE_ENV === "development"
+                ? "talent.localhost:3000"
+                : "talent.tricode.pro",
+          },
+        ],
+        destination: "/talent/:path*",
+      },
+    ];
   },
 };
 

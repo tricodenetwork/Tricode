@@ -5,16 +5,18 @@ import { Close, Cloud } from "@mui/icons-material";
 import { Router, useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { setFilee } from "@/store/slice-reducers/uploadSlice";
+import { setProjectFiles as setFile } from "@/store/slice-reducers/reportSlice";
 import { upload } from "@vercel/blob/client";
 
 import useDatabase from "@/hooks/useDatabase";
 import Loading from "../Loading";
 
-const FileUpload = ({ close, files, setFiles }) => {
+const FileUpload = ({ close }) => {
   const [uploadProgress, setUploadProgress] = useState(0);
   const [selectedFile, setSelectedFile] = useState(null);
   const [blob, setBlob] = useState(null);
   const [isUploading, setIsUploading] = useState(false);
+  const [files, setFiles] = useState([]);
 
   const { user } = useDatabase();
 
@@ -53,7 +55,7 @@ const FileUpload = ({ close, files, setFiles }) => {
     inputFileRef.current.click();
   };
   const handleCancel = () => {
-    setSelectedFile(null); // Reset the selected file
+    setFiles(null); // Reset the selected file
     setUploadProgress(0); // Reset the progress
     if (inputFileRef.current) {
       inputFileRef.current.value = ""; // Clear the input file
@@ -65,7 +67,9 @@ const FileUpload = ({ close, files, setFiles }) => {
     setUploadProgress(0); // Reset progress when a new file is chosen
     const file = event.target.files[0];
     setFiles((prev) => [...prev, file]);
-    dispatch(setFilee(file));
+    !router.pathname.includes("report")
+      ? dispatch(setFilee(file))
+      : dispatch(setFile(file));
   };
   const handleUpload = async () => {
     const file = files.pop();
@@ -90,12 +94,13 @@ const FileUpload = ({ close, files, setFiles }) => {
   };
   return (
     <div
-      className={`flex-col ${
+      className={`flex-col z-[100] ${
         imageUpload
           ? " lg:flex-col justify-center lg:w-[30vw]"
           : "lg:w-[838px] lg:flex-row "
       } bg-white relative  items-center flex  lg:h-[590px] p-7 `}
     >
+      {/* Header */}
       <div className='flex absolute px-7 top-5 left-0 justify-between  w-full'>
         <p>
           <strong className='semiBold text-binance_green text-[18px] md:text-[24px]'>
@@ -272,9 +277,10 @@ const FileUpload = ({ close, files, setFiles }) => {
         </button>
         <button
           onClick={() =>
-            uploadProgress !== 100 && imageUpload
-              ? handleUpload()
-              : router.back()
+            // uploadProgress !== 100 && imageUpload
+            //   ? handleUpload()
+            //   :
+            router.back()
           }
           className={` w-[100px] h-[36.64px] ${
             isUploading ? "bg-binance_ash" : " bg-white"

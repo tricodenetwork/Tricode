@@ -43,23 +43,23 @@ const Index = () => {
     }, 2500);
   };
 
-  const validateEmail = () => {
+  const validateEmail = (mail) => {
     // Regular expression for a simple email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const isValidEmail = emailRegex.test(email);
+    const isValidEmail = emailRegex.test(mail);
 
     // Set emailError based on validation result
     setEmailError(isValidEmail ? null : "Invalid email address");
   };
 
   const handleEmailChange = (e) => {
+    validateEmail(e.target.value); // Validate email on each change
     setEmail(e.target.value);
-    validateEmail(); // Validate email on each change
   };
 
   const handleSignIn = async (e) => {
     e.preventDefault();
-    validateEmail();
+    // validateEmail();
 
     if (!emailError) {
       setLoading(true);
@@ -136,7 +136,7 @@ const Index = () => {
 
         <h3>SIGN IN</h3>
         <div className='flex mt-[8px] mb-[15px] md:mt-[16px] md:mb-[30px] items-center w-full'>
-          <p className=' mr-1 md:mr-3 member '>Not a member?</p>
+          <p className=' mr-1 md:mr-3 member'>Not a member?</p>
           <Link href='/auth/register'>
             <p className='text-binance_green hover:underline register'>
               Register now!

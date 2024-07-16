@@ -6,6 +6,7 @@ import { HiOutlineDocumentDuplicate } from "react-icons/hi";
 import { useEffect, useState } from "react";
 import countries from "../../lib/constants/countries.json";
 import { useRouter } from "next/router";
+import toast from "react-hot-toast";
 import Link from "next/link";
 import FileUpload from "../modals/FileUpload";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,6 +20,7 @@ import useDtabase from "@/hooks/useDatabase";
 import axios from "axios";
 import Loading from "../Loading";
 import Button from "../Button";
+import { upload as uploadFile } from "@vercel/blob/client";
 
 function AddNew() {
   const [files, setFiles] = useState([]);
@@ -44,12 +46,16 @@ function AddNew() {
         description,
         files: allFiles,
       });
+      console.log("Hello");
+      console.log(process.env.BLOB_READ_WRITE_TOKEN);
+      console.log(filess.name, filess);
 
-      const newBlob = await upload(filess.name, filess, {
+      await uploadFile(filess.name, filess, {
         access: "public",
         handleUploadUrl: `/api/upload?company=${user?.email}&image=${false}`,
-        token: process.env.BLOB_READ_WRITE_TOKEN,
+        token: "vercel_blob_rw_AfXKEiUA4OAuvAgY_z2HVm0pcvpOG8DX8iwpab4H1NGC5dA",
       });
+      console.log(process.env.BLOB_READ_WRITE_TOKEN);
 
       // Handle successful response
       router.push("/menu/project");
@@ -57,6 +63,7 @@ function AddNew() {
       // Handle error
       console.error("Error:", error);
       alert("Error Submiting");
+      toast.error("Error Submitting");
       setLoading(!true);
     }
   };
@@ -84,7 +91,7 @@ function AddNew() {
       </h3>
 
       <input
-        className={`py-3 border-b-2 medium text-ash3 text-sm px-3 lg:text-base border-b-gray-400 w-full mb-5`}
+        className={`py-3 border-b-2 medium focus:outline-none text-ash3 text-sm px-3 lg:text-base border-b-gray-400 w-full mb-5`}
         placeholder='Type your project name'
         onChange={(e) => dispatch(setName(e.target.value))}
         value={name}
@@ -140,44 +147,6 @@ function AddNew() {
           </div>
         ))}
       </div>
-
-      {/* <h3 className={` capitalize text-start  mb-2 lg:mb-4`}>
-        How do we contact you?
-      </h3>
-
-      <div className='flex gap-3  items-center  my-2'>
-        <div className='flex flex-col lg:flex-row justify-center gap-4'>
-          <div className='flex justify-center gap-2'>
-            <img
-              src={`https://flagcdn.com/16x12/${selected}.png`}
-              className='w-10 rounded-full h-10'
-              alt={selected}
-            />
-            <select onChange={selectedCountry}>
-              {countries.map((con, i) => (
-                <option key={i.toString()} value={con.code}>
-                  {con.dial_code}
-                </option>
-              ))}
-            </select>
-            <input
-              className='border-b-2 outline-none w-full border-b-gray-300'
-              type='phone'
-              onChange={(e) => setMobilePhone(e.target.value)}
-            />
-          </div>
-
-          <div className='flex justify-center gap-2 items-end'>
-            <div>Email</div>
-            <input
-              className='border-b-2 w-full outline-none border-b-gray-300'
-              type='email'
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-        </div>
-      </div> */}
-
       <div className='w-full flex justify-center my-5'>
         {/* <button
           onClick={handleSubmit}

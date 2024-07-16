@@ -303,3 +303,11 @@ const project = [
     status: "Completed",
   },
 ];
+
+export const topComponents = [
+  { icon: "/assets/icons/projects.svg", num: 4, title: "Active Projects" },
+  { icon: "/assets/icons/talents.svg", num: 100, title: "Total Talents" },
+  { icon: "/assets/icons/tasks.svg", num: 24, title: "Total Tasks" },
+];
+
+export const talents = ["t1.png", "t2.png", "t3.png", "t4.png"];

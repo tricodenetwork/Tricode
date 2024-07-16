@@ -17,7 +17,7 @@ function ProjectTable() {
       <div className='flex  w-full justify-between'>
         <h3 className={` `}>Projects</h3>
         <Link
-          href={"/menu/project/addnew"}
+          href={"/menu/project/add"}
           className='font-bold  flex gap-3 text-binance_green hover:text-grayText duration-100 hover:scale-110  items-center'
         >
           <PlusIcon fontSize={32} /> Add project

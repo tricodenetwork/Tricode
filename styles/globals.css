@@ -72,9 +72,10 @@
   margin: 0;
   box-sizing: border-box;
   /* border: 1px solid black; */
-  font-size: 16px;
-  font-family: Poppins-Regular;
+  /* font-size: 16px; */
+  /* font-family: Poppins-Regular; */
 }
+
 /* This will hide the scrollbar for Chrome, Safari, etc. */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
@@ -84,51 +85,36 @@
 .scrollbar-hide {
   scrollbar-width: none;
 }
-/* This will hide the scrollbar for Chrome, Safari, etc. */
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
+	::-webkit-scrollbar {
+		width: 5px;
+    scroll-behavior: smooth;
+    border-radius: 40px;
+		height: 50px;
+	}
 
-/* This will hide the scrollbar for Firefox */
-.scrollbar-hide {
-  scrollbar-width: none;
-}
-/* This will hide the scrollbar for Chrome, Safari, etc. */
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
+	/* Track */
+	::-webkit-scrollbar-track {
+		background: #f1f1f1;
+    scroll-behavior: smooth;
+	}
 
-/* This will hide the scrollbar for Firefox */
-.scrollbar-hide {
-  scrollbar-width: none;
-  font-size: 16px;
-  font-family: Poppins-Regular;
-}
-/* This will hide the scrollbar for Chrome, Safari, etc. */
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
+	/* Handle */
+	::-webkit-scrollbar-thumb {
+		background: #38A312
+	}
 
-/* This will hide the scrollbar for Firefox */
-.scrollbar-hide {
-  scrollbar-width: none;
-}
-/* This will hide the scrollbar for Chrome, Safari, etc. */
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
+	/* Handle on hover */
+	::-webkit-scrollbar-thumb:hover {
+		background: #a5a5a565;
+	}
 
-/* This will hide the scrollbar for Firefox */
-.scrollbar-hide {
-  scrollbar-width: none;
-}
-
-h3 {
+/* h3 {
   font-family: Poppins;
-  font-size: 32px;
+  font-size: 30px;
   line-height: normal;
   text-transform: capitalize;
-}
+  color: #2E2C2C;
+} */
 .light {
   /* font-size: 16; */
   font-family: "Poppins-Light";
@@ -148,9 +134,9 @@ h3 {
 
 
 h3 {
-  color: #000;
+  color: #2E2C2C;
   font-family: Poppins;
-  font-size: 24px;
+  font-size: 20px;
   font-style: normal;
   font-weight: 600;
   line-height: 36px;
@@ -191,6 +177,10 @@ h3 {
   justify-content: center;
   align-items: center;
   z-index: 999;
+}
+.shad{
+  box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.2);
+;
 }
 
 
@@ -233,7 +223,7 @@ max-width: 400px;
 }
 .listitem {
   font-family: Poppins-Regular;
-  font-size: 15px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -311,6 +301,28 @@ ul li,
   /* border: 1px solid var(--secondary); */
   display: flex;
   align-items: center;
+}
+.datepicker-input {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 52px;
+  opacity: 0;
+  z-index: 100;
+  /* cursor: pointer; */
+  box-sizing: border-box;
+}
+.datepicker-input::-webkit-calendar-picker-indicator {
+  position: absolute;
+  right: 8px;
+  bottom: 10px;
+  width: 30px;
+  height: 30px;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  z-index: 100;
 }
 
 @media screen and (max-width: 520px) {
