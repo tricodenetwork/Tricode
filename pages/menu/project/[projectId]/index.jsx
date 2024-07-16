@@ -1,9 +1,9 @@
-import MenuLayout from "@/Components/layouts/MenuLayout";
-import ProjectTransactions from "@/Components/projectComponents/projectTables/ProjectTransactions";
+import MenuLayout from "@/components/layouts/MenuLayout";
+import ProjectTransactions from "@/components/projectComponents/projectTables/ProjectTransactions";
 import Link from "next/link";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import ProjectDetails from "@/Components/projectComponents/ProjectDetails";
+import ProjectDetails from "@/components/projectComponents/ProjectDetails";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import useDatabase from "@/hooks/useDatabase";

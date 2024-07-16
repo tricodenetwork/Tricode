@@ -1,5 +1,5 @@
-import { BackButton } from "@/Components/Button";
-import AppButton, { AppButton2 } from "@/Components/AppButton";
+import { BackButton } from "@/components/Button";
+import AppButton, { AppButton2 } from "@/components/AppButton";
 
 import Link from "next/link";
 

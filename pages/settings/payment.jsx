@@ -1,6 +1,6 @@
-import MenuLayout from "@/Components/layouts/MenuLayout";
-import SettingsLayout from "@/Components/layouts/SettingsLayout";
-import Payment from "@/Components/settings/Payment";
+import MenuLayout from "@/components/layouts/MenuLayout";
+import SettingsLayout from "@/components/layouts/SettingsLayout";
+import Payment from "@/components/settings/Payment";
 import React from "react";
 
 const Settings = () => {

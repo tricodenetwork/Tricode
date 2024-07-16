@@ -1,7 +1,7 @@
-import Sidebar from "@/Components/layouts/Sidebar";
+import Sidebar from "@/components/layouts/Sidebar";
 import Link from "next/link";
-import Button from "@/Components/Button";
-import OTPInput from "@/Components/OTPInput";
+import Button from "@/components/Button";
+import OTPInput from "@/components/OTPInput";
 
 const Index = () => {
   // --------------------------------------------VARIABLES

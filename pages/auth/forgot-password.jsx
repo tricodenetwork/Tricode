@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Sidebar from "@/Components/layouts/Sidebar";
+import Sidebar from "@/components/layouts/Sidebar";
 import Image from "next/image";
 
 const Index = () => {

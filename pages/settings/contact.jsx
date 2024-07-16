@@ -1,7 +1,7 @@
 import React from "react";
-import MenuLayout from "@/Components/layouts/MenuLayout";
-import SettingsLayout from "@/Components/layouts/SettingsLayout";
-import Contact from "@/Components/settings/Contact";
+import MenuLayout from "@/components/layouts/MenuLayout";
+import SettingsLayout from "@/components/layouts/SettingsLayout";
+import Contact from "@/components/settings/Contact";
 
 const Settings = () => {
   return (
