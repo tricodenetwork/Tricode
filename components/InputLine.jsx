@@ -19,7 +19,7 @@ const InputLine = ({
   return (
     <input
       value={value}
-      onChange={onChange}
+      onInput={onChange}
       type={type}
       onKeyDown={onKeyDown}
       placeholder={placeholder}

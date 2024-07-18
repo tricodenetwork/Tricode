@@ -34,7 +34,6 @@ const Dashboard = () => {
     : "/assets/images/company.svg";
   // console.log(session, "sessio");
   // console.log(status, "status");
-  console.log(imageUrl, "urlimage");
   const options = { weekday: "long", month: "long", day: "numeric" };
   const formattedDate = new Intl.DateTimeFormat("en-US", options).format(
     currentDate
@@ -56,7 +55,6 @@ const Dashboard = () => {
   //------------------------------------------------------------------USE EFFECTS
   useEffect(() => {
     if (user) {
-      console.log(user);
       if (
         !(user?.role === "talent" || user?.role === "company" || user?.email)
       ) {
@@ -79,7 +77,7 @@ const Dashboard = () => {
       </div>
     );
   }
-
+  console.log("projects", projects);
   return (
     <div className='h-max p-5  lg:p-10 w-full  flex flex-col'>
       {upload && (
@@ -163,31 +161,37 @@ const Dashboard = () => {
               Scheduled Meetings
             </div>
             <div className='inline-flex flex-col items-start gap-[10px] relative flex-[0_0_auto]'>
-              {projects?.map((project, index) => {
-                return project?.meetings?.map((item, i) => (
-                  <div
-                    key={i.toString}
-                    className='relative w-[376px] h-[78px] bg-white rounded-[14px] shadow-[0px_4px_10px_#0000000d]'
-                  >
-                    <p className='absolute top-[43px] left-[63px] medium text-[#8c8787] text-[10px] tracking-[0] leading-[normal]'>
-                      {item.date}{" "}
-                      <span className='medium text-[#8c8787] text-[10px]  tracking-[0] leading-[normal]'>
-                        {item?.time}
-                      </span>
-                    </p>
-                    <div className='absolute w-[181px] top-[18px] left-[63px] medium text-[#2e2c2c] text-[14px] tracking-[0] leading-[normal]'>
-                      {item.name}
+              {projects?.meetings ? (
+                projects?.map((project, index) => {
+                  return project?.meetings?.map((item, i) => (
+                    <div
+                      key={i.toString}
+                      className='relative w-[376px] h-[78px] bg-white rounded-[14px] shadow-[0px_4px_10px_#0000000d]'
+                    >
+                      <p className='absolute top-[43px] left-[63px] medium text-[#8c8787] text-[10px] tracking-[0] leading-[normal]'>
+                        {item.date}{" "}
+                        <span className='medium text-[#8c8787] text-[10px]  tracking-[0] leading-[normal]'>
+                          {item?.time}
+                        </span>
+                      </p>
+                      <div className='absolute w-[181px] top-[18px] left-[63px] medium text-[#2e2c2c] text-[14px] tracking-[0] leading-[normal]'>
+                        {item.name}
+                      </div>
+                      <Image
+                        className='absolute w-[23px] h-[23px] top-[28px] left-[25px]'
+                        width={23}
+                        height={23}
+                        alt='Group'
+                        src='/assets/icons/verified_white.svg'
+                      />
                     </div>
-                    <Image
-                      className='absolute w-[23px] h-[23px] top-[28px] left-[25px]'
-                      width={23}
-                      height={23}
-                      alt='Group'
-                      src='/assets/icons/verified_white.svg'
-                    />
-                  </div>
-                ));
-              })}
+                  ));
+                })
+              ) : (
+                <h4 className='medium text-center mx-auto flex items-center justify-center h-[120px] text-binance_green text-2xl'>
+                  No Meetings Yet
+                </h4>
+              )}
             </div>
           </div>
         </div>
@@ -214,6 +218,7 @@ const Dashboard = () => {
               <tbody className=''>
                 {projects?.map((v, k) => (
                   <tr
+                    title={`/menu/project/${v._id}`}
                     onClick={() => router.push(`/menu/project/${v._id}`)}
                     key={k.toString()}
                     className='border-b hover:cursor-pointer  border-gray-200'
@@ -254,47 +259,46 @@ const Dashboard = () => {
               <div className="[font-family:'Poppins-SemiBold',Helvetica] text-[#2e2c2c] text-[20px] tracking-[0] leading-[normal]">
                 Project Manager Responses
               </div>
-              <div className="[font-family:'Poppins-Regular',Helvetica] hidden font-normal text-[#37a212] text-[14px] tracking-[0] leading-[normal]">
-                Visit projects
-              </div>
-              {/* <div className='absolute right-1 hidden -bottom-2 flex'>
-                <LiaAngleLeftSolid color='#8C8888' />
-                <LiaAngleRightSolid color='#8C8888' />
-              </div> */}
             </div>
             <div className='mt-5  overflow-x-scroll  space-x-10 w-[100%] scrollbar-hide  flex'>
-              {projects?.map((project, index) => {
-                return project?.report?.map((item, i) => {
-                  return (
-                    <>
-                      <div className='relative w-[438px] flex-[0_0_auto] h-[166px] bg-white rounded-[10px] shadow-[0px_4px_10px_#0000000d,0px_-4px_10px_#0000000d]'>
-                        <div className='inline-flex flex-col items-start gap-[30px] relative top-[19px] left-[56px]'>
-                          <p className="relative w-[326px] mt-[-1.00px] [font-family:'Poppins-Regular',Helvetica] font-normal text-[#2e2c2c] text-[13px] tracking-[0] leading-[normal]">
-                            {item?.summary.slice(0, 80).concat("...")}
-                          </p>
-                          <div className='inline-flex items-center gap-[30px] relative '>
-                            <Image
-                              className='relative w-[57px] h-[57px]'
-                              alt='Ellipse'
-                              width={57}
-                              height={57}
-                              src='/assets/images/luke.svg'
-                            />
-                            <div className='inline-flex flex-col items-start gap-px relative '>
-                              <div className="relative w-[96px] mt-[-1.00px] [font-family:'Poppins-SemiBold',Helvetica] font-semibold text-[#2e2c2c] text-[16px] tracking-[0] leading-[normal]">
-                                {project?.manager}
-                              </div>
-                              <div className="relative w-fit [font-family:'Poppins-Regular',Helvetica] font-normal text-[#c5c2c2] text-[13px] tracking-[0] leading-[normal]">
-                                Project Manager
+              {projects?.report ? (
+                projects?.map((project, index) => {
+                  return project?.report?.map((item, i) => {
+                    return (
+                      <>
+                        <div className='relative w-[438px] flex-[0_0_auto] h-[166px] bg-white rounded-[10px] shadow-[0px_4px_10px_#0000000d,0px_-4px_10px_#0000000d]'>
+                          <div className='inline-flex flex-col items-start gap-[30px] relative top-[19px] left-[56px]'>
+                            <p className="relative w-[326px] mt-[-1.00px] [font-family:'Poppins-Regular',Helvetica] font-normal text-[#2e2c2c] text-[13px] tracking-[0] leading-[normal]">
+                              {item?.summary.slice(0, 80).concat("...")}
+                            </p>
+                            <div className='inline-flex items-center gap-[30px] relative '>
+                              <Image
+                                className='relative w-[57px] h-[57px]'
+                                alt='Ellipse'
+                                width={57}
+                                height={57}
+                                src='/assets/images/luke.svg'
+                              />
+                              <div className='inline-flex flex-col items-start gap-px relative '>
+                                <div className="relative w-[96px] mt-[-1.00px] [font-family:'Poppins-SemiBold',Helvetica] font-semibold text-[#2e2c2c] text-[16px] tracking-[0] leading-[normal]">
+                                  {project?.manager}
+                                </div>
+                                <div className="relative w-fit [font-family:'Poppins-Regular',Helvetica] font-normal text-[#c5c2c2] text-[13px] tracking-[0] leading-[normal]">
+                                  Project Manager
+                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    </>
-                  );
-                });
-              })}
+                      </>
+                    );
+                  });
+                })
+              ) : (
+                <h4 className='medium text-center mx-auto flex items-center justify-center h-[120px] text-binance_green text-2xl'>
+                  No Responses Yet
+                </h4>
+              )}
             </div>
           </div>
         </div>

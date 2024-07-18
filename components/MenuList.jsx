@@ -6,9 +6,10 @@ const MenuList = ({ Icon, name, isOpen }) => {
   const route = useRouter();
   const routeName = route.pathname.split("/menu/").pop();
   const active = routeName.toLowerCase().includes(name.toLowerCase());
+  const projectId = route?.query?.projectId;
 
   return (
-    <div className='w-full  relative'>
+    <div className='w-full  flex items-center  min-h-[8vh] relative'>
       <div
         className={`w-[4px]  ${
           isOpen && active ? "bg-white lg:bg-binance_green" : ""
@@ -17,13 +18,13 @@ const MenuList = ({ Icon, name, isOpen }) => {
         } absolute -left-[2px] self`}
       ></div>
       <div
-        className={`flex ${
+        className={`flex ${isOpen ? "flex" : "hidden"} ${
           isOpen && active ? "bg-white lg:bg-binance_green" : ""
         } ${
           active
             ? " bg-binance_green hover:scale-110  cursor-pointer shadow-sm shadow-binance_brightash"
             : "bg-transparent"
-        } px-2 w-[65%] duration-300 flex items-center justify-start ml-[3vw] rounded-lg pl-[1.5vw] py-4`}
+        } px-2 w-[85%] max-w-[250px] duration-300 flex items-center justify-start ml-[1vw] rounded-lg pl-[1.5vw] py-4`}
       >
         <div className='mr-4 w-[28px] hidden lg:flex justify-start items-center border-2 border-opacity-0 border-transparent h-[24px]'>
           <Icon active={active} />
@@ -31,7 +32,7 @@ const MenuList = ({ Icon, name, isOpen }) => {
         <Link
           href={
             name.toLowerCase() == "logout"
-              ? `?logout=true`
+              ? `${projectId ? `${projectId}?logout=true` : "?logout=true"}`
               : `/menu/${name.toLowerCase()}`
           }
         >

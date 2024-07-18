@@ -7,7 +7,6 @@ import Dashboard from "../svg/Dashboard";
 import Project from "../svg/Project";
 import Help from "../svg/Help";
 import Logout from "../svg/Logout";
-import Teams from "../svg/Teams";
 import Payment from "../svg/Payment";
 import Ellipse from "../svg/Ellipse";
 import Message from "../svg/Message";
@@ -15,26 +14,46 @@ import Bell from "../svg/Bell";
 import Settings from "../svg/Settings";
 import Link from "next/link";
 import { useState } from "react";
+import { useRef } from "react";
+import TawkMessengerReact from "@tawk.to/tawk-messenger-react";
 import ModalComponent from "../modals/ModalComponent";
 import LogOut from "../modals/LogOut";
 import Notifications from "../modals/Notifications";
 import NotificationModal from "../modals/NotificationModal";
+import useDatabase from "@/hooks/useDatabase";
+import { ViewHorizontalIcon, ViewVerticalIcon } from "@radix-ui/react-icons";
+import { Inter } from "next/font/google";
+import { Toaster } from "react-hot-toast";
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
 
 const MenuLayout = ({ children }) => {
   // --------------------------------------------VARIABLES
   const route = useRouter();
+  const { user } = useDatabase();
   const parts = route.pathname.split("menu/");
   const title = parts.length > 1 ? parts[1].split("/")[0] : "";
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
+  const [viewHorizontal, setViewHorizontal] = useState(false);
   const logout = route?.query?.logout;
   const notification = route?.query?.notification;
 
   //-----------------------------------------------------------FUNCTIONS
   const { imageLoader } = useFunctions();
+  const tawkMessengerRef = useRef();
+
+  const handleMinimize = () => {
+    tawkMessengerRef.current.minimize();
+  };
   //------------------------------------------------------------------USE EFFECTS
 
   return (
-    <div className='w-full flex  flex-col justify-start'>
+    <div
+      style={inter.style}
+      className='w-full flex overflow-hidden flex-col justify-start'
+    >
       {logout && <ModalComponent Content={LogOut} />}
       {notification && <NotificationModal Content={Notifications} />}
       <div className='w-full  bg-binance_green  flex items-center justify-between px-[3vw] lg:px-[2vw]  h-[9vh]'>
@@ -92,27 +111,33 @@ const MenuLayout = ({ children }) => {
 
           <div
             onClick={() => setIsOpen(!isOpen)}
-            style={{
-              background: "url(/assets/icons/Ellipse.png)",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
             className='w-[40px] hover:scale-90  hover:cursor-pointer transition-all ease-out duration-100 relative rounded-full h-[40px]'
-          ></div>
+          >
+            <Image
+              src={user?.image ? user?.image : "/assets/icons/Ellipse.png"}
+              className='rounded-full object-cover'
+              alt='profile_pic '
+              fill
+            />
+          </div>
         </div>
       </div>
       <div
-        className='w-full relative max-h-[91dvh]   overflow-clip borde
-        h-screen border-midorange items-start flex'
+        className='w-full  relative max-h-[91dvh] h-screen   
+         border-midorange items-start flex'
       >
-        <div
-          className={`lg:w-[17%] w-[80vw] absolute   top-0  lg:left-0 lg:relative lg:h-full h-[80%] ${
-            isOpen
-              ? "bg-binance_green lg:bg-white -right-[0px]    text-white "
-              : "-right-[1000px]"
-          } flex flex-col justify-between border-r z-20 border-opacity-20  duration-700 ease-out  pt-[4vh] lg:pt-0 lg:mt-[7vh]  border-[#000000]`}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className='absolute top-2 left-2'
         >
-          <div className='bod'>
+          {!isOpen ? <ViewHorizontalIcon /> : <ViewVerticalIcon />}
+        </button>
+        <div
+          className={` ${
+            !isOpen ? "w-[0%] xxl:w-[0%]" : "lg:w-[15%] xxl:w-[17%] "
+          }   absolute   top-0  lg:left-0 lg:relative lg:h-full h-[80%] flex flex-col justify-between shadow-[0px_2px_1px] shadow-black/10   border-r z-20 border-opacity-20  duration-700 ease-out  pt-[4vh] lg:pt-0 lg:mt-[7vh]  border-[#000000]`}
+        >
+          <div className=''>
             <MenuList isOpen={isOpen} Icon={Dashboard} name={"Dashboard"} />
             <MenuList isOpen={isOpen} Icon={Project} name={"Project"} />
             <MenuList isOpen={isOpen} Icon={Payment} name={"Payment"} />
@@ -142,10 +167,17 @@ const MenuLayout = ({ children }) => {
             </div>
           </div> */}
         </div>
-        <div className='max-h-full h-full overflow-scroll   scrollbar-hide  w-full lg:w-[83%] flex justify-center items-start'>
+        <div className='max-h-full  h-full overflow-y-scroll  scrollbar-hid flex-1 flex justify-center items-start'>
+          <Toaster position='top-center' />
+
           {children}
         </div>
       </div>
+      {/* <TawkMessengerReact
+        propertyId='668d0c9cc3fb85929e3d25df'
+        widgetId='1i2bfih3e'
+        ref={tawkMessengerRef}
+      /> */}
     </div>
   );
 };

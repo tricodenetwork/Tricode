@@ -1,16 +1,14 @@
-import AuthComponent from "@/Components/AuthComponent";
-import LoginLayout from "@/Components/layouts/LoginLayout";
+import AuthComponent from "@/components/AuthComponent";
+import LoginLayout from "@/components/layouts/LoginLayout";
 import Link from "next/link";
-import Button from "@/Components/Button";
+import Button from "@/components/Button";
 import { Checkbox } from "@mui/material";
-import InputLine from "@/Components/InputLine";
+import InputLine from "@/components/InputLine";
 import { useEffect, useState } from "react";
-import ShowHidePassword from "@/Components/ShowHidePassword";
+import ShowHidePassword from "@/components/ShowHidePassword";
 import { signIn, useSession } from "next-auth/react";
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/router";
 import { baseUrl } from "@/config/config";
-import LogOut from "@/Components/modals/LogOut";
-import ModalComponent from "@/Components/modals/ModalComponent";
 import { AnimatePresence, motion } from "framer-motion";
 import { Close } from "@mui/icons-material";
 
@@ -43,23 +41,22 @@ const Index = () => {
     }, 2500);
   };
 
-  const validateEmail = () => {
+  const validateEmail = (mail) => {
     // Regular expression for a simple email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const isValidEmail = emailRegex.test(email);
+    const isValidEmail = emailRegex.test(mail);
 
     // Set emailError based on validation result
     setEmailError(isValidEmail ? null : "Invalid email address");
   };
 
   const handleEmailChange = (e) => {
+    validateEmail(e.target.value); // Validate email on each change
     setEmail(e.target.value);
-    validateEmail(); // Validate email on each change
   };
 
   const handleSignIn = async (e) => {
     e.preventDefault();
-    validateEmail();
 
     if (!emailError) {
       setLoading(true);
@@ -67,7 +64,7 @@ const Index = () => {
 
       // Use NextAuth signIn function to trigger authentication
       const result = await signIn("credentials", {
-        redirect: true,
+        redirect: !true,
         email,
         password,
         callbackUrl: `${baseUrl}menu/dashboard`,
@@ -83,6 +80,7 @@ const Index = () => {
       } else {
         setLoading(false);
         setErr("Login Successful");
+        router.push("/menu/dashboard");
         console.log(result);
       }
       modal();
@@ -136,7 +134,7 @@ const Index = () => {
 
         <h3>SIGN IN</h3>
         <div className='flex mt-[8px] mb-[15px] md:mt-[16px] md:mb-[30px] items-center w-full'>
-          <p className=' mr-1 md:mr-3 member '>Not a member?</p>
+          <p className=' mr-1 md:mr-3 member'>Not a member?</p>
           <Link href='/auth/register'>
             <p className='text-binance_green hover:underline register'>
               Register now!

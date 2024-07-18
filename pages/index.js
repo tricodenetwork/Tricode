@@ -10,6 +10,7 @@ import OurServices from "@/Components/OurServices/index";
 import OurNewsletter from "@/Components/OurNewsletter/index";
 import Footer from "@/Components/Footer/index";
 import { useSession, signIn, signOut } from "next-auth/react";
+import Head from "next/head";
 
 export default function Home() {
   const [screenWidth, setScreenWidth] = useState(0);
@@ -32,6 +33,13 @@ export default function Home() {
 
   return (
     <>
+      <Head>
+        <title>Tricode Remote Workstation </title>
+        <meta
+          name='description'
+          content="As a distinguished Software and Hardware development firm, we stand prepared to address all your technological requirements. Our expertise spans from crafting mobile applications to developing sophisticated websites and robust software programs. Simply articulate your vision, and we'll transform it into reality with our adept team of professionals."
+        />
+      </Head>
       <Navbar />
       {/* <main className='relative'> */}
       <Hero />
