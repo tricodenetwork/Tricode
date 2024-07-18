@@ -59,7 +59,7 @@ const ProjectCard = ({ project }) => {
       </div>
       {/* View Project */}
       <Link
-        href={`/pm/project/${project?._id}`}
+        href={`/project/${project?._id}`}
         className='border-b cursor-pointer hover:text-binance_green/80 hover:border-binance_green mt-[4%] border-black pb-1 text-grayText font-medium text-sm w-max '
       >
         View Project

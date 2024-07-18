@@ -33,7 +33,7 @@ const MenuList = ({ Icon, name, isOpen }) => {
           href={
             name.toLowerCase() == "logout"
               ? `${projectId ? `${projectId}?logout=true` : "?logout=true"}`
-              : `/menu/${name.toLowerCase()}`
+              : `/${name.toLowerCase()}`
           }
         >
           <p

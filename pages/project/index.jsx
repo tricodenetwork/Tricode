@@ -25,13 +25,13 @@ const Project = () => {
       <div className='flex justify-between items-end'>
         <SearchComponent setSearch={setSearch} />
         <Link
-          href={"/pm/project/add"}
+          href={"/project/add"}
           className='medium text-xs w-[17%] py-[2vh] justify-center rounded-full hover:bg-appOrange bg-binance_green text-white flex gap-3  hover:text-grayText duration-100 hover:scale-110  items-center'
         >
           <PlusIcon fontSize={32} /> Create Project
         </Link>
       </div>
-      <div className='w-full mt-[2%] flex-wrap h-full  justify-center gap-[5%] flex'>
+      <div className='w-full mt-[2%] flex-wrap h-full  justify-start gap-[5%] flex'>
         {projects
           .filter((item) => item?.name?.toLowerCase()?.includes(search) ?? true)
           .map((project, i) => {

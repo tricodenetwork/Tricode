@@ -333,7 +333,7 @@ const ProjectID = () => {
                                   break;
 
                                 default:
-                                  click = `/report`;
+                                  click = `/project/report`;
                                   break;
                               }
                               if (!val?.includes("Delete")) {

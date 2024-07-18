@@ -174,23 +174,23 @@ const Dashboard = () => {
           Profile Information
         </div>
         {/* Content / Details */}
-        <div className=' w-max mt-[6%]  space-y-[2.5vh] min-h-[80px] '>
+        <div className=' w-max mt-[6%]  space-y-[2vh] min-h-[80px] '>
           <div className='flex items-center '>
             <p className='min-w-[50px] mr-2 '>Name:</p>
-            <p className='w-[80%] semiBold  pl-[1.5%] regular text-start text-appBlue'>
+            <p className='w-[80%] semiBold capitalize text-sm  pl-[1.5%] regular text-start text-appBlue'>
               {user?.name}
             </p>
           </div>
           <div className='flex items-center '>
             <p className='min-w-[50px] mr-2 '>Email:</p>
-            <p className='w-[80%] semiBold break-all xxl:break-normal text-binance_green text-sm   pl-[1.5%] regular text-start'>
+            <p className='w-[80%] text-xs semiBold break-all xxl:break-normal text-binance_green   pl-[1.5%] regular text-start'>
               {user?.email}
             </p>
           </div>
           <div className='flex items-center '>
             <p className='min-w-[50px] mr-2'>Role:</p>
-            <p className='w-[80%] semiBold lowercase break-all xxl:break-normal  text-xs text-appOrange   pl-[1.5%] regular text-start'>
-              {"Talent"}
+            <p className='w-[80%] semiBold capitalize break-all xxl:break-normal  text-xs text-appOrange   pl-[1.5%] regular text-start'>
+              {"Project Manager"}
             </p>
           </div>
         </div>

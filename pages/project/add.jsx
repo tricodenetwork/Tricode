@@ -13,6 +13,7 @@ import useDatabase from "@/hooks/useDatabase";
 import { AnimatePresence } from "framer-motion";
 import { TeamCard } from "@/pages/menu/project/[projectId]";
 import axios from "axios";
+import toast from "react-hot-toast";
 const nunito = Nunito({
   subsets: ["latin"],
   weight: ["200", "300", "400", "500", "600"],
@@ -39,7 +40,7 @@ const Project = () => {
 
   const addToProject = (talent) => {
     if (team.some((item) => item._id === talent._id)) {
-      alert("Already added ➕");
+      toast.error("Already added ➕");
       return team;
     }
     AddTeamMember((prev) => {
@@ -191,7 +192,7 @@ const Project = () => {
         </div>
       </section>
       <div className='mt-[10vh] flex items-center justify-center  gap-[3vw]'>
-        <AppButton href={"/pm/project"} title={"Cancel"} />
+        <AppButton href={"/project"} title={"Cancel"} />
         <AppButton dark={false} href={"/api/project/create"} title={"Create"} />
       </div>
     </div>
