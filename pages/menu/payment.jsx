@@ -36,7 +36,7 @@ const Payments = () => {
 
   return (
     <>
-      <div className='h-full flex justify-center items-center'>Paymentsss</div>
+      <div className="h-full flex justify-center items-center">Paymentsss</div>
       <FlutterWaveButton {...fwConfig} />
     </>
   );
