@@ -27,71 +27,40 @@ const Project = () => {
   // --------------------------------------------VARIABLES
   const router = useRouter();
   const { name, projectId, item } = router.query;
-  const milestone = item ? JSON.parse(item ?? "") : {};
-  const [title, setTitle] = useState(milestone?.name ?? null);
-  const [startDate, setStartDate] = useState(milestone.startDate ?? null);
-  const [endDate, setEndDate] = useState(milestone.endDate ?? null);
+  const task = item ? JSON.parse(item) : {};
+  const [title, setTitle] = useState(task?.name ?? null);
+  const [startDate, setStartDate] = useState(task?.startDate ?? null);
+  const [endDate, setEndDate] = useState(task?.endDate ?? null);
   const [addTalents, setAddTalents] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [project, setProject] = useState(null);
+  const [talent, setTalent] = useState(null);
   const { allUsers } = useDatabase();
   const { talents } = useSelector((state) => state.users);
   // console.log(project);
   const [team, AddTeamMember] = useState(project?.team ?? []);
   const teamMembers = project?.team?.map((item) => item._id);
 
-  const [description, setDescription] = useState(milestone?.description ?? "");
+  const [description, setDescription] = useState(task?.description ?? "");
 
   const dispatch = useDispatch();
+  console.log(router.pathname);
 
   //-----------------------------------------------------------FUNCTIONS
+
   const getProject = async () => {
     const res = await axios.post(`/api/get/project`, { id: projectId });
     console.log("res", res);
     setProject(res.data);
-    // AddTeamMember(res.data.team);
   };
-  const addToProject = async (talent) => {
-    setIsLoading(true);
-    if (project?.team.some((item) => item._id === talent._id)) {
-      alert("Already added ➕");
-      return project?.team;
-    }
-    const res = await axios.post(`/api/post/add-talent`, {
-      talent: talent,
-      id: projectId,
-    });
-    // console.log(res);
-    if (res.status == 200) {
-      getProject();
-      setAddTalents(false);
 
-      toast.success("Added");
-    }
-
-    setIsLoading(false);
-  };
-  const removeFromProject = async (talent) => {
-    setIsLoading(true);
-    const res = await axios.post(`/api/post/remove-talent`, {
-      talent: talent,
-      id: projectId,
-    });
-    // console.log(res);
-    if (res.status == 200) {
-      getProject();
-
-      toast.success("Removed");
-    }
-    setIsLoading(false);
-  };
-  const addMilestone = async () => {
-    // setIsLoading(!true);
+  const addTask = async () => {
     const data = {
       name: title,
       startDate,
       endDate,
       description,
+      talent,
       status: "Pending",
     };
 
@@ -103,9 +72,10 @@ const Project = () => {
     }
     setIsLoading(true);
 
-    const res = await axios.post("/api/milestones/new", {
-      milestone: data,
+    const res = await axios.post("/api/tasks/create", {
+      milestone: name,
       id: projectId,
+      task: data,
     });
     console.log(res);
     if (res.status == 200) {
@@ -120,15 +90,13 @@ const Project = () => {
     setIsLoading(false);
     router.back();
   };
-  const editMilestone = async () => {
-    // setIsLoading(!true);
+  const editTask = async () => {
     const data = {
       name: title,
       startDate,
       endDate,
       description,
-      initial: milestone?.name,
-      // status: "",
+      talent,
     };
     const requiredFields = ["name", "startDate", "endDate", "description"];
     for (const field of requiredFields) {
@@ -139,9 +107,10 @@ const Project = () => {
     }
     setIsLoading(true);
 
-    const res = await axios.post("/api/milestones/update", {
-      milestone: data,
+    const res = await axios.post("/api/tasks/update", {
+      milestone: name,
       id: projectId,
+      task: data,
     });
     console.log(res);
     if (res.status == 200) {
@@ -156,29 +125,24 @@ const Project = () => {
     setIsLoading(false);
     router.back();
   };
-  const deleteMilestone = async () => {
+  const deleteTask = async () => {
     setIsLoading(true);
-    const res = await axios.post(`/api/milestones/delete`, {
-      name: milestone?.name,
-      id: projectId,
-    });
-    // console.log(res);
-    if (res.status == 200) {
-      // getProject();
-
-      toast.success("Deleted");
+    try {
+      const res = await axios.post(`/api/tasks/delete`, {
+        task: task?.name,
+        id: projectId,
+        milestone: name,
+      });
+      if (res.status == 200) {
+        toast.success("Deleted");
+        setIsLoading(false);
+        router.back();
+      }
       setIsLoading(false);
-      router.back();
+    } catch (error) {
+      console.error(error.response);
+      setIsLoading(false);
     }
-    // setTimeout(() => {
-    setIsLoading(false);
-    // }, 3000);
-  };
-
-  const create = async () => {
-    const data = { name: title, startDate, endDate, description };
-    const body = JSON.stringify(data);
-    const res = await axios.post("/api/create/project");
   };
 
   const handleStartDateChange = (e) => {
@@ -235,41 +199,49 @@ const Project = () => {
           alt='arrow'
         />
 
-        <Link
-          href={{
-            pathname: `${milestone.name}`,
-            query: {
-              projectId: projectId,
-              item: item,
-            },
-          }}
-          className='text-binance_green regular text-sm'
+        <button
+          onClick={() => router.back()}
+          className={`${
+            task?.name || router.pathname.includes("tasks")
+              ? "text-grayText"
+              : "text-binance_green"
+          } regular text-sm`}
         >
-          {milestone?.name ?? "New"}
-        </Link>
+          {name}
+        </button>
+        <Image
+          src={"/assets/icons/r_arr.svg"}
+          width={18}
+          height={18}
+          alt='arrow'
+        />
+
+        <p className='text-binance_green regular text-sm'>
+          {task?.name ? task.name : "New Task"}
+        </p>
       </div>
       <h4
         className='text-[#1b1b1b] my-[4vh] text-3xl font-semibold'
         style={nunito.style}
       >
-        {title ?? "Project Zero"}
+        {title ?? "New Task"}
       </h4>
       {/* Project Title */}
       <div className='flex w-full mb-[4vh] justify-between items-center'>
         <div className='flex  mb-[4vh] w-[45%] flex-col'>
-          <p className='text-[#1b1b1b] mb-1 regular'>{"Project Title"}</p>
+          <p className='text-[#1b1b1b] mb-1 regular'>{"Milestone"}</p>
           <input
-            placeholder={project?.name}
-            value={project?.name}
+            placeholder={name}
+            value={name}
             type='text'
             readOnly
             className='border capitalize focus:outline-none text-grayText semiBold text-sm px-4 rounded-[12px] h-[52px] border-[#d9d9d9]'
           />
         </div>
         <div className='flex  mb-[4vh] w-[45%] flex-col'>
-          <p className='text-[#1b1b1b] mb-1 regular'>{"Milestone"}</p>
+          <p className='text-[#1b1b1b] mb-1 regular'>{"Task Title"}</p>
           <input
-            placeholder={"New Milestone"}
+            placeholder={"Wireframing"}
             value={title}
             type='text'
             onChange={(e) => setTitle(e.target.value)}
@@ -289,8 +261,8 @@ const Project = () => {
           <input
             type='text'
             readOnly
-            placeholder={milestone?.startDate ?? "2024-01-05"}
-            // defaultValue={milestone?.startDate ?? "2024-01-05"}
+            placeholder={task?.startDate ?? "2024-01-05"}
+            // defaultValue={task?.startDate ?? "2024-01-05"}
             value={startDate}
             className='border semiBold capitalize text-sm px-4 rounded-[12px]  h-[52px] border-[#d9d9d9]'
           />
@@ -311,7 +283,7 @@ const Project = () => {
           />
           <input
             type='text'
-            placeholder={milestone?.endDate ?? "2024-01-30"}
+            placeholder={task?.endDate ?? "2024-01-30"}
             value={endDate}
             readOnly
             className='border semiBold px-4 text-sm rounded-[12px] h-[52px] border-[#d9d9d9]'
@@ -327,72 +299,64 @@ const Project = () => {
       </div>
       {/* Milestone Description */}
       <div className='flex mb-[4vh] flex-col'>
-        <p className='text-[#1b1b1b] mb-1 regular'>{"Milestone Description"}</p>
+        <p className='text-[#1b1b1b] mb-1 regular'>{"Task Description"}</p>
         <textarea
           type='text'
-          defaultValue={milestone.description}
+          defaultValue={task?.description}
           placeholder="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text"
           onChange={(e) => setDescription(e.target.value)}
-          className='border px-4 py-2 focus:outline-none rounded-[12px]  h-auto border-[#d9d9d9]'
+          className='border px-4 py-2 focus:outline-none rounded-[12px] min-h-[131px]  h-auto border-[#d9d9d9]'
         >
           {/* {description} */}
         </textarea>
       </div>
+
       {/* Talents Section */}
-      <section className='w-full flex mt-[1.5vh] flex-col items-center'>
-        <div className='flex justify-between items-center w-[95%] mx-auto'>
-          <h4 className='semiBold text-2xl text-[#1b1b1b] '>Talents</h4>
-          <div className='flex items-center gap-[1vw]'>
-            <p className='text-binance_green medium text-sm'>Add Talents</p>
-            <button onClick={() => setAddTalents(true)}>
-              <Image
-                alt='add'
-                width={28}
-                height={28}
-                className='hover:scale-95 active:scale-100'
-                src={"/assets/icons/add.svg"}
-              />
-            </button>
-          </div>
-        </div>
-        <div className='w-[97%] relative justify-items-start flex flex-wrap mx-auto mt-[2vh] bg-white border py-[1vh] px-[1vw] border-[#efefef] min-h-[150px] rounded-[24px]  h-auto'>
-          <AnimatePresence mode='wait'>
-            {addTalents ? (
-              <OutsideClickHandler
-                display='contents'
-                onOutsideClick={() => {
-                  // setTimeout(() => setAddTalents(false), 5000);
-                  setAddTalents(false);
-                }}
-              >
+      <section className='w-full flex mt-[1.5vh] flex-col items-start'>
+        <p className='text-[#1b1b1b] mb-[30px] semiBold'>{"Asign Task To"}</p>
+        <OutsideClickHandler
+          display='inline-block'
+          onOutsideClick={() => {
+            setAddTalents(false);
+          }}
+        >
+          <div className='focus:outline-none border space-x-4 px-5 w-max flex rounded-[12px] h-[52px] border-[#d9d9d9] items-center justify-between relative'>
+            <div className='  flex items-center capitalize  text-[#1b1b1b] text-sm regular  '>
+              {task?.talent?.name.toLowerCase() ||
+                talent?.name.toLowerCase() ||
+                "Not Assigned"}
+            </div>
+            <Image
+              src={"/assets/icons/sel.svg"}
+              width={12}
+              height={8}
+              alt='select'
+              onClick={() => setAddTalents(!addTalents)}
+              className={`cursor-pointer ${addTalents && "rotate-180"}`}
+            />
+            <AnimatePresence mode='wait'>
+              {addTalents ? (
                 <AddTalentsComponent
-                  addTalent={addToProject}
-                  talents={talents?.filter(
-                    (item) => !teamMembers?.includes(item._id)
+                  style='absolute top-full -left-4 mt-4 w-max max-h-[300px]'
+                  addTalent={setTalent}
+                  talents={talents?.filter((item) =>
+                    teamMembers?.includes(item._id)
                   )}
                 />
-              </OutsideClickHandler>
-            ) : null}
-          </AnimatePresence>
-          {project?.team?.map((item, i) => (
-            <TeamCard
-              key={i.toString()}
-              removeTalent={removeFromProject}
-              action='Asign Task'
-              member={item}
-            />
-          ))}
-        </div>
+              ) : null}
+            </AnimatePresence>
+          </div>
+        </OutsideClickHandler>
       </section>
-      <div className='mt-[10vh] flex items-center justify-center  gap-[3vw]'>
+      <div className='mt-[10vh]  flex items-center justify-center  gap-[3vw]'>
         <AppButton
-          action={() => (milestone?.name ? deleteMilestone() : router.back())}
-          title={milestone.name ? "Delete" : "Cancel"}
+          action={() => (task?.name ? deleteTask() : router.back())}
+          title={task?.name ? "Delete" : "Cancel"}
         />
         <AppButton
           dark={false}
-          action={() => (milestone?.name ? editMilestone() : addMilestone())}
-          title={milestone.name ? "Edit Milestone" : "Add"}
+          action={() => (task?.name ? editTask() : addTask())}
+          title={task?.name ? "Edit Task" : "Add Task"}
         />
       </div>
     </div>

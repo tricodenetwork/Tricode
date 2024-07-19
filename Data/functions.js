@@ -1,4 +1,7 @@
 export function calculateTimeline(startDate, endDate) {
+  if (!startDate || !endDate) {
+    return;
+  }
   // Split and convert to numbers
   const startDateParts = startDate?.split("-").map(Number);
   const endDateParts = endDate?.split("-").map(Number);

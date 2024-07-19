@@ -21,8 +21,9 @@ export default async function handler(req, res) {
       date: req.body.date,
       files: req.body.files,
     };
-    const found = await db.collection("Projects").findOne({ _id: newId });
     const newId = new ObjectId(req.body.id);
+    const found = await db.collection("Projects").findOne({ _id: newId });
+    console.log(found);
 
     // Insert the new report into the database
 
@@ -33,13 +34,11 @@ export default async function handler(req, res) {
           { _id: newId },
           { $set: { status: req.body.status }, $push: { report: newReport } }
         );
-      console.log(newId, found);
     } else {
       throw Error;
     }
 
     res.status(200).json({
-      data: result.insertedId,
       message: "Report added successfully",
     });
   } catch (error) {

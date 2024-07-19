@@ -28,7 +28,7 @@ const SelectComponent = ({ items, placeholder, onChange }) => {
                   setVal(item);
                   setOpen(false);
                 }}
-                className={`regular cursor-pointer border-b py-2 mb-2 px-2 text-binance_ash medium ${
+                className={`regular cursor-pointer border-b hover:bg-slate-300 py-2 mb-2 px-2 text-binance_ash medium ${
                   item == "Completed"
                     ? "text-binance_green"
                     : item == "Paused"

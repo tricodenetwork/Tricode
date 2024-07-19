@@ -3,7 +3,11 @@ import SearchComponent from "../editor/SearchComponent";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-const AddTalentsComponent = ({ talents = [0, 1], addTalent }) => {
+const AddTalentsComponent = ({
+  talents = [0, 1],
+  addTalent,
+  style = "absolute right-0 top-0 w-[25vw] max-h-[380px] overflow-y-scroll",
+}) => {
   const [search, setSearch] = useState("");
   return (
     <motion.div
@@ -11,7 +15,7 @@ const AddTalentsComponent = ({ talents = [0, 1], addTalent }) => {
       animate={{ opacity: 1, right: 0 }}
       exit={{ opacity: 0, right: -50 }}
       transition={{ duration: 0.2 }}
-      className='w-[25vw]  absolute right-0 z-20  bg-white top-0 shad rounded-lg h-[385px]'
+      className={` ${style}  z-[100]  bg-white shad rounded-lg h-auto`}
     >
       <SearchComponent
         setSearch={setSearch}
@@ -28,7 +32,7 @@ const AddTalentsComponent = ({ talents = [0, 1], addTalent }) => {
             <button
               onClick={() => addTalent(items)}
               key={i.toString()}
-              className='flex items-center w-full hover:bg-grayText/15 hover:cursor-pointer gap-7 p-4 justify-start '
+              className='flex items-center z-[100] w-full hover:bg-slate-200 rounded-[4px] hover:cursor-pointer gap-7 p-4 justify-start '
             >
               <div className='w-[32px]  rounded-full  relative top-[2px] h-[32px]'>
                 <Image

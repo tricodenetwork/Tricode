@@ -9,22 +9,19 @@ import { useDispatch, useSelector } from "react-redux";
 import Close from "@mui/icons-material/Close";
 import AddIcon from "@mui/icons-material/Add";
 import Remove from "@mui/icons-material/Remove";
-
 import useDtabase from "@/hooks/useDatabase";
 import axios from "axios";
-import Loading from "../Loading";
-import Button from "../Button";
 import SelectComponent from "../customInputs/SelectComponent";
 import AppButton from "../AppButton";
-import DatePicker from "react-datepicker";
 import { DtPicker } from "react-calendar-datetime-picker";
 import { upload } from "@vercel/blob/client";
+import { motion } from "framer-motion";
 
 import "react-calendar-datetime-picker/dist/style.css";
 
-import "react-datepicker/dist/react-datepicker.css";
+// import "react-datepicker/dist/react-datepicker.css";
 // CSS Modules, react-datepicker-cssmodules.css
-import "react-datepicker/dist/react-datepicker-cssmodules.css";
+// import "react-datepicker/dist/react-datepicker-cssmodules.css";
 import {
   delFile,
   removeHighlight,
@@ -34,6 +31,9 @@ import {
   setStatus,
   setSummary,
 } from "@/store/slice-reducers/reportSlice";
+import Button from "../Button";
+import Loader from "../Loader";
+import toast from "react-hot-toast";
 
 function ProjectReport() {
   const [loading, setLoading] = useState(false);
@@ -43,6 +43,7 @@ function ProjectReport() {
   const { user } = useDtabase();
   const router = useRouter();
   const upload = router.query?.upload;
+  const id = router.query?.id;
   const company = user?.email;
   let allFiles = [];
   const { filess, status, summary, link, date, highlights } = useSelector(
@@ -54,6 +55,7 @@ function ProjectReport() {
     allFiles.push(company?.concat("_").concat(item.name))
   );
   const data = {
+    id: id,
     company: user?.name,
     status,
     summary,
@@ -66,23 +68,28 @@ function ProjectReport() {
   const handleSubmit = async () => {
     setLoading(true);
     try {
-      await axios.post("/api/report", data);
+      await axios.post("/api/post/report", data);
 
-      for (i = 0; i < filess.length - 1; i++) {
-        await upload(filess[i].name, filess[i], {
-          access: "public",
-          handleUploadUrl: `/api/upload?company=${user?.email}&image=${false}`,
-          token: process.env.BLOB_READ_WRITE_TOKEN,
-        });
+      if (filess.length > 0) {
+        for (i = 0; i < filess.length - 1; i++) {
+          await upload(filess[i].name, filess[i], {
+            access: "public",
+            handleUploadUrl: `/api/upload?company=${
+              user?.email
+            }&image=${false}`,
+            token: process.env.BLOB_READ_WRITE_TOKEN,
+          });
+        }
       }
 
       // Handle successful response
+      toast.success("Report Sent");
       setLoading(!true);
       router.push("/menu/project");
     } catch (error) {
       // Handle error
       console.error("Error:", error);
-      alert("Error Submiting");
+      toast.error("Error Submiting");
       setLoading(!true);
     }
   };
@@ -97,6 +104,21 @@ function ProjectReport() {
         <div className='bg-black bg-opacity-80 w-full z-50  flex justify-center items-center  h-full fixed top-0 left-0 '>
           <FileUpload />
         </div>
+      )}
+      {loading && (
+        <motion.p
+          initial={{ x: "0%" }}
+          animate={{ x: "150%" }}
+          transition={{ duration: 2, repeat: Infinity, repeatType: "mirror" }}
+          className='text-binance_white text-[10px] leading-snug medium fixed top-[85.3vh] ml-1 z-[100]'
+        >
+          {"</>"}
+        </motion.p>
+      )}
+      {loading && (
+        <button className='fixed cursor-wait bg-binance_black/70 rounded-md z-50 top-[85vh] w-[4vw] 3xl:w-[2vw] 3xxl:w-[2vw] h-[4vw]'>
+          <Loader />
+        </button>
       )}
       <div>
         <h3 className={` capitalize text-start mb-1 lg:mb-2`}>
@@ -172,8 +194,7 @@ function ProjectReport() {
       )}
       <div>
         <h3 className={` capitalize text-start   mb-2 lg:mb-4`}>
-          Please upload at least one photo, video or design to support your
-          feedback.
+          Upload photos, video or design to support your feedback.
         </h3>
         <p className='text-gray-500 mb-4 lg:mb-4'>
           For example if you are replacing a door lock please take a photo of
@@ -250,16 +271,11 @@ function ProjectReport() {
         >
         
         </button> */}
-        {/* <Button
-          styles={"rounded-full py-2 px-16 self-center"}
-          Action={"Submit now"}
-          click={handleSubmit}
-          isLoading={loading}
-        /> */}
 
         <div className='flex gap-3 justify-center items-center my-6'>
           <AppButton href={"/"} title={"Cancel"} />
-          <AppButton dark={false} href={"report"} title={"Submit"} />
+
+          <AppButton dark={false} action={handleSubmit} title={"Submit"} />
         </div>
       </div>
     </section>

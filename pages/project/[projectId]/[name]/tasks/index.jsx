@@ -43,44 +43,52 @@ const rob = Roboto({
 const TaskList = () => {
   // --------------------------------------------VARIABLES
   const router = useRouter();
-  const { name, projectId, item } = router.query;
-  const milestone = JSON.parse(item);
-  const [navto, setNav] = useState("milestone");
-  const [addTalents, setAddTalents] = useState(false);
-  const [del, setDelete] = useState(false);
+  const { name, projectId, milestoneStatus } = router.query;
   const [search, setSearch] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const { projects, allUsers } = useDatabase();
   const [project, setProject] = useState(null);
+  const [tasks, setTasks] = useState(null);
   const [options, ShowOptions] = useState(null);
 
   let teamMembers = [];
 
   //-----------------------------------------------------------FUNCTIONS
   const getProject = async () => {
-    const res = await axios.post(`/api/get/project`, { id: projectId });
-    console.log("res", res);
-    setProject(res.data);
-    // AddTeamMember(res.data.team);
-  };
-  const deleteMilestone = async () => {
     setIsLoading(true);
-    const res = await axios.post(`/api/milestones/delete`, {
-      name: del,
-      id: projectId,
-    });
-    // console.log(res);
-    if (res.status == 200) {
-      getProject();
+    try {
+      const res = await axios.post(`/api/get/project`, { id: projectId });
+      const res2 = await axios.get(
+        `/api/get/tasks?id=${projectId}&milestone=${name}`
+      );
+      setProject(res.data);
+      setTasks(res2.data);
 
-      // alert("Removed ✅");
-      // setIsLoading(false);
-      // setDelete(false);
+      setIsLoading(!true);
+    } catch (error) {
+      console.error(error);
+      setIsLoading(!true);
     }
-    // setTimeout(() => {
-    setIsLoading(false);
-    setDelete(false);
-    // }, 3000);
+  };
+  const updateTaskStatus = async (status, task) => {
+    setIsLoading(true);
+    try {
+      const res = await axios.post(`/api/tasks/update`, {
+        milestone: name,
+        id: projectId,
+        task,
+        status,
+      });
+      if (res.status == 200) {
+        getProject();
+
+        toast.success("Updated ✅");
+      }
+      setIsLoading(false);
+    } catch (error) {
+      console.error(error.response);
+      setIsLoading(false);
+    }
   };
 
   //------------------------------------------------------------------USE EFFECTS
@@ -92,22 +100,15 @@ const TaskList = () => {
     }
   }, [projects]);
 
+  useEffect(() => {
+    getProject();
+  }, []);
+
   if (!project) {
     return <Loader />;
   }
   return (
     <div className='min-h-[91vh] relative h-auto px-[3%] bg-[#F9F9F9] pb-[25vh]  pt-8 w-full flex flex-col'>
-      {del && (
-        <ModalComponent
-          close={() => setDelete(false)}
-          Content={
-            <Delete
-              deleteProject={deleteMilestone}
-              close={() => setDelete(false)}
-            />
-          }
-        />
-      )}
       {isLoading && (
         <motion.p
           initial={{ x: "0%" }}
@@ -124,29 +125,26 @@ const TaskList = () => {
         </button>
       )}
       <div className='flex relative  items-center gap-[.4vw]'>
-        <p className='text-grayText regular text-sm'>
+        <Link
+          href={`/project/${projectId}`}
+          className='text-grayText regular text-sm'
+        >
           {project?.name ?? "Project Zero"}
-        </p>
+        </Link>
         <Image
           src={"/assets/icons/r_arr.svg"}
           width={18}
           height={18}
           alt='arrow'
         />
-        <p className='text-grayText regular text-sm'>{milestone.name}</p>
-        <Image
-          src={"/assets/icons/r_arr.svg"}
-          width={18}
-          height={18}
-          alt='arrow'
-        />
-        <p className='text-binance_green regular text-sm'>Tasks</p>
+        <p className='text-grayText regular text-sm'>{name}</p>
+
         <SearchComponent
           setSearch={setSearch}
           style='w-[45%] ml-[5%] self-center right-1/3'
         />
         <Link
-          href={`${projectId}/${project.name}?name=${project.name}`}
+          href={`/project/${projectId}/${name}/tasks/new`}
           className='  border-binance_green absolute right-[3vw] self-center regular w-[12%] text-binance_white bg-binance_green hover:bg-white hover:text-binance_green duration-300 h text-xs  text-center px-9 py-3 rounded-[50px]   border'
         >
           {"+ Add Task"}
@@ -159,10 +157,12 @@ const TaskList = () => {
             className='text-[#1b1b1b]  text-3xl font-bold'
             style={nunito.style}
           >
-            {milestone?.name ?? "Milestone"}
+            {name ?? "Milestone"}
           </h4>
           <div className='flex gap-[1.3vw] items-center'>
-            {milestone && <Status style={"py-[1vh]"} item={milestone} />}
+            {milestoneStatus && (
+              <Status style={"py-[1vh]"} item={milestoneStatus} />
+            )}
             <TeamMembers team={project?.team} />
           </div>
         </div>
@@ -240,7 +240,7 @@ const TaskList = () => {
             className='flex items-center font-bold text-sm justify-center'
           ></div>
         </div>
-        {milestone?.tasks
+        {tasks
           ?.filter(
             (item) =>
               item.name.toLowerCase().includes(search.toLowerCase()) ?? true
@@ -274,7 +274,10 @@ const TaskList = () => {
                   style={serrat.style}
                   className='flex items-center font-bold text-sm justify-center'
                 >
-                  <Status style={"py-[1vh]"} item={item} />
+                  <Status
+                    style={"py-[1vh]"}
+                    item={item.status ? item : "Pending"}
+                  />
                 </div>
                 <div
                   style={serrat.style}
@@ -288,7 +291,8 @@ const TaskList = () => {
                       height={19}
                     />
                     <p className='text-[#1b1b1b] text-sm 3xl:text-base  font-semibold'>
-                      {/* {calculateTimeline(item.startDate, item.endDate)} */}
+                      {calculateTimeline(item.startDate, item.endDate) ||
+                        "Not Assigned"}
                     </p>
                   </div>
                 </div>
@@ -324,35 +328,12 @@ const TaskList = () => {
                               let click;
                               switch (val) {
                                 case "Edit Task":
-                                  click = `${projectId}/add?item=${JSON.stringify(
-                                    item
-                                  )}`;
-
-                                  break;
-                                case "Mark as Complete":
-                                  click = {
-                                    pathname: `${projectId}`,
-                                    query: {
-                                      delete: "true",
-                                    },
-                                  };
-
-                                  break;
-                                case "Mark as Inomplete":
-                                  click = {
-                                    pathname: `${projectId}`,
-                                    query: {
-                                      delete: "true",
-                                    },
-                                  };
-
-                                  break;
-
-                                default:
-                                  click = `/report`;
+                                  click = `/project/${projectId}/${name}/tasks/${
+                                    item.name
+                                  }?item=${JSON.stringify(item)}`;
                                   break;
                               }
-                              if (!val?.includes("Delete")) {
+                              if (!val?.includes("Mark")) {
                                 return (
                                   <Link
                                     href={click}
@@ -365,7 +346,14 @@ const TaskList = () => {
                               } else {
                                 return (
                                   <button
-                                    onClick={() => setDelete(item.name)}
+                                    onClick={() =>
+                                      updateTaskStatus(
+                                        val?.includes("Incomplete")
+                                          ? "Ongoing"
+                                          : "Completed",
+                                        item.name
+                                      ) & ShowOptions(null)
+                                    }
                                     key={ind.toString()}
                                     className='text-grayText pr-[1.5vw] text-start w-full hover:bg-grayText/25 cursor-pointer  px-[1.5vw] regular font-normal py-[1vh] border-b border-grayText/50 '
                                   >

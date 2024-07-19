@@ -44,8 +44,6 @@ const nextConfig = {
     ],
   },
   rewrites: async () => {
-    console.log("NODE_ENV:", process.env.NODE_ENV);
-    console.log("Rewrites being applied");
     return [
       {
         source: "/:path*",

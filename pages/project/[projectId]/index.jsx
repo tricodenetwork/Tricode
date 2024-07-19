@@ -141,7 +141,7 @@ const ProjectID = () => {
           style='w-[45%] absolute self-center right-1/3'
         />
         <Link
-          href={`${projectId}/${project.name}?name=${project.name}`}
+          href={`${projectId}/${project.name}`}
           className='  border-binance_green absolute right-[3vw] self-center regular w-[15%] text-binance_white bg-binance_green hover:bg-white hover:text-binance_green duration-300 h text-xs  text-center px-9 py-3 rounded-[50px]   border'
         >
           {"+    Add Milestone"}
@@ -326,14 +326,14 @@ const ProjectID = () => {
                                   click = {
                                     pathname: `${projectId}/${item.name}/tasks`,
                                     query: {
-                                      item: JSON.stringify(item),
+                                      milestoneStatus: item.status,
                                     },
                                   };
 
                                   break;
 
                                 default:
-                                  click = `/project/report`;
+                                  click = `/project/report?id=${projectId}`;
                                   break;
                               }
                               if (!val?.includes("Delete")) {
