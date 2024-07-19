@@ -24,6 +24,7 @@ import useDatabase from "@/hooks/useDatabase";
 import { ViewHorizontalIcon, ViewVerticalIcon } from "@radix-ui/react-icons";
 import { Inter } from "next/font/google";
 import { Toaster } from "react-hot-toast";
+import OutsideClickHandler from "react-outside-click-handler";
 const inter = Inter({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -36,9 +37,10 @@ const MenuLayout = ({ children }) => {
   const parts = route.pathname.split("menu/");
   const title = parts.length > 1 ? parts[1].split("/")[0] : "";
   const [isOpen, setIsOpen] = useState(true);
+  const [notification, setNotification] = useState(false);
+  const [logout, setLogout] = useState(false);
   const [viewHorizontal, setViewHorizontal] = useState(false);
-  const logout = route?.query?.logout;
-  const notification = route?.query?.notification;
+  const projectId = route?.query?.projectId;
 
   //-----------------------------------------------------------FUNCTIONS
   const { imageLoader } = useFunctions();
@@ -54,8 +56,12 @@ const MenuLayout = ({ children }) => {
       style={inter.style}
       className='w-full flex overflow-hidden flex-col justify-start'
     >
-      {logout && <ModalComponent Content={LogOut} />}
-      {notification && <NotificationModal Content={Notifications} />}
+      {logout && (
+        <ModalComponent close={() => setLogout(false)} Content={LogOut} />
+      )}
+      {notification && (
+        <NotificationModal set={setNotification} Content={Notifications} />
+      )}
       <div className='w-full  bg-binance_green  flex items-center justify-between px-[3vw] lg:px-[2vw]  h-[9vh]'>
         <Link href={"/"} className='items-center hidden lg:flex text-white'>
           <Image
@@ -96,12 +102,12 @@ const MenuLayout = ({ children }) => {
             <Message />
           </div>
           <div className='relative lg:flex hidden hover:scale-90 hover:cursor-pointer transition-all ease-out duration-100'>
-            <Link href={"?notification=true"}>
+            <button onClick={() => setNotification(true)}>
               <div className='absolute -top-2 -right-2'>
                 <Ellipse />
               </div>
               <Bell />
-            </Link>
+            </button>
           </div>
           <div className='w-[30px] lg:flex hidden  hover:scale-90 hover:rotate-[360deg] hover:cursor-pointer transition-all ease-out duration-100 relative rounded-full h-[30px]'>
             <Link href={"/settings/user"}>
@@ -142,7 +148,12 @@ const MenuLayout = ({ children }) => {
             <MenuList isOpen={isOpen} Icon={Project} name={"Project"} />
             <MenuList isOpen={isOpen} Icon={Payment} name={"Payment"} />
             <MenuList isOpen={isOpen} Icon={Help} name={"Help"} />
-            <MenuList isOpen={isOpen} Icon={Logout} name={"Logout"} />
+            <MenuList
+              show={() => setLogout(true)}
+              isOpen={isOpen}
+              Icon={Logout}
+              name={"Logout"}
+            />
           </div>
           {/* <div className='lg:space-x-4 mb-10 flex lg:hidden bord items-center justify-center lg:justify-between'>
             <div className='relative flex hover:scale-90 hover:cursor-pointer transition-all ease-out duration-100'>

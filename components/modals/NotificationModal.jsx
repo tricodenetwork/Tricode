@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
 
-const NotificationModal = ({ Content }) => {
+const NotificationModal = ({ Content, set }) => {
   const [isModalOpen, setIsModalOpen] = useState(true);
   const openModal = () => {
     setIsModalOpen(true);
@@ -11,14 +11,14 @@ const NotificationModal = ({ Content }) => {
     setIsModalOpen(false);
   };
   return (
-    <div className='flex justify-center items-center'>
+    <div className='flex justify-center  items-center'>
       <Modal
         isOpen={isModalOpen}
         onRequestClose={closeModal}
-        className='notification-modal w-auto  bg-transparent'
+        className='notification-modal w-auto   bg-transparent'
         overlayClassName='overlay'
       >
-        <Content close={closeModal} />
+        <Content set={set} close={closeModal} />
       </Modal>
       {/* <button onClick={openModal}>On modal</button> */}
     </div>

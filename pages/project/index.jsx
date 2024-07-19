@@ -11,7 +11,6 @@ const Project = () => {
   // --------------------------------------------VARIABLES
   const { projects, convertObjectIdToDate } = useDatabase();
   const [search, setSearch] = useState("");
-  console.log(projects);
   //-----------------------------------------------------------FUNCTIONS
 
   //------------------------------------------------------------------USE EFFECTS
