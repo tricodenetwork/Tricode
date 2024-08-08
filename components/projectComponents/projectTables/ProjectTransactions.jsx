@@ -2,41 +2,45 @@ import { BackButton } from "@/Components/Button";
 import AppButton, { AppButton2 } from "@/Components/AppButton";
 
 import Link from "next/link";
-
-const projectMilestones = [
-  {
-    name: "Initial Deposit",
-    amount: "$2000",
-    contingency: "$300",
-    status: "Paid",
-  },
-  { name: "Research", amount: "$2000", contingency: "$300", status: "Paid" },
-  {
-    name: "UI/UX design",
-    amount: "$2000",
-    contingency: "$200 (Max. $400)",
-    status: "Pending",
-  },
-  {
-    name: "Development",
-    amount: "$2000",
-    contingency: "$200 (Max. $400)",
-    status: "Pending",
-  },
-  {
-    name: "Testing",
-    amount: "$2000",
-    contingency: "$200 (Max. $400)",
-    status: "Pending",
-  },
-  // { name: "A1 1", amount: "$2000", contingency:"$00" status: "Awaiting your review" },
-];
+import { useFlutterwave, closePaymentModal } from "flutterwave-react-v3";
+import useDatabase from "@/hooks/useDatabase";
 
 function ProjectTransactions({ project }) {
+  const { user } = useDatabase();
+  const config = {
+    public_key: "FLWPUBK_TEST-fae61d03498ae9059ded435a0eb17bf3-X",
+    tx_ref: Date.now(),
+    amount: "500",
+    currency: "USD",
+    payment_options: "card,googlepay,applepay,barter,account",
+    customer: {
+      email: user?.email ?? "johndoe@gmail.com",
+      phone_number: "070********",
+      name: "john doe",
+    },
+    customizations: {
+      title: "Milestone Payment",
+      description: "Payment for items in cart",
+      logo: "https://st2.depositphotos.com/4403291/7418/v/450/depositphotos_74189661-stock-illustration-online-shop-log.jpg",
+    },
+  };
+  const handleFlutterPayment = useFlutterwave(config);
+  const payment = () => {
+    console.log("key", process.env.NEXT_PUBLIC_FLUTTER_KEY);
+    handleFlutterPayment({
+      callback: (response) => {
+        console.log(response);
+        closePaymentModal(); // this will close the modal programmatically
+      },
+      onClose: () => {
+        console.log("Closed");
+      },
+    });
+  };
   return (
     <section className='   '>
       <section className='my-10'>
-        <TransactionHistory project={project} />
+        <TransactionHistory payment={payment} project={project} />
       </section>
 
       <div className='flex gap-3 justify-center items-center my-6'>
@@ -50,7 +54,7 @@ function ProjectTransactions({ project }) {
 
 export default ProjectTransactions;
 
-const TransactionHistory = ({ project }) => {
+const TransactionHistory = ({ project, payment }) => {
   return (
     <div className='flex justify-center items-center lg:scrollbar-hide overflow-x-scroll mt-10'>
       <table className='w-full bg-white  rounded'>
@@ -75,33 +79,42 @@ const TransactionHistory = ({ project }) => {
               className='border-b border-gray-200 hover:bg-gray-100'
             >
               <td className='py-6 pr-6 text-center whitespace-nowrap'>
-                {k < 9 ? `0${k + 1}` : k + 1}
+                {k < 9 ? `0${k + 2}` : k + 1}
               </td>
               <td className='py-6 px-6 text-center whitespace-nowrap'>
-                {v.payment}
+                {v.name}
               </td>
               <td className='py-6 px-6 text-center whitespace-nowrap'>
-                {v.amount}
+                ${v.amount}
               </td>
               <td className='py-6 px-6 text-center whitespace-nowrap'>
-                {v.contingency}
+                ${v.contingency}
               </td>
 
               <td
                 className={`py-6 px-6 text-center capitalize   medium whitespace-nowrap ${
-                  v.status == "pending" ? "text-appOrange" : "text-[#27AE60]"
+                  v.status.toLowerCase() == "pending"
+                    ? "text-appOrange"
+                    : "text-[#27AE60]"
                 }`}
               >
                 {v.status}
               </td>
               <td className='py-3 px-6 text-center'>
-                {v.status == "pending" && (
-                  <Link
-                    href={"/menu/project/projectID"}
-                    className='  border-binance_green light text-binance_green hover:bg-binance_green hover:text-white duration-300 h text-xs  text-center px-9 py-3 rounded-[50px]   border'
+                {v.status.toLowerCase() == "pending" ? (
+                  <button
+                    onClick={() => payment()}
+                    className='  border-binance_green active:bg-opacity-60 light text-binance_green hover:bg-binance_green hover:text-white duration-300 h text-xs  text-center px-9 py-3 rounded-[50px]   border'
                   >
                     Pay
-                  </Link>
+                  </button>
+                ) : (
+                  <button
+                    disabled
+                    className='  border-binance_green light disabled:cursor-not-allowed bg-binance_green text-white duration-300 h text-xs  text-center px-9 py-3 rounded-[50px]   border'
+                  >
+                    Paid
+                  </button>
                 )}
               </td>
             </tr>

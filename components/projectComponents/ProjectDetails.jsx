@@ -5,7 +5,7 @@ import useFunctions from "@/hooks/useFunctions";
 import { BackButton } from "../Button";
 import { AppButton2 } from "../AppButton";
 import Link from "next/link";
-import html2pdf from "html2pdf.js";
+// import html2pdf from "html2pdf.js";
 import { useRef } from "react";
 import { usePDF } from "react-to-pdf";
 
@@ -24,7 +24,7 @@ function ProjectDetails({ project }) {
       jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
     };
 
-    html2pdf().from(element).set(options).save();
+    // html2pdf().from(element).set(options).save();
   };
 
   return (
