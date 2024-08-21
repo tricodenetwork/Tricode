@@ -1,5 +1,5 @@
-import { BackButton } from "@/Components/Button";
-import AppButton, { AppButton2 } from "@/Components/AppButton";
+import { BackButton } from "@/components/Button";
+import AppButton, { AppButton2 } from "@/components/AppButton";
 
 import Link from "next/link";
 
@@ -97,7 +97,7 @@ const TransactionHistory = ({ project }) => {
               <td className='py-3 px-6 text-center'>
                 {v.status == "pending" && (
                   <Link
-                    href={"/menu/project/projectID"}
+                    href={"/project/projectID"}
                     className='  border-binance_green light text-binance_green hover:bg-binance_green hover:text-white duration-300 h text-xs  text-center px-9 py-3 rounded-[50px]   border'
                   >
                     Pay

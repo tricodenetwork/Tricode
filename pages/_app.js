@@ -46,6 +46,8 @@ function App({ Component, ...rest }) {
       <Provider store={store}>
         <CacheProvider value={emotionCache}>
           <Head>
+            <title>Tricode Remote Workstation </title>
+
             <meta
               name='viewport'
               content='initial-scale=1, width=device-width'

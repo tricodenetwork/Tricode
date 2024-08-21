@@ -2,7 +2,7 @@
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
-    "./Components/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
     "./app/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
@@ -32,6 +32,7 @@ module.exports = {
         grayText: "#6D717A",
         appOrange: "#F2994A",
         appBlue: "#061a48",
+        appBlack: "#1b1b1b",
       },
     },
   },

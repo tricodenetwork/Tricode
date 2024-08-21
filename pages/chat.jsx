@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { ConversationMessaging } from "@/Components/chatComponents/ConversationComponent";
-import MessageList from "@/Components/chatComponents/MessageList";
-import MenuLayout from "@/Components/layouts/MenuLayout";
+import { ConversationMessaging } from "@/components/chatComponents/ConversationComponent";
+import MessageList from "@/components/chatComponents/MessageList";
+import MenuLayout from "@/components/layouts/MenuLayout";
 import { useSwipeable } from "react-swipeable";
 
 const Chat = () => {

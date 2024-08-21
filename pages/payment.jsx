@@ -1,4 +1,4 @@
-import MenuLayout from "@/Components/layouts/MenuLayout";
+import MenuLayout from "@/components/layouts/MenuLayout";
 
 const Payments = () => {
   // --------------------------------------------VARIABLES
