@@ -1,15 +1,15 @@
-import AuthComponent from "@/Components/AuthComponent";
-import SignupLayout from "@/Components/layouts/SignupLayout";
+import AuthComponent from "@/components/AuthComponent";
+import SignupLayout from "@/components/layouts/SignupLayout";
 import Link from "next/link";
-import Button from "@/Components/Button";
+import Button from "@/components/Button";
 import { Checkbox } from "@mui/material";
-import InputLine from "@/Components/InputLine";
-import RadioInput from "@/Components/RadioInput";
+import InputLine from "@/components/InputLine";
+import RadioInput from "@/components/RadioInput";
 import { useState } from "react";
-import CountryCode from "@/Components/CountryCode/Countries";
+import CountryCode from "@/components/CountryCode/Countries";
 import ShowHidePassword, {
   ConfirmPassword,
-} from "@/Components/ShowHidePassword";
+} from "@/components/ShowHidePassword";
 import axios from "axios";
 import { useRouter } from "next/router";
 

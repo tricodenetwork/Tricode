@@ -1,6 +1,6 @@
-import MenuLayout from "@/Components/layouts/MenuLayout";
-import SettingsLayout from "@/Components/layouts/SettingsLayout";
-import User from "@/Components/settings/User";
+import MenuLayout from "@/components/layouts/MenuLayout";
+import SettingsLayout from "@/components/layouts/SettingsLayout";
+import User from "@/components/settings/User";
 import React from "react";
 
 const Settings = () => {

@@ -59,8 +59,10 @@ export default function Card() {
             key={i.toString()}
             className='flex gap-3 w-full pt-[16px] lg:pt-[59px] pl-[10px] lg:pl-[34px] md:w-[40vw]  min-h-[145px] md:min-h-[237px] py-5 px-4 bg-neutral-50 border border-zinc-200 justify-center items-center lg:items-start'
           >
-            <img
-              className='w-[52px] animate-pulse h-12'
+            <Image
+              width={52}
+              height={48}
+              className='animate-pulse'
               src={info.img}
               alt='icon'
             />
