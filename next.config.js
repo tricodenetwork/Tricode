@@ -41,6 +41,12 @@ const nextConfig = {
         port: "",
         pathname: "/u/**",
       },
+      {
+        protocol: "https",
+        hostname: "secure.gravatar.com",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
   rewrites: async () => {

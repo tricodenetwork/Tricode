@@ -2,23 +2,28 @@ import MenuLayout from "@/components/layouts/MenuLayout";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-// import { LiaAngleLeftSolid, LiaAngleRightSolid } from "react-icons/lia";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import useDatabase from "@/hooks/useDatabase";
 import { useRouter } from "next/router";
 import FileUpload from "@/components/modals/FileUpload";
-import { useSelector } from "react-redux";
 import { CircleLoader } from "react-spinners";
 import TopComponent from "@/components/TopComponent";
 
 import { topComponents } from "@/Data/data";
+import { PROJECTS, USER, USERS } from "@/lib/constants/queries";
+import fetchGraphQLData from "@/lib/utils/fetchGraphql";
 
 const Dashboard = () => {
   // --------------------------------------------VARIABLES
   const currentDate = new Date();
-  const { data: session, status } = useSession();
-  const { projects, user } = useDatabase();
+  const { data: session } = useSession();
+  const { projects } = useDatabase();
+  const [user, setUser] = useState([]);
+  const [project, setProjects] = useState([]);
+  const [tasks, setTasks] = useState([]);
+  const [talent, setTalent] = useState([]);
+
   const router = useRouter();
   // const { user } = useSelector((state) => state);
   const upload = router.query?.imageUpload;
@@ -27,9 +32,6 @@ const Dashboard = () => {
     : user?.profile_pic
     ? `/profile_pics/${user?.email + "_" + user?.profile_pic}`
     : "/assets/images/company.svg";
-  // console.log(session, "sessio");
-  // console.log(status, "status");
-  console.log(imageUrl, "urlimage");
   const options = { weekday: "long", month: "long", day: "numeric" };
   const formattedDate = new Intl.DateTimeFormat("en-US", options).format(
     currentDate
@@ -50,30 +52,59 @@ const Dashboard = () => {
 
   //------------------------------------------------------------------USE EFFECTS
   useEffect(() => {
-    if (user) {
-      console.log(user);
-      if (
-        !(user?.role === "talent" || user?.role === "company" || user?.email)
-      ) {
-        router.push("/role");
-      } else {
-        return;
+    if (session?.user?.email) {
+      // Function to get tasks for the talent
+      const fetchData = async () => {
+        let data = await fetchGraphQLData(
+          USER,
+          { email: session.user.email },
+          "https://tricode.pro/api/graphql"
+        );
+
+        let data2 = await fetchGraphQLData(PROJECTS, {
+          network: "https://tricode.pro/api/graphql",
+        });
+        let data3 = await fetchGraphQLData(USERS, {
+          network: "https://tricode.pro/api/graphql",
+        });
+        let data4 = await fetchGraphQLData(
+          USER,
+          { email: session.user.email },
+          "https://tricode.pro/api/graphql"
+        );
+        console.log("data", data);
+
+        if (data) {
+          setUser(data.user);
+        }
+      };
+
+      fetchData();
+      if (user) {
+        console.log(user);
+        if (
+          !(user?.role === "talent" || user?.role === "company" || user?.email)
+        ) {
+          router.push("/role");
+        } else {
+          return;
+        }
       }
     }
-  }, [user]);
+  }, [session]);
 
-  //   if (!user) {
-  //     return (
-  //       <div className='flex flex-col justify-center items-center w-full h-full'>
-  //         <CircleLoader
-  //           className='w-[300px] lg:w-[500px]'
-  //           loading={!false}
-  //           color='green'
-  //         />
-  //         <p className='medium lg:text-xl mt-5 text-binance_green'>Loading</p>
-  //       </div>
-  //     );
-  //   }
+  if (!user) {
+    return (
+      <div className='flex flex-col justify-center items-center w-full h-full'>
+        <CircleLoader
+          className='w-[300px] lg:w-[500px]'
+          loading={true}
+          color='green'
+        />
+        <p className='medium lg:text-xl mt-5 text-binance_green'>Loading</p>
+      </div>
+    );
+  }
 
   return (
     <div className='min-h-max  h-max   p-5  lg:py-10 lg:px-[2vw] w-full justify-between items-end   flex'>

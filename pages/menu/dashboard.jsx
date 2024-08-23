@@ -79,7 +79,6 @@ const Dashboard = () => {
         <p className='medium lg:text-xl mt-5 text-binance_green'>Loading</p>
       </div>
     );
-
   }
 
   return (
