@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import Card from "@/Components/WhyTricode/card";
+import Card from "@/components/WhyTricode/card";
 import Solution_banner from "./banner";
 import { Inter } from "next/font/google";
 

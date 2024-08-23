@@ -1,4 +1,4 @@
-import AppButton, { AppButton2 } from "@/Components/AppButton";
+import AppButton, { AppButton2 } from "@/components/AppButton";
 
 import Link from "next/link";
 import { useFlutterwave, closePaymentModal } from "flutterwave-react-v3";
