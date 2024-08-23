@@ -1,5 +1,5 @@
-import MenuLayout from "@/components/layouts/MenuLayout";
-import AddNew from "@/components/projectComponents/AddNew";
+import MenuLayout from "@/chest/layouts/MenuLayout";
+import AddNew from "@/chest/projectComponents/AddNew";
 
 const Project = () => {
   // --------------------------------------------VARIABLES

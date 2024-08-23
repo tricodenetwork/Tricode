@@ -1,5 +1,5 @@
-import MenuLayout from "@/components/layouts/MenuLayout";
-import ProjectTable from "@/components/projectComponents/projectTables/ProjecctTable";
+import MenuLayout from "@/chest/layouts/MenuLayout";
+import ProjectTable from "@/chest/projectComponents/projectTables/ProjecctTable";
 
 const Project = () => {
   // --------------------------------------------VARIABLES

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Navbar from "@/components/navbar_components/Navbar";
-import About from "@/components/About/index";
-import FAQ from "@/components/About/Faq/faqs";
+import About from "@/chest/About/index";
+import FAQ from "@/chest/About/Faq/faqs";
 import OurNewsletter from "@/components/OurNewsletter/index";
 import Footer from "@/components/Footer/index";
 

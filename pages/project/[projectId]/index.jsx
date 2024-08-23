@@ -1,4 +1,4 @@
-import MenuLayout from "@/components/layouts/MenuLayout";
+import MenuLayout from "@/chest/layouts/MenuLayout";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -6,7 +6,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import useDatabase from "@/hooks/useDatabase";
 import Image from "next/image";
-import TaskBox from "@/components/TaskBox";
+import TaskBox from "@/chest/TaskBox";
 import fetchGraphQLData from "@/lib/utils/fetchGraphql";
 import { USERS } from "@/lib/constants/queries";
 

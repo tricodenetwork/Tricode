@@ -1,6 +1,6 @@
-import MenuLayout from "@/components/layouts/MenuLayout";
-import FilterComponent from "@/components/customInputs/FilterComponent";
-import SearchComponent from "@/components/editor/SearchComponent";
+import MenuLayout from "@/chest/layouts/MenuLayout";
+import FilterComponent from "@/chest/customInputs/FilterComponent";
+import SearchComponent from "@/chest/editor/SearchComponent";
 
 const TeamCard = ({ title, src }) => {
   return (

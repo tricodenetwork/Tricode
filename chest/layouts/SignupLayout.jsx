@@ -1,5 +1,5 @@
 import React from "react";
-import Sidebar from "@/components/layouts/Sidebar";
+import Sidebar from "@/chest/layouts/Sidebar";
 const LoginLayout = (children) => {
   // --------------------------------------------VARIABLES
 
