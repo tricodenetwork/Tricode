@@ -63,7 +63,7 @@ const Dashboard = () => {
         return;
       }
     }
-  }, [user]);
+  }, [user, router]);
 
   if (!user) {
     return (

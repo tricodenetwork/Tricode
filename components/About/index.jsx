@@ -46,8 +46,8 @@ export default function About({ mobile }) {
               infrastructure ensure seamless execution, regardless of location. 
               <br />
               <br />
-              Tricode is more than just a platform; it's a catalyst. We rewrite
-              the rules of digital collaboration.
+              Tricode is more than just a platform; it&apos;s a catalyst. We
+              rewrite the rules of digital collaboration.
               <br />
               <br />
               Our goal is to simply be the homepage for

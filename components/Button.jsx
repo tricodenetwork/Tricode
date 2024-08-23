@@ -8,7 +8,7 @@ const Button = ({ Action, styles, click, isLoading }) => {
       <button
         onClick={click}
         type='submit'
-        className={`${styles} rounded-3xl button hover:bg-binance_ash bg-opacity-30 border-binance_green border py-2 bg-binance_ash  cursor-wait`}
+        className={`${styles} rounded-3xl button flex items-center hover:bg-binance_ash bg-opacity-30 border-binance_green border h-[50px] bg-binance_ash  cursor-wait`}
       >
         <Loading loading={isLoading} />
       </button>
@@ -18,7 +18,7 @@ const Button = ({ Action, styles, click, isLoading }) => {
       <button
         onClick={click}
         type='submit'
-        className={`${styles} rounded-3xl button py-2 cursor-pointer hover:bg-white duration:300 hover:text-binance_green hover:border-binance_green border bg-binance_green text-center`}
+        className={`${styles} rounded-3xl button h-[50px] cursor-pointer hover:bg-white duration:300 hover:text-binance_green hover:border-binance_green border bg-binance_green text-center`}
       >
         {Action}
       </button>
@@ -27,15 +27,3 @@ const Button = ({ Action, styles, click, isLoading }) => {
 };
 
 export default Button;
-
-export function BackButton(params) {
-  const router = useRouter();
-  return (
-    <button
-      onClick={() => router.back()}
-      className='  border-binance_green light text-binance_green hover:bg-binance_green hover:text-white duration-300 h text-xs  text-center px-9 py-3 rounded-[50px]   border'
-    >
-      Back
-    </button>
-  );
-}

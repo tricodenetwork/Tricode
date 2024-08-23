@@ -11,6 +11,7 @@ import { useRouter } from "next/router";
 import { baseUrl } from "@/config/config";
 import { AnimatePresence, motion } from "framer-motion";
 import { Close } from "@mui/icons-material";
+import Image from "next/image";
 
 const Index = () => {
   // --------------------------------------------VARIABLES
@@ -64,7 +65,7 @@ const Index = () => {
 
       // Use NextAuth signIn function to trigger authentication
       const result = await signIn("credentials", {
-        redirect: !true,
+        redirect: err == "Login Successful",
         email,
         password,
         callbackUrl: `${baseUrl}menu/dashboard`,
@@ -110,12 +111,16 @@ const Index = () => {
                     id='Image_div'
                     className='flex items-center justify-center max-w-max max-h-max relative'
                   >
-                    <img
+                    <Image
+                      width={75}
+                      height={75}
                       className='z-10'
                       src='/assets/icons/Vector.png'
                       alt='Circle'
                     />
-                    <img
+                    <Image
+                      width={49}
+                      height={33}
                       className='absolute'
                       src='/assets/icons/Vector-1.png'
                       alt='Checkmark'

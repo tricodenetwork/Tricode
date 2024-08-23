@@ -37,25 +37,6 @@ const TeamCard = ({ member }) => {
   );
 };
 
-const members = [
-  { title: "Project Manager", src: "/assets/images/team.png" },
-  { title: "Researcher", src: "/assets/images/team.png" },
-  { title: "Marketer", src: "/assets/images/team.png" },
-  { title: "Front-end Dev", src: "/assets/images/team.png" },
-  { title: "UI/UX Designer", src: "/assets/images/team.png" },
-  { title: "Researcher", src: "/assets/images/team.png" },
-  { title: "Marketer", src: "/assets/images/team.png" },
-  { title: "Front-end Dev", src: "/assets/images/team.png" },
-  { title: "Project Manager", src: "/assets/images/team.png" },
-  { title: "Researcher", src: "/assets/images/team.png" },
-  { title: "Marketer", src: "/assets/images/team.png" },
-  { title: "Front-end Dev", src: "/assets/images/team.png" },
-  { title: "UI/UX Designer", src: "/assets/images/team.png" },
-  { title: "Researcher", src: "/assets/images/team.png" },
-  { title: "Marketer", src: "/assets/images/team.png" },
-  { title: "Front-end Dev", src: "/assets/images/team.png" },
-];
-
 const ProjectID = () => {
   // --------------------------------------------VARIABLES
   const [navto, setNav] = useState("milestone");
@@ -68,8 +49,10 @@ const ProjectID = () => {
 
   const project = projects?.filter((item) => item._id == projectId)[0];
   allUsers?.forEach((item) => {
-    project?.teams?.includes(item.name) && teamMembers.push(item);
+    project?.team?.includes(item.name) && teamMembers.push(item);
   });
+
+  console.log(teamMembers);
 
   //------------------------------------------------------------------USE EFFECTS
   return (
@@ -87,8 +70,8 @@ const ProjectID = () => {
           <div className='light text-xs text-black'>{project?.description}</div>
         </div>
       </section>
-      <section className='shadow-[0px_0px_10px_#d9d9d9]  flex flex-row lg:flex-col border rounded-[10px] p-6 py-5 h-[50vh] lg:h-max lg:py-10 mb-[44px] w-full'>
-        <div className='grid grid-rows-5 lg:grid-cols-5 lg:grid-rows-1  place-items-start lg:place-items-center font-semibold  w-full'>
+      <section className='shadow-[0px_0px_10px_#d9d9d9] flex flex-row lg:flex-col border rounded-[10px] p-6 py-5 h-[50vh] lg:h-max lg:py-10 mb-[44px] w-full'>
+        <div className='grid grid-rows-5 lg:grid-cols-5 lg:grid-rows-1 place-items-start lg:place-items-center font-semibold w-full'>
           <p className='w-[80%] py-3 lg:py-0 lg:w-[95px] text-black text-left lg:text-center text-xs font-semibold'>
             Submitted for review
           </p>
@@ -106,21 +89,73 @@ const ProjectID = () => {
           </p>
         </div>
         <div className='flex justify-between flex-col lg:flex-row items-center w-full relative'>
-          <div className='lg:grid flex  items-center justify-around lg:grid-cols-5 lg:grid-rows-1 flex-col place-items-start lg:place-items-center place-content-center w-20 lg:w-full h-full lg:h-20'>
-            <div className='w-6  h-6 bg-[#38A312] rounded-full' />
-            <div className='w-6  h-6 bg-gray-200 rounded-full' />
-            <div className='w-6  h-6 bg-gray-200 rounded-full' />
-            <div className='w-6  h-6 bg-gray-200 rounded-full' />
-            <div className='w-6  h-6 bg-gray-200 rounded-full' />
+          {/* Progress Circles */}
+          <div className='lg:grid flex items-center justify-around lg:grid-cols-5 lg:grid-rows-1 flex-col place-items-start lg:place-items-center place-content-center w-20 lg:w-full h-full lg:h-20'>
+            <div className={`w-6 h-6 bg-[#38A312] rounded-full`} />
+            <div
+              className={`w-6 h-6 ${
+                project?.status?.toLowerCase() !== "pending"
+                  ? "bg-binance_green"
+                  : "bg-gray-200"
+              } rounded-full`}
+            />
+            <div
+              className={`w-6 h-6 ${
+                project?.status?.toLowerCase() !== "pending" &&
+                project?.status?.toLowerCase() !== "in review"
+                  ? "bg-binance_green"
+                  : "bg-gray-200"
+              } rounded-full`}
+            />
+            <div
+              className={`w-6 h-6 ${
+                project?.status?.toLowerCase() == "completed"
+                  ? "bg-binance_green"
+                  : "bg-gray-200"
+              } rounded-full`}
+            />
+            <div
+              className={`w-6 h-6 ${
+                project?.status?.toLowerCase() == "completed"
+                  ? "bg-binance_green"
+                  : "bg-gray-200"
+              } rounded-full`}
+            />
           </div>
-          <div className='w-[80%] hidden lg:flex left-0 right-0 m-auto h-2  bg-gray-300 absolute -z-10 '>
-            <div className='w-[1%] h-full bg-[#38A312]  ' />
+          {/* Progress Bar */}
+          <div className='w-[80%] hidden lg:flex left-0 right-0 m-auto h-2 bg-gray-300 absolute -z-10'>
+            <div
+              className={`h-full ${
+                project?.status?.toLowerCase() === "completed"
+                  ? "w-[100%] bg-binance_green"
+                  : project?.status?.toLowerCase() === "completed"
+                  ? "w-[75%] bg-binance_green"
+                  : project?.status?.toLowerCase() === "ongoing"
+                  ? "w-[50%] bg-binance_green"
+                  : project?.status?.toLowerCase() === "in review"
+                  ? "w-[25%] bg-binance_green"
+                  : "w-[10%] bg-binance_green"
+              }`}
+            />
           </div>
-          <div className='w-2 h-[80%] flex lg:hidden self-center justify-self-center top-1/2 -translate-y-1/2   bg-gray-300 absolute -z-10 '>
-            <div className='w-full h-[1%] bg-[#38A312]  ' />
+          {/* Progress bar for mobile */}
+          <div className='w-2 h-[80%] flex lg:hidden self-center justify-self-center top-1/2 -translate-y-1/2 bg-gray-300 absolute -z-10'>
+            <div
+              className={`w-full ${
+                project?.status?.toLowerCase() === "completed"
+                  ? "h-[100%] bg-binance_green"
+                  : project?.status?.toLowerCase() === "completed"
+                  ? "h-[75%] bg-binance_green"
+                  : project?.status?.toLowerCase() === "ongoing"
+                  ? "h-[50%] bg-binance_green"
+                  : project?.status?.toLowerCase() === "in review"
+                  ? "h-[25%] bg-binance_green"
+                  : "h-[10%] bg-binance_green"
+              }`}
+            />
           </div>
         </div>
-        <div className='lg:grid flex flex-col items-center justify-around lg:grid-cols-5 place-items-center w-full'>
+        {/* <div className='lg:grid flex flex-col items-center justify-around lg:grid-cols-5 place-items-center w-full'>
           <p className='text-black text-center text-xs font-semibold'>
             25-12-22
           </p>
@@ -130,13 +165,13 @@ const ProjectID = () => {
           <p className='text-black text-center text-xs font-semibold'>
             05-01-23
           </p>
-          <p className='text-blac text-center text-xs font-semibold text-white'>
+          <p className='text-black text-center text-xs font-semibold '>
             30-12-22
           </p>
-          <p className='text-blac text-center text-xs font-semibold text-white'>
+          <p className='text-black text-center text-xs font-semibold '>
             05-01-23
           </p>
-        </div>
+        </div> */}
       </section>
 
       <section>
@@ -201,7 +236,7 @@ const ProjectID = () => {
           {"Team"}
         </h6>
         <div className='w-full flex mt-10 flex-wrap gap-3 justify-center'>
-          {teamMembers?.map((member, i) => {
+          {project?.team?.map((member, i) => {
             return <TeamCard key={i.toString()} member={member} />;
           })}
         </div>

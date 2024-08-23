@@ -1,7 +1,5 @@
 import React from "react";
-import open from "./faq.svg";
 import { AnimatePresence, motion } from "framer-motion";
-// import close from "../../assets/accordionclose.svg";
 
 const Accordion = ({
   accordionId,
@@ -14,7 +12,7 @@ const Accordion = ({
 }) => {
   return (
     <div className='flex w-[70vw] lg:max-w-[40vw] duration-300 flex-col text-black pt-2 my-2 justify-center'>
-      <div
+      <button
         onClick={() => toggleAccordion(accordionId)}
         className='bg-stone-100 w-full cursor-pointer flex flex-row  p-5 space-x-3 rounded-md justify-between items-center'
       >
@@ -30,7 +28,7 @@ const Accordion = ({
             <img src='/assets/icons/right.svg' alt='' />
           )}
         </div>
-      </div>
+      </button>
       {/* <div className='flex flex-col bord text-black justify-center items-center'> */}
       <AnimatePresence>
         {isOpen && (

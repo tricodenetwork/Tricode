@@ -42,7 +42,9 @@ const Navbar = ({ children }) => {
   return (
     <div
       className={`${
-        isScrolled || sideNav
+        router.pathname.includes("learn")
+          ? "bg-binance_green"
+          : isScrolled || sideNav
           ? "bg-binance_green"
           : gray
           ? "bg-binance_ash bg-opacity-10"

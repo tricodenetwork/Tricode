@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import React from "react";
 
-const LinkItem = ({
+const LinkItem2 = ({
   path,
   text,
   hideMenu,
@@ -36,4 +36,4 @@ const LinkItem = ({
   );
 };
 
-export default React.memo(LinkItem);
+export default React.memo(LinkItem2);

@@ -53,7 +53,7 @@
   --lemon: #adf802;
 }
 .bord {
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 @layer base {
@@ -381,16 +381,16 @@ ul li,
   }
 }
 
-.drag-and-drop {
-  border: 2px solid #061A48;
-  padding: 20px;
-  text-align: center;
-  cursor: pointer;
-}
+  .drag-and-drop {
+    border: 2px solid #061A48;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+  }
 
-.drag-over {
-  border-color: #4caf50;
-}
+  .drag-over {
+    border-color: #4caf50;
+  }
 
 /* Login stylesheets */
 

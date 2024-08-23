@@ -1,42 +1,44 @@
-import { BackButton } from "@/Components/Button";
 import AppButton, { AppButton2 } from "@/Components/AppButton";
 
 import Link from "next/link";
 import { useFlutterwave, closePaymentModal } from "flutterwave-react-v3";
 import useDatabase from "@/hooks/useDatabase";
+import { useEffect, useState } from "react";
+import { BackButton } from "@/components/BackButton";
 
 function ProjectTransactions({ project }) {
   const { user } = useDatabase();
   const config = {
-    public_key: "FLWPUBK_TEST-fae61d03498ae9059ded435a0eb17bf3-X",
-    tx_ref: Date.now(),
-    amount: "500",
-    currency: "USD",
-    payment_options: "card,googlepay,applepay,barter,account",
+    public_key: process.env.NEXT_PUBLIC_FLUTTER_KEY,
+    tx_ref: Date.now().toString(),
+    amount: 0, // This will be set dynamically in the payment function
+    currency: "NGN",
+    payment_options: "card,googlepay,applepay,barter,account,mobilemoneyghana",
     customer: {
       email: user?.email ?? "johndoe@gmail.com",
       phone_number: "070********",
       name: "john doe",
     },
-    customizations: {
-      title: "Milestone Payment",
-      description: "Payment for items in cart",
-      logo: "https://st2.depositphotos.com/4403291/7418/v/450/depositphotos_74189661-stock-illustration-online-shop-log.jpg",
-    },
   };
+
   const handleFlutterPayment = useFlutterwave(config);
-  const payment = () => {
-    console.log("key", process.env.NEXT_PUBLIC_FLUTTER_KEY);
+
+  // Setup the Flutterwave payment handler
+
+  // Function to trigger the payment with a specific amount
+  const payment = (amount) => {
     handleFlutterPayment({
+      config: { ...config, amount: amount }, // Dynamically set the amount
       callback: (response) => {
         console.log(response);
         closePaymentModal(); // this will close the modal programmatically
       },
       onClose: () => {
-        console.log("Closed");
+        console.log("Payment modal closed");
       },
     });
   };
+
   return (
     <section className='   '>
       <section className='my-10'>
@@ -92,7 +94,7 @@ const TransactionHistory = ({ project, payment }) => {
               </td>
 
               <td
-                className={`py-6 px-6 text-center capitalize   medium whitespace-nowrap ${
+                className={`py-6 px-6 text-center capitalize medium whitespace-nowrap ${
                   v.status.toLowerCase() == "pending"
                     ? "text-appOrange"
                     : "text-[#27AE60]"
@@ -103,15 +105,17 @@ const TransactionHistory = ({ project, payment }) => {
               <td className='py-3 px-6 text-center'>
                 {v.status.toLowerCase() == "pending" ? (
                   <button
-                    onClick={() => payment()}
-                    className='  border-binance_green active:bg-opacity-60 light text-binance_green hover:bg-binance_green hover:text-white duration-300 h text-xs  text-center px-9 py-3 rounded-[50px]   border'
+                    onClick={() => {
+                      payment(v.amount);
+                    }}
+                    className='border-binance_green active:bg-opacity-60 light text-binance_green hover:bg-binance_green hover:text-white duration-300 h text-xs text-center px-9 py-3 rounded-[50px] border'
                   >
                     Pay
                   </button>
                 ) : (
                   <button
                     disabled
-                    className='  border-binance_green light disabled:cursor-not-allowed bg-binance_green text-white duration-300 h text-xs  text-center px-9 py-3 rounded-[50px]   border'
+                    className='border-binance_green light disabled:cursor-not-allowed bg-binance_green text-white duration-300 h text-xs text-center px-9 py-3 rounded-[50px] border'
                   >
                     Paid
                   </button>

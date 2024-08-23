@@ -12,7 +12,7 @@ const Loading = ({ loading, length = 5 }) => {
     },
   };
   return (
-    <div className=' w-full h-full'>
+    <div className=' w-full flex items-center justify-center h-full'>
       <AnimatePresence>
         {loading && (
           <motion.div

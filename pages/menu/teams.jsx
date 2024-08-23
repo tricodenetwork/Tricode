@@ -1,14 +1,17 @@
 import MenuLayout from "@/Components/layouts/MenuLayout";
 import FilterComponent from "@/Components/customInputs/FilterComponent";
 import SearchComponent from "@/Components/editor/SearchComponent";
+import Image from "next/image";
 
 const TeamCard = ({ title, src }) => {
   return (
     <div className='w-[217px] flex flex-col items-center h-[221px] relative'>
       <h6 className='regular mb-4 text-[16px] text-[#131418]'>{title}</h6>
       <div className='w-[90%] h-[140px] flex justify-center items-center rounded-[20px] shadow-md shadow-slate-400'>
-        <img
-          className='w-[88px] mx-auto mt-4 self-center h-[88px]'
+        <Image
+          width={88}
+          height={88}
+          className='mx-auto mt-4 self-center '
           src={src}
           alt='team-member'
         />
