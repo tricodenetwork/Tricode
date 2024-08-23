@@ -7,8 +7,12 @@ import Projects from "@/lib/db/sources/project";
 import clientPromise from "@/lib/mongodb";
 
 const server = new ApolloServer({
-  resolvers,
   typeDefs,
+  resolvers,
+  cors: {
+    origin: '*', // You may want to restrict this to specific domains in production
+    credentials: true,
+  },
 });
 
 export default startServerAndCreateNextHandler(server, {
