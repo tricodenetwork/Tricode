@@ -1,4 +1,4 @@
-import TalentLayout from "@/chest/layouts/TalentLayout";
+import TalentLayout from "@/components/layouts/TalentLayout";
 
 import Image from "next/image";
 

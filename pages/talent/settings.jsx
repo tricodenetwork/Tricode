@@ -1,5 +1,5 @@
-import Toggle from "@/chest/buttons/toggle";
-import TalentLayout from "@/chest/layouts/TalentLayout";
+import Toggle from "@/components/buttons/toggle";
+import TalentLayout from "@/components/layouts/TalentLayout";
 import Image from "next/image";
 
 function Setting() {

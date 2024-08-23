@@ -1,5 +1,5 @@
-import PaymentButton from "@/chest/buttons/general";
-import TalentLayout from "@/chest/layouts/TalentLayout";
+import PaymentButton from "@/components/buttons/general";
+import TalentLayout from "@/components/layouts/TalentLayout";
 import { useState } from "react";
 import { IoMdAdd } from "react-icons/io";
 import { MdPayment } from "react-icons/md";

@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import FileUpload from "../chest/modals/FileUpload";
+import FileUpload from "../components/modals/FileUpload";
 import { Provider } from "react-redux";
 import configureStore from "redux-mock-store";
 import { SessionProvider } from "next-auth/react";

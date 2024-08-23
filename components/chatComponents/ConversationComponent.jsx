@@ -4,7 +4,7 @@ import { BiDotsVertical } from "react-icons/bi";
 import { FiLink, FiSend } from "react-icons/fi";
 import { IoCheckmarkDoneOutline } from "react-icons/io5";
 import { formatDate } from "@/lib/utils/dateFunctions";
-import InputLine from "@/chest/InputLine";
+import InputLine from "@/components/InputLine";
 import { MessageBox } from "react-chat-elements";
 import { useCallback, useEffect, useState } from "react";
 import { useSession } from "next-auth/react";

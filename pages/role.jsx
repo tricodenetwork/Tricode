@@ -1,11 +1,11 @@
-import SignupLayout from "@/chest/layouts/SignupLayout";
-import Button from "@/chest/Button";
-import RadioInput from "@/chest/RadioInput";
+import SignupLayout from "@/components/layouts/SignupLayout";
+import Button from "@/components/Button";
+import RadioInput from "@/components/RadioInput";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import InputLine from "@/chest/InputLine";
+import InputLine from "@/components/InputLine";
 
 const Index = () => {
   // --------------------------------------------VARIABLES

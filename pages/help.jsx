@@ -1,6 +1,6 @@
-import MenuLayout from "@/chest/layouts/MenuLayout";
-import ProjectTable from "@/chest/projectComponents/projectTables/ProjecctTable";
-import MessageItem from "@/chest/chatComponents/MessageItem";
+import MenuLayout from "@/components/layouts/MenuLayout";
+import ProjectTable from "@/components/projectComponents/projectTables/ProjecctTable";
+import MessageItem from "@/components/chatComponents/MessageItem";
 
 const Project = () => {
   // --------------------------------------------VARIABLES

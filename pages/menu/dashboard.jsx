@@ -1,4 +1,4 @@
-import MenuLayout from "@/chest/layouts/MenuLayout";
+import MenuLayout from "@/components/layouts/MenuLayout";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -7,7 +7,7 @@ import axios from "axios";
 import { useSession } from "next-auth/react";
 import useDatabase from "@/hooks/useDatabase";
 import { useRouter } from "next/router";
-import FileUpload from "@/chest/modals/FileUpload";
+import FileUpload from "@/components/modals/FileUpload";
 import { useSelector } from "react-redux";
 import { CircleLoader } from "react-spinners";
 const projectDetails = [

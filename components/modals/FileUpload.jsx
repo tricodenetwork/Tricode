@@ -8,7 +8,7 @@ import { setFilee } from "@/store/slice-reducers/uploadSlice";
 import { upload } from "@vercel/blob/client";
 
 import useDatabase from "@/hooks/useDatabase";
-import Loading from "@/chest/Loading";
+import Loading from "@/components/Loading";
 
 const FileUpload = ({ close, files, setFiles }) => {
   const [uploadProgress, setUploadProgress] = useState(0);
