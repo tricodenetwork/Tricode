@@ -1,11 +1,11 @@
-import AuthComponent from "@/Components/AuthComponent";
-import LoginLayout from "@/Components/layouts/LoginLayout";
+import AuthComponent from "@/components/AuthComponent";
+import LoginLayout from "@/components/layouts/LoginLayout";
 import Link from "next/link";
-import Button from "@/Components/Button";
+import Button from "@/components/Button";
 import { Checkbox } from "@mui/material";
-import InputLine from "@/Components/InputLine";
+import InputLine from "@/components/InputLine";
 import { useEffect, useState } from "react";
-import ShowHidePassword from "@/Components/ShowHidePassword";
+import ShowHidePassword from "@/components/ShowHidePassword";
 import { signIn, useSession } from "next-auth/react";
 import { Router, useRouter } from "next/router";
 import { baseUrl } from "@/config/config";
