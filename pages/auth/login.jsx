@@ -1,16 +1,14 @@
-import AuthComponent from "@/Components/AuthComponent";
-import LoginLayout from "@/Components/layouts/LoginLayout";
+import AuthComponent from "@/chest/AuthComponent";
+import LoginLayout from "@/chest/layouts/LoginLayout";
 import Link from "next/link";
-import Button from "@/Components/Button";
+import Button from "@/chest/Button";
 import { Checkbox } from "@mui/material";
-import InputLine from "@/Components/InputLine";
+import InputLine from "@/chest/InputLine";
 import { useEffect, useState } from "react";
-import ShowHidePassword from "@/Components/ShowHidePassword";
+import ShowHidePassword from "@/chest/ShowHidePassword";
 import { signIn, useSession } from "next-auth/react";
 import { Router, useRouter } from "next/router";
 import { baseUrl } from "@/config/config";
-import LogOut from "@/Components/modals/LogOut";
-import ModalComponent from "@/Components/modals/ModalComponent";
 import { AnimatePresence, motion } from "framer-motion";
 import { Close } from "@mui/icons-material";
 
@@ -70,7 +68,7 @@ const Index = () => {
         redirect: true,
         email,
         password,
-        callbackUrl: `${baseUrl}menu/dashboard`,
+        callbackUrl: `${baseUrl}/`,
       });
 
       // Handle the result (e.g., redirect on success, show error on failure)
@@ -150,7 +148,7 @@ const Index = () => {
             <p className='text-red-500 light text-xs'>{emailError}</p>
           )}
           <InputLine
-            onChange={handleEmailChange}
+            onInput={handleEmailChange}
             placeholder={"johncena@gmail.com"}
           />
           <div className='w-full'>

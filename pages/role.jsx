@@ -1,11 +1,11 @@
-import SignupLayout from "@/Components/layouts/SignupLayout";
-import Button from "@/Components/Button";
-import RadioInput from "@/Components/RadioInput";
+import SignupLayout from "@/chest/layouts/SignupLayout";
+import Button from "@/chest/Button";
+import RadioInput from "@/chest/RadioInput";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import InputLine from "@/Components/InputLine";
+import InputLine from "@/chest/InputLine";
 
 const Index = () => {
   // --------------------------------------------VARIABLES
@@ -34,7 +34,7 @@ const Index = () => {
       });
 
       // Handle successful response
-      router.push("/menu/dashboard");
+      router.push("/");
     } catch (error) {
       // Handle error
       console.error("Error:", error);
