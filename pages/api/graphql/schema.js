@@ -52,7 +52,7 @@ const typeDefs = `#graphql
     milestones: [Milestone]
     team: [User]
     report: [Report]
-    allTasks: [Task]  # Aggregate of all tasks
+    tasks: [Task]  # Aggregate of all tasks
 
   }
 
@@ -62,6 +62,7 @@ const typeDefs = `#graphql
     projects: [Project]
     project(company: String!): Project
     mytasks(name: String!): [Task]
+    allTasks:[Task]
 
   }
 

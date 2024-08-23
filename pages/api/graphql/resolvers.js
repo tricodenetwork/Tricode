@@ -49,8 +49,6 @@ const resolvers = {
         throw new Error("Failed to fetch tasks");
       }
     },
-  },
-  Project: {
     allTasks: async (_, __, context) => {
       try {
         const projects = await context.dataSources.projects.getAllProjects();
@@ -61,6 +59,24 @@ const resolvers = {
             ? project.milestones.flatMap((milestone) => milestone.tasks || [])
             : []
         );
+      } catch (error) {
+        throw new Error("Failed to fetch all tasks", error);
+      }
+    },
+  },
+  Project: {
+    tasks: async (_, { id }, context) => {
+      try {
+        const projects = await context.dataSources.projects.getAllProjects();
+
+        // Flatten all tasks from all projects' milestones
+        return projects
+          .filter((item) => item._id === id)
+          .flatMap((project) =>
+            project.milestones
+              ? project.milestones.flatMap((milestone) => milestone.tasks || [])
+              : []
+          );
       } catch (error) {
         throw new Error("Failed to fetch all tasks", error);
       }

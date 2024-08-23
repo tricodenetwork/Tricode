@@ -39,6 +39,7 @@
     "formidable": "^2.1.2",
     "framer-motion": "^10.12.4",
     "gh-pages": "^5.0.0",
+    "graphql": "^16.9.0",
     "html2pdf.js": "^0.10.2",
     "lottie-react": "^2.4.0",
     "mongodb": "^5.9.2",
