@@ -1,5 +1,4 @@
 import clientPromise from "@/lib/mongodb";
-// import { useCors } from "@/hooks/useCors";
 
 export default async function handler(req, res) {
   // Use the cors middleware and pass the origin you want to accept

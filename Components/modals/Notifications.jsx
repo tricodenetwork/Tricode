@@ -1,9 +1,8 @@
 import { Divider } from "@mui/material";
-import NotifyItem from "../lists/NotifyItem";
-import Announce from "../svg/Announce";
-import Alert from "../svg/Alert";
-import Teams from "../svg/Teams";
-import People from "../svg/People";
+import NotifyItem from "@/components/lists/NotifyItem";
+import Announce from "@/components/svg/Announce";
+import Alert from "@/components/svg/Alert";
+import People from "@/components/svg/People";
 
 const Notifications = () => {
   // --------------------------------------------VARIABLES

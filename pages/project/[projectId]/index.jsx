@@ -1,18 +1,21 @@
 import MenuLayout from "@/components/layouts/MenuLayout";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import useDatabase from "@/hooks/useDatabase";
 import Image from "next/image";
 import TaskBox from "@/components/TaskBox";
+import fetchGraphQLData from "@/lib/utils/fetchGraphql";
+import { USERS } from "@/lib/constants/queries";
 
 const ProjectID = () => {
   // --------------------------------------------VARIABLES
   const router = useRouter();
   const { projectId } = router.query;
   const { projects, allUsers } = useDatabase();
+  const [myTasks, setMyTasks] = useState([]);
 
   //-----------------------------------------------------------FUNCTIONS
 
@@ -22,6 +25,18 @@ const ProjectID = () => {
   });
 
   //------------------------------------------------------------------USE EFFECTS
+  useEffect(() => {
+    // Function to get tasks for the talent
+    const fetchTasks = async () => {
+      let data = await fetchGraphQLData();
+      if (data) {
+        setMyTasks(data.users);
+      }
+    };
+
+    fetchTasks();
+  }, []);
+
   return (
     <section className=' w-[100%]  justify-center items-center p-5 lg:p-10'>
       <section className='bg-[#F2F2F2] rounded-[5px] p-6 mt-[19px] mb-[44px]'>

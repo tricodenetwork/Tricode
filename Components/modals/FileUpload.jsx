@@ -2,13 +2,13 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Close, Cloud } from "@mui/icons-material";
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { setFilee } from "@/store/slice-reducers/uploadSlice";
 import { upload } from "@vercel/blob/client";
 
 import useDatabase from "@/hooks/useDatabase";
-import Loading from "../Loading";
+import Loading from "@/components/Loading";
 
 const FileUpload = ({ close, files, setFiles }) => {
   const [uploadProgress, setUploadProgress] = useState(0);
@@ -225,21 +225,25 @@ const FileUpload = ({ close, files, setFiles }) => {
               </p>
               <p className='medium text-[15px] text-dark_blue'>OR</p>
 
-              <label className='cursor-pointer mx-auto'>
-                <button
-                  onClick={handleButtonClick}
+              <button
+                onClick={handleButtonClick}
+                className='cursor-pointer mx-auto'
+              >
+                <label
+                  htmlFor='files'
                   className='medium w-[163px] h-[37px] hover:bg-green-700 hover:border-white hover:text-white duration-200 border-solid text-[16px] bg-white  py-1 border border-binance_green text-binance_green rounded-3xl'
                 >
                   Browse files
-                </button>
+                </label>
                 <input
+                  id='Browse files'
                   ref={inputFileRef}
                   onChange={handleFileChange}
                   type={`file`}
                   accept={imageUpload ? "image/*" : undefined} // Conditionally set accept attribute for images
                   className='h-full  hidden w-full bord'
                 />
-              </label>
+              </button>
             </div>
           ) : (
             <>
