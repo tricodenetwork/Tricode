@@ -13,14 +13,6 @@ import { CircleLoader } from "react-spinners";
 import TopComponent from "@/components/TopComponent";
 
 import { topComponents } from "@/Data/data";
-const projectDetails = [
-  { name: "A1 1", date: "2023-09-15", status: "Completed" },
-  { name: "A1 1", date: "2023-09-15", status: "Returned for review" },
-  { name: "A1 1", date: "2023-09-15", status: "Paused" },
-  { name: "A1 1", date: "2023-09-15", status: "Started" },
-  { name: "A1 1", date: "2023-09-15", status: "Ongoing" },
-  { name: "A1 1", date: "2023-09-15", status: "Awaiting your review" },
-];
 
 const Dashboard = () => {
   // --------------------------------------------VARIABLES
