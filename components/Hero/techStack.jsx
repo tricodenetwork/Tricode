@@ -1,6 +1,5 @@
-import Image from "next/image";
-import { useState, useEffect } from "react";
 import { marquees } from "@/Data/data";
+import Image from "next/image";
 import Marquee from "react-fast-marquee";
 
 export default function Marq() {
@@ -19,7 +18,7 @@ export default function Marq() {
               key={(i + 1).toString()}
               className='image_wrapper w-[70px] h-[70px] px-[22.04px] py-[15.56px] ml-5 bg-black rounded-2xl justify-center items-center inline-flex overflow-hidden'
             >
-              <img src={marquee.img} alt='' />
+              <Image src={marquee.img} alt='stack' width={36} height={36} />
             </div>
           );
         })}

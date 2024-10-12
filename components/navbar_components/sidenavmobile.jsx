@@ -1,15 +1,8 @@
-import React, { useCallback, useEffect, useState } from "react";
-import Link from "next/link";
-import { motion, useAnimation } from "framer-motion";
-import Image from "next/image";
+import { motion } from "framer-motion";
 import LinkItem from "../LinkItem";
 import LinkItem2 from "../LinkItem2";
 
-const SideNavMobile = ({ setShowmenu }) => {
-  const hideMenu = useCallback(() => {
-    setShowmenu(false);
-  }, []);
-
+const SideNavMobile = ({ hideMenu }) => {
   return (
     <div className='w-full h-[639px]  z-[9999] top-[6.8vh] sm:top-[90px] right-0 absolute bg-black m-auto justify-center items-center'>
       <motion.nav

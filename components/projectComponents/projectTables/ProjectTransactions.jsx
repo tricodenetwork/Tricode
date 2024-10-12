@@ -1,10 +1,8 @@
 import AppButton, { AppButton2 } from "@/components/AppButton";
 
-import Link from "next/link";
-import { useFlutterwave, closePaymentModal } from "flutterwave-react-v3";
-import useDatabase from "@/hooks/useDatabase";
-import { useEffect, useState } from "react";
 import { BackButton } from "@/components/BackButton";
+import useDatabase from "@/hooks/useDatabase";
+import { closePaymentModal, useFlutterwave } from "flutterwave-react-v3";
 
 function ProjectTransactions({ project }) {
   const { user } = useDatabase();

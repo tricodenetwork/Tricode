@@ -1,6 +1,4 @@
 // pages/api/upload.js
-import { writeFile } from "fs/promises";
-import { NextRequest, NextResponse } from "next/server";
 import formidable from "formidable";
 import path from "path";
 import fs from "fs/promises";

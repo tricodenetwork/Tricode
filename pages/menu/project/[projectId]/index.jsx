@@ -1,13 +1,12 @@
 import MenuLayout from "@/components/layouts/MenuLayout";
-import ProjectTransactions from "@/components/projectComponents/projectTables/ProjectTransactions";
-import Link from "next/link";
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import ProjectDetails from "@/components/projectComponents/ProjectDetails";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
+import ProjectTransactions from "@/components/projectComponents/projectTables/ProjectTransactions";
 import useDatabase from "@/hooks/useDatabase";
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useState } from "react";
 
 const TeamCard = ({ member }) => {
   return (

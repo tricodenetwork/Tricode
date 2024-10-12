@@ -1,8 +1,6 @@
-import Image from "next/image";
-import { useState, useEffect } from "react";
+import { Inter } from "next/font/google";
 import Card from "./card";
 import OurClients from "./OurClients";
-import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
 

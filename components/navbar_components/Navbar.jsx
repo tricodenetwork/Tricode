@@ -61,10 +61,10 @@ const Navbar = ({ children }) => {
             <Image
               loader={imageLoader}
               alt='logo'
-              width={80}
-              height={40}
+              width={143}
+              height={33.74}
               quality={100}
-              className='w-[30vw] lg:w-[16vw]'
+              // className='w-[30vw] lg:w-[16vw]'
               src='/assets/images/logo.png'
             />
           </Link>
@@ -113,18 +113,18 @@ const Navbar = ({ children }) => {
           className='icon flex w-[40%] lg:w-[20%] justify-around  items-center'
         >
           <LinkItem2
-            text={"Register"}
-            path={"/auth/register"}
-            className={
-              "medText p-3 rounded-lg lg:flex hidden text-white border border-white"
-            }
-            isScrolled={isScrolled}
-          />
-          <LinkItem2
             hideMenu={hideMenu}
             path='/auth/login'
             text='Login'
             className={`medText text-white lg:flex hidden`}
+            isScrolled={isScrolled}
+          />
+          <LinkItem2
+            text={"Register"}
+            path={"/auth/register"}
+            className={
+              "medText p-3 rounded-lg lg:flex hidden text-white bg-app_light_green"
+            }
             isScrolled={isScrolled}
           />
         </motion.div>
@@ -139,7 +139,7 @@ const Navbar = ({ children }) => {
             <MdOutlineMenu className='text-[3vh]' />
           )}
         </div>
-        {sideNav && <SideNavMobile setShowmenu={setShowmenu} />}
+        {sideNav && <SideNavMobile setShowmenu={hideMenu} />}
       </motion.nav>
     </div>
   );

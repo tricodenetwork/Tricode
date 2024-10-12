@@ -1,9 +1,8 @@
-import Image from "next/image";
-import { useState } from "react";
-import { cards } from "../../Data/data";
-import { Istok_Web } from "next/font/google";
 import { motion } from "framer-motion";
+import { Istok_Web } from "next/font/google";
+import { useState } from "react";
 import { MdArrowRightAlt } from "react-icons/md";
+import { cards } from "../../Data/data";
 
 const font = Istok_Web({
   weight: ["400", "700"],

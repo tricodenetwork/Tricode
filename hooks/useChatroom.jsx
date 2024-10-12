@@ -1,7 +1,6 @@
-import { useSession } from "next-auth/react";
-import React, { useCallback, useMemo } from "react";
-import useDatabase from "./useDatabase";
 import axios from "axios";
+import { useSession } from "next-auth/react";
+import { useMemo } from "react";
 
 const useChatroom = () => {
   const { data: session } = useSession();
@@ -39,7 +38,6 @@ const useChatroom = () => {
     },
     [session]
   );
-
   const fetchChatsByRoomId = async (id) => {
     try {
       const res = await axios.get(`/api/get/chats?id=${id}`);

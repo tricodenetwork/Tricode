@@ -1,5 +1,3 @@
-import Image from "next/image";
-import { useState, useEffect } from "react";
 import { careers } from "../../Data/data";
 
 export default function Careers() {

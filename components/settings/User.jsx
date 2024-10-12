@@ -1,8 +1,6 @@
-import React from "react";
-import SettingsLayout from "../layouts/SettingsLayout";
+import useDatabase from "@/hooks/useDatabase";
 import InputWithHeader from "../customInputs/InputWithHeader";
 import SmallButton from "../customInputs/SmallButton";
-import useDatabase from "@/hooks/useDatabase";
 const semiBold = { fontSize: 24, fontFamily: "Poppins-SemiBold" };
 const Bold = { fontSize: 12, fontFamily: "Poppins" };
 const Regular = {

@@ -1,9 +1,8 @@
+import { motion, useAnimation } from "framer-motion";
 import Image from "next/image";
-import { useState, useEffect, useRef } from "react";
-import { OurServices } from "../../Data/data";
+import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
-import { useAnimation } from "framer-motion";
-import { motion } from "framer-motion";
+import { OurServices } from "../../Data/data";
 
 const IndividualCard = ({ info }) => {
   // Use a ref for each individual card item

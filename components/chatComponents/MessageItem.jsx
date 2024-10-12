@@ -9,6 +9,7 @@ const MessageItem = ({ img, text }) => {
         width={64}
         height={64}
         src={img}
+        alt='message'
       />
       <p>{text}</p>
     </div>

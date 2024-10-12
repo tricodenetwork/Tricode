@@ -3,12 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 // import { LiaAngleLeftSolid, LiaAngleRightSolid } from "react-icons/lia";
-import axios from "axios";
-import { useSession } from "next-auth/react";
-import useDatabase from "@/hooks/useDatabase";
-import { useRouter } from "next/router";
 import FileUpload from "@/components/modals/FileUpload";
-import { useSelector } from "react-redux";
+import useDatabase from "@/hooks/useDatabase";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 import { CircleLoader } from "react-spinners";
 const projectDetails = [
   { name: "A1 1", date: "2023-09-15", status: "Completed" },

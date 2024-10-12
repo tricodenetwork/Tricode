@@ -1,5 +1,6 @@
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 
 const Accordion = ({
   accordionId,
@@ -19,13 +20,15 @@ const Accordion = ({
         <p className={`text-[15px] md:text-[18.687px] font-bold`}>{question}</p>
         <div>
           {isOpen ? (
-            <img
+            <Image
+              width={16}
+              height={9}
               src='/assets/icons/right.svg'
               className='rotate-[90deg]'
               alt=''
             />
           ) : (
-            <img src='/assets/icons/right.svg' alt='' />
+            <Image width={16} height={9} src='/assets/icons/right.svg' alt='' />
           )}
         </div>
       </button>

@@ -1,15 +1,12 @@
-import Image from "next/image";
-import { useRouter } from "next/router";
-import { BiDotsVertical } from "react-icons/bi";
-import { FiLink, FiSend } from "react-icons/fi";
-import { IoCheckmarkDoneOutline } from "react-icons/io5";
-import { formatDate } from "@/lib/utils/dateFunctions";
 import InputLine from "@/components/InputLine";
-import { MessageBox } from "react-chat-elements";
-import { useCallback, useEffect, useState } from "react";
-import { useSession } from "next-auth/react";
 import useChatroom from "@/hooks/useChatroom";
 import axios from "axios";
+import { useSession } from "next-auth/react";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import { useCallback, useEffect, useState } from "react";
+import { MessageBox } from "react-chat-elements";
+import { FiLink, FiSend } from "react-icons/fi";
 
 export const ConversationMessaging = () => {
   const router = useRouter();
@@ -22,10 +19,10 @@ export const ConversationMessaging = () => {
   const { data: session } = useSession();
   const { fetchChatsByRoomId } = useChatroom();
 
-  const getChats = async () => {
+  const getChats = useCallback(async () => {
     const allChats = await fetchChatsByRoomId(id);
     setChats(allChats);
-  };
+  }, [id]);
 
   const sendChat = useCallback(async () => {
     const chatMessage = {
@@ -41,7 +38,7 @@ export const ConversationMessaging = () => {
     } catch (error) {
       console.log(error);
     }
-  }, [session, message]);
+  }, [session, message, id, getChats]);
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter" && message.trim() !== "") {
@@ -51,7 +48,7 @@ export const ConversationMessaging = () => {
 
   useEffect(() => {
     getChats();
-  }, []);
+  }, [getChats]);
 
   return (
     <div className='w-full h-full'>

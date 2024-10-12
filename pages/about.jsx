@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react";
-import Navbar from "@/components/navbar_components/Navbar";
-import About from "@/components/About/index";
 import Faq from "@/components/About/Faq/faqs";
-import OurNewsletter from "@/components/OurNewsletter/index";
+import About from "@/components/About/index";
 import Footer from "@/components/Footer/index";
+import Navbar from "@/components/navbar_components/Navbar";
+import OurNewsletter from "@/components/OurNewsletter/index";
 
 export default function Aboutus() {
   return (

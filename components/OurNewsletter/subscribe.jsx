@@ -1,7 +1,3 @@
-import Image from "next/image";
-import { useState, useEffect } from "react";
-import { OurServices } from "../../Data/data";
-
 export default function Subscribe() {
   return (
     <>

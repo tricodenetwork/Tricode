@@ -1,24 +1,17 @@
 /* eslint-disable @next/next/no-img-element */
+import useDtabase from "@/hooks/useDatabase";
+import { delFile, setName } from "@/store/slice-reducers/uploadSlice";
+import Close from "@mui/icons-material/Close";
+import axios from "axios";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useState } from "react";
+import { HiOutlineDocumentDuplicate } from "react-icons/hi";
+import { useDispatch, useSelector } from "react-redux";
+import Button from "../Button";
 import SelectFile from "../customInputs/SelectFile";
 import Editor from "../editor/RichTextEditor";
-import { TbCameraPlus } from "react-icons/tb";
-import { HiOutlineDocumentDuplicate } from "react-icons/hi";
-import { useEffect, useState } from "react";
-import countries from "../../lib/constants/countries.json";
-import { useRouter } from "next/router";
-import Link from "next/link";
 import FileUpload from "../modals/FileUpload";
-import { useDispatch, useSelector } from "react-redux";
-import Close from "@mui/icons-material/Close";
-import {
-  delFile,
-  setDescription,
-  setName,
-} from "@/store/slice-reducers/uploadSlice";
-import useDtabase from "@/hooks/useDatabase";
-import axios from "axios";
-import Loading from "../Loading";
-import Button from "../Button";
 
 function AddNew() {
   const [files, setFiles] = useState([]);

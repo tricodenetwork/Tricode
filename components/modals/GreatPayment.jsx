@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 const TableRow = ({ keyy, val }) => {
@@ -21,8 +22,16 @@ const GreatPayment = () => {
           id='Image_div'
           className='flex mb-[10px] items-center justify-center max-w-max max-h-max relative'
         >
-          <img className='z-10' src='/assets/icons/Vector.png' alt='Circle' />
-          <img
+          <Image
+            width={24}
+            height={24}
+            className='z-10'
+            src='/assets/icons/Vector.png'
+            alt='Circle'
+          />
+          <Image
+            width={24}
+            height={24}
             className='absolute'
             src='/assets/icons/Vector-1.png'
             alt='Checkmark'

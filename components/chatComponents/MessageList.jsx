@@ -1,13 +1,10 @@
-import { userArray } from "@/lib/constants/fakeUsers";
-import { extractHoursAndMinutes } from "@/lib/utils/dateFunctions";
-import Image from "next/image";
-import SearchComponent from "../editor/SearchComponent";
-import { useEffect, useState } from "react";
-import { ChatItem } from "react-chat-elements";
-import { useRouter } from "next/router";
 import useChatroom from "@/hooks/useChatroom";
 import useDatabase from "@/hooks/useDatabase";
 import { useSession } from "next-auth/react";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { ChatItem } from "react-chat-elements";
 
 export default function MessageList() {
   // --------------------------------------------VARIABLES

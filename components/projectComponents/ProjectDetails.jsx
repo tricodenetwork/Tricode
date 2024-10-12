@@ -1,13 +1,12 @@
-import { BsFillTelephoneFill } from "react-icons/bs";
-import { AiOutlineMail } from "react-icons/ai";
-import Image from "next/image";
 import useFunctions from "@/hooks/useFunctions";
-import { AppButton2 } from "../AppButton";
+import Image from "next/image";
 import Link from "next/link";
+import { AiOutlineMail } from "react-icons/ai";
+import { BsFillTelephoneFill } from "react-icons/bs";
 // import html2pdf from "html2pdf.js";
+import { BackButton } from "@/components/BackButton";
 import { useRef } from "react";
 import { usePDF } from "react-to-pdf";
-import { BackButton } from "@/components/BackButton";
 
 function ProjectDetails({ project }) {
   const { imageLoader } = useFunctions();

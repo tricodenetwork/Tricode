@@ -1,10 +1,8 @@
-import React from "react";
 import {
-  useFlutterwave,
   closePaymentModal,
   FlutterWaveButton,
+  useFlutterwave,
 } from "flutterwave-react-v3";
-import Head from "next/head";
 export default function App() {
   const config = {
     public_key: "FLWPUBK-a2ee7ff084c43ad4ad6fefe83df45f22-X",

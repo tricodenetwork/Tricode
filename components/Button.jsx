@@ -1,5 +1,3 @@
-import React from "react";
-import { useRouter } from "next/router";
 import Loading from "./Loading";
 
 const Button = ({ Action, styles, click, isLoading }) => {

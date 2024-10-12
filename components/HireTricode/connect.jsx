@@ -1,12 +1,5 @@
-import Image from "next/image";
-import { useState, useEffect } from "react";
-import { useInView } from "react-intersection-observer";
-import { useAnimation } from "framer-motion";
-import { IconWifi } from "@tabler/icons-react";
-import { IconUsersGroup } from "@tabler/icons-react";
-import { IconWand } from "@tabler/icons-react";
-import HireCard from "./card";
 import { Plus_Jakarta_Sans } from "next/font/google";
+import Image from "next/image";
 
 const font = Plus_Jakarta_Sans({ subsets: ["cyrillic-ext", "latin"] });
 
@@ -41,7 +34,9 @@ export default function Connect({ mobile }) {
           </div>
         </button>
 
-        <img
+        <Image
+          width={96}
+          height={1}
           src='/assets/icons/sideLine.svg'
           className='lg:w-[6rem] xl:w-auto hidden lg:flex'
           alt=''
@@ -69,7 +64,9 @@ export default function Connect({ mobile }) {
           </div>
         </button>
 
-        <img
+        <Image
+          width={96}
+          height={1}
           src='/assets/icons/sideLine.svg'
           className='lg:w-[6rem] xl:w-auto hidden lg:flex'
           alt=''

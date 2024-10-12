@@ -1,6 +1,3 @@
-import React from "react";
-import Button from "../Button";
-
 const semiBold = { fontSize: 24, fontFamily: "Poppins-SemiBold" };
 const Bold = { fontSize: 12, fontFamily: "Poppins" };
 const Regular = {

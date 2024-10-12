@@ -1,7 +1,6 @@
-import Image from "next/image";
-import React from "react";
-import { signIn } from "next-auth/react";
 import { baseUrl } from "@/config/config";
+import { signIn } from "next-auth/react";
+import Image from "next/image";
 
 const AuthComponent = () => {
   const ellipseStyle =

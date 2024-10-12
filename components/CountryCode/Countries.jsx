@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { v4 as uuidv4 } from "uuid";
 import { countries } from "./data";
 import InputLine from "../InputLine";
+import Image from "next/image";
 
 const Countries = () => {
   const [searchCountry, setSearchCountry] = useState(false);
@@ -32,7 +33,9 @@ const Countries = () => {
           {searchSelectedCountry ? (
             <div className='flex items-center   justify-around  text-[15px]'>
               {/* {searchSelectedCountry.shortName} */}
-              <img
+              <Image
+                width={20}
+                height={20}
                 src={searchSelectedCountry.flag}
                 className='w-[20px] mb-2 rounded-sm'
                 alt='flag'
@@ -42,7 +45,9 @@ const Countries = () => {
           ) : (
             <div className='flex items-center justify-around w-full'>
               {/* {countries[158]?.shortName} */}
-              <img
+              <Image
+                width={20}
+                height={20}
                 src={countries[158]?.flag}
                 className='w-[20px]  rounded-sm'
                 alt=''
@@ -75,7 +80,7 @@ const Countries = () => {
                 whileHover={{ scale: 1.1, originX: 0 }}
                 transition={{ stiffness: 300 }}
               >
-                <img src={country.flag} width='30px' alt='' />
+                <Image width={30} height={30} src={country.flag} alt='flag' />
                 <p className='mx-[10px]'>{country.fullname}</p>
                 <span>{country.phoneCode}</span>
               </motion.li>

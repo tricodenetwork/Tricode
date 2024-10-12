@@ -1,6 +1,6 @@
-import React, { useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
-import Button from "../Button";
+import Image from "next/image";
+import { useState } from "react";
 const inputStyles = `border-b border-gray-700 focus:outline-none 
       focus:border-binance_green w-full px-1`;
 const inputStyle = `border-b-2 my-[20px] md:my-[10px] pb-2border-gray-400 focus:outline-none focus:border-b-2 
@@ -121,33 +121,63 @@ const ChangePassword = ({ close }) => {
             </h4>
             <div className='relative mb-4 space-y-3'>
               <div className='flex items-center h-6 gap-3'>
-                <img src={passwordCharacters} className='w-4 h-4' />
+                <Image
+                  width={16}
+                  height={16}
+                  alt='pass'
+                  src={passwordCharacters}
+                  className='w-4 h-4'
+                />
                 <div style={{ fontSize: 16 }} className='light text-zinc-500'>
                   8-32 characters
                 </div>
               </div>
 
               <div className='flex items-center h-6 gap-3'>
-                <img src={passwordUppercase} className='w-4 h-4' />
+                <Image
+                  src={passwordUppercase}
+                  alt='pass'
+                  width={16}
+                  height={16}
+                  className='w-4 h-4'
+                />
                 <div style={{ fontSize: 16 }} className='light text-zinc-500'>
                   One upper case
                 </div>
               </div>
               <div className='flex items-center h-6 gap-3'>
-                <img src={passwordLowercase} className='w-4 h-4' />
+                <Image
+                  alt='pass'
+                  width={16}
+                  height={16}
+                  src={passwordLowercase}
+                  className='w-4 h-4'
+                />
                 <div style={{ fontSize: 16 }} className='light text-zinc-500'>
                   One lower case
                 </div>
               </div>
               <div className='flex items-center h-6 gap-3'>
-                <img src={special} alt='' className='w-4 h-4' />
+                <Image
+                  alt='spe'
+                  width={16}
+                  height={16}
+                  src={special}
+                  className='w-4 h-4'
+                />
                 <div style={{ fontSize: 16 }} className='light text-zinc-500'>
                   One special character
                 </div>
               </div>
 
               <div className='flex items-center h-6 gap-3'>
-                <img src={numeric} alt='' className='w-4 h-4' />
+                <Image
+                  alt='num'
+                  width={16}
+                  height={16}
+                  src={numeric}
+                  className='w-4 h-4'
+                />
                 <div style={{ fontSize: 16 }} className='light text-zinc-500'>
                   One numeric character
                 </div>

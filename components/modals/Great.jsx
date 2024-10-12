@@ -1,5 +1,6 @@
 import React from "react";
 import GreatText from "./GreatText";
+import Image from "next/image";
 const Great = () => {
   return (
     <div className='w-[438px] bg-binance_ash flex flex-col justify-between items-center relative h-[429px]'>
@@ -8,8 +9,16 @@ const Great = () => {
           id='Image_div'
           className='flex mb-[10px] items-center justify-center max-w-max max-h-max relative'
         >
-          <img className='z-10' src='/assets/icons/Vector.png' alt='Circle' />
-          <img
+          <Image
+            width={24}
+            height={24}
+            className='z-10'
+            src='/assets/icons/Vector.png'
+            alt='Circle'
+          />
+          <Image
+            width={24}
+            height={24}
             className='absolute'
             src='/assets/icons/Vector-1.png'
             alt='Checkmark'

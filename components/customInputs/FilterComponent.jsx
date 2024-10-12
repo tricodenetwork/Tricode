@@ -1,9 +1,8 @@
-import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { useState } from "react";
 import OutsideClickHandler from "react-outside-click-handler";
 
 import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
-import InputLine from "../InputLine";
 const FilterComponent = ({ items, placeholder }) => {
   const [open, setOpen] = useState(false);
   return (

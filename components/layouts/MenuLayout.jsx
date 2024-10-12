@@ -1,29 +1,27 @@
+import useDatabase from "@/hooks/useDatabase";
 import useFunctions from "@/hooks/useFunctions";
-import Image from "next/image";
+import { ViewHorizontalIcon, ViewVerticalIcon } from "@radix-ui/react-icons";
 import { motion } from "framer-motion";
+import { Inter } from "next/font/google";
+import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/router";
+import { useRef, useState } from "react";
+import { Toaster } from "react-hot-toast";
 import MenuList from "../MenuList";
+import LogOut from "../modals/LogOut";
+import ModalComponent from "../modals/ModalComponent";
+import NotificationModal from "../modals/NotificationModal";
+import Notifications from "../modals/Notifications";
+import Bell from "../svg/Bell";
 import Dashboard from "../svg/Dashboard";
-import Project from "../svg/Project";
+import Ellipse from "../svg/Ellipse";
 import Help from "../svg/Help";
 import Logout from "../svg/Logout";
-import Payment from "../svg/Payment";
-import Ellipse from "../svg/Ellipse";
 import Message from "../svg/Message";
-import Bell from "../svg/Bell";
+import Payment from "../svg/Payment";
+import Project from "../svg/Project";
 import Settings from "../svg/Settings";
-import Link from "next/link";
-import { useState } from "react";
-import { useRef } from "react";
-import TawkMessengerReact from "@tawk.to/tawk-messenger-react";
-import ModalComponent from "../modals/ModalComponent";
-import LogOut from "../modals/LogOut";
-import Notifications from "../modals/Notifications";
-import NotificationModal from "../modals/NotificationModal";
-import useDatabase from "@/hooks/useDatabase";
-import { ViewHorizontalIcon, ViewVerticalIcon } from "@radix-ui/react-icons";
-import { Inter } from "next/font/google";
-import { Toaster } from "react-hot-toast";
 const inter = Inter({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],

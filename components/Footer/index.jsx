@@ -1,11 +1,10 @@
-import Image from "next/image";
-import { useState, useEffect } from "react";
+import useFunctions from "@/hooks/useFunctions";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TwitterIcon from "@mui/icons-material/Twitter";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import useFunctions from "@/hooks/useFunctions";
 import { Inter } from "next/font/google";
+import Image from "next/image";
 import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });

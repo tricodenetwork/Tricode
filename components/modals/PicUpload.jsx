@@ -1,9 +1,10 @@
-import { Close } from '@mui/icons-material';
-import axios from 'axios';
-import React, { useState } from 'react'
+import { Close } from "@mui/icons-material";
+import axios from "axios";
+import Image from "next/image";
+import React, { useState } from "react";
 
-const PicUpload = ({close}) => {
-     const [uploadProgress, setUploadProgress] = useState(0);
+const PicUpload = ({ close }) => {
+  const [uploadProgress, setUploadProgress] = useState(0);
   const [selectedFile, setSelectedFile] = useState(null);
 
   const inputFileRef = React.useRef(null);
@@ -57,9 +58,9 @@ const PicUpload = ({close}) => {
         </div>
         <p className='medium text-grayText text-[12px] md:text-[15px]'>
           <strong className='medium text-dark_blue text-[12px] md:text-[15px]'>
-            Supported file : {" "}
+            Supported file :{" "}
           </strong>
-             .gif .heic .jpeg, .jpg .png .svg .webp
+          .gif .heic .jpeg, .jpg .png .svg .webp
         </p>
       </div>
 
@@ -71,7 +72,12 @@ const PicUpload = ({close}) => {
               {selectedFile.name}
             </div>
           )}
-          <img src='/assets/icons/clouds.png' alt='' />
+          <Image
+            width={36}
+            height={36}
+            src='/assets/icons/clouds.png'
+            alt='clouds'
+          />
           {uploadProgress === 0 ? (
             <div className='flex flex-col justify-between items-center w-[195px] h-[134px]'>
               <p className='medium  text-[15px] text-grayText'>
@@ -91,8 +97,7 @@ const PicUpload = ({close}) => {
                   onChange={(event) => {
                     const file = event.target.files[0];
                     setSelectedFile(file);
-                  }
-                  }
+                  }}
                   type='file'
                   className='hidden'
                 />
@@ -104,7 +109,6 @@ const PicUpload = ({close}) => {
                 <div
                   className={`w-[${uploadProgress}%] h-full rounded-3xl  bg-binance_green`}
                 ></div>
-               
               </div>
               <span className='self-center Bold text-binance_green'>
                 {uploadProgress}%
@@ -120,12 +124,15 @@ const PicUpload = ({close}) => {
         <button onClick={handleCancel} className='regular text-[15px] '>
           Cancel
         </button>
-        <button onClick={handleFileChange} className='regular w-[100px] h-[36.64px] text-[15px] ml-6 mr-4 px-4 py-1 bg-white border border-binance_green text-[#38A312] rounded-3xl'>
+        <button
+          onClick={handleFileChange}
+          className='regular w-[100px] h-[36.64px] text-[15px] ml-6 mr-4 px-4 py-1 bg-white border border-binance_green text-[#38A312] rounded-3xl'
+        >
           Upload
         </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default PicUpload
+export default PicUpload;

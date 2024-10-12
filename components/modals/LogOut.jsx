@@ -1,7 +1,6 @@
 import { baseUrl } from "@/config/config";
-import { signIn, signOut } from "next-auth/react";
+import { signOut } from "next-auth/react";
 import { useRouter } from "next/router";
-import React from "react";
 
 const LogOut = () => {
   const router = useRouter();

@@ -1,13 +1,13 @@
 // components/FileUpload.js
-import React, { useState } from "react";
-import axios from "axios";
-import { Close, Cloud } from "@mui/icons-material";
-import { Router, useRouter } from "next/router";
-import { useDispatch } from "react-redux";
 import { setFilee } from "@/store/slice-reducers/uploadSlice";
+import { Close } from "@mui/icons-material";
 import { upload } from "@vercel/blob/client";
+import { useRouter } from "next/router";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 
 import useDatabase from "@/hooks/useDatabase";
+import Image from "next/image";
 import Loading from "../Loading";
 
 const FileUpload = ({ close, files, setFiles }) => {
@@ -219,7 +219,12 @@ const FileUpload = ({ close, files, setFiles }) => {
           )}
           {uploadProgress === 0 ? (
             <div className='flex flex-col justify-between self-start items-center w-full h-[65%]'>
-              <img src='/assets/icons/clouds.png' alt='' />
+              <Image
+                width={36}
+                height={36}
+                src='/assets/icons/clouds.png'
+                alt='cloud'
+              />
               <p className='medium  text-[16px] text-grayText'>
                 Drag and drop files here
               </p>

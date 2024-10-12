@@ -1,7 +1,5 @@
-import React from "react";
-import InputLine from "../InputLine";
-import { Select } from "@mui/material";
 import SelectComponent from "../customInputs/SelectComponent";
+import InputLine from "../InputLine";
 
 const cities = [
   "Lagos",

@@ -1,7 +1,5 @@
-import Image from "next/image";
-import { useState, useEffect } from "react";
-import Subscribe from "./subscribe";
 import { Inter } from "next/font/google";
+import Subscribe from "./subscribe";
 
 const inter = Inter({ subsets: ["latin"] });
 

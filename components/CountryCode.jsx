@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FormControl, Select, MenuItem } from "@mui/material";
+import Image from "next/image";
 
 const countries = [
   { name: "Nigeria", code: "+234", flag: "/assets/icons/emoji _nigeria.svg" },
@@ -33,7 +34,7 @@ function CountryCode() {
         {countries.map((country, index) => (
           <MenuItem key={index.toString()} value={country.code}>
             <div className='flex flex-row'>
-              <img src={country.flag} alt='' className='w-6 h-6' />
+              <Image src={country.flag} alt='flag' width={24} height={24} />
               {country.code}
             </div>
           </MenuItem>

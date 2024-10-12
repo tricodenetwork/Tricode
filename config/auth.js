@@ -1,12 +1,8 @@
-import { NextAuthOptions, getServerSession } from "next-auth";
+import { getServerSession } from "next-auth";
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 import clientPromise from "@/lib/mongodb";
 
-import TwitterProvider, { TwitterProfile } from "next-auth/providers/twitter";
-import GitHubProvider from "next-auth/providers/github";
 
-import { initializeAccount } from "@/lib/contract";
-import { encrypt } from "@/lib/security";
 import { GithubAuthProvider } from "firebase/auth";
 
 export const authOptions = {

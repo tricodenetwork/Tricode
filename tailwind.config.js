@@ -32,6 +32,8 @@ module.exports = {
         grayText: "#6D717A",
         appOrange: "#F2994A",
         appBlue: "#061a48",
+        appGreen: "#0D2A17",
+        app_light_green: "#15E43C",
       },
     },
   },

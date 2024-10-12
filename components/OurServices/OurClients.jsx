@@ -1,8 +1,7 @@
-import Image from "next/image";
-import { useState, useEffect } from "react";
 import { OurClients } from "@/Data/data";
-import Marquee from "react-fast-marquee";
 import { Inter } from "next/font/google";
+import Image from "next/image";
+import Marquee from "react-fast-marquee";
 
 const inter = Inter({ subsets: ["latin"] });
 export default function OurClients_Page() {
@@ -37,7 +36,7 @@ export default function OurClients_Page() {
                 key={i + 1}
                 className='image_wrapper px-[10em] py-8 h-[16vh] ml-5 bg-[#FAFAFA] rounded-2xl justify-center items-center inline-flex overflow-hidden'
               >
-                <img src={marquee.img} alt='' />
+                <Image width={40} height={40} src={marquee.img} alt='client' />
               </div>
             );
           })}
