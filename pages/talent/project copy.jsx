@@ -1,84 +1,29 @@
-import { useState } from "react";
 import TalentLayout from "@/components/layouts/TalentLayout";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+
 import Image from "next/image";
 
 import { BsFilePdf, BsFiletypeDocx } from "react-icons/bs";
 import { FaRegFileExcel } from "react-icons/fa";
-
-// Initial data
-const initialTasks = {
-  todo: [
-    {
-      id: "1",
-      title: "Prototyping",
-      description: "Complete the prototyping of the designed mobile screens",
-      date: "15/04/2024",
-    },
-    {
-      id: "2",
-      title: "Prototyping",
-      description: "Complete the prototyping of the designed mobile screens",
-      date: "15/04/2024",
-    },
-    {
-      id: "3",
-      title: "Prototyping",
-      description: "Complete the prototyping of the designed mobile screens",
-      date: "15/04/2024",
-    },
-    {
-      id: "4",
-      title: "Prototyping",
-      description: "Complete the prototyping of the designed mobile screens",
-      date: "15/04/2024",
-    },
-  ],
-  ongoing: [
-    {
-      id: "5",
-      title: "Prototyping",
-      description: "Complete the prototyping of the designed mobile screens",
-      date: "15/04/2024",
-    },
-    {
-      id: "6",
-      title: "Prototyping",
-      description: "Complete the prototyping of the designed mobile screens",
-      date: "15/04/2024",
-    },
-  ],
-  done: [
-    {
-      id: "7",
-      title: "Prototyping",
-      description: "Complete the prototyping of the designed mobile screens",
-      date: "15/04/2024",
-    },
-  ],
-};
-
+///AKE DATA
+const ongoing = [
+  "Lorem ipsum dolor sit amet consectetur. At netus in integer nec. Ac non diam venenatis aenean nulla eu sagittis scelerisque facilisi.",
+  "Lorem ipsum dolor sit amet consectetur. At netus in integer nec. Ac non diam venenatis aenean nulla eu sagittis scelerisque facilisi.",
+  "Lorem ipsum dolor sit amet consectetur. At netus in integer nec. Ac non diam venenatis aenean nulla eu sagittis scelerisque facilisi.",
+  "Lorem ipsum dolor sit amet consectetur. At netus in integer nec. Ac non diam venenatis aenean nulla eu sagittis scelerisque facilisi.",
+  "Lorem ipsum dolor sit amet consectetur. At netus in integer nec. Ac non diam venenatis aenean nulla eu sagittis scelerisque facilisi.",
+];
+const done = [
+  "Lorem ipsum dolor sit amet consectetur. At netus in integer nec. Ac non diam venenatis aenean nulla eu sagittis scelerisque facilisi.",
+  "Lorem ipsum dolor sit amet consectetur. At netus in integer nec. Ac non diam venenatis aenean nulla eu sagittis scelerisque facilisi.",
+];
+const todo = [
+  "Lorem ipsum dolor sit amet consectetur. At netus in integer nec. Ac non diam venenatis aenean nulla eu sagittis scelerisque facilisi.",
+  "Lorem ipsum dolor sit amet consectetur. At netus in integer nec. Ac non diam venenatis aenean nulla eu sagittis scelerisque facilisi.",
+  "Lorem ipsum dolor sit amet consectetur. At netus in integer nec. Ac non diam venenatis aenean nulla eu sagittis scelerisque facilisi.",
+];
 const Project = () => {
-  const [tasks, setTasks] = useState(initialTasks);
-
-  const handleOnDragEnd = (result) => {
-    const { source, destination } = result;
-    if (!destination) return;
-
-    const sourceColumn = tasks[source.droppableId];
-    const destColumn = tasks[destination.droppableId];
-    const [movedTask] = sourceColumn.splice(source.index, 1);
-    destColumn.splice(destination.index, 0, movedTask);
-
-    setTasks({
-      ...tasks,
-      [source.droppableId]: sourceColumn,
-      [destination.droppableId]: destColumn,
-    });
-  };
-
   return (
-    <section className="w-full md:p-8 p-4">
+    <section className=" w-full md:p-8 p-4">
       <div className="flex justify-start items-start gap-4 w-full md:w-[60%] p-4 flex-col md:flex-row rounded-2xl border border-stone-300">
         <div className="">
           <Image
@@ -111,94 +56,32 @@ const Project = () => {
         </tr>
       </table>
 
-      <DragDropContext onDragEnd={handleOnDragEnd}>
-        <div className="grid grid-cols-1 md:grid-cols-3 items-start gap-4 w-full mt-8 rounded">
-          {Object.entries(tasks).map(([columnId, columnTasks], index) => (
-            <Droppable key={columnId} droppableId={columnId}>
-              {(provided) => (
-                <div
-                  className={`p-4 flex flex-col gap-4 rounded-md ${
-                    columnId === "todo"
-                      ? "bg-red-100"
-                      : columnId === "ongoing"
-                      ? "bg-yellow-100"
-                      : "bg-green-100"
-                  }`}
-                  {...provided.droppableProps}
-                  ref={provided.innerRef}
-                >
-                  <h3 className="text-center font-bold text-2xl capitalize">
-                    {columnId}
-                  </h3>
-                  {columnTasks.map((task, index) => (
-                    <Draggable
-                      key={task.id}
-                      draggableId={task.id}
-                      index={index}
-                    >
-                      {(provided) => (
-                        <div
-                          ref={provided.innerRef}
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}
-                          className="p-4 rounded-md bg-white shadow-md cursor-move flex flex-col gap-2"
-                        >
-                          <div className="flex justify-between items-center">
-                            <div className="text-gray-600 font-bold">
-                              #{task.id}
-                            </div>
-                            <div className="cursor-pointer">
-                              <Image
-                                alt="more"
-                                width={80}
-                                height={40}
-                                quality={100}
-                                className="w-[30px] h-[30px]"
-                                src="/assets/icons/more.svg"
-                              />
-                            </div>
-                          </div>
-                          <h4 className="text-xl font-semibold">
-                            {task.title}
-                          </h4>
-                          <p className="text-gray-500">{task.description}</p>
-                          <div className="flex justify-between items-center mt-4 text-gray-400 text-sm">
-                            <div className="">
-                              <Image
-                                alt="user"
-                                width={80}
-                                height={40}
-                                quality={100}
-                                className="w-[40px] h-[40px] rounded-full"
-                                src="/assets/images/av1.jpg"
-                              />
-                            </div>
-                            <span className="flex items-center cursor-pointer">
-                              <div className="">
-                                <Image
-                                  alt="comment"
-                                  width={20}
-                                  height={20}
-                                  quality={100}
-                                  className="w-[20px] h-[40px] rounded-full"
-                                  src="/assets/icons/comment_symbols.svg"
-                                />
-                              </div>
-                              <span>4</span>
-                            </span>
-                            <span>{task.date}</span>
-                          </div>
-                        </div>
-                      )}
-                    </Draggable>
-                  ))}
-                  {provided.placeholder}
-                </div>
-              )}
-            </Droppable>
+      <div className="grid grid-cols-1 md:grid-cols-3 items-start gap-4 w-full  mt-8  rounded">
+        <div className=" bg-ash p-4 flex flex-col gap-4 rounded-md">
+          <h3 className=" text-center font-bold text-2xl">Todo</h3>
+          {todo.map((tx, i) => (
+            <div key={i} className="p-4 rounded-md bg-white cursor-move">
+              {tx}
+            </div>
           ))}
         </div>
-      </DragDropContext>
+        <div className=" bg-ash p-4 flex flex-col gap-4 rounded-md">
+          <h3 className=" text-center font-bold text-2xl">Doing/Ongoing</h3>
+          {ongoing.map((tx, i) => (
+            <div key={i} className="p-4 rounded-md bg-white  cursor-move">
+              {tx}
+            </div>
+          ))}
+        </div>
+        <div className=" bg-ash p-4 flex flex-col gap-4 rounded-md">
+          <h3 className=" text-center font-bold text-2xl">Done</h3>
+          {done.map((tx, i) => (
+            <div key={i} className="p-4 rounded-md bg-white  cursor-move">
+              {tx}
+            </div>
+          ))}
+        </div>
+      </div>
 
       <section className=" mt-10 pt-10">
         <h1 className="border-b w-full  text-binance_green font-bold text-xl ">
@@ -376,9 +259,7 @@ const Project = () => {
     </section>
   );
 };
-
 Project.getLayout = function getLayout(page) {
   return <TalentLayout>{page}</TalentLayout>;
 };
-
 export default Project;
