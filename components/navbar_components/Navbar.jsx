@@ -49,12 +49,12 @@ const Navbar = ({ children }) => {
           : gray
           ? "bg-binance_ash bg-opacity-10"
           : "bg-transparent"
-      } fixed h-[60px] sm:h-[90px] lg:h-[90px]   z-50 flex flex-col`}
+      } fixed h-[60px] sm:h-[90px] lg:h-[90px] w-full z-50 flex flex-col`}
     >
       <motion.nav
         initial={{ x: 0 }}
         animate={{ x: [200, 0] }}
-        className=' navbar px-[1.5vw] mx-auto top-[0vh]'
+        className=' navbar px-[1vw]  mx-auto top-[0vh]'
       >
         <div className='logos '>
           <Link href={"/"}>
@@ -123,7 +123,7 @@ const Navbar = ({ children }) => {
             text={"Register"}
             path={"/auth/register"}
             className={
-              "medText p-3 rounded-lg lg:flex hidden text-white bg-app_light_green"
+              "medText p-3 rounded-lg hover:text-appGreen lg:flex hidden px-[2vw] text-white bg-app_light_green"
             }
             isScrolled={isScrolled}
           />

@@ -10,6 +10,7 @@ import OurNewsletter from "@/components/OurNewsletter/index";
 import Footer from "@/components/Footer/index";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
+import Connect from "@/components/HireTricode/connect";
 
 export default function Home() {
   const [screenWidth, setScreenWidth] = useState(0);
@@ -42,10 +43,11 @@ export default function Home() {
       <Navbar />
       {/* <main className='relative'> */}
       <Hero />
+      <Connect />
       <HireTricode mobile={mobile} />
+      <WhyTricode />
       <JoinTricode mobile={mobile} />
       <Careers />
-      <WhyTricode />
       <OurServices />
       <OurNewsletter />
       <Footer />

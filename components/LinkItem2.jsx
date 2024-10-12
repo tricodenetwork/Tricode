@@ -26,7 +26,9 @@ const LinkItem2 = ({
           transition={{ type: "spring", stiffness: 500, duration: 0.1 }}
           onClick={hideMenu}
           className={`${bgColor} ${
-            isScrolled ? "hover:text-black" : "hover:text-binance_green"
+            isScrolled
+              ? "hover:text-app_light_green"
+              : "hover:text-app_light_green"
           } duration-200  ease-out  ${className}`}
         >
           {`${text}`}

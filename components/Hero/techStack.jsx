@@ -16,7 +16,7 @@ export default function Marq() {
           return (
             <div
               key={(i + 1).toString()}
-              className='image_wrapper w-[70px] h-[70px] px-[22.04px] py-[15.56px] ml-5 bg-black rounded-2xl justify-center items-center inline-flex overflow-hidden'
+              className='image_wrapper w-[70px] h-[70px] px-[22.04px] py-[15.56px] ml-5 bg-white rounded-[14px] border border-[#676A6A] border-opacity-40 justify-center items-center inline-flex overflow-hidden'
             >
               <Image src={marquee.img} alt='stack' width={36} height={36} />
             </div>

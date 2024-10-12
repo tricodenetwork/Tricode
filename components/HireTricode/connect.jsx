@@ -1,99 +1,33 @@
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Roboto_Flex } from "next/font/google";
 import Image from "next/image";
+import Marq from "../Hero/techStack";
 
-const font = Plus_Jakarta_Sans({ subsets: ["cyrillic-ext", "latin"] });
+const font = Roboto_Flex({
+  subsets: ["cyrillic-ext", "latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700"],
+});
 
 export default function Connect({ mobile }) {
   return (
     <section
-      className='lg:pb-[10px] px-8 xl:px-[3vh] py-10 w-full bg-gradient-to-b lg:bg-gradient-to-r from-stone-100 to-[#BBD2B3] overflow-hidden justify-center items-center'
+      className='p-[30px] lg:p-[80px] w-full bg-[#F5F9F1] h-[475px] overflow-hidden flex flex-col justify-between items-center'
       id='intro'
     >
-      <div
-        className={`flex flex-col lg:flex-row gap-7 sm:gap-12 lg:gap-3 justify-center lg:justify-between items-center w-full py-7`}
+      <h2
+        style={font.style}
+        className='text-app_black font-extrabold  w-full text-center lg:text-[56px]'
       >
-        <button className='flex flex-col-reverse lg:flex-row gap-3 justify-center items-center'>
-          <div className='text-center justify-center items-center'>
-            <div className='text-gray-900 text-2xl semiBold'>Connect</div>
-            <div
-              style={font.style}
-              className='w-[206px] text-gray-900 text-sm font-normal  leading-normal'
-            >
-              Connect with us to get your ideas to reality
-            </div>
-          </div>
-          <div className='relative w-[78px]  flex items-center justify-center h-[78px] p-3'>
-            <div className='w-[78px] h-[78px] bg-[#222222] absolute opacity-[0.14] rounded-[30px] '></div>
-            <Image
-              width={37.44}
-              height={37.44}
-              src='/assets/icons/airdrop.svg'
-              className='z-10'
-              alt='icons'
-            />
-          </div>
-        </button>
-
-        <Image
-          width={96}
-          height={1}
-          src='/assets/icons/sideLine.svg'
-          className='lg:w-[6rem] xl:w-auto hidden lg:flex'
-          alt=''
-        />
-
-        <button className='flex flex-col-reverse lg:flex-row gap-3 justify-center items-center'>
-          <div className='text-center justify-center items-center'>
-            <div className='text-gray-900 text-2xl semiBold'>Collaborate</div>
-            <div
-              style={font.style}
-              className='w-[206px] text-gray-900 text-sm font-normal  leading-normal'
-            >
-              Collaborate with a team to get solutions to any question
-            </div>
-          </div>
-          <div className='relative w-[78px]  flex items-center justify-center h-[78px] p-3'>
-            <div className='w-[78px] h-[78px] bg-[#222222] absolute opacity-[0.14] rounded-[30px] '></div>
-            <Image
-              width={37.44}
-              height={37.44}
-              src='/assets/icons/share.svg'
-              className='z-10'
-              alt='icons'
-            />
-          </div>
-        </button>
-
-        <Image
-          width={96}
-          height={1}
-          src='/assets/icons/sideLine.svg'
-          className='lg:w-[6rem] xl:w-auto hidden lg:flex'
-          alt=''
-        />
-
-        <button className='flex flex-col-reverse lg:flex-row gap-3 justify-center items-center'>
-          <div className='text-center justify-center items-center'>
-            <div className='text-gray-900 text-2xl semiBold'>Create</div>
-            <div
-              style={font.style}
-              className='w-[206px] text-gray-900 text-sm font-normalleading-normal'
-            >
-              Create immediately and iterate quickly
-            </div>
-          </div>
-          <div className='relative w-[78px]  flex items-center justify-center h-[78px] p-3'>
-            <div className='w-[78px] h-[78px] bg-[#222222] absolute opacity-[0.14] rounded-[30px] '></div>
-            <Image
-              width={37}
-              height={37}
-              src='/assets/icons/like.svg'
-              className='z-10'
-              alt='icons'
-            />
-          </div>
-        </button>
-      </div>
+        All the tools that you need
+      </h2>
+      <p
+        style={font.style}
+        className='text-app_black  w-[65%] mx-auto relative bottom-[4%]  text-center lg:text-[20px]'
+      >
+        Sit elit feugiat turpis sed integer integer accumsan turpis. Sed
+        suspendisse nec lorem mauris. Pharetra, eu imperdiet ipsum ultrices
+        amet, dui sit suspendisse.
+      </p>
+      <Marq />
     </section>
   );
 }

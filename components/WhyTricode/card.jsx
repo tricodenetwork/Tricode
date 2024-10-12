@@ -78,7 +78,7 @@ export default function Card() {
         ))}
       </div>
 
-      <div
+      {/* <div
         ref={ref}
         className='px-1 md:p-[2vh] py-[3vh] grid grid-cols-[1fr,1fr] place-content-center place-items-center lg:flex lg:flex-row flex-wrap justify-around lg:w-[80%] mx-auto items-start gap-8 md:gap-12'
       >
@@ -116,7 +116,7 @@ export default function Card() {
         >
           <button>Join</button>
         </Link>
-      </div>
+      </div> */}
     </section>
   );
 }

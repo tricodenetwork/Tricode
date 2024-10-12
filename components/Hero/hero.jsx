@@ -4,10 +4,14 @@ import { useInView } from "react-intersection-observer";
 import { useAnimation } from "framer-motion";
 import useFunctions from "@/hooks/useFunctions";
 import Marq from "./techStack";
-import { Inter } from "next/font/google";
+import { Inter, Poppins } from "next/font/google";
 import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
 
 const Home = () => {
   const [screenWidth, setScreenWidth] = useState(0);
@@ -55,7 +59,7 @@ const Home = () => {
 
   return (
     <section
-      className='h-[100vh]  bg-appGreen  flex items-center justify-center relative overflow-hidden'
+      className='h-[100vh]  bg-appGreen  flex items-end pb-[5vh] justify-center relative overflow-hidden'
       id='hero'
     >
       {/* <div className='w-full h-full -z-20 absolute top-0 bottom-0'>
@@ -72,64 +76,65 @@ const Home = () => {
           alt='background'
         />
       </div> */}
-      <div className='flex flex-col lg:flex-row w-[80vw] h-[70vh] lg:h-max   justify-between items-center'>
+      <div className='flex flex-col  lg:flex-row w-[93vw] h-[70vh] lg:h-max   justify-between items-center'>
         <div className='flex flex-col  h-[35%] relative  items-center lg:items-start w-max'>
-          <div
-            style={inter.style}
-            className='relative text-center mb-[3px] lg:mb-[10px] lg:text-start'
-          >
-            <span
-              style={inter.style}
-              className='text-white text-2xl sm:text-[53px] font-extrabold  leading-[71px]'
-            >
-              Build{" "}
+          <h4>
+            <span className={"semiBold text-[80px] leading-[81px] text-white"}>
+              Collaborate
             </span>
-            <span
-              style={inter.style}
-              className='text-white text-2xl sm:text-[53px] font-normal  leading-[71px]'
-            >
-              with
-            </span>
-            <span className='text-white text-2xl sm:text-[53px] font-extrabold  leading-[71px]'>
-              {" "}
-            </span>
-            <span
-              style={inter.style}
-              className='text-white text-2xl sm:text-[53px] font-extrabold  leading-[71px]'
-            >
+            <p>
+              <span className='text-app_light_green semiBold  text-[80px] leading-[81px] '>
+                Globally{" "}
+              </span>
+              <span
+                className={"semiBold text-[80px] leading-[81px] text-white"}
+              >
+                with
+              </span>
+            </p>
+
+            <span className={"semiBold text-[80px] leading-[81px] text-white"}>
               Tricode
             </span>
-          </div>
+          </h4>
           <p
-            style={inter.style}
-            className='font-normal text-white text-sm lg:text-lg tracking-[0] leading-[36px] whitespace-nowrap'
+            style={poppins.style}
+            className='font-light max-w-[421px] text-white text-sm lg:text-lg  leading-normal '
           >
-            The Future of Remote Collaborative space.
+            Join over 10,000 businesses using Tricode Pro for enhanced remote
+            collaboration and see a 45% increase in productivity.
           </p>
           <div
             className={`flex justify-around lg:justify-start w-full mt-[4vh] self-center  absolute lg:relative bottom-0`}
           >
             <Link
               href={"/auth/register"}
-              className=' semiBold lg:w-[38%] flex justify-center w-[40%] mr-[22px] text-sm lg:text-base lg:Bold hover:bg-opacity-70 hover:scale-110 transition ease-linear duration-150 shadow-sm shadow-black  py-[1.5vh] rounded-lg bg-binance_green text-white'
+              className=' semiBold lg:w-[38%] flex justify-center w-[40%] mr-[22px] text-sm lg:text-base lg:Bold  hover:scale-110 transition ease-linear duration-150 shadow-sm shadow-black  py-[1.5vh] rounded-lg bg-app_light_green text-white h-[54px]'
             >
-              <button>Hire</button>
+              <button>Find Talent</button>
             </Link>
             <Link
               href={"/auth/register"}
-              className=' semiBold lg:w-[38%] flex justify-center w-[40%] text-sm lg:text-base lg:Bold hover:bg-opacity-70 hover:scale-110 transition ease-linear duration-150 shadow-s shadow-binance_green  py-[1.5vh] rounded-lg bg-black text-white'
+              className=' semiBold lg:w-[38%] flex justify-center w-[40%] text-sm lg:text-base lg:Bold  hover:scale-110 transition ease-linear duration-150 shadow-s shadow-binance_green  py-[1.5vh] rounded-lg bg-white text-app_light_green h-[54px]'
             >
-              <button>Join</button>
+              <button>How It Works</button>
             </Link>
           </div>
         </div>
-        <div className='w-full lg:w-[472px] relative h-[50%] lg:h-[409px]'>
-          <Image fill className='' src='/assets/lottie/amico.png' alt='hand' />
+        <div className='w-full lg:w-[633px] relative h-[50%] lg:h-[600px]'>
+          <Image
+            fill
+            className=''
+            quality={100}
+            priority
+            src='/assets/images/heros.svg'
+            alt='hand'
+          />
         </div>
       </div>
-      <div className='absolute bottom-5 mx-3 w-full overflow-hidden'>
+      {/* <div className='absolute bottom-5 mx-3 w-full overflow-hidden'>
         <Marq />
-      </div>
+      </div> */}
     </section>
   );
 };

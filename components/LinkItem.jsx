@@ -19,7 +19,7 @@ const LinkItem = ({
 
   return (
     <Link href={path}>
-      <motion.ul className='flex medText items-center  text-white'>
+      <motion.ul className='flex  items-center  text-white'>
         <span className='text-sm'>{"<"}</span>
         <motion.li
           whileHover={{ scale: 1.1, y: -3 }}
@@ -27,8 +27,10 @@ const LinkItem = ({
           transition={{ type: "spring", stiffness: 500, duration: 0.1 }}
           onClick={hideMenu}
           className={`${bgColor} ${
-            isScrolled ? "text-white hover:text-black" : "text-white hover:text-binance_green"
-          } duration-200 mx-1 hover:mr-5 ease-out  ${className}`}
+            isScrolled
+              ? "text-white hover:text-black"
+              : "text-white hover:text-binance_green"
+          } duration-200 mx-1 font-light hover:mr-5 ease-out  ${className}`}
         >
           {`${text}`}
         </motion.li>
