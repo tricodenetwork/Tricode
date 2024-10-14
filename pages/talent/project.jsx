@@ -98,19 +98,19 @@ const Project = () => {
         </div>
       </div>
 
-      <table className="flex flex-col text-left items-start gap-4 w-full  p-4 mt-8 bg-ash rounded">
-        <tr className="flex gap-8">
-          <th>Project name</th>
-          <td>AI platform</td>
-        </tr>
-        <tr className="flex gap-12 text-left">
-          <th>Description</th>
-          <td className="text-left">
+      <div className="flex flex-col text-left items-start justify-start gap-4 w-full  p-4 mt-8 bg-ash rounded">
+        <span className="flex gap-8">
+          <h3>Project name</h3>
+          <p>AI platform</p>
+        </span>
+        <span className="flex gap-12 text-left">
+          <h3>Description</h3>
+          <p className="text-left">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. at tempora
             corrupti molestias placeat aut veniam.
-          </td>
-        </tr>
-      </table>
+          </p>
+        </span>
+      </div>
 
       <DragDropContext onDragEnd={handleOnDragEnd}>
         <div className="grid grid-cols-1 md:grid-cols-3 items-start gap-4 w-full mt-8 rounded">
