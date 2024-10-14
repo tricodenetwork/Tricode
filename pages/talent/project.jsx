@@ -60,21 +60,22 @@ const initialTasks = {
 
 const Project = () => {
   const [tasks, setTasks] = useState(initialTasks);
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
 
   const handleOnDragEnd = (result) => {
     const { source, destination } = result;
     if (!destination) return;
 
-    const sourceColumn = tasks[source.droppableId];
-    const destColumn = tasks[destination.droppableId];
+    const sourceColumn = [...tasks[source.droppableId]];
+    const destColumn = [...tasks[destination.droppableId]];
     const [movedTask] = sourceColumn.splice(source.index, 1);
     destColumn.splice(destination.index, 0, movedTask);
 
-    setTasks({
-      ...tasks,
+    setTasks((prevTasks) => ({
+      ...prevTasks,
       [source.droppableId]: sourceColumn,
       [destination.droppableId]: destColumn,
-    });
+    }));
   };
 
   return (
@@ -147,17 +148,44 @@ const Project = () => {
                             <div className="text-gray-600 font-bold">
                               #{task.id}
                             </div>
-                            <div className="cursor-pointer">
-                              <Image
-                                alt="more"
-                                width={80}
-                                height={40}
-                                quality={100}
-                                className="w-[30px] h-[30px]"
-                                src="/assets/icons/more.svg"
-                              />
+
+                            <div>
+                              <div
+                                onClick={() =>
+                                  setIsPopupVisible(
+                                    isPopupVisible === task.id ? null : task.id
+                                  )
+                                }
+                                className="cursor-pointer"
+                              >
+                                <Image
+                                  alt="more"
+                                  width={80}
+                                  height={40}
+                                  quality={100}
+                                  className="w-[30px] h-[30px]"
+                                  src="/assets/icons/more.svg"
+                                />
+                              </div>
+                              {isPopupVisible === task.id && (
+                                <div className="flex flex-col bg-white absolute top-[12rem] ml-[-7rem] mt-3 z-99 w-[147px] h-[6rem] shadow-xl rounded-md">
+                                  <a
+                                    className="hover:bg-primary hover:text-white border-b p-3 rounded-t-md"
+                                    href="#"
+                                  >
+                                    Move Card
+                                  </a>
+                                  <a
+                                    className="hover:bg-primary hover:text-white p-3 rounded-b-md"
+                                    href="#"
+                                  >
+                                    Add comment
+                                  </a>
+                                </div>
+                              )}
                             </div>
                           </div>
+
                           <h4 className="text-xl font-semibold">
                             {task.title}
                           </h4>
