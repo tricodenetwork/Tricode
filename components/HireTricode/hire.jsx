@@ -12,19 +12,19 @@ export default function HireTricode({ mobile }) {
   return (
     <>
       <section
-        className='py-5 w-full flex flex-row-reverse  relative lg:py-[72px] lg:px-[80px]  overflow-hidden justify-between items-center'
+        className='py-5 w-full px-2  flex flex-col gap-8 lg:gap-0 lg:flex-row-reverse  relative lg:py-[72px] lg:px-[80px]  overflow-hidden justify-between items-center'
         id='intro'
       >
         <div className='flex-col justify-start items-center lg:items-start gap-5 inline-flex'>
           <h4
             style={font.style}
-            className='text-app_black text-[56px] font-bold tracking-wide'
+            className='text-app_black text-3xl lg:text-[56px] font-bold tracking-wide'
           >
             Hire Tricode
           </h4>
           <p
             style={font.style}
-            className='text-[#475569] text-xs lg:text-lg text-center lg:text-left leading-6 tracking-tight'
+            className='text-[#475569] text-xs lg:text-lg whitespace-nowrp text-center lg:text-left leading-6 tracking-tight'
           >
             Get a partner who understands the dynamic world of technology and
             innovation. 
@@ -50,7 +50,7 @@ export default function HireTricode({ mobile }) {
             />
           </Link>
         </div>
-        <div className=' w-[70vw]  h-[209px] lg:w-[412px] sm:h-[400px]  lg:h-[412px] relative'>
+        <div className=' w-[70vw]  h-[280px] lg:w-[412px] sm:h-[400px]  lg:h-[412px] relative'>
           <Image
             fill
             className='object-cover'
@@ -59,10 +59,10 @@ export default function HireTricode({ mobile }) {
           />
         </div>
       </section>
-      <section className='p-[80px] flex flex-col gap-8'>
+      <section className='lg:p-[80px] px-4 py-[40px] flex flex-col gap-8'>
         <h4
           style={font.style}
-          className='text-app_black text-[56px] w-full text-left font-bold tracking-wide'
+          className='text-app_black text-3xl lg:text-[56px] w-full text-left font-bold tracking-wide'
         >
           Improve workflow
         </h4>
@@ -74,7 +74,7 @@ export default function HireTricode({ mobile }) {
                 style={font.style}
                 className={`flex-1 ${
                   index == 0 && "bg-[#F1F9F1]"
-                } font-medium text-base border flex items-center justify-center border-[#BEF0AD] h-[48px]`}
+                } font-medium  text-sm lg:text-base border flex items-center justify-center border-[#BEF0AD] h-[48px]`}
               >
                 {item}
               </p>

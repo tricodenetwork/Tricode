@@ -59,7 +59,7 @@ const Home = () => {
 
   return (
     <section
-      className='h-[100vh]  bg-appGreen  flex items-end pb-[5vh] justify-center relative overflow-hidden'
+      className='h-[100vh]  bg-appGreen   flex items-end pb-[7vh] lg:pb-[5vh] justify-center relative overflow-hidden'
       id='hero'
     >
       {/* <div className='w-full h-full -z-20 absolute top-0 bottom-0'>
@@ -76,52 +76,93 @@ const Home = () => {
           alt='background'
         />
       </div> */}
-      <div className='flex flex-col  lg:flex-row w-[93vw] h-[70vh] lg:h-max   justify-between items-center'>
-        <div className='flex flex-col  h-[35%] relative  items-center lg:items-start w-max'>
-          <h4>
-            <span className={"semiBold text-[80px] leading-[81px] text-white"}>
+      <div className='flex flex-col lg:flex-row w-full lg:w-[93vw] h-[80vh] lg:h-max  justify-around   lg:justify-between items-center'>
+        <div className='flex flex-col   lg:h-[35%] relative  items-center lg:items-start w-max'>
+          <h4 className='flex-col flex items-center lg:hidden'>
+            <span className='flex gap-2'>
+              <span
+                className={
+                  "semiBold text-3xl lg:text-[80px] lg:leading-[81px] leading-normal text-white"
+                }
+              >
+                Collaborate{" "}
+              </span>
+              <span className='text-app_light_green semiBold  text-3xl lg:text-[80px] lg:leading-[81px] leading-normal '>
+                Globally
+              </span>
+            </span>
+            <span className='flex gap-2'>
+              <span
+                className={
+                  "semiBold text-3xl lg:text-[80px] lg:leading-[81px] leading-normal text-white"
+                }
+              >
+                with{" "}
+              </span>
+
+              <span
+                className={
+                  "semiBold text-3xl lg:text-[80px] lg:leading-[81px] leading-normal text-white"
+                }
+              >
+                Tricode
+              </span>
+            </span>
+          </h4>
+          <h4 className='hidden lg:flex flex-col'>
+            <span
+              className={
+                "semiBold text-3xl lg:text-[80px] lg:leading-[81px] leading-normal text-white"
+              }
+            >
               Collaborate
             </span>
             <p>
-              <span className='text-app_light_green semiBold  text-[80px] leading-[81px] '>
+              <span className='text-app_light_green semiBold  text-3xl lg:text-[80px] lg:leading-[81px] leading-normal '>
                 Globally{" "}
               </span>
               <span
-                className={"semiBold text-[80px] leading-[81px] text-white"}
+                className={
+                  "semiBold text-3xl lg:text-[80px] lg:leading-[81px] leading-normal text-white"
+                }
               >
                 with
               </span>
             </p>
 
-            <span className={"semiBold text-[80px] leading-[81px] text-white"}>
+            <span
+              className={
+                "semiBold text-3xl lg:text-[80px] lg:leading-[81px] leading-normal text-white"
+              }
+            >
               Tricode
             </span>
           </h4>
           <p
             style={poppins.style}
-            className='font-light max-w-[421px] text-white text-sm lg:text-lg  leading-normal '
+            className='font-light w-[80%] max-w-[421px] mt-4 text-center text-white text-sm lg:text-lg  leading-normal '
           >
             Join over 10,000 businesses using Tricode Pro for enhanced remote
             collaboration and see a 45% increase in productivity.
           </p>
           <div
-            className={`flex justify-around lg:justify-start w-full mt-[4vh] self-center  absolute lg:relative bottom-0`}
+            className={`flex justify-center gap-4 lg:justify-start w-full mt-[4vh] self-center  relative bottom-0`}
           >
             <Link
               href={"/auth/register"}
-              className=' semiBold lg:w-[38%] flex justify-center w-[40%] mr-[22px] text-sm lg:text-base lg:Bold  hover:scale-110 transition ease-linear duration-150 shadow-sm shadow-black  py-[1.5vh] rounded-lg bg-app_light_green text-white h-[54px]'
+              className=' semiBold lg:w-[38%] flex justify-center w-[30%] mr-[16px] lg:mr-[22px] text-xs lg:text-base lg:Bold  hover:scale-110 transition ease-linear duration-150 shadow-sm shadow-black  py-[1.5vh] rounded-lg bg-app_light_green text-white h-[54px]'
             >
               <button>Find Talent</button>
             </Link>
             <Link
               href={"/auth/register"}
-              className=' semiBold lg:w-[38%] flex justify-center w-[40%] text-sm lg:text-base lg:Bold  hover:scale-110 transition ease-linear duration-150 shadow-s shadow-binance_green  py-[1.5vh] rounded-lg bg-white text-app_light_green h-[54px]'
+              className=' semiBold lg:w-[38%] flex justify-center w-[30%] text-xs lg:text-base lg:Bold  hover:scale-110 transition ease-linear duration-150 shadow-s shadow-binance_green  py-[1.5vh] rounded-lg bg-white text-app_light_green h-[54px]'
             >
               <button>How It Works</button>
             </Link>
           </div>
         </div>
-        <div className='w-full lg:w-[633px] relative h-[50%] lg:h-[600px]'>
+        <div className='w-[300px] lg:w-[633px]  relative h-[50%] lg:h-[600px]'>
           <Image
             fill
             className=''

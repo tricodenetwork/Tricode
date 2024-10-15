@@ -6,13 +6,13 @@ export default function JoinTricode({ mobile }) {
   const { font } = useFonts();
   return (
     <section
-      className='py-5 w-[83%]  mx-auto flex flex-row-reverse  relative lg:py-[72px]  overflow-hidden justify-between items-center'
+      className='py-5 w-[83%]  mt-6 lg:mt-0 mx-auto flex flex-col lg:flex-row-reverse  relative lg:py-[72px]  overflow-hidden justify-between items-center'
       id='join'
     >
       <div className='flex-col justify-start items-center lg:items-start gap-5 inline-flex'>
         <h4
           style={font.style}
-          className='text-app_black text-[56px] font-bold tracking-wide'
+          className='text-app_black text-3xl lg:text-[56px] leading-normal font-bold tracking-wide'
         >
           Join Tricode
         </h4>
@@ -30,7 +30,10 @@ export default function JoinTricode({ mobile }) {
           href={"/"}
           className='flex hover:-translate-x-2 duration-150 gap-4 items-center'
         >
-          <p style={font.style} className='text-[#2563EB]  text-sm font-medium'>
+          <p
+            style={font.style}
+            className='text-[#2563EB] text-xs  lg:text-sm font-medium'
+          >
             See how it helped others
           </p>
           <Image
