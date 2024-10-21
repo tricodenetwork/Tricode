@@ -68,7 +68,7 @@ export default function Card() {
             />
             <div className='ml-[16px] lg:ml-[25px]'>
               <div className='text-black semiBold  mb-[8px] lg:mb-[10px] text-base md:text-xl'>
-                {info.tittle}
+                {info.title}
               </div>
               <div className='text-slate-600 text-xs md:text-sm lg:w-[93%]'>
                 {info.descr}

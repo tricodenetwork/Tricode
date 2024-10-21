@@ -1,6 +1,7 @@
 import { Roboto_Flex } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 const font = Roboto_Flex({
   subsets: ["cyrillic-ext", "latin"],
@@ -8,7 +9,14 @@ const font = Roboto_Flex({
 });
 
 const data = ["Connect", "Collaborate", "Create"];
+const active = [0, 1, 2];
+const activeInfo = [
+  "Egestas fringilla aliquam leo, habitasse arcu varius lorem elit. Neque pellentesque donec et tellus ac varius tortor, bibendum. Nulla felis ac turpis at amet. Purus malesuada placerat arcu at enim elit in accumsan.",
+  "Egestas fringilla aliquam leo, habitasse arcu varius lorem elit. Neque pellentesque donec et tellus ac varius tortor, bibendum. Nulla felis ac turpis at amet. Purus malesuada placerat arcu at enim elit in accumsan.",
+  "Egestas fringilla aliquam leo, habitasse arcu varius lorem elit. Neque pellentesque donec et tellus ac varius tortor, bibendum. Nulla felis ac turpis at amet. Purus malesuada placerat arcu at enim elit in accumsan.",
+];
 export default function HireTricode({ mobile }) {
+  const [active, setActive] = useState(0);
   return (
     <>
       <section
@@ -69,15 +77,16 @@ export default function HireTricode({ mobile }) {
         <div className='flex'>
           {data.map((item, index) => {
             return (
-              <p
+              <button
+                onClick={() => setActive(index)}
                 key={item}
                 style={font.style}
                 className={`flex-1 ${
-                  index == 0 && "bg-[#F1F9F1]"
-                } font-medium  text-sm lg:text-base border flex items-center justify-center border-[#BEF0AD] h-[48px]`}
+                  index == active && "bg-[#F1F9F1]"
+                } font-medium  cursor-pointer text-sm lg:text-base border flex items-center justify-center border-[#BEF0AD] h-[48px]`}
               >
                 {item}
-              </p>
+              </button>
             );
           })}
         </div>
@@ -85,10 +94,7 @@ export default function HireTricode({ mobile }) {
           style={font.style}
           className='text-[#475569] text-xs lg:text-lg text-center lg:text-left leading-6 tracking-tight'
         >
-          Egestas fringilla aliquam leo, habitasse arcu varius lorem elit. Neque
-          pellentesque donec et tellus ac varius tortor, bibendum. Nulla felis
-          ac turpis at amet. Purus malesuada placerat arcu at enim elit in
-          accumsan.
+          {activeInfo[active]}
         </p>
         <Link
           href={"/"}

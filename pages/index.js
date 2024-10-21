@@ -11,6 +11,7 @@ import Footer from "@/components/Footer/index";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
 import Connect from "@/components/HireTricode/connect";
+import Platform from "@/components/platform/Platform";
 
 export default function Home() {
   const [screenWidth, setScreenWidth] = useState(0);
@@ -47,8 +48,9 @@ export default function Home() {
       <HireTricode mobile={mobile} />
       <WhyTricode />
       <JoinTricode mobile={mobile} />
-      <Careers />
+      {/* <Careers /> */}
       <OurServices />
+      <Platform />
       <OurNewsletter />
       <Footer />
       {/* </main> */}

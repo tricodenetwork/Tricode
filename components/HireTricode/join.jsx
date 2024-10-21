@@ -1,6 +1,7 @@
 import useFonts from "@/hooks/useFonts";
 import Image from "next/image";
 import Link from "next/link";
+import BlueLink from "../BlueLink";
 
 export default function JoinTricode({ mobile }) {
   const { font } = useFonts();
@@ -26,23 +27,7 @@ export default function JoinTricode({ mobile }) {
           <br />
           massa tellus imperdiet aenean nulla id.
         </p>
-        <Link
-          href={"/"}
-          className='flex hover:-translate-x-2 duration-150 gap-4 items-center'
-        >
-          <p
-            style={font.style}
-            className='text-[#2563EB] text-xs  lg:text-sm font-medium'
-          >
-            See how it helped others
-          </p>
-          <Image
-            src={"/assets/icons/right_arr_blue.svg"}
-            width={24}
-            height={24}
-            alt='arr'
-          />
-        </Link>
+        <BlueLink href={"/"} text={"See how it helped others"} />
       </div>
       <div className=' w-[70vw]  h-[209px] lg:w-[600px] sm:h-[400px]  lg:h-[464px] relative'>
         <Image

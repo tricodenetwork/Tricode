@@ -1,32 +1,39 @@
 import { Inter } from "next/font/google";
 import Card from "./card";
 import OurClients from "./OurClients";
+import useFonts from "@/hooks/useFonts";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function OurServices({ mobile }) {
+  const { font } = useFonts();
+
   return (
     <section
-      className=' lg:px-8 overflow-hidden py-5 mt-12 lg:mx-auto w-full justify-center items-center'
+      className=' flex flex-col relative gap-[5%] sm:flex-row h-screen  overflow-hidden  lg:px-8 py-5 my-12 lg:mx-auto w-full justify-center items-center'
       id='services'
     >
-      <div className='text-center px-[5vw] mx-auto w-full justify-center items-center'>
-        <hr className='w-[69px] h-[5px] mx-auto my-5 text-center bg-binance_green justify-center items-center' />
-        <span
-          style={inter.style}
-          className='text-gray-900 text-2xl md:text-[35px] font-normal leading-[55px]'
+      <div className='bg-binance_green absolute sm:hidden flex self-center rounded-full w-[550px] h-[550px] -z-50' />
+
+      <div className='px-[5vw]  sm:w-1/2 flex gap-2 flex-col justify-center'>
+        <h6
+          style={font.style}
+          className='text-white sm:text-app_black text-center sm:text-left text-2xl lg:text-[56px] leading-normal font-extrabold '
         >
-          Our{" "}
-        </span>
-        <span
-          style={inter.style}
-          className='text-gray-900 text-2xl md:text-[35px] font-bold leading-[55px]'
+          All the cool features
+        </h6>
+        <p
+          style={font.style}
+          className='text-center sm:text-left text-sm font-light sm:text-[20px] text-white sm:text-app_black leading-none'
         >
-          Services
-        </span>
+          Mauris consequat, cursus pharetra et, habitasse rhoncus quis odio ac.
+          In et dolor eu donec maecenas nulla. Cum sed orci, sit pellentesque
+          quisque feugiat cras ullamcorper. Ultrices in amet, ullamcorper non
+          viverra a, neque orci.
+        </p>
       </div>
       <Card />
-      <OurClients />
+      {/* <OurClients /> */}
     </section>
   );
 }
