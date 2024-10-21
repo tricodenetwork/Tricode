@@ -1,9 +1,6 @@
 import { Inter } from "next/font/google";
 import Card from "./card";
-import OurClients from "./OurClients";
 import useFonts from "@/hooks/useFonts";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export default function OurServices({ mobile }) {
   const { font } = useFonts();

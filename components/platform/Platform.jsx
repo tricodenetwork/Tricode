@@ -5,7 +5,6 @@ import Image from "next/image";
 import BlueLink from "../BlueLink";
 import Card from "./card";
 
-const inter = Inter({ subsets: ["latin"] });
 const items = [
   "Est et in pharetra magna adipiscing ornare aliquam.",
   "Tellus arcu sed consequat ac velit ut eu blandit.",

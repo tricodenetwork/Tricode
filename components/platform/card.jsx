@@ -1,9 +1,7 @@
 import { motion, useAnimation } from "framer-motion";
-import Image from "next/image";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { platform } from "../../Data/data";
-import { fontGrid } from "@mui/material/styles/cssUtils";
 
 const IndividualCard = ({ info, index, font }) => {
   // Use a ref for each individual card item
