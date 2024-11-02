@@ -27,10 +27,12 @@ export default function WhyTricode({ mobile }) {
             style={font.style}
             className='text-app_black mx-auto my-6 text-xs lg:text-lg text-center w-full lg:w-[65%] leading-6 tracking-tight'
           >
-            Egestas fringilla aliquam leo, habitasse arcu varius lorem elit.
-            Neque pellentesque donec et tellus ac varius tortor, bibendum. Nulla
-            felis ac turpis at amet. Purus malesuada placerat arcu at enim elit
-            in accumsan.
+            TRICODE combines innovation and expertise to deliver solutions that
+            drive business growth. Our platform empowers teams with seamless
+            communication, scalable project management, and AI-driven insights,
+            helping businesses work smarter and achieve goals efficiently. With
+            TRICODE, challenges become opportunities, supported by cutting-edge
+            technology and a committed team.
           </p>
         </div>
         <div className='w-full flex flex-col'>
@@ -55,10 +57,10 @@ export default function WhyTricode({ mobile }) {
           style={font.style}
           className='text-white hidden lg:flex mx-auto lg:my-6 text-xs lg:text-lg text-center w-full lg:w-[75%] leading-6 tracking-tight'
         >
-          Egestas fringilla aliquam leo, habitasse arcu varius lorem elit. Neque
-          pellentesque donec et tellus ac varius tortor, bibendum. Nulla felis
-          ac turpis at amet. Purus malesuada placerat arcu at enim elit in
-          accumsan.
+          Discover skilled professionals who bring expertise and innovation to
+          your team. Whether you're scaling up or filling specialized roles, we
+          connect you with top talent to help achieve your goals and elevate
+          your business.
         </p>
         <button className='w-max gap-2  lg:gap-4  px-[4%] p-[2%]  bg-white flex items-center justify-center hover:translate-y-2 duration-150 rounded-[8px] shadow-[0px_0px_6px] shadow-black/10'>
           <p

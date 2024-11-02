@@ -23,9 +23,9 @@ export default function Connect({ mobile }) {
         style={font.style}
         className='text-app_black w-[80%] lg:w-[65%] mx-auto relative bottom-[4%]  text-center lg:text-[20px]'
       >
-        Sit elit feugiat turpis sed integer integer accumsan turpis. Sed
-        suspendisse nec lorem mauris. Pharetra, eu imperdiet ipsum ultrices
-        amet, dui sit suspendisse.
+        Access everything required to build, launch, and scale. Streamline your
+        workflow with powerful tools designed for both development and
+        production, all in one place.
       </p>
       <Marq />
     </section>

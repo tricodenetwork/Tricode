@@ -46,8 +46,8 @@ export default function Home() {
       <Hero />
       <Connect />
       <HireTricode mobile={mobile} />
-      <WhyTricode />
       <JoinTricode mobile={mobile} />
+      <WhyTricode />
       {/* <Careers /> */}
       <OurServices />
       <Platform />

@@ -1,11 +1,14 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
-import { useAnimation } from "framer-motion";
+import { useAnimation, motion } from "framer-motion";
 import useFunctions from "@/hooks/useFunctions";
 import Marq from "./techStack";
 import { Inter, Poppins } from "next/font/google";
 import Link from "next/link";
+import AnimatedHeroCard from "./AnimatedHeroCard";
+import SampleChat from "./SampleChat";
+import Avatars from "./Avatars";
 
 const inter = Inter({ subsets: ["latin"] });
 const poppins = Poppins({
@@ -140,7 +143,7 @@ const Home = () => {
           </h4>
           <p
             style={poppins.style}
-            className='font-light w-[80%] max-w-[421px] mt-4 text-center text-white text-sm lg:text-lg  leading-normal '
+            className='font-light w-[80%] max-w-[421px] mt-4 text-center sm:text-left text-white text-sm lg:text-lg  leading-normal '
           >
             Join over 10,000 businesses using Tricode Pro for enhanced remote
             collaboration and see a 45% increase in productivity.
@@ -162,15 +165,60 @@ const Home = () => {
             </Link>
           </div>
         </div>
-        <div className='w-[300px] lg:w-[633px]  relative h-[50%] lg:h-[600px]'>
+        <div className='w-[300px] lg:w-[633px] flex flex-col  relative h-[50%] lg:h-[600px]'>
+          <SampleChat />
+          <div
+            id='AniimatedCard'
+            className='absolute top-[6.3%] -right-[2%] sm:right-[3%] sm:w-[27.7%] w-[31%] h-[31%]'
+          >
+            <AnimatedHeroCard />
+          </div>
           <Image
             fill
-            className=''
+            className='object-contain'
+            quality={100}
+            priority
+            src='/assets/images/hero_image.png'
+            alt='hand'
+          />
+          {/* <Image
+            fill
+            className='object-contain bord'
             quality={100}
             priority
             src='/assets/images/heros.svg'
             alt='hand'
-          />
+          /> */}
+          <motion.div
+            initial={{ opacity: 0, y: -100 }}
+            animate={{ opacity: 1, y: 0 }}
+            className='flex flex-row-reverse mx-auto sm:mx-0 self-center  animate-pulse w-[85vw] sm:w-full justify-between absolute bottom-0'
+            transition={{
+              delay: 5,
+              type: "spring",
+              damping: 10,
+              stiffness: 300,
+            }}
+          >
+            <div className='w-[120px] h-[90px]  sm:w-[180px] relative sm:h-[130px]'>
+              <Image
+                src={"/assets/images/tcp.png"}
+                quality={100}
+                fill
+                className='bottom-[0%] right-[3%]'
+                alt='tricode_project'
+              />
+            </div>
+            <div className='w-[120px] h-[90px] sm:w-[226px] relative sm:h-[182px]'>
+              <Image
+                src={"/assets/profile_pics/avatars.png"}
+                fill
+                quality={100}
+                className='bottom-[0%] object-contain left-[0%]'
+                alt='avatars'
+              />
+            </div>
+          </motion.div>
         </div>
       </div>
       {/* <div className='absolute bottom-5 mx-3 w-full overflow-hidden'>

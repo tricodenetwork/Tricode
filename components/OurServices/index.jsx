@@ -23,10 +23,10 @@ export default function OurServices({ mobile }) {
           style={font.style}
           className='text-center sm:text-left text-sm font-light sm:text-[20px] text-white sm:text-app_black leading-none'
         >
-          Mauris consequat, cursus pharetra et, habitasse rhoncus quis odio ac.
-          In et dolor eu donec maecenas nulla. Cum sed orci, sit pellentesque
-          quisque feugiat cras ullamcorper. Ultrices in amet, ullamcorper non
-          viverra a, neque orci.
+          Explore Powerful Features Unlock a suite of advanced tools designed to
+          streamline your workflow and enhance productivity. From seamless
+          integration to intuitive design, our features empower you to work
+          smarter and achieve more with ease.
         </p>
       </div>
       <Card />

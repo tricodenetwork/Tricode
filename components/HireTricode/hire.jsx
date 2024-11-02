@@ -11,9 +11,9 @@ const font = Roboto_Flex({
 const data = ["Connect", "Collaborate", "Create"];
 const active = [0, 1, 2];
 const activeInfo = [
-  "Egestas fringilla aliquam leo, habitasse arcu varius lorem elit. Neque pellentesque donec et tellus ac varius tortor, bibendum. Nulla felis ac turpis at amet. Purus malesuada placerat arcu at enim elit in accumsan.",
-  "Egestas fringilla aliquam leo, habitasse arcu varius lorem elit. Neque pellentesque donec et tellus ac varius tortor, bibendum. Nulla felis ac turpis at amet. Purus malesuada placerat arcu at enim elit in accumsan.",
-  "Egestas fringilla aliquam leo, habitasse arcu varius lorem elit. Neque pellentesque donec et tellus ac varius tortor, bibendum. Nulla felis ac turpis at amet. Purus malesuada placerat arcu at enim elit in accumsan.",
+  "Seamlessly connect teams together from anywhere, fostering real-time communication and collaboration across all project stages.",
+  "Empower your technical teams to work cohesively, share ideas, and execute tasks with precision, using intuitive tools tailored for maximum efficiency.",
+  "Turn innovative ideas into reality by streamlining your processes, optimizing productivity, and enabling your team to build scalable, high-quality solutions.",
 ];
 export default function HireTricode({ mobile }) {
   const [active, setActive] = useState(0);
