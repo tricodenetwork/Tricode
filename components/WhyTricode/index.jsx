@@ -58,9 +58,9 @@ export default function WhyTricode({ mobile }) {
           className='text-white hidden lg:flex mx-auto lg:my-6 text-xs lg:text-lg text-center w-full lg:w-[75%] leading-6 tracking-tight'
         >
           Discover skilled professionals who bring expertise and innovation to
-          your team. Whether you're scaling up or filling specialized roles, we
-          connect you with top talent to help achieve your goals and elevate
-          your business.
+          your team. Whether you&apos;re scaling up or filling specialized
+          roles, we connect you with top talent to help achieve your goals and
+          elevate your business.
         </p>
         <button className='w-max gap-2  lg:gap-4  px-[4%] p-[2%]  bg-white flex items-center justify-center hover:translate-y-2 duration-150 rounded-[8px] shadow-[0px_0px_6px] shadow-black/10'>
           <p
