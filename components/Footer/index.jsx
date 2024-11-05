@@ -51,7 +51,7 @@ export default function Footer({ mobile }) {
             >
               Links
             </div>
-            <div className='flex flex-col md:w-max mt-3 lg:space-y-7 md:gap-4 text-white regular text-sm md:text-base leading-[37.81px]'>
+            <div className='flex flex-col md:w-max mt-3  md:gap-4 text-white regular text-sm md:text-base leading-[37.81px]'>
               <Link href={"/about"}>
                 <div className='regular hover:text-binance_green hover:scale-110 duration-150 hover:cursor-pointer'>{`<About Us />`}</div>
               </Link>

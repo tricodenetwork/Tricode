@@ -70,7 +70,7 @@ const IndividualCard = ({ info, index }) => {
 
 export default function Card() {
   return (
-    <section className='sm:w-1/2  w-[90%] scrollbar-hid relative sm:px-[5vw] justify-start sm:justify-center flex flex-row sm:flex-wrap overflow-x-scroll items-center'>
+    <section className='sm:w-[60%]  w-[90%] scrollbar-hid relative sm:px-[2vw] justify-start sm:justify-center flex flex-row sm:flex-wrap overflow-x-scroll items-center'>
       <div className='bg-binance_green absolute hidden sm:flex self-center rounded-full w-[550px] h-[550px] -z-50' />
       {OurServices.map((info, i) => {
         return <IndividualCard key={i.toString()} info={info} index={i} />;

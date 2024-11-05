@@ -10,7 +10,7 @@ export default function JoinTricode({ mobile }) {
       className='py-5 w-[83%]  mt-6 lg:mt-0 mx-auto flex flex-col lg:flex-row-reverse  relative lg:py-[72px]  overflow-hidden justify-between items-center'
       id='join'
     >
-      <div className='flex-col justify-start max-w-[43%] items-center lg:items-start gap-5 flex'>
+      <div className='flex-col justify-start sm:max-w-[43%] items-center lg:items-start gap-5 flex'>
         <h4
           style={font.style}
           className='text-app_black text-3xl lg:text-[56px] leading-normal font-bold tracking-wide'

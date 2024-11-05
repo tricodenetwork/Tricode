@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Navbar from "@/components/navbar_components/Navbar";
 import Hero from "@/components/Hero/hero";
 import HireTricode from "@/components/HireTricode/hire";
@@ -8,14 +8,23 @@ import WhyTricode from "@/components/WhyTricode/index";
 import OurServices from "@/components/OurServices/index";
 import OurNewsletter from "@/components/OurNewsletter/index";
 import Footer from "@/components/Footer/index";
+import TawkMessengerReact from "@tawk.to/tawk-messenger-react";
+
 import { useSession } from "next-auth/react";
 import Head from "next/head";
 import Connect from "@/components/HireTricode/connect";
 import Platform from "@/components/platform/Platform";
+import Testimonials from "@/components/Testimonials";
+import FAQs from "@/components/About/Faq/faqs";
 
 export default function Home() {
   const [screenWidth, setScreenWidth] = useState(0);
   const { data: session } = useSession();
+  const tawkMessengerRef = useRef();
+
+  const handleMinimize = () => {
+    tawkMessengerRef.current.minimize();
+  };
   // console.log("session:", session);
 
   useEffect(() => {
@@ -51,8 +60,15 @@ export default function Home() {
       {/* <Careers /> */}
       <OurServices />
       <Platform />
+      <Testimonials />
+      <FAQs />
       <OurNewsletter />
       <Footer />
+      <TawkMessengerReact
+        propertyId='668d0c9cc3fb85929e3d25df'
+        widgetId='1i2bfih3e'
+        ref={tawkMessengerRef}
+      />
       {/* </main> */}
     </>
   );

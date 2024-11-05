@@ -12,12 +12,12 @@ const Accordion = ({
   including,
 }) => {
   return (
-    <div className='flex w-[70vw] lg:max-w-[40vw] duration-300 flex-col text-black pt-2 my-2 justify-center'>
+    <div className='flex w-[90vw] lg:max-w-[80vw] duration-300 flex-col text-black pt-2 my-2 justify-center'>
       <button
         onClick={() => toggleAccordion(accordionId)}
-        className='bg-stone-100 w-full cursor-pointer flex flex-row  p-5 space-x-3 rounded-md justify-between items-center'
+        className='border-stone-300 border-t w-full cursor-pointer flex flex-row  p-5 space-x-3 rounded-md justify-between items-center'
       >
-        <p className={`text-[15px] md:text-[18.687px] font-bold`}>{question}</p>
+        <p className={`text-base md:text-[18.687px] `}>{question}</p>
         <div>
           {isOpen ? (
             <Image
