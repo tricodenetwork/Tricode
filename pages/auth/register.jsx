@@ -7,6 +7,8 @@ import InputLine from "@/components/InputLine";
 import RadioInput from "@/components/RadioInput";
 import { useState } from "react";
 import CountryCode from "@/components/CountryCode/Countries";
+import bcrypt from "bcryptjs";
+
 import ShowHidePassword, {
   ConfirmPassword,
 } from "@/components/ShowHidePassword";
@@ -53,10 +55,12 @@ const Index = () => {
 
   const handleSubmit = async () => {
     setIsLoading(true);
+    const hashedPassword = await bcrypt.hash(password, 10);
+
     try {
       await axios.post("/api/register", {
         fullName,
-        password,
+        password: hashedPassword,
         email,
         mobilePhone,
         role: selectedOption, // Assuming selectedOption represents "Company or Talent" field

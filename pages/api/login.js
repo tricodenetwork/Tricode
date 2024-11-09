@@ -22,12 +22,13 @@ export default async function handler(req, res) {
     if (!existingUser) {
       return res.status(400).json({ error: "User not found" });
     }
-    const hashedPassword = await bcrypt.hash(existingUser.password, 10);
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
+    // console.log("hashedPassword", hashedPassword);
 
     // Verify the password using bcrypt
     const passwordMatch = await bcrypt.compare(
       req.body.password,
-      hashedPassword
+      existingUser.password
     );
 
     if (!passwordMatch) {

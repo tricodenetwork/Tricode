@@ -31,6 +31,7 @@ export default function Home() {
     const handleResize = () => {
       setScreenWidth(window.innerWidth);
     };
+    handleMinimize();
 
     setScreenWidth(window.innerWidth);
     window.addEventListener("resize", handleResize);
