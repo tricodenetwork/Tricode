@@ -1,18 +1,15 @@
 import AppButton from "@/components/AppButton";
 import MenuLayout from "@/components/layouts/MenuLayout";
 import Loader from "@/components/Loader";
-import AddTalentsComponent from "@/components/projectComponents/AddTalentsComponent";
 import useDatabase from "@/hooks/useDatabase";
-import { TeamCard } from "@/pages/menu/project/[projectId]";
 import axios from "axios";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { Nunito } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import OutsideClickHandler from "react-outside-click-handler";
 import { useDispatch, useSelector } from "react-redux";
 const nunito = Nunito({
   subsets: ["latin"],

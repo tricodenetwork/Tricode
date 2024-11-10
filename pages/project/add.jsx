@@ -1,19 +1,16 @@
-import MenuLayout from "@/components/layouts/MenuLayout";
-import AddNew from "@/components/projectComponents/AddNew";
-import Image from "next/image";
-import { Nunito } from "next/font/google";
-import { useState } from "react";
-import { setDate } from "@/store/slice-reducers/reportSlice";
-import { useDispatch, useSelector } from "react-redux";
-import ReactDatePicker from "react-datepicker";
 import AppButton from "@/components/AppButton";
+import MenuLayout from "@/components/layouts/MenuLayout";
 import AddTalentsComponent from "@/components/projectComponents/AddTalentsComponent";
-import OutsideClickHandler from "react-outside-click-handler";
 import useDatabase from "@/hooks/useDatabase";
-import { AnimatePresence } from "framer-motion";
 import { TeamCard } from "@/pages/menu/project/[projectId]";
 import axios from "axios";
+import { AnimatePresence } from "framer-motion";
+import { Nunito } from "next/font/google";
+import Image from "next/image";
+import { useState } from "react";
 import toast from "react-hot-toast";
+import OutsideClickHandler from "react-outside-click-handler";
+import { useDispatch, useSelector } from "react-redux";
 const nunito = Nunito({
   subsets: ["latin"],
   weight: ["200", "300", "400", "500", "600"],
