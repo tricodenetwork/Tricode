@@ -7,9 +7,11 @@ import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 import clientPromise from "@/lib/mongodb";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { baseUrl } from "@/config/config";
-const useSecureCookies = process.env.NEXTAUTH_URL.startsWith("https://");
+
+const nextAuthUrl = process.env.NEXTAUTH_URL;
+const useSecureCookies = nextAuthUrl.startsWith("https://");
 const cookiePrefix = useSecureCookies ? "__Secure-" : "";
-const hostName = new URL(process.env.NEXTAUTH_URL).hostname;
+const hostName = new URL(nextAuthUrl).hostname;
 // add providers with NextAuth
 export default NextAuth({
   adapter: MongoDBAdapter(clientPromise),
