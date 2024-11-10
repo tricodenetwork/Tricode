@@ -1,27 +1,22 @@
-import MenuLayout from "@/components/layouts/MenuLayout";
-import ProjectTransactions from "@/components/projectComponents/projectTables/ProjectTransactions";
-import Link from "next/link";
-import { useEffect, useLayoutEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import ProjectDetails from "@/components/projectComponents/ProjectDetails";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
-import useDatabase from "@/hooks/useDatabase";
-import Image from "next/image";
-import AddTalentsComponent from "@/components/projectComponents/AddTalentsComponent";
-import OutsideClickHandler from "react-outside-click-handler";
 import SearchComponent from "@/components/editor/SearchComponent";
-import { Nunito, Nunito_Sans, Roboto } from "next/font/google";
+import MenuLayout from "@/components/layouts/MenuLayout";
+import Loader from "@/components/Loader";
+import Delete from "@/components/modals/Delete";
+import ModalComponent from "@/components/modals/ModalComponent";
+import AddTalentsComponent from "@/components/projectComponents/AddTalentsComponent";
 import Status from "@/components/Status";
 import TeamMembers from "@/components/TeamMembers";
-import Loader from "@/components/Loader";
-import { Montserrat } from "next/font/google";
-import AppButton from "@/components/AppButton";
 import { calculateTimeline } from "@/Data/functions";
-import ModalComponent from "@/components/modals/ModalComponent";
-import LogOut from "@/components/modals/LogOut";
-import Delete from "@/components/modals/Delete";
 import axios from "axios";
+import { AnimatePresence, motion } from "framer-motion";
+import { Montserrat, Nunito_Sans, Roboto } from "next/font/google";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
+import OutsideClickHandler from "react-outside-click-handler";
+import { useSelector } from "react-redux";
 
 // const nunito = Nunito({
 //   subsets: ["latin"],
@@ -40,27 +35,96 @@ const rob = Roboto({
   weight: ["100", "300", "400", "500", "700", "900"],
 });
 
+const TeamCard = ({ member, removeTalent, action = "View Profile" }) => {
+  return (
+    <div className='w-[25%]  flex  my-[3vh] flex-col items-center h-[270px] relative'>
+      <div className='flex  items-center mb-[1vh] justify-between mx-auto w-[80%]'>
+        <h6 className='medium mb-[.3vh] self-start  text-[16px] text-[#1b1b1b]'>
+          {member.dept}
+        </h6>
+        <button
+          onClick={() => removeTalent(member)}
+          className='rounded-full w-[22px] active:scale-90 bg-white text-binance_green duration-75 cursor-pointer border-binance_green border text-xs h-[22px] flex items-center justify-center hover:bg-binance_green hover:text-white medium'
+        >
+          ×
+        </button>
+      </div>
+
+      <div className='w-[90%] h-[140px]  flex flex-col  justify-center items-center rounded-[20px] shadow-[0px_4px_4px] shadow-black/25'>
+        <div className='w-[88px] relative mx-auto mt-4 self-center h-[88px]'>
+          <Image
+            src={member.image ?? "/assets/images/team.png"}
+            fill
+            alt='profile_pic'
+            className='object-cover rounded-full'
+          />
+        </div>
+        <p className='regular capitalize mt-2 text-sm text-[#1b1b1b] '>
+          {member.name.toLowerCase()}
+        </p>
+      </div>
+      <button className='w-[129px] mt-5 hover:bg-binance_green duration-300 hover:text-white medium text-[12px] self-center border border-binance_green text-binance_green h-[33px] rounded-3xl'>
+        {action}
+      </button>
+    </div>
+  );
+};
+
 const ProjectID = () => {
   // --------------------------------------------VARIABLES
   const [navto, setNav] = useState("milestone");
   const [addTalents, setAddTalents] = useState(false);
+  const { users } = useSelector((state) => state.users);
+  const { projects } = useSelector((state) => state.projects);
+
   const [del, setDelete] = useState(false);
   const [search, setSearch] = useState("");
   const router = useRouter();
   const { projectId } = router.query;
   const [isLoading, setIsLoading] = useState(false);
-  const { projects, allUsers } = useDatabase();
   const [project, setProject] = useState(null);
   const [options, ShowOptions] = useState(null);
 
   let teamMembers = [];
-
   //-----------------------------------------------------------FUNCTIONS
   const getProject = async () => {
     const res = await axios.post(`/api/get/project`, { id: projectId });
-    console.log("res", res);
     setProject(res.data);
-    // AddTeamMember(res.data.team);
+  };
+
+  const addToProject = async (talent) => {
+    setIsLoading(true);
+    if (project?.team.some((item) => item._id === talent._id)) {
+      alert("Already added ➕");
+      return project?.team;
+    }
+    const res = await axios.post(`/api/post/add-talent`, {
+      talent: talent,
+      id: projectId,
+    });
+    // console.log(res);
+    if (res.status == 200) {
+      getProject();
+      setAddTalents(false);
+
+      toast.success("Added");
+    }
+
+    setIsLoading(false);
+  };
+  const removeFromProject = async (talent) => {
+    setIsLoading(true);
+    const res = await axios.post(`/api/post/remove-talent`, {
+      talent: talent,
+      id: projectId,
+    });
+    // console.log(res);
+    if (res.status == 200) {
+      getProject();
+
+      toast.success("Removed");
+    }
+    setIsLoading(false);
   };
   const deleteMilestone = async () => {
     setIsLoading(true);
@@ -124,7 +188,7 @@ const ProjectID = () => {
       )}
       <div className='flex relative  items-center gap-[.4vw]'>
         <Link
-          href={`/pm/project/${projectId}`}
+          href={`/project/${projectId}`}
           className='text-grayText regular text-sm'
         >
           {project?.name ?? "Project Zero"}
@@ -368,6 +432,52 @@ const ProjectID = () => {
             );
           })}
       </div>
+      {/* Talents Section */}
+      <section className='w-full flex mt-[15vh] flex-col items-center'>
+        <div className='flex justify-between items-center w-[95%] mx-auto'>
+          <h4 className='semiBold text-2xl text-[#1b1b1b] '>Talents</h4>
+          <div className='flex items-center gap-[1vw]'>
+            <p className='text-binance_green medium text-sm'>Add Talents</p>
+            <button onClick={() => setAddTalents(true)}>
+              <Image
+                alt='add'
+                width={28}
+                height={28}
+                className='hover:scale-95 active:scale-100'
+                src={"/assets/icons/add.svg"}
+              />
+            </button>
+          </div>
+        </div>
+        <div className='w-[97%] relative justify-items-start flex flex-wrap mx-auto mt-[2vh] bg-white border py-[1vh] px-[1vw] border-[#efefef] min-h-[150px] rounded-[24px]  h-auto'>
+          <AnimatePresence mode='wait'>
+            {addTalents ? (
+              <OutsideClickHandler
+                display='contents'
+                onOutsideClick={() => {
+                  // setTimeout(() => setAddTalents(false), 5000);
+                  setAddTalents(false);
+                }}
+              >
+                <AddTalentsComponent
+                  addTalent={addToProject}
+                  talents={users?.filter(
+                    (item) => !teamMembers?.includes(item._id)
+                  )}
+                />
+              </OutsideClickHandler>
+            ) : null}
+          </AnimatePresence>
+          {project?.team?.map((item, i) => (
+            <TeamCard
+              key={i.toString()}
+              removeTalent={removeFromProject}
+              action='Asign Task'
+              member={item}
+            />
+          ))}
+        </div>
+      </section>
     </div>
   );
 };

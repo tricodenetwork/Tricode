@@ -1,23 +1,19 @@
-import MenuLayout from "@/components/layouts/MenuLayout";
-import AddNew from "@/components/projectComponents/AddNew";
-import Image from "next/image";
-import { Nunito } from "next/font/google";
-import { useEffect, useState } from "react";
-import { setDate } from "@/store/slice-reducers/reportSlice";
-import { useDispatch, useSelector } from "react-redux";
-import ReactDatePicker from "react-datepicker";
 import AppButton from "@/components/AppButton";
+import MenuLayout from "@/components/layouts/MenuLayout";
+import Loader from "@/components/Loader";
 import AddTalentsComponent from "@/components/projectComponents/AddTalentsComponent";
-import OutsideClickHandler from "react-outside-click-handler";
 import useDatabase from "@/hooks/useDatabase";
-import { AnimatePresence } from "framer-motion";
 import { TeamCard } from "@/pages/menu/project/[projectId]";
 import axios from "axios";
-import { useRouter } from "next/router";
-import { motion } from "framer-motion";
-import Loader from "@/components/Loader";
-import toast from "react-hot-toast";
+import { AnimatePresence, motion } from "framer-motion";
+import { Nunito } from "next/font/google";
+import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
+import OutsideClickHandler from "react-outside-click-handler";
+import { useDispatch, useSelector } from "react-redux";
 const nunito = Nunito({
   subsets: ["latin"],
   weight: ["200", "300", "400", "500", "600"],
@@ -31,7 +27,6 @@ const Project = () => {
   const [title, setTitle] = useState(milestone?.name ?? null);
   const [startDate, setStartDate] = useState(milestone.startDate ?? null);
   const [endDate, setEndDate] = useState(milestone.endDate ?? null);
-  const [addTalents, setAddTalents] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [project, setProject] = useState(null);
   const { allUsers } = useDatabase();
@@ -51,40 +46,7 @@ const Project = () => {
     setProject(res.data);
     // AddTeamMember(res.data.team);
   };
-  const addToProject = async (talent) => {
-    setIsLoading(true);
-    if (project?.team.some((item) => item._id === talent._id)) {
-      alert("Already added ➕");
-      return project?.team;
-    }
-    const res = await axios.post(`/api/post/add-talent`, {
-      talent: talent,
-      id: projectId,
-    });
-    // console.log(res);
-    if (res.status == 200) {
-      getProject();
-      setAddTalents(false);
 
-      toast.success("Added");
-    }
-
-    setIsLoading(false);
-  };
-  const removeFromProject = async (talent) => {
-    setIsLoading(true);
-    const res = await axios.post(`/api/post/remove-talent`, {
-      talent: talent,
-      id: projectId,
-    });
-    // console.log(res);
-    if (res.status == 200) {
-      getProject();
-
-      toast.success("Removed");
-    }
-    setIsLoading(false);
-  };
   const addMilestone = async () => {
     // setIsLoading(!true);
     const data = {
@@ -338,52 +300,7 @@ const Project = () => {
           {/* {description} */}
         </textarea>
       </div>
-      {/* Talents Section */}
-      <section className='w-full flex mt-[1.5vh] flex-col items-center'>
-        <div className='flex justify-between items-center w-[95%] mx-auto'>
-          <h4 className='semiBold text-2xl text-[#1b1b1b] '>Talents</h4>
-          <div className='flex items-center gap-[1vw]'>
-            <p className='text-binance_green medium text-sm'>Add Talents</p>
-            <button onClick={() => setAddTalents(true)}>
-              <Image
-                alt='add'
-                width={28}
-                height={28}
-                className='hover:scale-95 active:scale-100'
-                src={"/assets/icons/add.svg"}
-              />
-            </button>
-          </div>
-        </div>
-        <div className='w-[97%] relative justify-items-start flex flex-wrap mx-auto mt-[2vh] bg-white border py-[1vh] px-[1vw] border-[#efefef] min-h-[150px] rounded-[24px]  h-auto'>
-          <AnimatePresence mode='wait'>
-            {addTalents ? (
-              <OutsideClickHandler
-                display='contents'
-                onOutsideClick={() => {
-                  // setTimeout(() => setAddTalents(false), 5000);
-                  setAddTalents(false);
-                }}
-              >
-                <AddTalentsComponent
-                  addTalent={addToProject}
-                  talents={talents?.filter(
-                    (item) => !teamMembers?.includes(item._id)
-                  )}
-                />
-              </OutsideClickHandler>
-            ) : null}
-          </AnimatePresence>
-          {project?.team?.map((item, i) => (
-            <TeamCard
-              key={i.toString()}
-              removeTalent={removeFromProject}
-              action='Asign Task'
-              member={item}
-            />
-          ))}
-        </div>
-      </section>
+
       <div className='mt-[10vh] flex items-center justify-center  gap-[3vw]'>
         <AppButton
           action={() => (milestone?.name ? deleteMilestone() : router.back())}

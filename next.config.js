@@ -47,6 +47,12 @@ const nextConfig = {
         port: "",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "avatars.slack-edge.com",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
   rewrites: async () => {

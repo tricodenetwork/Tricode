@@ -1,25 +1,22 @@
 import MenuLayout from "@/components/layouts/MenuLayout";
+import FileUpload from "@/components/modals/FileUpload";
+import TopComponent from "@/components/TopComponent";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { useSession } from "next-auth/react";
-import useDatabase from "@/hooks/useDatabase";
 import { useRouter } from "next/router";
-import FileUpload from "@/components/modals/FileUpload";
+import { useState } from "react";
 import { CircleLoader } from "react-spinners";
-import TopComponent from "@/components/TopComponent";
 
 import { topComponents } from "@/Data/data";
-import { PROJECTS, USER, USERS } from "@/lib/constants/queries";
-import fetchGraphQLData from "@/lib/utils/fetchGraphql";
+import { useSelector } from "react-redux";
 
 const Dashboard = () => {
   // --------------------------------------------VARIABLES
   const currentDate = new Date();
-  const { data: session } = useSession();
-  const { projects } = useDatabase();
-  const [user, setUser] = useState([]);
+  const { projects } = useSelector((state) => state.projects);
+
+  const { user } = useSelector((state) => state.user);
+
   const [project, setProjects] = useState([]);
   const [tasks, setTasks] = useState([]);
   const [talent, setTalent] = useState([]);
@@ -51,47 +48,6 @@ const Dashboard = () => {
   }
 
   //------------------------------------------------------------------USE EFFECTS
-  useEffect(() => {
-    if (session?.user?.email) {
-      // Function to get tasks for the talent
-      const fetchData = async () => {
-        let data = await fetchGraphQLData(
-          USER,
-          { email: session.user.email },
-          "https://tricode.pro/api/graphql"
-        );
-
-        let data2 = await fetchGraphQLData(PROJECTS, {
-          network: "https://tricode.pro/api/graphql",
-        });
-        let data3 = await fetchGraphQLData(USERS, {
-          network: "https://tricode.pro/api/graphql",
-        });
-        let data4 = await fetchGraphQLData(
-          USER,
-          { email: session.user.email },
-          "https://tricode.pro/api/graphql"
-        );
-        console.log("data", data);
-
-        if (data) {
-          setUser(data.user);
-        }
-      };
-
-      fetchData();
-      if (user) {
-        console.log(user);
-        if (
-          !(user?.role === "talent" || user?.role === "company" || user?.email)
-        ) {
-          router.push("/role");
-        } else {
-          return;
-        }
-      }
-    }
-  }, [session]);
 
   if (!user) {
     return (
@@ -107,15 +63,15 @@ const Dashboard = () => {
   }
 
   return (
-    <div className='min-h-max  h-max   p-5  lg:py-10 lg:px-[2vw] w-full justify-between items-end   flex'>
+    <div className='min-h-screen  h-max   p-5  lg:py-10 lg:px-[2vw] w-full justify-between items-start   flex'>
       {upload && (
         <div className='bg-black bg-opacity-80 w-full z-50  flex justify-center items-center  h-full fixed top-0 left-0 '>
           <FileUpload files={files} setFiles={setFiles} />
         </div>
       )}
-      <div className='flex  h-full w-[70%]   xxl:w-[70%] flex-col justify-between'>
-        <div className='mb-[40px]'>
-          <p className='text-transparent text-[20px] tracking-[0] leading-[normal]'>
+      <div className='flex  h-full w-[70%]    xxl:w-[70%] flex-col justify-between'>
+        <div className='mb-[40px] '>
+          <p className='text-transparent text-[20px]  tracking-[0] leading-normal'>
             <span className='text-[#6D717A] medium text-lg leading-none'>
               Welcome Back,{" "}
             </span>
@@ -126,7 +82,7 @@ const Dashboard = () => {
             {/* <span className='text-[#666666]'>👋🏾</span> */}
           </p>
         </div>
-        <div className='flex items-center mb-[65px] gap-[2vw]  w-[100%]'>
+        <div className='flex items-center  mb-[65px] gap-[2vw]  w-[100%]'>
           {topComponents.map((items, index) => {
             return <TopComponent key={index.toString()} item={items} />;
           })}
@@ -152,7 +108,7 @@ const Dashboard = () => {
                 </tr>
               </thead>
               <tbody className=''>
-                {projects?.slice(0, 4).map((v, k) => (
+                {projects?.slice(0, 8).map((v, k) => (
                   <tr
                     onClick={() => router.push(`/menu/project/${v._id}`)}
                     key={k.toString()}
@@ -191,7 +147,7 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-      <div className='relative  flex flex-col items-center bottom-[33.333vh] w-[90vw] lg:w-[27%] h-max pt-[100px] pb-[5vh] px-[1%] rounded-[32px] border-2 border-solid border-[#efeeee]'>
+      <div className='relative  flex flex-col items-center top-[70px] w-[90vw] lg:w-[27%] h-max pt-[100px] pb-[5vh] px-[1%] rounded-[32px] border-2 border-solid border-[#efeeee]'>
         {/* Heading / Sub Heading */}
         <div className='medium text-[#2b2b2] text-black text-xl tracking-[0] leading-[normal]'>
           Profile Information
@@ -213,7 +169,7 @@ const Dashboard = () => {
           <div className='flex items-center '>
             <p className='min-w-[50px] mr-2'>Role:</p>
             <p className='w-[80%] semiBold capitalize break-all xxl:break-normal  text-xs text-appOrange   pl-[1.5%] regular text-start'>
-              {"Project Manager"}
+              {user?.role ?? "Project Manager"}
             </p>
           </div>
         </div>

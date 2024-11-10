@@ -1,8 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import UserReducer from "./slice-reducers/UserReducer";
+import UserReducer from "./slice-reducers/userSlice";
 import uploadReducer from "./slice-reducers/uploadSlice";
 import reportReducer from "./slice-reducers/reportSlice";
 import usersReduceer from "./slice-reducers/usersSlice";
+import projectsReduceer from "./slice-reducers/projectsSlice";
 
 // import storage from "redux-persist/lib/storage";
 // import { persistReducer, persistStore } from "redux-persist";
@@ -22,6 +23,7 @@ const allReducers = combineReducers({
   upload: uploadReducer,
   report: reportReducer,
   users: usersReduceer,
+  projects: projectsReduceer,
 });
 
 // const persistedReducer = persistReducer(persistConfig, allReducers);

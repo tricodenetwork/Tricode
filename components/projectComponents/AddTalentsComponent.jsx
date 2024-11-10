@@ -36,9 +36,9 @@ const AddTalentsComponent = ({
             >
               <div className='w-[32px]  rounded-full  relative top-[2px] h-[32px]'>
                 <Image
-                  src={items.image ?? "/assets/images/team.png "}
+                  src={items?.image ?? "/assets/images/team.png "}
                   fill
-                  alt='profile_pic'
+                  alt='pic'
                   className='object-cover rounded-full relative '
                 />
               </div>

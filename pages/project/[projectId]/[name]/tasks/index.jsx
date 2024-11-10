@@ -1,27 +1,18 @@
-import MenuLayout from "@/components/layouts/MenuLayout";
-import ProjectTransactions from "@/components/projectComponents/projectTables/ProjectTransactions";
-import Link from "next/link";
-import { useEffect, useLayoutEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import ProjectDetails from "@/components/projectComponents/ProjectDetails";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
-import useDatabase from "@/hooks/useDatabase";
-import Image from "next/image";
-import AddTalentsComponent from "@/components/projectComponents/AddTalentsComponent";
-import OutsideClickHandler from "react-outside-click-handler";
 import SearchComponent from "@/components/editor/SearchComponent";
-import { Nunito, Nunito_Sans, Roboto } from "next/font/google";
+import MenuLayout from "@/components/layouts/MenuLayout";
+import Loader from "@/components/Loader";
 import Status from "@/components/Status";
 import TeamMembers from "@/components/TeamMembers";
-import Loader from "@/components/Loader";
-import { Montserrat } from "next/font/google";
-import AppButton from "@/components/AppButton";
 import { calculateTimeline } from "@/Data/functions";
-import ModalComponent from "@/components/modals/ModalComponent";
-import LogOut from "@/components/modals/LogOut";
-import Delete from "@/components/modals/Delete";
+import useDatabase from "@/hooks/useDatabase";
 import axios from "axios";
+import { AnimatePresence, motion } from "framer-motion";
+import { Montserrat, Nunito_Sans, Roboto } from "next/font/google";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import OutsideClickHandler from "react-outside-click-handler";
 
 // const nunito = Nunito({
 //   subsets: ["latin"],

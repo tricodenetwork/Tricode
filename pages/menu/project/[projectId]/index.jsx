@@ -1,20 +1,18 @@
 import MenuLayout from "@/components/layouts/MenuLayout";
-import ProjectTransactions from "@/components/projectComponents/projectTables/ProjectTransactions";
-import Link from "next/link";
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import ProjectDetails from "@/components/projectComponents/ProjectDetails";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
-import useDatabase from "@/hooks/useDatabase";
-import Image from "next/image";
 import AddTalentsComponent from "@/components/projectComponents/AddTalentsComponent";
+import ProjectDetails from "@/components/projectComponents/ProjectDetails";
+import ProjectTransactions from "@/components/projectComponents/projectTables/ProjectTransactions";
+import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useState } from "react";
 import OutsideClickHandler from "react-outside-click-handler";
 
 export const TeamCard = ({ member, removeTalent, action = "View Profile" }) => {
   return (
     <div className='w-[25%]  flex  my-[3vh] flex-col items-center h-[270px] relative'>
-      <div className='flex items-center justify-between mx-auto w-[80%]'>
+      <div className='flex  items-center mb-[1vh] justify-between mx-auto w-[80%]'>
         <h6 className='medium mb-[.3vh] self-start  text-[16px] text-[#1b1b1b]'>
           {member.dept}
         </h6>
@@ -26,7 +24,7 @@ export const TeamCard = ({ member, removeTalent, action = "View Profile" }) => {
         </button>
       </div>
 
-      <div className='w-[90%] h-[140px] bg-binance_green/30 flex flex-col  justify-center items-center rounded-[20px] shadow-[0px_4px_4px] shadow-black/25'>
+      <div className='w-[90%] h-[140px]  flex flex-col  justify-center items-center rounded-[20px] shadow-[0px_4px_4px] shadow-black/25'>
         <div className='w-[88px] relative mx-auto mt-4 self-center h-[88px]'>
           <Image
             src={member.image ?? "/assets/images/team.png"}
@@ -52,13 +50,15 @@ const ProjectID = () => {
   const [addTalents, setAddTalents] = useState(false);
   const router = useRouter();
   const { projectId } = router.query;
-  const { projects, allUsers } = useDatabase();
+  const { users } = useSelector((state) => state.users);
+  const { projects } = useSelector((state) => state.projects);
   let teamMembers = [];
 
   //-----------------------------------------------------------FUNCTIONS
 
   const project = projects?.filter((item) => item._id == projectId)[0];
-  allUsers?.forEach((item) => {
+
+  users?.forEach((item) => {
     project?.teams?.includes(item.name) && teamMembers.push(item);
   });
 

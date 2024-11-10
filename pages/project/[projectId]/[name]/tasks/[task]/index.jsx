@@ -1,23 +1,18 @@
-import MenuLayout from "@/components/layouts/MenuLayout";
-import AddNew from "@/components/projectComponents/AddNew";
-import Image from "next/image";
-import { Nunito } from "next/font/google";
-import { useEffect, useState } from "react";
-import { setDate } from "@/store/slice-reducers/reportSlice";
-import { useDispatch, useSelector } from "react-redux";
-import ReactDatePicker from "react-datepicker";
 import AppButton from "@/components/AppButton";
-import AddTalentsComponent from "@/components/projectComponents/AddTalentsComponent";
-import OutsideClickHandler from "react-outside-click-handler";
-import useDatabase from "@/hooks/useDatabase";
-import { AnimatePresence } from "framer-motion";
-import { TeamCard } from "@/pages/menu/project/[projectId]";
-import axios from "axios";
-import { useRouter } from "next/router";
-import { motion } from "framer-motion";
+import MenuLayout from "@/components/layouts/MenuLayout";
 import Loader from "@/components/Loader";
-import toast from "react-hot-toast";
+import AddTalentsComponent from "@/components/projectComponents/AddTalentsComponent";
+import useDatabase from "@/hooks/useDatabase";
+import axios from "axios";
+import { AnimatePresence, motion } from "framer-motion";
+import { Nunito } from "next/font/google";
+import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
+import OutsideClickHandler from "react-outside-click-handler";
+import { useDispatch, useSelector } from "react-redux";
 const nunito = Nunito({
   subsets: ["latin"],
   weight: ["200", "300", "400", "500", "600"],
@@ -36,7 +31,7 @@ const Project = () => {
   const [project, setProject] = useState(null);
   const [talent, setTalent] = useState(null);
   const { allUsers } = useDatabase();
-  const { talents } = useSelector((state) => state.users);
+  const { users } = useSelector((state) => state.users);
   // console.log(project);
   const [team, AddTeamMember] = useState(project?.team ?? []);
   const teamMembers = project?.team?.map((item) => item._id);
@@ -166,7 +161,7 @@ const Project = () => {
   //------------------------------------------------------------------USE EFFECTS
   useEffect(() => {
     getProject();
-  }, [team]);
+  }, []);
 
   return (
     <div className='min-h-[91vh] relative h-auto px-[3%] bg-[#F9F9F9] pb-[25vh]  py-10 w-full flex flex-col'>
@@ -339,9 +334,7 @@ const Project = () => {
                 <AddTalentsComponent
                   style='absolute top-full -left-4 mt-4 w-max max-h-[300px]'
                   addTalent={setTalent}
-                  talents={talents?.filter((item) =>
-                    teamMembers?.includes(item._id)
-                  )}
+                  talents={project?.team}
                 />
               ) : null}
             </AnimatePresence>

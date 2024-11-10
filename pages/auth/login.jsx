@@ -1,18 +1,16 @@
 import AuthComponent from "@/components/AuthComponent";
-import LoginLayout from "@/components/layouts/LoginLayout";
-import Link from "next/link";
 import Button from "@/components/Button";
-import { Checkbox } from "@mui/material";
 import InputLine from "@/components/InputLine";
-import { useEffect, useState } from "react";
+import LoginLayout from "@/components/layouts/LoginLayout";
 import ShowHidePassword from "@/components/ShowHidePassword";
-import { signIn, useSession } from "next-auth/react";
-import { Router, useRouter } from "next/router";
 import { baseUrl } from "@/config/config";
-import LogOut from "@/components/modals/LogOut";
-import ModalComponent from "@/components/modals/ModalComponent";
-import { AnimatePresence, motion } from "framer-motion";
 import { Close } from "@mui/icons-material";
+import { Checkbox } from "@mui/material";
+import { AnimatePresence, motion } from "framer-motion";
+import { signIn, useSession } from "next-auth/react";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 const Index = () => {
   // --------------------------------------------VARIABLES

@@ -10,7 +10,6 @@ const MenuList = ({ Icon, name, isOpen, show }) => {
       ? true
       : routeName.toLowerCase().includes(name.toLowerCase());
   const projectId = route?.query?.projectId;
-  console.log("path", route.pathname);
 
   return (
     <div className='w-full  flex items-center  min-h-[8vh] relative'>
