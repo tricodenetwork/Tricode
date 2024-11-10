@@ -78,13 +78,13 @@ const Dashboard = () => {
 
   if (!user) {
     return (
-      <div className='flex flex-col justify-center items-center w-full h-full'>
+      <div className='flex flex-col justify-center items-center w-screen h-screen'>
         <CircleLoader
           className='w-[300px] lg:w-[500px]'
           loading={!false}
           color='green'
         />
-        <p className='medium lg:text-xl mt-5 text-binance_green'>Loading</p>
+        {/* <p className='medium lg:text-xl mt-5 text-binance_green'></p> */}
       </div>
     );
   }
