@@ -68,7 +68,7 @@ export default NextAuth({
         httpOnly: true,
         sameSite: "lax",
         path: "/",
-        domain: "." + hostName,
+        domain: ".tricode.pro",
         secure: useSecureCookies,
       },
     },
