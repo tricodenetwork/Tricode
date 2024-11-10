@@ -23,7 +23,7 @@ export default function Home() {
   const tawkMessengerRef = useRef();
 
   const handleMinimize = () => {
-    tawkMessengerRef.current.minimize();
+    tawkMessengerRef?.current?.minimize();
   };
   // console.log("session:", session);
 
@@ -39,7 +39,7 @@ export default function Home() {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [tawkMessengerRef]);
   const mobile = screenWidth < 798;
 
   return (
