@@ -8,6 +8,10 @@ import clientPromise from "@/lib/mongodb";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { baseUrl } from "@/config/config";
 
+const nextAuthUrl = process.env.NEXTAUTH_URL;
+const useSecureCookies = nextAuthUrl.startsWith("https://");
+const cookiePrefix = useSecureCookies ? "__Secure-" : "";
+const hostName = new URL(nextAuthUrl).hostname;
 // add providers with NextAuth
 export default NextAuth({
   adapter: MongoDBAdapter(clientPromise),
@@ -56,6 +60,18 @@ export default NextAuth({
   secret: process.env.SECRET,
   session: {
     strategy: "jwt",
+  },
+  cookies: {
+    sessionToken: {
+      name: `${cookiePrefix}next-auth.session-token`,
+      options: {
+        httpOnly: true,
+        sameSite: "lax",
+        path: "/",
+        domain: "." + hostName,
+        secure: useSecureCookies,
+      },
+    },
   },
   callbacks: {
     // async redirect({ url, baseUrl }) {
