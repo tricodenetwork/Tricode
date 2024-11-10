@@ -60,6 +60,7 @@ const MenuLayout = ({ children }) => {
   const handleMinimize = () => {
     tawkMessengerRef.current.minimize();
   };
+
   //------------------------------------------------------------------USE EFFECTS
   useEffect(() => {
     if (session?.user?.email) {
@@ -67,6 +68,7 @@ const MenuLayout = ({ children }) => {
         let data = await fetchGraphQLData(USER, { email: session.user.email });
         let projects = await fetchGraphQLData(PROJECTS);
         let users = await fetchGraphQLData(USERS);
+        // const sess = await getServerAuthSession();
 
         if (data && users && projects) {
           dispatch(initializeUser(data.user));
@@ -77,7 +79,14 @@ const MenuLayout = ({ children }) => {
 
       fetchData();
     }
-
+    // const fetchSession = async () => {
+    //   const res = await fetch("https://tricode.pro/api/auth/session", {
+    //     credentials: "include",
+    //   });
+    //   console.log("ans", res.json());
+    //   return res.ok ? await res.json() : null;
+    // };
+    // const sess = fetchSession();
     console.log("session", session);
   }, [session, dispatch]);
 

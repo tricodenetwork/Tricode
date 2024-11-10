@@ -1,5 +1,5 @@
 // pages/api/auth/[...nextauth].js
-import NextAuth from "next-auth";
+import NextAuth, { getServerSession } from "next-auth";
 import GitHubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 import SlackProvider from "next-auth/providers/slack";
@@ -12,8 +12,7 @@ const nextAuthUrl = process.env.NEXTAUTH_URL;
 const useSecureCookies = nextAuthUrl.startsWith("https://");
 const cookiePrefix = useSecureCookies ? "__Secure-" : "";
 const hostName = new URL(nextAuthUrl).hostname;
-// add providers with NextAuth
-export default NextAuth({
+const authOptions = {
   adapter: MongoDBAdapter(clientPromise),
   providers: [
     CredentialsProvider({
@@ -68,7 +67,7 @@ export default NextAuth({
         httpOnly: true,
         sameSite: "lax",
         path: "/",
-        domain: "." + hostName,
+        domain: ".tricode.pro",
         secure: useSecureCookies,
       },
     },
@@ -80,14 +79,14 @@ export default NextAuth({
     async jwt({ token, user }) {
       // Persist the OAuth access_token and or the user id to the token right after signin
 
-      // console.log("jwt-user", user);
+      console.log("jwt-user", user);
       if (user) {
         token.id = user.id;
       }
       return token;
     },
     async session({ session, token, user }) {
-      // console.log("user", user);
+      console.log("user", user);
       if (user) {
         session.user.role = user.role;
       }
@@ -95,4 +94,6 @@ export default NextAuth({
       return session;
     },
   },
-});
+};
+// add providers with NextAuth
+export default NextAuth(authOptions);
