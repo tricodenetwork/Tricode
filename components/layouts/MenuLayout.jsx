@@ -77,6 +77,8 @@ const MenuLayout = ({ children }) => {
 
       fetchData();
     }
+
+    console.log("session", session);
   }, [session, dispatch]);
 
   return (
