@@ -35,7 +35,7 @@ const rob = Roboto({
   weight: ["100", "300", "400", "500", "700", "900"],
 });
 
-const TeamCard = ({ member, removeTalent, action = "View Profile" }) => {
+export const TeamCard = ({ member, removeTalent, action = "View Profile" }) => {
   return (
     <div className='w-[25%]  flex  my-[3vh] flex-col items-center h-[270px] relative'>
       <div className='flex  items-center mb-[1vh] justify-between mx-auto w-[80%]'>

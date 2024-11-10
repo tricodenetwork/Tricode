@@ -2,7 +2,6 @@ import AppButton from "@/components/AppButton";
 import MenuLayout from "@/components/layouts/MenuLayout";
 import AddTalentsComponent from "@/components/projectComponents/AddTalentsComponent";
 import useDatabase from "@/hooks/useDatabase";
-import { TeamCard } from "@/pages/menu/project/[projectId]";
 import axios from "axios";
 import { AnimatePresence } from "framer-motion";
 import { Nunito } from "next/font/google";
@@ -11,6 +10,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import OutsideClickHandler from "react-outside-click-handler";
 import { useDispatch, useSelector } from "react-redux";
+import { TeamCard } from "./[projectId]";
 const nunito = Nunito({
   subsets: ["latin"],
   weight: ["200", "300", "400", "500", "600"],
