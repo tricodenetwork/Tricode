@@ -31,7 +31,6 @@ export default function Home() {
     const handleResize = () => {
       setScreenWidth(window.innerWidth);
     };
-    handleMinimize();
 
     setScreenWidth(window.innerWidth);
     window.addEventListener("resize", handleResize);
@@ -39,7 +38,7 @@ export default function Home() {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, [tawkMessengerRef]);
+  }, []);
   const mobile = screenWidth < 798;
 
   return (
