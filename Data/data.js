@@ -275,37 +275,37 @@ export const platform = [
   {
     id: 1,
     title: "Product Managers",
-    desc: "Molestie integer eu arcu, mauris bibendum rhoncus imperdiet dui. ",
+    desc: "Drive product vision and collaborate with teams to align features with user needs.",
     header: "New",
   },
   {
     id: 2,
     title: "Software Engineering",
-    desc: "Egestas elit dui scelerisque ut eu purus aliquam vitae habitasse.",
+    desc: "Develop high-performance applications that meet user and business needs.",
     header: "Featured",
   },
   {
     id: 3,
     title: "Full Stack Developers",
-    desc: "Aliquam ut euismod condimentum elementum ultricies volutpat sit non. ",
+    desc: "Build and maintain front-end and back-end applications for seamless user experiences.",
     header: "Popular",
   },
   {
     id: 4,
     title: "Project Managers",
-    desc: "Egestas elit dui scelerisque ut eu purus aliquam vitae habitasse.",
+    desc: "Manage project timelines, resources, and ensure successful delivery.",
     header: "Featured",
   },
   {
     id: 5,
     title: "UI/UX Designers",
-    desc: "Aliquam ut euismod condimentum elementum ultricies volutpat sit non. ",
+    desc: "Design intuitive interfaces that enhance user engagement and satisfaction.",
     header: "Popular",
   },
   {
     id: 6,
     title: "Data Analysts",
-    desc: "Molestie integer eu arcu, mauris bibendum rhoncus imperdiet dui. ",
+    desc: "Extract insights from data to inform strategic decisions.",
     header: "New",
   },
 ];

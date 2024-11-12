@@ -61,9 +61,9 @@ export default function Footer({ mobile }) {
               <Link href={"/projects"}>
                 <div className='regular hover:text-binance_green hover:scale-110 duration-150 hover:cursor-pointer'>{`<Projects />`}</div>
               </Link>
-              <Link href={"/communities"}>
+              {/* <Link href={"/communities"}>
                 <div className='regular hover:text-binance_green hover:scale-110 duration-150 hover:cursor-pointer'>{`<Communities />`}</div>
-              </Link>
+              </Link> */}
               <Link href={"/newsletter"}>
                 <div className='regular hover:text-binance_green hover:scale-110 duration-150 hover:cursor-pointer'>{`<Newsletter />`}</div>
               </Link>

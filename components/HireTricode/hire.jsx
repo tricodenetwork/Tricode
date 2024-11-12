@@ -41,7 +41,7 @@ export default function HireTricode({ mobile }) {
             solutions.
           </p>
           <Link
-            href={"/"}
+            href={"/auth/login"}
             className='flex hover:-translate-x-2 duration-150 gap-4 items-center'
           >
             <p

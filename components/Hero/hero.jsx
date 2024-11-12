@@ -133,12 +133,14 @@ const Home = () => {
             >
               <button>Find Talent</button>
             </Link>
-            <Link
-              href={"/auth/register"}
+            <a
+              href='/files/manual.pdf'
+              target='_blank'
+              rel='noopener noreferrer'
               className='semiBold lg:w-[38%] flex justify-center w-[30%] text-xs lg:text-base lg:Bold hover:scale-110 transition ease-linear duration-150 shadow-s shadow-binance_green py-[1.5vh] rounded-lg bg-white text-app_light_green h-[54px]'
             >
-              <button>How It Works</button>
-            </Link>
+              How It Works
+            </a>
           </motion.div>
         </motion.div>
 

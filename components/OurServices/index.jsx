@@ -15,13 +15,13 @@ export default function OurServices({ mobile }) {
       <div className='px-[5vw]  sm:w-1/2 flex gap-2 flex-col justify-center'>
         <h6
           style={font.style}
-          className='text-white sm:text-app_black text-center sm:text-left text-2xl lg:text-[56px] leading-tight font-extrabold '
+          className='text-white sm:text-app_black text-center sm:text-left text-2xl lg:text-[56px] leading-none font-extrabold '
         >
           All the cool features
         </h6>
         <p
           style={font.style}
-          className='text-center sm:text-left text-sm font-light sm:text-[20px] text-white sm:text-app_black leading-none'
+          className='text-center sm:text-left text-sm font-light sm:text-[20px] text-white sm:text-app_black leading-tight'
         >
           Explore Powerful Features Unlock a suite of advanced tools designed to
           streamline your workflow and enhance productivity. From seamless

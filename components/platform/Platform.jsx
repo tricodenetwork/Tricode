@@ -6,9 +6,9 @@ import BlueLink from "../BlueLink";
 import Card from "./card";
 
 const items = [
-  "Est et in pharetra magna adipiscing ornare aliquam.",
-  "Tellus arcu sed consequat ac velit ut eu blandit.",
-  "Ullamcorper ornare in et egestas dolor orci.",
+  "Project management simplified",
+  "Provides seamless integration and support",
+  "Boosts productivity and streamlines workflows.",
 ];
 
 export default function Platform({ mobile }) {
@@ -26,7 +26,7 @@ export default function Platform({ mobile }) {
           style={font.style}
           className='text-app_black text-center sm:text-left text-2xl lg:text-[56px] leading-none font-extrabold '
         >
-          An all-in-one platform that makes it easier
+          The All-in-One Platform for Your Business Needs.
         </h6>
         <div>
           {items.map((params) => {
@@ -48,7 +48,7 @@ export default function Platform({ mobile }) {
             );
           })}
         </div>
-        <BlueLink href={"/"} text={"Find more about the app"} />
+        <BlueLink href={"/auth/login"} text={"Find more about the app"} />
       </div>
       <Card font={font} />
       {/* <OurClients /> */}

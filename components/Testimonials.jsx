@@ -4,25 +4,25 @@ import React, { useRef } from "react";
 
 const testimonials = [
   {
-    desc: "Lacus vestibulum ultricies mi risus, duis non, volutpat nullam non. Magna congue nisi maecenas elit aliquet eu sed consectetur. Vitae quis cras vitae praesent morbi adipiscing purus consectetur mi.",
+    desc: "I’ve found TRICODE PRO to be essential for managing complex projects with ease. It brings everything my team needs into one place, saving us time and helping us stay organized.",
     user: "Hellen Jummy",
     pic: "ada",
     role: "Financial Counselor",
   },
   {
-    desc: "Odio rhoncus ornare ut quam. Molestie vel duis quis scelerisque ut id. In tortor turpis viverra sagittis ultrices nisi, nec tortor. Vestibulum, ultrices ultricies neque, hac ultricies dolor.",
+    desc: "Using TRICODE PRO has transformed how I approach project management. The platform is intuitive and has improved both collaboration and productivity among my students.",
     user: "Ralph Edwards",
     pic: "cheng",
     role: "Math Teacher",
   },
   {
-    desc: "Sagittis nunc egestas leo et malesuada urna risus. Morbi proin et cras aliquam. Diam tellus, amet, hac imperdiet. Tellus mi volutpat tellus, congue malesuada sit nisl donec a.",
+    desc: "TRICODE PRO has made it easy to track tasks and milestones, even for someone just starting out. It’s an excellent tool for staying on top of my academic projects and responsibilities.",
     user: "Hellena John",
     pic: "david",
     role: "Psychology Student",
   },
   {
-    desc: "Sapien, sollicitudin et vitae id et laoreet sapien consectetur. Felis egestas egestas amet aliquam sit euismod. Pellentesque neque, sed ut volutpat. Ullamcorper in at nulla dignissim.",
+    desc: "TRICODE PRO has really streamlined my workflow. It keeps me organized, allowing me to focus on what matters most without worrying about the details.",
     pic: "tom",
     user: "Hellena John",
     role: "Psychology Student",

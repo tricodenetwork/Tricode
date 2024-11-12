@@ -76,7 +76,7 @@ const IndividualCard = ({ info, index, font }) => {
 
 export default function Card({ font }) {
   return (
-    <section className='sm:w-[68%] overflow-x-scroll  h-max  w-[96%] scrollbar-hid relative sm:px-[2vw] justify-start sm:justify-center flex flex-row sm:flex-wrap  items-center'>
+    <section className='sm:w-[70%] overflow-x-scroll  h-max  w-[96%] scrollbar-hid relative sm:px-[2vw] justify-start sm:justify-center flex flex-row sm:flex-wrap  items-center'>
       {/* <div className='bg-binance_green absolute hidden sm:flex self-center rounded-full w-[550px] h-[550px] -z-[10]' /> */}
       {platform.map((info, i) => {
         return (

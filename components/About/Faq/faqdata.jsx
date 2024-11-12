@@ -2,27 +2,27 @@ export const faqdata = [
   {
     id: 1,
     question: "What types of businesses use Tricode? ",
-    answer: `Businesses of all sizes and across various industries use Tricode to optimize their remote work environments, work with skilled talents, and build custom software solutions.`,
+    answer: `TRICODE is designed for startups, small businesses, and growing companies that need a scalable, all-in-one platform to manage project workflows, team collaboration, and technical development. It’s especially useful for remote technical teams in fields like software engineering, AI, and design.`,
   },
 
   {
     id: 2,
     question: "What are the benefits of using Tricode? ",
-    answer: `Tricode offers numerous benefits, including:`,
+    answer: `TRICODE streamlines project management, enhances productivity, and supports seamless collaboration across remote teams. It includes task management, milestone tracking, cloud deployment, and access to skilled technical professionals, helping businesses optimize their product development.`,
     Businesses: `For Businesses`,
   },
 
   {
     id: 3,
     question: "What cloud infrastructure does Tricode utilize?",
-    answer: `We leverage a multi-cloud approach, primarily utilizing AWS and Google Cloud Platform for scalability, reliability, and global reach.`,
+    answer: `TRICODE operates on robust, secure cloud platforms that offer flexibility and scalability. This allows businesses to grow with confidence, knowing their projects are supported by reliable infrastructure.`,
   },
 
   {
     id: 4,
     question: "What technologies power Tricode's virtual workspaces?",
     answer:
-      "Vitae congue eu consequat ac felis placerat vestibulum lectus mauris ultrices. Cursus sit amet dictum sit amet justo donec enim diam porttitor lacus luctus accumsan tortor posuere.",
+      "TRICODE’s virtual workspaces are powered by advanced collaboration tools, secure communication systems, and project management software, creating a seamless environment for technical teams to work together effectively, no matter their location.",
   },
 
   {
@@ -30,6 +30,6 @@ export const faqdata = [
     question:
       "What tools and environments are available to Tricode's developers?",
     answer:
-      "Vitae congue eu consequat ac felis placerat vestibulum lectus mauris ultrices. Cursus sit amet dictum sit amet justo donec enim diam porttitor lacus luctus accumsan tortor posuere.",
+      "TRICODE provides developers with a full suite of development tools, including integrated coding environments, version control systems, and testing frameworks. These tools empower teams to manage every aspect of the Software Development Life Cycle efficiently.",
   },
 ];

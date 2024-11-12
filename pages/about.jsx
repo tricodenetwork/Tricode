@@ -9,8 +9,8 @@ export default function Aboutus() {
     <section className='w-full' id='about'>
       <Navbar />
       <About />
-      <Faq />
-      <OurNewsletter />
+      {/* <Faq /> */}
+      {/* <OurNewsletter /> */}
       <Footer />
     </section>
   );
