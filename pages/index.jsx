@@ -8,41 +8,37 @@ import { useSession } from "next-auth/react";
 import useDatabase from "@/hooks/useDatabase";
 import { useRouter } from "next/router";
 import FileUpload from "@/components/modals/FileUpload";
-import { useSelector } from "react-redux";
 import { CircleLoader } from "react-spinners";
-import { USER } from "@/lib/constants/queries";
+import {
+  PROJECT,
+  PROJECTS,
+  TALENTS_PROJECTS,
+  USER,
+} from "@/lib/constants/queries";
 import fetchGraphQLData from "@/lib/utils/fetchGraphql";
-const projectDetails = [
-  { name: "A1 1", date: "2023-09-15", status: "Completed" },
-  { name: "A1 1", date: "2023-09-15", status: "Returned for review" },
-  { name: "A1 1", date: "2023-09-15", status: "Paused" },
-  { name: "A1 1", date: "2023-09-15", status: "Started" },
-  { name: "A1 1", date: "2023-09-15", status: "Ongoing" },
-  { name: "A1 1", date: "2023-09-15", status: "Awaiting your review" },
-];
+import { useDispatch, useSelector } from "react-redux";
+import { initializeUser } from "@/store/slice-reducers/userSlice";
 
 const Dashboard = () => {
   // --------------------------------------------VARIABLES
   const currentDate = new Date();
   const { data: session, status } = useSession();
-  const { projects } = useDatabase();
-  const [user, setUser] = useState();
+  // const { projects } = useDatabase();
+  const [files, setFiles] = useState([]);
+  const [projects, setProjects] = useState([]);
   const router = useRouter();
-  // const { user } = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.user);
   const upload = router.query?.imageUpload;
   const imageUrl = user?.image
     ? user?.image
     : user?.profile_pic
     ? `/profile_pics/${user?.email + "_" + user?.profile_pic}`
     : "/assets/images/company.svg";
-  // console.log(session, "sessio");
-  // console.log(status, "status");
-  console.log(imageUrl, "urlimage");
   const options = { weekday: "long", month: "long", day: "numeric" };
   const formattedDate = new Intl.DateTimeFormat("en-US", options).format(
     currentDate
   );
-  const [files, setFiles] = useState([]);
 
   //-----------------------------------------------------------FUNCTIONS
 
@@ -85,28 +81,36 @@ const Dashboard = () => {
 
   //------------------------------------------------------------------USE EFFECTS
   useEffect(() => {
-    if (session?.user?.email) {
+    if (!session?.user?.email) {
       // Function to get tasks for the talent
       const fetchData = async () => {
-        let data = await fetchGraphQLData(USER, { email: session.user.email });
-        if (data) {
-          setUser(data.user);
+        let data = await fetchGraphQLData(USER, {
+          email: "busdcode@gmail.com",
+        });
+        let data2 = await fetchGraphQLData(TALENTS_PROJECTS, {
+          email: data.user.email,
+        });
+        if (data && data2) {
+          dispatch(initializeUser(data.user));
+          console.log(data2);
+          setProjects(data2.projectsByTalent);
         }
       };
 
       fetchData();
-      if (user) {
-        console.log(user);
-        if (
-          !(user?.role === "talent" || user?.role === "company" || user?.email)
-        ) {
-          router.push("/role");
-        } else {
-          return;
-        }
-      }
+      // if (user) {
+      //   console.log(user);
+      //   if (
+      //     !(user?.role === "talent" || user?.role === "company" || user?.email)
+      //   ) {
+      //     router.push("/role");
+      //   } else {
+      //     return;
+      //   }
+      // }
     }
-  }, [session]);
+  }, [session, router]);
+  console.log(projects, user);
 
   if (!user) {
     return (
@@ -297,7 +301,10 @@ const Dashboard = () => {
               {projects?.map((project, index) => {
                 return project?.report?.map((item, i) => {
                   return (
-                    <div className='relative w-[438px] flex-[0_0_auto] h-[166px] bg-white rounded-[10px] shadow-[0px_4px_10px_#0000000d,0px_-4px_10px_#0000000d]'>
+                    <div
+                      key={i.toString()}
+                      className='relative w-[438px] flex-[0_0_auto] h-[166px] bg-white rounded-[10px] shadow-[0px_4px_10px_#0000000d,0px_-4px_10px_#0000000d]'
+                    >
                       <div className='inline-flex flex-col items-start gap-[30px] relative top-[19px] left-[56px]'>
                         <p className="relative w-[326px] mt-[-1.00px] [font-family:'Poppins-Regular',Helvetica] font-normal text-[#2e2c2c] text-[13px] tracking-[0] leading-[normal]">
                           {item?.summary.slice(0, 80).concat("...")}

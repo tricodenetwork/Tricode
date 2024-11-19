@@ -23,6 +23,7 @@ import useDatabase from "@/hooks/useDatabase";
 import { ViewHorizontalIcon, ViewVerticalIcon } from "@radix-ui/react-icons";
 import { Inter } from "next/font/google";
 import { Toaster } from "react-hot-toast";
+import Teams from "../svg/Teams";
 const inter = Inter({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -144,6 +145,7 @@ const MenuLayout = ({ children }) => {
           <div className=''>
             <MenuList isOpen={isOpen} Icon={Dashboard} name={"Dashboard"} />
             <MenuList isOpen={isOpen} Icon={Project} name={"Project"} />
+            <MenuList isOpen={isOpen} Icon={Teams} name={"Teams"} />
             <MenuList isOpen={isOpen} Icon={Payment} name={"Payment"} />
             <MenuList isOpen={isOpen} Icon={Help} name={"Help"} />
             <MenuList

@@ -1,13 +1,13 @@
 import TalentLayout from "@/components/layouts/TalentLayout";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { CiSearch } from "react-icons/ci";
-import { IoCheckmarkDoneSharp } from "react-icons/io5";
-import { IoMdCamera, IoIosSend } from "react-icons/io";
-import { LuPaperclip } from "react-icons/lu";
 import { FaMicrophone } from "react-icons/fa";
-import Link from "next/link";
+import { IoIosSend, IoMdCamera } from "react-icons/io";
+import { IoCheckmarkDoneSharp } from "react-icons/io5";
+import { LuPaperclip } from "react-icons/lu";
 
 const Chat = () => {
   const [search, setSearch] = useState("");

@@ -1,11 +1,11 @@
 import AuthComponent from "@/components/AuthComponent";
-import LoginLayout from "@/components/layouts/LoginLayout";
+// import LoginLayout from "@/components/layouts/LoginLayout";
 import Link from "next/link";
 import Button from "@/components/Button";
 import { Checkbox } from "@mui/material";
 import InputLine from "@/components/InputLine";
 import { useEffect, useState } from "react";
-import ShowHidePassword from "@/components/ShowHidePassword";
+// import ShowHidePassword from "@/components/ShowHidePassword";
 import { signIn, useSession } from "next-auth/react";
 import { Router, useRouter } from "next/router";
 import { baseUrl } from "@/config/config";
@@ -157,11 +157,6 @@ const Index = () => {
               placeholder={"Password*"}
               type={showPasswordToggle ? "text" : "password"}
             />
-            <ShowHidePassword
-              className='absolute ml-[-2.5rem] mt-[1.5rem]'
-              onClick={showPassword}
-              showPasswordToggle={showPasswordToggle}
-            />
           </div>
         </div>
         <div className='flex relative bottom-[3vh] md:bottom-0  items-center '>
@@ -196,5 +191,4 @@ const Index = () => {
   );
 };
 
-Index.getLayout = LoginLayout;
 export default Index;

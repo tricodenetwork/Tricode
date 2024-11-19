@@ -1,12 +1,12 @@
 import MessageItem from "@/components/chatComponents/MessageItem";
-import { FiPaperclip } from "react-icons/fi";
-import { BsEmojiSmile } from "react-icons/bs";
-import { IoIosSend } from "react-icons/io";
-import { IoMicOutline } from "react-icons/io5";
 import TalentLayout from "@/components/layouts/TalentLayout";
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
+import { BsEmojiSmile } from "react-icons/bs";
+import { FiPaperclip } from "react-icons/fi";
+import { IoIosSend } from "react-icons/io";
+import { IoMicOutline } from "react-icons/io5";
 const Help = () => {
   // --------------------------------------------VARIABLES
   const [current, setCurrent] = useState(1);

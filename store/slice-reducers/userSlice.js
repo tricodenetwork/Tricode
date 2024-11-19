@@ -1,13 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-
-const initialState = {};
+const initialState = { user: {} };
 
 const layoutSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
     initializeUser(state, action) {
-      return JSON.parse(JSON.stringify(action.payload));
+      state.user = action.payload;
     },
   },
 });

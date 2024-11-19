@@ -1,16 +1,16 @@
 import { useState, useEffect, useMemo } from "react";
 import { useSession } from "next-auth/react";
 import axios from "axios";
-import { useDispatch } from "react-redux";
-import { initializeUser } from "@/store/slice-reducers/UserReducer";
+import { useDispatch, useSelector } from "react-redux";
+import { initializeUser } from "@/store/slice-reducers/userSlice";
 
 const useDatabase = () => {
   const { data: session } = useSession();
-  const [user, setUser] = useState(null);
   const [allUsers, setAllUsers] = useState(null);
   const [projects, setProjects] = useState(null);
   const [rooms, setRooms] = useState(null);
   const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.user);
 
   function convertObjectIdToDate(oid) {
     const timestamp = parseInt(oid.substring(0, 8), 16) * 1000;
@@ -33,7 +33,7 @@ const useDatabase = () => {
             email: session?.user?.email,
           });
           const res2 = await axios.post("/api/projects", {
-            name: session?.user?.name,
+            name: user?.name,
           });
           const res3 = await axios.get("/api/users");
           const res4 = await axios.get("/api/get/chatrooms");

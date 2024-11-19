@@ -10,6 +10,8 @@ import { useRouter } from "next/router";
 import FileUpload from "@/components/modals/FileUpload";
 import { useSelector } from "react-redux";
 import { CircleLoader } from "react-spinners";
+import { USER } from "@/lib/constants/queries";
+import fetchGraphQLData from "@/lib/utils/fetchGraphql";
 const projectDetails = [
   { name: "A1 1", date: "2023-09-15", status: "Completed" },
   { name: "A1 1", date: "2023-09-15", status: "Returned for review" },
@@ -23,7 +25,8 @@ const Dashboard = () => {
   // --------------------------------------------VARIABLES
   const currentDate = new Date();
   const { data: session, status } = useSession();
-  const { projects, user } = useDatabase();
+  const { projects } = useDatabase();
+  const [user, setUser] = useState();
   const router = useRouter();
   // const { user } = useSelector((state) => state);
   const upload = router.query?.imageUpload;
@@ -54,6 +57,22 @@ const Dashboard = () => {
   }
 
   //------------------------------------------------------------------USE EFFECTS
+
+  useEffect(() => {
+    if (!session?.user?.email) {
+      // Function to get tasks for the talent
+      const fetchData = async () => {
+        let data = await fetchGraphQLData(USER, {
+          email: "lukeokagha@gmail.com",
+        });
+        if (data) {
+          setUser(data.user);
+        }
+      };
+
+      fetchData();
+    }
+  }, [session, router]);
   useEffect(() => {
     if (user) {
       console.log(user);

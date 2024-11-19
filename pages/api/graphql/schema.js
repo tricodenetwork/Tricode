@@ -1,10 +1,11 @@
 const typeDefs = `#graphql
   type User {
-    id: ID!
+    _id: ID!
     name: String!
     email: String!
     image: String
     role: String!
+    dept: String
     password: String
   }
   
@@ -23,14 +24,14 @@ const typeDefs = `#graphql
   }
 
   type Milestone {
-    name: String!
+    name: String
     status: String
     description: String
-    startDate: String!
-    endDate: String!
+    startDate: String
+    endDate: String
     tasks: [Task]
-    amount: Float
-    contingency: Float
+    amount: String
+    contingency: String
   }
 
   type Report {
@@ -43,11 +44,11 @@ const typeDefs = `#graphql
   }
 
   type Project {
-    _id: ID!
-    name: String!
-    company: String!
+    _id: ID
+    name: String
+    company: String
     description: String
-    status: String!
+    status: String
     files: [String]
     milestones: [Milestone]
     team: [User]
@@ -60,8 +61,9 @@ const typeDefs = `#graphql
     users: [User]
     user(email: String!): User
     projects: [Project]
-    project(company: String!): Project
+    project(company: String!): [Project]
     mytasks(name: String!): [Task]
+    projectsByTalent(email:String!):[Project]
 
   }
 

@@ -1,81 +1,87 @@
 const resolvers = {
   Query: {
-    users: async (_, __, context) => {
-      try {
-        return await context.dataSources.users.getAllUsers();
-      } catch (error) {
-        throw new Error("Failed to fetch users");
-      }
+    users: async (_, __, { dataSources }) => {
+      return handleRequest(
+        () => dataSources.users.getAllUsers(),
+        "Failed to fetch users"
+      );
     },
-    user: async (_, { email }, context) => {
-      try {
-        return await context.dataSources.users.getUser({ email });
-      } catch (error) {
-        throw new Error("Failed to fetch users");
-      }
+    user: async (_, { email }, { dataSources }) => {
+      return handleRequest(
+        () => dataSources.users.getUser({ email }),
+        "Failed to fetch user"
+      );
     },
-    projects: async (_, __, context) => {
-      try {
-        return await context.dataSources.projects.getAllProjects();
-      } catch (error) {
-        throw new Error("Failed to fetch Projects", error);
-      }
+    projects: async (_, __, { dataSources }) => {
+      return handleRequest(
+        () => dataSources.projects.getAllProjects(),
+        "Failed to fetch projects"
+      );
     },
-    project: async (_, { company }, context) => {
-      try {
-        return await context.dataSources.projects.getProject({ company });
-      } catch (error) {
-        throw new Error("Failed to fetch Project", error);
-      }
+    project: async (_, { company }, { dataSources }) => {
+      return handleRequest(
+        () => dataSources.projects.getProject({ company }),
+        "Failed to fetch project"
+      );
     },
-
-    mytasks: async (_, { name }, context) => {
-      try {
-        const projects = await context.dataSources.projects.getAllProjects();
-
-        // Filter tasks by the specific talent name
-        const tasks = projects.flatMap((project) =>
-          project.milestones
-            ? project.milestones.flatMap((milestone) =>
-                milestone.tasks
-                  ? milestone.tasks.filter((task) => task.talent?.name === name)
-                  : []
-              )
-            : []
-        );
-
-        return tasks;
-      } catch (error) {
-        throw new Error("Failed to fetch tasks");
-      }
+    projectsByTalent: async (_, { email }, { dataSources }) => {
+      return handleRequest(
+        () => dataSources.projects.getTalentsProjects({ email }),
+        "Failed to fetch projects by talent"
+      );
+    },
+    mytasks: async (_, { name }, { dataSources }) => {
+      return handleRequest(async () => {
+        const projects = await dataSources.projects.getAllProjects();
+        return extractTasksByTalent(projects, name);
+      }, "Failed to fetch tasks");
     },
   },
   Project: {
-    allTasks: async (_, __, context) => {
-      try {
-        const projects = await context.dataSources.projects.getAllProjects();
-
-        // Flatten all tasks from all projects' milestones
-        return projects.flatMap((project) =>
-          project.milestones
-            ? project.milestones.flatMap((milestone) => milestone.tasks || [])
-            : []
-        );
-      } catch (error) {
-        throw new Error("Failed to fetch all tasks", error);
-      }
+    allTasks: async (project, __, { dataSources }) => {
+      return handleRequest(async () => {
+        const projects = await dataSources.projects.getAllProjects();
+        return extractAllTasks(projects);
+      }, "Failed to fetch all tasks");
     },
   },
   Mutation: {
-    createUser: async (_, { input }, context) => {
-      try {
-        const newUser = await context.dataSources.users.createUser({ input });
-        return newUser;
-      } catch (error) {
-        throw new Error("Failed to create user");
-      }
+    createUser: async (_, { input }, { dataSources }) => {
+      return handleRequest(
+        () => dataSources.users.createUser({ input }),
+        "Failed to create user"
+      );
     },
   },
+};
+
+// Utility Functions
+
+const handleRequest = async (fn, errorMessage) => {
+  try {
+    return await fn();
+  } catch (error) {
+    console.error(`${errorMessage}:`, error);
+    throw new Error(errorMessage);
+  }
+};
+
+const extractTasksByTalent = (projects, talentName) => {
+  return projects.flatMap(
+    (project) =>
+      project.milestones?.flatMap(
+        (milestone) =>
+          milestone.tasks?.filter((task) => task.talent?.name === talentName) ||
+          []
+      ) || []
+  );
+};
+
+const extractAllTasks = (projects) => {
+  return projects.flatMap(
+    (project) =>
+      project.milestones?.flatMap((milestone) => milestone.tasks || []) || []
+  );
 };
 
 export default resolvers;
