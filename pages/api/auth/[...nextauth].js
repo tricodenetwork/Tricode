@@ -73,12 +73,8 @@ export default NextAuth({
     },
   },
   callbacks: {
-    // async redirect({ url, baseUrl }) {
-    //   return `${baseUrl}/menu/dashboard`;
-    // },
     async jwt({ token, user }) {
       // Persist the OAuth access_token and or the user id to the token right after signin
-
       // console.log("jwt-user", user);
       if (user) {
         token.id = user.id;
@@ -86,7 +82,6 @@ export default NextAuth({
       return token;
     },
     async session({ session, token, user }) {
-      // console.log("user", user);
       if (user) {
         session.user.role = user.role;
       }

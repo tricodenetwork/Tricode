@@ -41,7 +41,6 @@ const MenuLayout = ({ children }) => {
   const { data: session, status } = useSession();
 
   const parts = route.pathname.split("/");
-  console.log("path", route.pathname);
   const title = route.pathname !== "/" ? parts[1] : "Dashboard";
   const [isOpen, setIsOpen] = useState(true);
   const [notification, setNotification] = useState(false);
@@ -73,10 +72,10 @@ const MenuLayout = ({ children }) => {
           dispatch(initializeProjects(data2.projectsByTalent));
         }
       };
-
       fetchData();
     }
-  }, [session]);
+    console.log("session", session);
+  }, [session, dispatch]);
 
   return (
     <div
