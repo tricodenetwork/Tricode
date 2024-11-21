@@ -1,6 +1,5 @@
 import MenuLayout from "@/components/layouts/MenuLayout";
-import ProjectTable from "@/components/projectComponents/projectTables/ProjecctTable";
-import MessageItem from "@/components/chatComponents/MessageItem";
+import TabsHeader from "@/pages/talent/Tabs/TabsHeader";
 
 const Project = () => {
   // --------------------------------------------VARIABLES
@@ -11,14 +10,7 @@ const Project = () => {
 
   return (
     <div className='h-max p-5  lg:p-10 w-full flex flex-col'>
-      <div className='w-[90%] lg:w-[75%] border-2 self-center  border-binance_green rounded-[17px] h-[656px] overflow-y-hidden'>
-        <h6 className='bg-binance_green h-[8%] flex items-center px-[68px] text-white w-full text-center lg:text-left'>
-          Send us a message
-        </h6>
-        <div className='pt-[5vh]'>
-          <MessageItem img={"/assets/images/help.svg"} text={""} />
-        </div>
-      </div>
+      <TabsHeader />
     </div>
   );
 };
