@@ -10,6 +10,7 @@ const LogOut = () => {
   const router = useRouter();
   const leave = async () => {
     await signOut({ callbackUrl: `${baseUrl}auth/login` });
+    router.replace(`${baseUrl}auth/login`);
   };
 
   return (
