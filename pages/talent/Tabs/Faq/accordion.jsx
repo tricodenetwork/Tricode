@@ -26,7 +26,7 @@ const Accordion = ({
         onClick={() => toggleAccordion(accordionId)}
         className="w-full   cursor-pointer flex flex-row justify-between items-center"
       >
-        <p className={`w-full text-neutral-900 text-lg font-normal font-['DM Sans'] leading-normal`}>
+        <p className={`w-full text-black text-xl Poppins-SemiBold`}>
           {question}
         </p>
         <div className="flex mr-auto justify-end items-end">
@@ -51,7 +51,7 @@ const Accordion = ({
             transition={{ type: "tween", duration: 0.5 }}
             className="flex flex-col w-full rounded-md justify-center items-start"
           >
-            <p className="text-[15.29px] px-2">{answer}</p>
+            <p className="text-zinc-500 text-base Poppins-Medium px-2">{answer}</p>
           </motion.div>
         )}
       </AnimatePresence>
