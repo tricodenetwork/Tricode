@@ -1,15 +1,10 @@
 import MenuLayout from "@/components/layouts/MenuLayout";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 // import { LiaAngleLeftSolid, LiaAngleRightSolid } from "react-icons/lia";
 import FileUpload from "@/components/modals/FileUpload";
-import { TALENTS_PROJECTS, USER } from "@/lib/constants/queries";
-import fetchGraphQLData from "@/lib/utils/fetchGraphql";
 import { getStatusClass } from "@/lib/utils/helper";
-import { initializeProjects } from "@/store/slice-reducers/projectSlice";
-import { initializeUser } from "@/store/slice-reducers/userSlice";
-import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { CircleLoader } from "react-spinners";
@@ -17,10 +12,8 @@ import { CircleLoader } from "react-spinners";
 const Dashboard = () => {
   // --------------------------------------------VARIABLES
   const currentDate = new Date();
-  // const { projects } = useDatabase();
   const [files, setFiles] = useState([]);
   const router = useRouter();
-  const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
   const { projects } = useSelector((state) => state.projects);
   const upload = router.query?.imageUpload;
@@ -48,7 +41,7 @@ const Dashboard = () => {
 
   //------------------------------------------------------------------USE EFFECTS
 
-  if (!user) {
+  if (!user.email) {
     return (
       <div className='flex flex-col justify-center items-center w-full h-full'>
         <CircleLoader
