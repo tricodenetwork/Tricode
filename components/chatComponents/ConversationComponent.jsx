@@ -60,7 +60,7 @@ export const ConversationMessaging = () => {
 
   useEffect(() => {
     getChats();
-    const chatUser = team.find((item) => item.name == name);
+    const chatUser = team?.find((item) => item.name == name);
     setReceiver(chatUser);
   }, [name, team]);
 

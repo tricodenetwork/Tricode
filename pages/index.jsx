@@ -183,31 +183,32 @@ const Dashboard = () => {
                 </h6>
                 <h6 className='semiBold py-5 px-4 text-center'>Status</h6>
               </div>
-              {projects?.map((v, k) => (
-                <Link
-                  key={v._id.toString()}
-                  href={`/project/${v._id}`}
-                  // onClick={() => router.push(`/project/${v._id}`)}
-                  className='grid grid-cols-[0.5fr,1fr,1fr,1fr] border-b hover:cursor-pointer  border-gray-200 place-items-center w-full'
-                >
-                  <p className='py-5 pr-6 medium hidden lg:flex text-grayText text-base text-center whitespace-nowrap'>
-                    {k < 9 ? `0${k + 1}` : k + 1}
-                  </p>
-                  <p className='py-5 px-0 sm:px-4 medium text-grayText text-base text-center whitespace-nowrap'>
-                    {v.name}
-                  </p>
-                  <p className='py-5 px-0 sm:px-4 hidden lg:flex medium text-grayText text-base text-center whitespace-nowrap'>
-                    {convertObjectIdToDate(v._id)}
-                  </p>
-                  <p
-                    className={`py-5 px-0 sm:px-4 text-center text-base font-bold whitespace-nowrap ${getStatusClass(
-                      v
-                    )}`}
+              {projects?.map((v, k) => {
+                const statusColor = getStatusClass(v);
+                return (
+                  <Link
+                    key={v._id.toString()}
+                    href={`/project/${v._id}`}
+                    // onClick={() => router.push(`/project/${v._id}`)}
+                    className='grid grid-cols-[0.5fr,1fr,1fr,1fr] border-b hover:cursor-pointer  border-gray-200 place-items-center w-full'
                   >
-                    {v.status}
-                  </p>
-                </Link>
-              ))}
+                    <p className='py-5 pr-6 medium hidden lg:flex text-grayText text-base text-center whitespace-nowrap'>
+                      {k < 9 ? `0${k + 1}` : k + 1}
+                    </p>
+                    <p className='py-5 px-0 sm:px-4 medium text-grayText text-base text-center whitespace-nowrap'>
+                      {v.name}
+                    </p>
+                    <p className='py-5 px-0 sm:px-4 hidden lg:flex medium text-grayText text-base text-center whitespace-nowrap'>
+                      {convertObjectIdToDate(v._id)}
+                    </p>
+                    <p
+                      className={`py-5 px-0 sm:px-4 text-center text-base font-bold whitespace-nowrap ${statusColor}`}
+                    >
+                      {v.status}
+                    </p>
+                  </Link>
+                );
+              })}
             </div>
           </div>
           <div className='mt-[58px]'>

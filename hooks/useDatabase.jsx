@@ -1,13 +1,10 @@
-import { useState, useEffect, useMemo } from "react";
-import { useSession } from "next-auth/react";
-import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
 import { initializeUser } from "@/store/slice-reducers/userSlice";
+import axios from "axios";
+import { useEffect, useMemo, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const useDatabase = () => {
-  const { data: session } = useSession();
   const [allUsers, setAllUsers] = useState(null);
-  const [projects, setProjects] = useState(null);
   const [rooms, setRooms] = useState(null);
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
@@ -27,36 +24,31 @@ const useDatabase = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      if (session?.user?.email) {
+      if (user?.email) {
         try {
           const res = await axios.post("/api/user", {
-            email: session?.user?.email,
+            email: user?.email,
           });
-          const res2 = await axios.post("/api/projects", {
-            name: user?.name,
-          });
+
           const res3 = await axios.get("/api/users");
           const res4 = await axios.get("/api/get/chatrooms");
 
           setRooms(res4.data.data);
           setAllUsers(res3.data.data);
-          setUser(res.data.data);
           dispatch(initializeUser(res.data.data));
-          setProjects(res2.data.data);
         } catch (error) {
           console.log(error.message);
         }
       }
     };
 
-    if (session) {
+    if (user?.email) {
       fetchData();
     }
-  }, [session]);
+  }, [user]);
 
   return {
     user: cachedUser,
-    projects: cachedProjects,
     convertObjectIdToDate,
     allUsers,
     rooms,

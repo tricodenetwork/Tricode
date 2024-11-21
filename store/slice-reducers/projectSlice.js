@@ -9,7 +9,7 @@ const layoutSlice = createSlice({
       state.projects = action.payload;
     },
     setProject(state, action) {
-      state.project = state.projects.find(
+      state.project = state.projects?.find(
         (item) => item._id.toString() == action.payload
       );
     },
