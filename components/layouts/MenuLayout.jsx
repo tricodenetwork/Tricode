@@ -29,6 +29,7 @@ import { useSession } from "next-auth/react";
 import fetchGraphQLData from "@/lib/utils/fetchGraphql";
 import { initializeUser } from "@/store/slice-reducers/userSlice";
 import { useDispatch } from "react-redux";
+import { initializeProjects } from "@/store/slice-reducers/projectSlice";
 const inter = Inter({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
