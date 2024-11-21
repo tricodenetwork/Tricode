@@ -18,7 +18,7 @@ const ModalComponent = ({ Content, close }) => {
         className='modal w-auto  bg-transparent'
         overlayClassName='overlay'
       >
-        {Content}
+        <Content close={close} />
       </Modal>
     </div>
   );

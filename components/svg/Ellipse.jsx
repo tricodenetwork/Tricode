@@ -23,3 +23,4 @@ const Ellipse = () => {
 };
 
 export default Ellipse;
+// <div className='bg-[#FF8282] rounded-full absolute -top-2 -right-2 w-3 h-3'></div>;

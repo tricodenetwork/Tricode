@@ -1,44 +1,57 @@
+import MenuList from "@/components/MenuList";
+import LogOut from "@/components/modals/LogOut";
+import ModalComponent from "@/components/modals/ModalComponent";
+import NotificationModal from "@/components/modals/NotificationModal";
+import Notifications from "@/components/modals/Notifications";
+import Bell from "@/components/svg/Bell";
+import Dashboard from "@/components/svg/Dashboard";
+import Ellipse from "@/components/svg/Ellipse";
+import Help from "@/components/svg/Help";
+import Logout from "@/components/svg/Logout";
+import Message from "@/components/svg/Message";
+import Payment from "@/components/svg/Payment";
+import Project from "@/components/svg/Project";
+import Settings from "@/components/svg/Settings";
 import useFunctions from "@/hooks/useFunctions";
-import Image from "next/image";
-import { motion } from "framer-motion";
-import { useRouter } from "next/router";
-import MenuList from "../MenuList";
-import Dashboard from "../svg/Dashboard";
-import Project from "../svg/Project";
-import Help from "../svg/Help";
-import Logout from "../svg/Logout";
-import Payment from "../svg/Payment";
-import Ellipse from "../svg/Ellipse";
-import Message from "../svg/Message";
-import Bell from "../svg/Bell";
-import Settings from "../svg/Settings";
-import Link from "next/link";
-import { useState } from "react";
-import { useRef } from "react";
-import TawkMessengerReact from "@tawk.to/tawk-messenger-react";
-import ModalComponent from "../modals/ModalComponent";
-import LogOut from "../modals/LogOut";
-import Notifications from "../modals/Notifications";
-import NotificationModal from "../modals/NotificationModal";
-import useDatabase from "@/hooks/useDatabase";
+import { PROJECTS, USER, USERS } from "@/lib/constants/queries";
+import fetchGraphQLData from "@/lib/utils/fetchGraphql";
+import { setProjects } from "@/store/slice-reducers/projectsSlice";
+import { initializeUser } from "@/store/slice-reducers/userSlice";
+import { setUsers } from "@/store/slice-reducers/usersSlice";
 import { ViewHorizontalIcon, ViewVerticalIcon } from "@radix-ui/react-icons";
+import { AnimatePresence, motion } from "framer-motion";
+import { useSession } from "next-auth/react";
 import { Inter } from "next/font/google";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect, useRef, useState } from "react";
 import { Toaster } from "react-hot-toast";
+import { useDispatch, useSelector } from "react-redux";
 const inter = Inter({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
+const slideVariants = {
+  hidden: { opacity: 50, x: 50 },
+  visible: { opacity: 1, x: 0 },
+  exit: { opacity: 50, x: -50 },
+};
 
 const MenuLayout = ({ children }) => {
   // --------------------------------------------VARIABLES
   const route = useRouter();
-  const { user } = useDatabase();
+  const { user } = useSelector((state) => state.user);
+  const { data: session } = useSession();
+
   const parts = route.pathname.split("menu/");
   const title = parts.length > 1 ? parts[1].split("/")[0] : "";
   const [isOpen, setIsOpen] = useState(true);
+  const [notification, setNotification] = useState(false);
+  const [logout, setLogout] = useState(false);
   const [viewHorizontal, setViewHorizontal] = useState(false);
-  const logout = route?.query?.logout;
-  const notification = route?.query?.notification;
+  const projectId = route?.query?.projectId;
+  const dispatch = useDispatch();
 
   //-----------------------------------------------------------FUNCTIONS
   const { imageLoader } = useFunctions();
@@ -47,15 +60,47 @@ const MenuLayout = ({ children }) => {
   const handleMinimize = () => {
     tawkMessengerRef.current.minimize();
   };
+
   //------------------------------------------------------------------USE EFFECTS
+  useEffect(() => {
+    if (session?.user?.email) {
+      const fetchData = async () => {
+        let data = await fetchGraphQLData(USER, { email: session.user.email });
+        let projects = await fetchGraphQLData(PROJECTS);
+        let users = await fetchGraphQLData(USERS);
+        // const sess = await getServerAuthSession();
+
+        if (data && users && projects) {
+          dispatch(initializeUser(data.user));
+          dispatch(setUsers(users.users));
+          dispatch(setProjects(projects.projects));
+        }
+      };
+
+      fetchData();
+    }
+    // const fetchSession = async () => {
+    //   const res = await fetch("https://tricode.pro/api/auth/session", {
+    //     credentials: "include",
+    //   });
+    //   console.log("ans", res.json());
+    //   return res.ok ? await res.json() : null;
+    // };
+    // const sess = fetchSession();
+    console.log("session", session);
+  }, [session, dispatch]);
 
   return (
     <div
       style={inter.style}
       className='w-full flex overflow-hidden flex-col justify-start'
     >
-      {logout && <ModalComponent Content={LogOut} />}
-      {notification && <NotificationModal Content={Notifications} />}
+      {logout && (
+        <ModalComponent close={() => setLogout(false)} Content={LogOut} />
+      )}
+      {notification && (
+        <NotificationModal set={setNotification} Content={Notifications} />
+      )}
       <div className='w-full  bg-binance_green  flex items-center justify-between px-[3vw] lg:px-[2vw]  h-[9vh]'>
         <Link href={"/"} className='items-center hidden lg:flex text-white'>
           <Image
@@ -96,12 +141,12 @@ const MenuLayout = ({ children }) => {
             <Message />
           </div>
           <div className='relative lg:flex hidden hover:scale-90 hover:cursor-pointer transition-all ease-out duration-100'>
-            <Link href={"?notification=true"}>
+            <button onClick={() => setNotification(true)}>
               <div className='absolute -top-2 -right-2'>
                 <Ellipse />
               </div>
               <Bell />
-            </Link>
+            </button>
           </div>
           <div className='w-[30px] lg:flex hidden  hover:scale-90 hover:rotate-[360deg] hover:cursor-pointer transition-all ease-out duration-100 relative rounded-full h-[30px]'>
             <Link href={"/settings/user"}>
@@ -115,7 +160,7 @@ const MenuLayout = ({ children }) => {
           >
             <Image
               src={user?.image ? user?.image : "/assets/icons/Ellipse.png"}
-              className='rounded-full'
+              className='rounded-full object-cover'
               alt='profile_pic '
               fill
             />
@@ -128,7 +173,7 @@ const MenuLayout = ({ children }) => {
       >
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className='absolute top-2 left-2'
+          className='absolute z-50 top-2 left-2'
         >
           {!isOpen ? <ViewHorizontalIcon /> : <ViewVerticalIcon />}
         </button>
@@ -142,42 +187,34 @@ const MenuLayout = ({ children }) => {
             <MenuList isOpen={isOpen} Icon={Project} name={"Project"} />
             <MenuList isOpen={isOpen} Icon={Payment} name={"Payment"} />
             <MenuList isOpen={isOpen} Icon={Help} name={"Help"} />
-            <MenuList isOpen={isOpen} Icon={Logout} name={"Logout"} />
+            <MenuList
+              show={() => setLogout(true)}
+              isOpen={isOpen}
+              Icon={Logout}
+              name={"Logout"}
+            />
           </div>
-          {/* <div className='lg:space-x-4 mb-10 flex lg:hidden bord items-center justify-center lg:justify-between'>
-            <div className='relative flex hover:scale-90 hover:cursor-pointer transition-all ease-out duration-100'>
-              <div className='absolute -top-2 -right-2'>
-                <Ellipse />
-              </div>
-
-              <Message />
-            </div>
-            <div className='relative flex hover:scale-90 hover:cursor-pointer transition-all ease-out duration-100'>
-              <Link href={"?notification=true"}>
-                <div className='absolute -top-2 -right-2'>
-                  <Ellipse />
-                </div>
-                <Bell />
-              </Link>
-            </div>
-            <div className='w-[30px] flex  hover:scale-90 hover:rotate-[360deg] hover:cursor-pointer transition-all ease-out duration-100 relative rounded-full h-[30px]'>
-              <Link href={"/settings/user"}>
-                <Settings />
-              </Link>
-            </div>
-          </div> */}
         </div>
-        <div className='max-h-full  h-full overflow-y-scroll  scrollbar-hid flex-1 flex justify-center items-start'>
-          <Toaster position='top-center' />
-
-          {children}
-        </div>
+        <AnimatePresence mode='wait'>
+          <motion.div
+            key={route.pathname} // triggers animation on route change
+            variants={slideVariants}
+            initial='hidden'
+            animate='visible'
+            exit='exit'
+            transition={{ duration: 0.5 }}
+            className='max-h-full h-full overflow-y-scroll scrollbar-hid flex-1 flex justify-center items-start'
+          >
+            <Toaster position='top-center' />
+            {children}
+          </motion.div>
+        </AnimatePresence>
       </div>
-      <TawkMessengerReact
+      {/* <TawkMessengerReact
         propertyId='668d0c9cc3fb85929e3d25df'
         widgetId='1i2bfih3e'
         ref={tawkMessengerRef}
-      />
+      /> */}
     </div>
   );
 };

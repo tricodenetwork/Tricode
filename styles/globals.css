@@ -86,7 +86,7 @@
   scrollbar-width: none;
 }
 	::-webkit-scrollbar {
-		width: 5px;
+		width: 3px;
     scroll-behavior: smooth;
     border-radius: 40px;
 		height: 50px;
@@ -135,7 +135,7 @@
 
 h3 {
   color: #2E2C2C;
-  font-family: Poppins;
+  font-family: "Poppins-SemiBold";
   font-size: 20px;
   font-style: normal;
   font-weight: 600;
@@ -565,7 +565,7 @@ h5 {
   }
   h3 {
     color: #000;
-    font-family: Poppins;
+    font-family: Poppins-SemiBold;
     font-size: 18px;
     font-style: normal;
     font-weight: 600;

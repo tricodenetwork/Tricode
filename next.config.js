@@ -41,11 +41,21 @@ const nextConfig = {
         port: "",
         pathname: "/u/**",
       },
+      {
+        protocol: "https",
+        hostname: "secure.gravatar.com",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "avatars.slack-edge.com",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
   rewrites: async () => {
-    console.log("NODE_ENV:", process.env.NODE_ENV);
-    console.log("Rewrites being applied");
     return [
       {
         source: "/:path*",

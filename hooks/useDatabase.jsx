@@ -2,8 +2,8 @@ import { useState, useEffect, useMemo } from "react";
 import { useSession } from "next-auth/react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { initializeUser } from "@/store/slice-reducers/UserReducer";
-import { setTalents } from "@/store/slice-reducers/usersSlice";
+import { initializeUser } from "@/store/slice-reducers/userSlice";
+import { setUsers } from "@/store/slice-reducers/usersSlice";
 import { useRouter } from "next/router";
 
 const useDatabase = () => {
@@ -45,7 +45,7 @@ const useDatabase = () => {
 
           setRooms(res4.data.data);
           setAllUsers(res3.data.data);
-          dispatch(setTalents(res3.data.data));
+          dispatch(setUsers(res3.data.data));
           setUser(res.data.data);
           dispatch(initializeUser(res.data.data));
           setProjects(res2.data.data);

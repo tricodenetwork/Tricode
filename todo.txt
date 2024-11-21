@@ -14,3 +14,6 @@
 ** Keep Mobile View in mind when developing.
 
 ------- Good Job @upraisertech.......
+
+
+** adjust nullable and non nullable fields for graphql schema
