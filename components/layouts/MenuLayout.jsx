@@ -1,35 +1,34 @@
-import useFunctions from "@/hooks/useFunctions";
-import Image from "next/image";
-import { motion } from "framer-motion";
-import { useRouter } from "next/router";
-import MenuList from "../MenuList";
+import LogOut from "@/components/modals/LogOut";
+import ModalComponent from "@/components/modals/ModalComponent";
+import NotificationModal from "@/components/modals/NotificationModal";
+import Notifications from "@/components/modals/Notifications";
+import Bell from "@/components/svg/Bell";
 import Dashboard from "@/components/svg/Dashboard";
-import Project from "@/components/svg/Project";
+import Ellipse from "@/components/svg/Ellipse";
 import Help from "@/components/svg/Help";
 import Logout from "@/components/svg/Logout";
-import Payment from "@/components/svg/Payment";
-import Ellipse from "@/components/svg/Ellipse";
 import Message from "@/components/svg/Message";
-import Bell from "@/components/svg/Bell";
+import Payment from "@/components/svg/Payment";
+import Project from "@/components/svg/Project";
 import Settings from "@/components/svg/Settings";
-import Link from "next/link";
-import { useState, useRef, useEffect } from "react";
-import TawkMessengerReact from "@tawk.to/tawk-messenger-react";
-import ModalComponent from "@/components/modals/ModalComponent";
-import LogOut from "@/components/modals/LogOut";
-import Notifications from "@/components/modals/Notifications";
-import NotificationModal from "@/components/modals/NotificationModal";
-import useDatabase from "@/hooks/useDatabase";
-import { ViewHorizontalIcon, ViewVerticalIcon } from "@radix-ui/react-icons";
-import { Inter } from "next/font/google";
-import { Toaster } from "react-hot-toast";
-import Teams from "../svg/Teams";
+import useFunctions from "@/hooks/useFunctions";
 import { TALENTS_PROJECTS, USER } from "@/lib/constants/queries";
-import { useSession } from "next-auth/react";
 import fetchGraphQLData from "@/lib/utils/fetchGraphql";
-import { initializeUser } from "@/store/slice-reducers/userSlice";
-import { useDispatch } from "react-redux";
 import { initializeProjects } from "@/store/slice-reducers/projectSlice";
+import { initializeUser } from "@/store/slice-reducers/userSlice";
+import { ViewHorizontalIcon, ViewVerticalIcon } from "@radix-ui/react-icons";
+import TawkMessengerReact from "@tawk.to/tawk-messenger-react";
+import { motion } from "framer-motion";
+import { useSession } from "next-auth/react";
+import { Inter } from "next/font/google";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect, useRef, useState } from "react";
+import { Toaster } from "react-hot-toast";
+import { useDispatch, useSelector } from "react-redux";
+import MenuList from "../MenuList";
+import Teams from "../svg/Teams";
 const inter = Inter({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -38,7 +37,7 @@ const inter = Inter({
 const MenuLayout = ({ children }) => {
   // --------------------------------------------VARIABLES
   const route = useRouter();
-  const { user } = useDatabase();
+  const { user } = useSelector((state) => state.user);
   const { data: session, status } = useSession();
 
   const parts = route.pathname.split("/");
@@ -76,7 +75,7 @@ const MenuLayout = ({ children }) => {
       fetchData();
     }
     console.log("session", session);
-  }, [session, dispatch]);
+  }, [session]);
 
   return (
     <div
