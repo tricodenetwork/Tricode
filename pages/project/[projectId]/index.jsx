@@ -1,15 +1,11 @@
 import MenuLayout from "@/components/layouts/MenuLayout";
-import { ProjectDetails } from "@/components/projectComponents/ProjectDetails";
-// import ProjectDetails from "@/components/projectComponents/ProjectDetails";
 import TaskBox from "@/components/TaskBox";
-import useDatabase from "@/hooks/useDatabase";
-import { MYTASKS, USERS } from "@/lib/constants/queries";
+import { MYTASKS } from "@/lib/constants/queries";
 import fetchGraphQLData from "@/lib/utils/fetchGraphql";
 import { setProject } from "@/store/slice-reducers/projectSlice";
-import { ContactSupportOutlined } from "@mui/icons-material";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const ProjectID = () => {
   // --------------------------------------------VARIABLESO
@@ -17,7 +13,7 @@ const ProjectID = () => {
   const { projectId } = router.query;
   const [myTasks, setMyTasks] = useState([]);
   const { user } = useSelector((state) => state.user);
-  const { project, projects } = useSelector((state) => state.projects);
+  const { project } = useSelector((state) => state.projects);
   const dispatch = useDispatch();
 
   //-----------------------------------------------------------FUNCTIONS

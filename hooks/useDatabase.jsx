@@ -20,7 +20,6 @@ const useDatabase = () => {
   }
 
   const cachedUser = useMemo(() => user, [user]);
-  const cachedProjects = useMemo(() => projects, [projects]);
 
   useEffect(() => {
     const fetchData = async () => {
