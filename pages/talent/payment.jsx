@@ -1,4 +1,3 @@
-import PaymentButton from "@/components/buttons/general";
 import TalentLayout from "@/components/layouts/TalentLayout";
 import { useState } from "react";
 import { IoMdAdd } from "react-icons/io";
@@ -154,10 +153,6 @@ function Payment() {
           onChange={(e) => setAmount(e.target.value)}
         />
         <br />
-        <PaymentButton className='flex gap-4' onClick={paymentFunc}>
-          <span>Make Payment</span>
-          <MdPayment />
-        </PaymentButton>
       </div>
     </section>
   );
