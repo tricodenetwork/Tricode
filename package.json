@@ -5,9 +5,9 @@
   "homepage": "https://tricodenetwork.github.io/Tricode/",
   "scripts": {
     "deploy": "next build  && npx gh-pages -d out",
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "node api.js && next dev",
+    "build": "node api.js && next build",
+    "start": "node api.js && next start",
     "lint": "next lint",
     "test": "jest --silent --noStackTrace",
     "test:watch": "jest --watch"
