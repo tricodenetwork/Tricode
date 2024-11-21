@@ -1,12 +1,15 @@
-import { baseUrl } from "@/config/config";
 import { signIn, signOut } from "next-auth/react";
 import { useRouter } from "next/router";
 import React from "react";
+export const baseUrl =
+  process.env.NODE_ENV == "production"
+    ? "https://www.tricode.pro/"
+    : "http://localhost:3000/";
 
 const LogOut = () => {
   const router = useRouter();
   const leave = async () => {
-    await signOut({ callbackUrl: `${baseUrl}/auth/login` });
+    await signOut({ callbackUrl: `${baseUrl}auth/login` });
   };
 
   return (
