@@ -1,15 +1,15 @@
 import { useSession } from "next-auth/react";
 import React, { useCallback, useMemo } from "react";
-import useDatabase from "./useDatabase";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 const useChatroom = () => {
-  const { data: session } = useSession();
+  const { user } = useSelector((state) => state.user);
 
   const createChatRoom = useMemo(
     () => async (receiverId) => {
       const chatRoom = {
-        senderId: session?.user?.email,
+        senderId: user?.email,
         receiverId,
       };
 
@@ -22,11 +22,9 @@ const useChatroom = () => {
 
         const roomId = existingRooms?.find((room) => {
           const isSenderMatch =
-            room.senderId === session?.user?.email ||
-            room.senderId === receiverId;
+            room.senderId === user?.email || room.senderId === receiverId;
           const isReceiverMatch =
-            room.receiverId === session?.user?.email ||
-            room.receiverId === receiverId;
+            room.receiverId === user?.email || room.receiverId === receiverId;
 
           return isSenderMatch && isReceiverMatch;
         });
@@ -37,7 +35,7 @@ const useChatroom = () => {
         return null;
       }
     },
-    [session]
+    [user]
   );
 
   const fetchChatsByRoomId = async (id) => {

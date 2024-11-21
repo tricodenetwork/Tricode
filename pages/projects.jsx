@@ -1,5 +1,6 @@
 import MenuLayout from "@/components/layouts/MenuLayout";
 import TalentLayout from "@/components/layouts/TalentLayout";
+import { ProjectDetails } from "@/components/projectComponents/ProjectDetails";
 import Image from "next/image";
 import { useState } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";

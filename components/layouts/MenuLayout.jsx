@@ -13,7 +13,7 @@ import Message from "@/components/svg/Message";
 import Bell from "@/components/svg/Bell";
 import Settings from "@/components/svg/Settings";
 import Link from "next/link";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import TawkMessengerReact from "@tawk.to/tawk-messenger-react";
 import ModalComponent from "@/components/modals/ModalComponent";
 import LogOut from "@/components/modals/LogOut";
@@ -24,6 +24,11 @@ import { ViewHorizontalIcon, ViewVerticalIcon } from "@radix-ui/react-icons";
 import { Inter } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import Teams from "../svg/Teams";
+import { TALENTS_PROJECTS, USER } from "@/lib/constants/queries";
+import { useSession } from "next-auth/react";
+import fetchGraphQLData from "@/lib/utils/fetchGraphql";
+import { initializeUser } from "@/store/slice-reducers/userSlice";
+import { useDispatch } from "react-redux";
 const inter = Inter({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -33,11 +38,15 @@ const MenuLayout = ({ children }) => {
   // --------------------------------------------VARIABLES
   const route = useRouter();
   const { user } = useDatabase();
-  const parts = route.pathname.split("menu/");
-  const title = parts.length > 1 ? parts[1].split("/")[0] : "";
+  const { data: session, status } = useSession();
+
+  const parts = route.pathname.split("/");
+  console.log("path", route.pathname);
+  const title = route.pathname !== "/" ? parts[1] : "Dashboard";
   const [isOpen, setIsOpen] = useState(true);
   const [notification, setNotification] = useState(false);
   const [logout, setLogout] = useState(false);
+  const dispatch = useDispatch();
   const [viewHorizontal, setViewHorizontal] = useState(false);
   const projectId = route?.query?.projectId;
 
@@ -49,6 +58,25 @@ const MenuLayout = ({ children }) => {
     tawkMessengerRef.current.minimize();
   };
   //------------------------------------------------------------------USE EFFECTS
+  useEffect(() => {
+    if (session?.user?.email) {
+      // Function to get tasks for the talent
+      const fetchData = async () => {
+        let data = await fetchGraphQLData(USER, {
+          email: session.user.email,
+        });
+        let data2 = await fetchGraphQLData(TALENTS_PROJECTS, {
+          email: data.user.email,
+        });
+        if (data && data2) {
+          dispatch(initializeUser(data.user));
+          dispatch(initializeProjects(data2.projectsByTalent));
+        }
+      };
+
+      fetchData();
+    }
+  }, [session]);
 
   return (
     <div
@@ -92,7 +120,7 @@ const MenuLayout = ({ children }) => {
         </motion.h4>
         <div className='lg:space-x-4 flex items-center justify-center lg:justify-between'>
           <div className='relative lg:flex hidden hover:scale-90 hover:cursor-pointer transition-all ease-out duration-100'>
-            <Link href={"/menu/chat"}>
+            <Link href={"/chat"}>
               <div className='absolute -top-2 -right-2'>
                 <Ellipse />
               </div>

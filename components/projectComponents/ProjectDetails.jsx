@@ -2,14 +2,18 @@ import { BsFillTelephoneFill } from "react-icons/bs";
 import { AiOutlineMail } from "react-icons/ai";
 import Image from "next/image";
 import useFunctions from "@/hooks/useFunctions";
-import { BackButton } from "../Button";
+import BackButton from "../Button";
 import { AppButton2 } from "../AppButton";
+import { getStatusClass } from "@/lib/utils/helper";
 
-function ProjectDetails({ project }) {
+export const ProjectDetails = ({ project }) => {
   const { imageLoader } = useFunctions();
 
   return (
-    <section className=' w-full m-auto mt-6 '>
+    <section className=' w-full m-auto mt-[60px] '>
+      <h3 className='w-full py-2 border-b border-[#e0e0e0] text-binance_green mb-[40px]'>
+        Project Manager Feedback
+      </h3>
       <div className='flex justify-between items-center '>
         <h3 className={` capitalize  w-[25vw] lg:w-[30%] text-start mb-2 `}>
           Project Manager
@@ -22,49 +26,38 @@ function ProjectDetails({ project }) {
         </div>
       </div>
       <div>
-        <h3 className={`text-start mb-4 text-grayText uppercase `}>
+        <h3 className={`text-start text-lg mb-5 mt-3 text-grayText uppercase `}>
           {project?.manager}
         </h3>
-        <div className=' flex lg:flex-row flex-col gap-2 lg:text-[5px] text-[#38A312]'>
-          <div className='flex gap-1 text-xs  lg:text-sm items-center '>
-            <BsFillTelephoneFill size={10} />
-            <span className='text-xs  lg:text-sm'>+2348056047738</span>
-          </div>
-          <div className='flex gap-1 items-center '>
-            <AiOutlineMail size={10} />
-            <span className='text-xs  lg:text-sm'> lukekajola@gmail.com</span>
-          </div>
+        <div className='flex items-center'>
+          <span className='text-appBlue medium text-sm'>Status : </span>{" "}
+          <span className={`${getStatusClass(project)} medium text-sm ml-1`}>
+            {project?.report &&
+              project?.report[project?.report?.length - 1]?.status}
+          </span>
         </div>
       </div>
 
       <section className='mt-10 mb-8'>
-        <div className='mb-5'>
-          <h3 className='font-bold capitalize mb-1 text-start'>Project</h3>
-          <div className='text-xs medium  lg:text-sm'>
-            Status:{" "}
-            <span className='text-[#38A312] text-xs  lg:text-sm medium'>
-              {project?.status}
-            </span>
+        {project?.report ? (
+          <div className='flex flex-col items-start'>
+            <p className=' text-grayText medium'>
+              {project?.report &&
+                project?.report[project?.report?.length - 1]?.summary}
+            </p>
+            <ol className='text-grayText ml-4 medium list-decimal'>
+              {project.report[project.report.length - 1]?.highlights.map(
+                (item, index) => {
+                  return (
+                    <li key={index.toString()} className='my-4 medium'>
+                      {item}
+                    </li>
+                  );
+                }
+              )}
+            </ol>
           </div>
-        </div>
-
-        <div className='flex flex-col items-start'>
-          <p className=' text-grayText medium'>
-            {project?.report &&
-              project?.report[project?.report?.length - 1]?.summary}
-          </p>
-          <ol className='text-grayText ml-4 medium list-decimal'>
-            <li className='my-4 medium'>
-              {project?.report[project?.report.length - 1]?.highlights[0]}
-            </li>
-            <li className='my-4 medium'>
-              {project?.report[project?.report.length - 1]?.highlights[1]}
-            </li>
-            <li className='my-4 medium'>
-              {project?.report[project?.report.length - 1]?.highlights[2]}
-            </li>
-          </ol>
-        </div>
+        ) : null}
       </section>
 
       <div className='mb-4'>
@@ -157,6 +150,4 @@ function ProjectDetails({ project }) {
       </div>
     </section>
   );
-}
-
-export default ProjectDetails;
+};

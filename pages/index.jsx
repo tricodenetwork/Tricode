@@ -3,32 +3,26 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 // import { LiaAngleLeftSolid, LiaAngleRightSolid } from "react-icons/lia";
-import axios from "axios";
-import { useSession } from "next-auth/react";
-import useDatabase from "@/hooks/useDatabase";
-import { useRouter } from "next/router";
 import FileUpload from "@/components/modals/FileUpload";
-import { CircleLoader } from "react-spinners";
-import {
-  PROJECT,
-  PROJECTS,
-  TALENTS_PROJECTS,
-  USER,
-} from "@/lib/constants/queries";
+import { TALENTS_PROJECTS, USER } from "@/lib/constants/queries";
 import fetchGraphQLData from "@/lib/utils/fetchGraphql";
-import { useDispatch, useSelector } from "react-redux";
+import { getStatusClass } from "@/lib/utils/helper";
+import { initializeProjects } from "@/store/slice-reducers/projectSlice";
 import { initializeUser } from "@/store/slice-reducers/userSlice";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
+import { useDispatch, useSelector } from "react-redux";
+import { CircleLoader } from "react-spinners";
 
 const Dashboard = () => {
   // --------------------------------------------VARIABLES
   const currentDate = new Date();
-  const { data: session, status } = useSession();
   // const { projects } = useDatabase();
   const [files, setFiles] = useState([]);
-  const [projects, setProjects] = useState([]);
   const router = useRouter();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
+  const { projects } = useSelector((state) => state.projects);
   const upload = router.query?.imageUpload;
   const imageUrl = user?.image
     ? user?.image
@@ -52,65 +46,7 @@ const Dashboard = () => {
     return formattedDate;
   }
 
-  function getStatusClass(v) {
-    let statusClass;
-
-    switch (v.status) {
-      case "Paused":
-        statusClass = "text-[#d9d9d9]";
-        break;
-      case "Awaiting your review":
-        statusClass = "text-purple-800";
-        break;
-      case "Started":
-        statusClass = "text-cyan-400";
-        break;
-      case "Ongoing":
-        statusClass = "text-amber-400";
-        break;
-      case "Completed":
-        statusClass = "text-binance_green";
-        break;
-      default:
-        statusClass = "text-gray-800";
-        break;
-    }
-
-    return statusClass;
-  }
-
   //------------------------------------------------------------------USE EFFECTS
-  useEffect(() => {
-    if (!session?.user?.email) {
-      // Function to get tasks for the talent
-      const fetchData = async () => {
-        let data = await fetchGraphQLData(USER, {
-          email: "busdcode@gmail.com",
-        });
-        let data2 = await fetchGraphQLData(TALENTS_PROJECTS, {
-          email: data.user.email,
-        });
-        if (data && data2) {
-          dispatch(initializeUser(data.user));
-          console.log(data2);
-          setProjects(data2.projectsByTalent);
-        }
-      };
-
-      fetchData();
-      // if (user) {
-      //   console.log(user);
-      //   if (
-      //     !(user?.role === "talent" || user?.role === "company" || user?.email)
-      //   ) {
-      //     router.push("/role");
-      //   } else {
-      //     return;
-      //   }
-      // }
-    }
-  }, [session, router]);
-  console.log(projects, user);
 
   if (!user) {
     return (
@@ -144,42 +80,42 @@ const Dashboard = () => {
           <div className='text-[#8c8787] text-[15px] tracking-[0] leading-[normal]'>
             {formattedDate.toString()}
           </div>
-          <div className='relative w-[90vw] lg:w-[383px] h-[377px] mt-[116px] bg-white rounded-[32px] border-2 border-solid border-[#efeeee]'>
-            <div className="absolute top-[134px] left-[85px] [font-family:'Poppins-Medium',Helvetica] font-medium text-[#2b2b2b] text-[20px] tracking-[0] leading-[normal]">
+          <div className='relative w-[90vw] lg:w-[383px] z-20 h-[377px] mt-[116px] bg-white rounded-[32px] border-2 border-solid border-[#efeeee]'>
+            <div className='absolute top-[134px] left-[85px] medium text-[#2b2b2b] text-[20px] tracking-[0] leading-[normal]'>
               Profile Information
             </div>
             <div className='absolute w-[339px] h-[153px] top-[192px] left-[24px]'>
               <div className='relative w-[347px] h-[153px]'>
                 <div className='absolute w-[105px] h-[153px] top-0 left-0'>
-                  <div className="absolute w-[55px] top-0 left-0 [font-family:'Poppins-Regular',Helvetica] font-normal text-[#2b2b2b]  text-xs s:text-sm  lg:text-[16px] tracking-[0] leading-[normal]">
+                  <div className='absolute w-[55px] top-0 left-0 regular text-[#2b2b2b]  text-xs s:text-sm  lg:text-[16px] tracking-[0] leading-[normal]'>
                     Name:
                   </div>
-                  <div className="absolute w-[97px] top-[43px] left-0 [font-family:'Poppins-Regular',Helvetica] font-normal text-[#2b2b2b]  text-xs s:text-sm  lg:text-[16px] tracking-[0] leading-[normal]">
-                    User Name:
+                  <div className='absolute w-[97px] top-[43px] left-0 regular text-[#2b2b2b]  text-xs s:text-sm  lg:text-[16px] tracking-[0] leading-[normal]'>
+                    Dept:
                   </div>
-                  <div className="absolute w-[50px] top-[86px] left-0 [font-family:'Poppins-Regular',Helvetica] font-normal text-[#2b2b2b]  text-xs s:text-sm  lg:text-[16px] tracking-[0] leading-[normal]">
+                  <div className='absolute w-[50px] top-[86px] left-0 regular text-[#2b2b2b]  text-xs s:text-sm  lg:text-[16px] tracking-[0] leading-[normal]'>
                     Email:
                   </div>
                 </div>
                 <div className='absolute w-[243px] h-[153px] top-0 left-[104px]'>
-                  <div className="absolute top-0 left-0 [font-family:'Poppins-SemiBold',Helvetica] font-semibold text-[#2b2b2b]  text-xs s:text-sm  lg:text-[16px] tracking-[0] leading-[normal]">
+                  <div className='absolute top-0 left-0 semiBold text-[#2b2b2b]  text-xs s:text-sm  lg:text-[16px] tracking-[0] leading-[normal]'>
                     {user?.name}
                   </div>
-                  <div className="absolute top-[43px] left-0 [font-family:'Poppins-SemiBold',Helvetica] font-semibold text-[#2b2b2b]  text-xs s:text-sm  lg:text-[16px] tracking-[0] leading-[normal]">
-                    @monry
+                  <div className='absolute top-[43px] left-0 semiBold text-[#2b2b2b]  text-xs s:text-sm  lg:text-[16px] tracking-[0] leading-[normal]'>
+                    UI/UX
                   </div>
-                  <div className="absolute top-[86px] left-0 [font-family:'Poppins-SemiBold',Helvetica] font-semibold text-[#37a212]  text-xs s:text-sm  lg:text-[16px] tracking-[0] leading-[normal]">
+                  <div className='absolute top-[86px] left-0 semiBold text-[#37a212]  text-xs s:text-sm  lg:text-[16px] tracking-[0] leading-[normal]'>
                     {user?.email}
                   </div>
                 </div>
               </div>
             </div>
             <div
-              className={`absolute w-[140px] h-[140px] top-[-67px] left-1/2 -translate-x-1/2`}
+              className={`absolute w-[140px] bg-white z-50 h-[140px] top-[-67px] left-1/2 -translate-x-1/2`}
             >
               <Image
                 fill
-                className='border object-cover border-gray-400 rounded-full'
+                className='border z-50 object-cover border-gray-400 rounded-full'
                 alt='Group'
                 src={imageUrl}
               />
@@ -204,7 +140,7 @@ const Dashboard = () => {
             </div>
           </div>
           <div className='inline-flex mt-[74px] flex-col items-start gap-[10px] relative'>
-            <div className="relative w-fit mt-[-1.00px] [font-family:'Poppins-SemiBold',Helvetica] font-semibold text-[#2e2c2c] text-[16px] tracking-[0] leading-[normal]">
+            <div className='relative w-fit mt-[-1.00px] semiBold text-[#2e2c2c] text-[16px] tracking-[0] leading-[normal]'>
               Scheduled Meetings
             </div>
             <div className='inline-flex flex-col items-start gap-[10px] relative flex-[0_0_auto]'>
@@ -237,56 +173,53 @@ const Dashboard = () => {
           </div>
         </div>
         <div className='w-full mt-5 lg:mt-0 lg:w-[45vw]'>
-          <div className="[font-family:'Poppins-SemiBold',Helvetica] font-semibold text-black text-[24px] tracking-[0] leading-[normal]">
+          <div className='semiBold text-black text-[24px] tracking-[0] leading-[normal]'>
             Projects
           </div>
           <div className='flex justify-center relative  p-8 bg-white rounded-[32px] border-2 border-solid border-[#efeeee items-center mt-10'>
-            <table className='w-full bg-white  rounded'>
-              <thead className='text-black'>
-                <tr className='font-bold text-black  text-sm leading-normal capitalize'>
-                  <th className='py-5 pr-6 text-center hidden lg:flex uppercase'>
-                    S/N
-                  </th>
-                  <th className='py-5 px-4 text-center  whitespace-nowrap'>
-                    Project Name
-                  </th>
-                  <th className='py-5 px-4 hidden lg:flex text-center  whitespace-nowrap'>
-                    Initiation Date
-                  </th>
-                  <th className='py-5 px-4 text-center'>Status</th>
-                </tr>
-              </thead>
-              <tbody className=''>
-                {projects?.map((v, k) => (
-                  <tr
-                    onClick={() => router.push(`/project/${v._id}`)}
-                    key={v._id.toString()}
-                    className='border-b hover:cursor-pointer  border-gray-200'
+            <div className='w-full  bg-white  rounded'>
+              <div className='grid grid-cols-[0.5fr,1fr,1fr,1fr] place-items-center w-full'>
+                <h6 className='semiBold py-5 pr-6 text-center hidden lg:flex uppercase'>
+                  S/N
+                </h6>
+                <h6 className='semiBold py-5 px-4 text-center  whitespace-nowrap'>
+                  Project Name
+                </h6>
+                <h6 className='semiBold py-5 px-4 hidden lg:flex text-center  whitespace-nowrap'>
+                  Initiation Date
+                </h6>
+                <h6 className='semiBold py-5 px-4 text-center'>Status</h6>
+              </div>
+              {projects?.map((v, k) => (
+                <Link
+                  key={v._id.toString()}
+                  href={`/project/${v._id}`}
+                  // onClick={() => router.push(`/project/${v._id}`)}
+                  className='grid grid-cols-[0.5fr,1fr,1fr,1fr] border-b hover:cursor-pointer  border-gray-200 place-items-center w-full'
+                >
+                  <p className='py-5 pr-6 medium hidden lg:flex text-grayText text-base text-center whitespace-nowrap'>
+                    {k < 9 ? `0${k + 1}` : k + 1}
+                  </p>
+                  <p className='py-5 px-0 sm:px-4 medium text-grayText text-base text-center whitespace-nowrap'>
+                    {v.name}
+                  </p>
+                  <p className='py-5 px-0 sm:px-4 hidden lg:flex medium text-grayText text-base text-center whitespace-nowrap'>
+                    {convertObjectIdToDate(v._id)}
+                  </p>
+                  <p
+                    className={`py-5 px-0 sm:px-4 text-center text-base font-bold whitespace-nowrap ${getStatusClass(
+                      v
+                    )}`}
                   >
-                    <td className='py-5 pr-6 medium hidden lg:flex text-grayText text-base text-center whitespace-nowrap'>
-                      {k < 9 ? `0${k + 1}` : k + 1}
-                    </td>
-                    <td className='py-5 px-0 sm:px-4 medium text-grayText text-base text-center whitespace-nowrap'>
-                      {v.name}
-                    </td>
-                    <td className='py-5 px-0 sm:px-4 hidden lg:flex medium text-grayText text-base text-center whitespace-nowrap'>
-                      {convertObjectIdToDate(v._id)}
-                    </td>
-                    <td
-                      className={`py-5 px-0 sm:px-4 text-center text-base font-bold whitespace-nowrap ${getStatusClass(
-                        v
-                      )}`}
-                    >
-                      {v.status}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+                    {v.status}
+                  </p>
+                </Link>
+              ))}
+            </div>
           </div>
           <div className='mt-[58px]'>
             <div className='flex relative justify-between'>
-              <div className="[font-family:'Poppins-SemiBold',Helvetica] text-[#2e2c2c] text-[20px] tracking-[0] leading-[normal]">
+              <div className='semiBold text-[#2e2c2c] text-[20px] tracking-[0] leading-[normal]'>
                 Project Manager Responses
               </div>
               <div className="[font-family:'Poppins-Regular',Helvetica] hidden font-normal text-[#37a212] text-[14px] tracking-[0] leading-[normal]">

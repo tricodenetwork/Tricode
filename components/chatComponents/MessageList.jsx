@@ -6,17 +6,14 @@ import { useEffect, useState } from "react";
 import { ChatItem } from "react-chat-elements";
 import { useRouter } from "next/router";
 import useChatroom from "@/hooks/useChatroom";
-import useDatabase from "@/hooks/useDatabase";
-import { useSession } from "next-auth/react";
+import { useSelector } from "react-redux";
 
 export default function MessageList() {
   // --------------------------------------------VARIABLES
-
   const [val, setVal] = useState("");
   const router = useRouter();
   const { createChatRoom } = useChatroom();
-  const { projects, allUsers } = useDatabase();
-  const { data: session } = useSession();
+  const { projects } = useSelector((state) => state.projects);
   // Retrieve team from sessionStorage on component mount
 
   const [team, setTeam] = useState(() => {
@@ -28,48 +25,21 @@ export default function MessageList() {
   });
 
   useEffect(() => {
-    if (projects && allUsers && typeof window !== "undefined") {
+    if (projects) {
       // Concatenate teams' names from projects
-      const teamMembers = projects
-        .filter((item) => item.company === session?.user?.name)
-        .map((project) => project.teams)
-        .flat();
-
-      // Filter allUsers based on concatenated team names
-      const newTeam = allUsers.filter((user) =>
-        teamMembers.includes(user.name)
-      );
+      const teamMembers = projects.map((project) => project.team).flat();
 
       // Update state and store in sessionStorage
-      setTeam(newTeam);
-      sessionStorage.setItem("team", JSON.stringify(newTeam));
+      setTeam(teamMembers);
+      sessionStorage.setItem("team", JSON.stringify(teamMembers));
     }
-  }, [projects, allUsers, session]);
-
-  useEffect(() => {
-    if (projects && allUsers) {
-      // Concatenate teams' names from projects
-      const teamMembers = projects
-        .filter((item) => item.company === session?.user?.name)
-        .map((project) => project.teams)
-        .flat();
-
-      // Filter allUsers based on concatenated team names
-      const newTeam = allUsers.filter((user) =>
-        teamMembers.includes(user.name)
-      );
-
-      // Update state and store in sessionStorage
-      setTeam(newTeam);
-      sessionStorage.setItem("team", JSON.stringify(newTeam));
-    }
-  }, [projects, allUsers, session]);
+  }, [projects]);
 
   const openRoom = async (user) => {
     // Implement the logic for opening a room
     const roomId = await createChatRoom(user.email);
 
-    router.push(`/menu/project/chat/?id=${roomId}&name=${user.name}`);
+    router.push(`/chat/?id=${roomId}&name=${user.name}`);
   };
 
   return (
@@ -79,7 +49,7 @@ export default function MessageList() {
           <Image src={"/assets/icons/glass.svg"} fill alt='glass' />
         </div>
         <input
-          placeholder='Find tradesperson...'
+          placeholder='Find team member...'
           value={val}
           className='bg-transparent font-medium text-sm tracking-[0] leading-[normal] whitespace-nowrap outline-none text-[#e0e0e0]'
           onChange={(e) => {
@@ -89,19 +59,30 @@ export default function MessageList() {
         />
       </div>
       <div className='w-full h-full scrollbar-hide overflow-scroll'>
-        {team?.map((user, key) => (
-          <div onClick={() => openRoom(user)} className='' key={key.toString()}>
-            <ChatItem
-              avatar={"/assets/icons/Ellipse.png"}
-              alt={"profile_pic"}
-              title={<div className='text-sm capitalize'>{user.name}</div>}
-              subtitle={<div className='light text-xs'>what are you doing</div>}
-              // date={user.lastOnline}
-              // unread={2}
-              className='chat-item'
-            />
-          </div>
-        ))}
+        {team
+          ?.filter(
+            (item) =>
+              item.name.toLowerCase().includes(val.toLowerCase()) ?? true
+          )
+          .map((user, key) => (
+            <div
+              onClick={() => openRoom(user)}
+              className=''
+              key={key.toString()}
+            >
+              <ChatItem
+                avatar={user.image}
+                alt={"pic"}
+                title={<div className='text-sm capitalize'>{user.name}</div>}
+                subtitle={
+                  <div className='light text-xs'>what are you doing</div>
+                }
+                // date={user.lastOnline}
+                // unread={2}
+                className='chat-item bg-appBlue'
+              />
+            </div>
+          ))}
       </div>
     </section>
   );

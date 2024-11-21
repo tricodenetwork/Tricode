@@ -30,9 +30,9 @@ const resolvers = {
         "Failed to fetch projects by talent"
       );
     },
-    mytasks: async (_, { name }, { dataSources }) => {
+    mytasks: async (_, { name, id }, { dataSources }) => {
       return handleRequest(async () => {
-        const projects = await dataSources.projects.getAllProjects();
+        const projects = await dataSources.projects.getTasks({ name, id });
         return extractTasksByTalent(projects, name);
       }, "Failed to fetch tasks");
     },
@@ -66,14 +66,16 @@ const handleRequest = async (fn, errorMessage) => {
   }
 };
 
-const extractTasksByTalent = (projects, talentName) => {
-  return projects.flatMap(
-    (project) =>
-      project.milestones?.flatMap(
-        (milestone) =>
-          milestone.tasks?.filter((task) => task.talent?.name === talentName) ||
-          []
-      ) || []
+const extractTasksByTalent = (project, talentName) => {
+  return (
+    project.milestones?.flatMap(
+      (milestone) =>
+        milestone.tasks
+          ?.filter((task) => task.talent?.name === talentName)
+          .map((task) => {
+            return { milestone: milestone.name, ...task };
+          }) || []
+    ) || []
   );
 };
 

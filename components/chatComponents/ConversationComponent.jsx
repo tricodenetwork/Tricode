@@ -10,16 +10,25 @@ import { useCallback, useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import useChatroom from "@/hooks/useChatroom";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 export const ConversationMessaging = () => {
   const router = useRouter();
   const { name, id } = router.query;
   const [message, setMessage] = useState("");
+  const [receiver, setReceiver] = useState({});
+  const { user } = useSelector((state) => state.user);
   const [chats, setChats] = useState([]);
   // Assuming the name is in the format "firstname-lastname"
   const [firstName, lastName] = name ? name.split("-") : ["", ""];
+  const [team, setTeam] = useState(() => {
+    if (typeof window !== "undefined") {
+      const storedTeam = sessionStorage.getItem("team");
+      return storedTeam ? JSON.parse(storedTeam) : null;
+    }
+    return null;
+  });
   const fullName = `${firstName}`;
-  const { data: session } = useSession();
   const { fetchChatsByRoomId } = useChatroom();
 
   const getChats = async () => {
@@ -31,7 +40,7 @@ export const ConversationMessaging = () => {
     const chatMessage = {
       roomId: id,
       text: message,
-      user: session?.user?.email,
+      user: user?.email,
       read: false,
     };
     try {
@@ -41,7 +50,7 @@ export const ConversationMessaging = () => {
     } catch (error) {
       console.log(error);
     }
-  }, [session, message]);
+  }, [user, message]);
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter" && message.trim() !== "") {
@@ -51,7 +60,9 @@ export const ConversationMessaging = () => {
 
   useEffect(() => {
     getChats();
-  }, []);
+    const chatUser = team.find((item) => item.name == name);
+    setReceiver(chatUser);
+  }, [name, team]);
 
   return (
     <div className='w-full h-full'>
@@ -59,14 +70,16 @@ export const ConversationMessaging = () => {
       <div className='pb-[20px] pl-[20px] w-full mb-[50px] flex items-center gap-2 relative border-b border-b-[#eoeoeo]'>
         <div className='relative w-[45px] h-[45px] '>
           <Image
-            src={"/assets/icons/Ellipse.png"}
+            src={receiver?.image ?? "/assets/icons/Ellipse.png"}
             alt='chat'
             fill
             className='w-[45px] h-[45px] rounded-full'
           />
           <div className='absolute -bottom-[2px] right-1 w-3 h-3 bg-green-500 rounded-full ' />
         </div>
-        <div className='semiBold ml-2 text-black text-2xl'>{fullName}</div>
+        <div className='semiBold ml-2 text-black text-2xl'>
+          {receiver?.name}
+        </div>
       </div>
 
       {/* Conversation */}
@@ -75,7 +88,7 @@ export const ConversationMessaging = () => {
         {chats?.map((item, ind) => {
           const timestamp = parseInt(item._id.substring(0, 8), 16) * 1000;
 
-          if (item.user === session?.user?.email) {
+          if (item.user === receiver?.email) {
             return (
               <MessageBox
                 key={item.roomId.toString()}

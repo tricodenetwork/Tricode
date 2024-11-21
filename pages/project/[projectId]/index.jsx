@@ -1,45 +1,47 @@
 import MenuLayout from "@/components/layouts/MenuLayout";
-import Link from "next/link";
-import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
-import useDatabase from "@/hooks/useDatabase";
-import Image from "next/image";
+import { ProjectDetails } from "@/components/projectComponents/ProjectDetails";
+// import ProjectDetails from "@/components/projectComponents/ProjectDetails";
 import TaskBox from "@/components/TaskBox";
+import useDatabase from "@/hooks/useDatabase";
+import { MYTASKS, USERS } from "@/lib/constants/queries";
 import fetchGraphQLData from "@/lib/utils/fetchGraphql";
-import { USERS } from "@/lib/constants/queries";
+import { setProject } from "@/store/slice-reducers/projectSlice";
+import { ContactSupportOutlined } from "@mui/icons-material";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 const ProjectID = () => {
-  // --------------------------------------------VARIABLES
+  // --------------------------------------------VARIABLESO
   const router = useRouter();
   const { projectId } = router.query;
-  const { projects, allUsers } = useDatabase();
   const [myTasks, setMyTasks] = useState([]);
+  const { user } = useSelector((state) => state.user);
+  const { project, projects } = useSelector((state) => state.projects);
+  const dispatch = useDispatch();
 
   //-----------------------------------------------------------FUNCTIONS
-
-  const project = projects?.filter((item) => item._id == projectId)[0];
-  allUsers?.forEach((item) => {
-    project?.teams?.includes(item.name) && teamMembers.push(item);
-  });
 
   //------------------------------------------------------------------USE EFFECTS
   useEffect(() => {
     // Function to get tasks for the talent
     const fetchTasks = async () => {
-      let data = await fetchGraphQLData();
+      let data = await fetchGraphQLData(MYTASKS, {
+        name: user.name,
+        id: projectId,
+      });
       if (data) {
-        setMyTasks(data.users);
+        setMyTasks(data.mytasks);
       }
     };
 
+    dispatch(setProject(projectId));
     fetchTasks();
-  }, []);
+  }, [projectId]);
 
   return (
     <section className=' w-[100%]  justify-center items-center p-5 lg:p-10'>
-      <section className='bg-[#F2F2F2] rounded-[5px] p-6 mt-[19px] mb-[44px]'>
+      <section className='bg-[#F2F2F2] rounded-[20px] p-6 mt-[19px] mb-[44px]'>
         <div className='grid grid-cols-[1.5fr,3fr] lg:grid-cols-[1fr,5fr] gap-3 mb-[14px] '>
           <div className='font-semibold text-black'>Project name</div>
           <div className='light text-base '>{project?.name}</div>
@@ -53,8 +55,28 @@ const ProjectID = () => {
         </div>
       </section>
       <section className='flex justify-between'>
-        <TaskBox></TaskBox>
+        <TaskBox
+          data={myTasks.filter(
+            (item) => item.status.toLowerCase() == "pending"
+          )}
+        />
+        <TaskBox
+          style='bg-[#FBF6E0]'
+          heading='Doing'
+          data={myTasks.filter(
+            (item) => item.status.toLowerCase() == "ongoing"
+          )}
+        />
+        <TaskBox
+          style='bg-[#E6FBDF]'
+          heading='Done'
+          data={myTasks.filter(
+            (item) => item.status.toLowerCase() == "completed"
+          )}
+        />
       </section>
+      {/* <ProjectDetails project={project} /> */}
+      <section>{/* <ProjectDetails project={myTasks} /> */}</section>
     </section>
   );
 };

@@ -143,13 +143,6 @@
   scrollbar-width: none;
 }
 
-h3 {
-  font-family: Poppins;
-  font-size: 32px;
-  line-height: normal;
-  text-transform: capitalize;
-}
-
 .light {
   font-family: "Poppins-Light";
 }
@@ -177,10 +170,9 @@ h3 {
 
 h3 {
   color: #000;
-  font-family: Poppins;
-  font-size: 24px;
+  font-family: Poppins-Semibold;
+  font-size: 24px;  
   font-style: normal;
-  font-weight: 600;
   line-height: 36px;
 }
 
@@ -615,7 +607,7 @@ td {
 
   h3 {
     color: #000;
-    font-family: Poppins;
+    font-family: Poppins-SemiBold;
     font-size: 18px;
     font-style: normal;
     font-weight: 600;

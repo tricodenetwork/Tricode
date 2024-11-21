@@ -21,6 +21,8 @@ const typeDefs = `#graphql
     name: String!
     description: String
     talent: User
+    status:String
+    milestone:String
   }
 
   type Milestone {
@@ -53,6 +55,7 @@ const typeDefs = `#graphql
     milestones: [Milestone]
     team: [User]
     report: [Report]
+    manager: String
     allTasks: [Task]  # Aggregate of all tasks
 
   }
@@ -62,7 +65,7 @@ const typeDefs = `#graphql
     user(email: String!): User
     projects: [Project]
     project(company: String!): [Project]
-    mytasks(name: String!): [Task]
+    mytasks(name: String!,id:ID!): [Task]
     projectsByTalent(email:String!):[Project]
 
   }
