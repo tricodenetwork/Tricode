@@ -1,5 +1,6 @@
 import greenLady from "@/public/assets/lottie/greenlady.json";
 import Lottie from "lottie-react";
+import FAQs from "./Faq/faqs";
 
 export default function About({ mobile }) {
   return (
@@ -13,7 +14,7 @@ export default function About({ mobile }) {
             About Us
           </div>
           <div className='text-binance_ash regular text-xs lg:text-base text-center mt-3 lg:text-left leading-6 tracking-tight'>
-            <span className='text-[16px] text-zinc-700 font-bold'>
+            <span className='text-[16px] text-zinc-700 semiBold'>
               TRICODE PRO{" "}
             </span>
             is a SaaS platform tailored for software development and digital
@@ -23,8 +24,8 @@ export default function About({ mobile }) {
             workspace where innovation thrives.
             <br />
             <br />
-            <span className='text-[16px] text-zinc-700 font-bold'>
-              Your Agile Development Partner:{" "}
+            <span className='text-[16px] text-zinc-700 semiBold'>
+              Your Agile Development Partner -{" "}
             </span>
             TRICODE PRO enables businesses to tap into a curated pool of experts
             who specialize in creating custom software solutions, APIs, and
@@ -34,8 +35,8 @@ export default function About({ mobile }) {
             Product Market Fit.
             <br />
             <br />
-            <span className='text-[16px] text-zinc-700 font-bold'>
-              Revolutionizing Collaboration:{" "}
+            <span className='text-[16px] text-zinc-700 semiBold'>
+              Revolutionizing Collaboration -{" "}
             </span>
             TRICODE PRO redefines remote teamwork by offering real-time
             communication, dedicated project managers, and a robust project
@@ -44,17 +45,17 @@ export default function About({ mobile }) {
             and keeps teams connected regardless of location.
             <br />
             <br />
-            <span className='text-[16px] text-zinc-700 font-bold'>
+            <span className='text-[16px] text-zinc-700 semiBold'>
               Our Mission
             </span>{" "}
             is to set a new standard for digital collaboration and agile project
             management in technology, health, and community development.
             <br />
             <br />
-            <span className='text-[16px] text-zinc-700 font-bold'>
-              Our vision:
+            <span className='text-[16px] text-zinc-700 semiBold'>
+              Our vision
             </span>{" "}
-            To become the preferred platform for agile methodology, helping
+            is to become the preferred platform for agile methodology, helping
             businesses across sectors bring their digital ambitions to life.
             {/* <span className='text-[16px] text-zinc-700 font-bold'>
               {" "}
@@ -68,6 +69,7 @@ export default function About({ mobile }) {
           loop={true}
         />{" "}
       </div>
+      <FAQs />
     </section>
   );
 }

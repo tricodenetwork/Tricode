@@ -5,6 +5,7 @@ import { useAnimation, motion } from "framer-motion";
 import useFunctions from "@/hooks/useFunctions";
 import Marq from "./techStack";
 import { Inter, Poppins } from "next/font/google";
+import Typewriter from "typewriter-effect";
 import Link from "next/link";
 import AnimatedHeroCard from "./AnimatedHeroCard";
 import SampleChat from "./SampleChat";
@@ -47,10 +48,10 @@ const Home = () => {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, x: -150 },
+    hidden: { opacity: 0, y: 50 },
     visible: {
       opacity: 1,
-      x: 0,
+      y: 0,
       transition: {
         duration: 0.8,
         type: "tween",
@@ -83,8 +84,24 @@ const Home = () => {
               <span className='semiBold text-3xl lg:text-[80px] lg:leading-[81px] leading-normal text-white'>
                 Collaborate
               </span>
-              <span className='text-app_light_green semiBold text-3xl lg:text-[80px] lg:leading-[81px] leading-normal'>
-                Globally
+              <span className=''>
+                <Typewriter
+                  options={{
+                    strings: [
+                      "Globally",
+                      "Remotely",
+                      "Securely",
+                      "Effortlesly",
+                    ],
+                    autoStart: true,
+                    loop: true,
+                    // skipAddStyles: true  ,
+                    cursorClassName:
+                      "text-app_light_green semiBold text-3xl leading-normal custom-cursor",
+                    wrapperClassName:
+                      "text-app_light_green semiBold text-3xl leading-normal",
+                  }}
+                />
               </span>
             </span>
             <span className='flex gap-2'>
@@ -96,25 +113,34 @@ const Home = () => {
               </span>
             </span>
           </motion.h4>
-          <motion.h4
+          <motion.div
             variants={itemVariants}
-            className='hidden lg:flex flex-col'
+            className='hidden min-w-[40vw] lg:flex flex-col'
           >
             <span className='semiBold text-3xl lg:text-[80px] lg:leading-[81px] leading-normal text-white'>
               Collaborate
             </span>
-            <p>
-              <span className='text-app_light_green semiBold text-3xl lg:text-[80px] lg:leading-[81px] leading-normal'>
-                Globally
-              </span>
+            <h2 className='flex items-center'>
+              <Typewriter
+                options={{
+                  strings: ["Globally", "Remotely", "Securely", "Effortlesly"],
+                  autoStart: true,
+                  loop: true,
+                  // skipAddStyles: true  ,
+                  cursorClassName:
+                    "text-app_light_green text-[80px] leading-[81px] custom-cursor",
+                  wrapperClassName:
+                    "text-app_light_green semiBold text-[80px] leading-[81px]",
+                }}
+              />
               <span className='semiBold ml-2 text-3xl lg:text-[80px] lg:leading-[81px] leading-normal text-white'>
                 with
               </span>
-            </p>
+            </h2>
             <span className='semiBold text-3xl lg:text-[80px] lg:leading-[81px] leading-normal text-white'>
               Tricode
             </span>
-          </motion.h4>
+          </motion.div>
           <motion.p
             variants={itemVariants}
             style={poppins.style}
@@ -137,7 +163,7 @@ const Home = () => {
               href='/files/manual.pdf'
               target='_blank'
               rel='noopener noreferrer'
-              className='semiBold lg:w-[38%] flex justify-center w-[30%] text-xs lg:text-base lg:Bold hover:scale-110 transition ease-linear duration-150 shadow-s shadow-binance_green py-[1.5vh] rounded-lg bg-white text-app_light_green h-[54px]'
+              className='semiBold lg:w-[38%]  justify-center w-[30%] text-xs lg:text-base lg:Bold hover:scale-110 transition ease-linear duration-150 shadow-s shadow-binance_green flex items-center rounded-lg bg-white text-app_light_green h-[54px]'
             >
               How It Works
             </a>
