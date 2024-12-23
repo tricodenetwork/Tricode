@@ -6,25 +6,25 @@ const testimonials = [
   {
     desc: "I’ve found TRICODE PRO to be essential for managing complex projects with ease. It brings everything my team needs into one place, saving us time and helping us stay organized.",
     user: "Hellen Jummy",
-    pic: "ada",
+    pic: "hellena",
     role: "Financial Counselor",
   },
   {
     desc: "Using TRICODE PRO has transformed how I approach project management. The platform is intuitive and has improved both collaboration and productivity among my students.",
     user: "Ralph Edwards",
-    pic: "cheng",
+    pic: "ralph",
     role: "Math Teacher",
   },
   {
     desc: "TRICODE PRO has made it easy to track tasks and milestones, even for someone just starting out. It’s an excellent tool for staying on top of my academic projects and responsibilities.",
-    user: "Hellena John",
-    pic: "david",
+    user: "Muyiwa Ofili",
+    pic: "muyi",
     role: "Psychology Student",
   },
   {
     desc: "TRICODE PRO has really streamlined my workflow. It keeps me organized, allowing me to focus on what matters most without worrying about the details.",
     pic: "tom",
-    user: "Hellena John",
+    user: "Nelson Oluku",
     role: "Psychology Student",
   },
 ];

@@ -4,6 +4,7 @@ import Solution_banner from "./banner";
 import useFonts from "@/hooks/useFonts";
 import HireCard from "../HireTricode/card";
 import Image from "next/image";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -39,7 +40,7 @@ export default function WhyTricode({ mobile }) {
           <Card />
         </div>
       </section>
-      <div className='relative w-[80%] gap-4 lg:gap-0 rounded-[12px] mx-auto flex flex-col items-center lg:bg-none bg-gradient-to-r from-binance_green to-appGreen justify-center lg:w-full lg:p-[80px] h-max  py-[5%] lg:py-0 lg:h-[392px]'>
+      <div className='relative w-[80%] gap-4 lg:gap-0 rounded-[12px] mx-auto flex flex-col items-center lg:bg-none bg-gradient-to-br from-binance_green from-75% to-appGreen justify-center lg:w-full lg:p-[80px] h-max  py-[5%] lg:py-0 lg:h-[392px]'>
         <Image
           className='absolute hidden lg:block -z-50'
           priority
@@ -62,7 +63,10 @@ export default function WhyTricode({ mobile }) {
           roles, we connect you with top talent to help achieve your goals and
           elevate your business.
         </p>
-        <button className='w-max gap-2  lg:gap-4  px-[4%] p-[2%]  bg-white flex items-center justify-center hover:translate-y-2 duration-150 rounded-[8px] shadow-[0px_0px_6px] shadow-black/10'>
+        <Link
+          href={"/auth/register"}
+          className='w-max gap-2  lg:gap-4  px-[4%] p-[2%]  bg-white flex items-center justify-center hover:translate-y-2 duration-150 rounded-[8px] shadow-[0px_0px_6px] shadow-black/10'
+        >
           <p
             style={font.style}
             className='text-binance_green text-xs leading-normal lg:text-[24px] font-bold'
@@ -76,7 +80,7 @@ export default function WhyTricode({ mobile }) {
             alt='arr'
             className='hidden lg:flex'
           />
-        </button>
+        </Link>
       </div>
     </>
   );

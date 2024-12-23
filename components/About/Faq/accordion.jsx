@@ -43,7 +43,9 @@ const Accordion = ({
             className='bg-stone-100 flex mt-2 flex-col  w-full bg-opacity-30 rounded-md justify-center items-center'
             id='content'
           >
-            <p className='text-[15.29px] p-2 '>{isOpen ? answer : ""}</p>
+            <p className=' text-sm md:text-[15.29px] p-2 '>
+              {isOpen ? answer : ""}
+            </p>
           </motion.div>
         )}
       </AnimatePresence>
