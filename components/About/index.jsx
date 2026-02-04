@@ -1,6 +1,8 @@
+import dynamic from "next/dynamic";
 import greenLady from "@/public/assets/lottie/greenlady.json";
-import Lottie from "lottie-react";
 import FAQs from "./Faq/faqs";
+
+const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 
 export default function About({ mobile }) {
   return (
