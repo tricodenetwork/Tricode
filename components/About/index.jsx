@@ -7,16 +7,16 @@ const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 export default function About({ mobile }) {
   return (
     <section
-      className='px-8 lg:px-14 py-7 w-full lg:py-[90px] bg-gradient-to-l from-[#BBD2B3] to-stone-100 overflow-hidden justify-center items-center'
-      id='about'
+      className="px-8 lg:px-14 py-7 w-full lg:py-[90px] bg-gradient-to-l from-[#BBD2B3] to-stone-100 overflow-hidden justify-center items-center"
+      id="about"
     >
-      <div className='flex flex-col md:flex-row regular pt-[5em] md:pt-5 gap-3 md:gap-28 justify-center items-center w-full'>
+      <div className="flex flex-col md:flex-row regular pt-[5em] md:pt-5 gap-3 md:gap-28 justify-center items-center w-full">
         <div>
-          <div className='text-binance_green  text-center sm:text-left text-2xl md:text-5xl semiBold tracking-wide'>
+          <div className="text-binance_green  text-center sm:text-left text-2xl md:text-5xl semiBold tracking-wide">
             About Us
           </div>
-          <div className='text-binance_ash regular text-xs lg:text-base text-center mt-3 lg:text-left leading-6 tracking-tight'>
-            <span className='text-[16px] text-zinc-700 semiBold'>
+          <div className="text-binance_ash regular text-xs lg:text-base text-center mt-3 lg:text-left leading-6 tracking-tight">
+            <span className="text-[16px] text-zinc-700 semiBold">
               TRICODE PRO{" "}
             </span>
             is a SaaS platform tailored for software development and digital
@@ -26,7 +26,7 @@ export default function About({ mobile }) {
             workspace where innovation thrives.
             <br />
             <br />
-            <span className='text-[16px] text-zinc-700 semiBold'>
+            <span className="text-[16px] text-zinc-700 semiBold">
               Your Agile Development Partner -{" "}
             </span>
             TRICODE PRO enables businesses to tap into a curated pool of experts
@@ -37,7 +37,7 @@ export default function About({ mobile }) {
             Product Market Fit.
             <br />
             <br />
-            <span className='text-[16px] text-zinc-700 semiBold'>
+            <span className="text-[16px] text-zinc-700 semiBold">
               Revolutionizing Collaboration -{" "}
             </span>
             TRICODE PRO redefines remote teamwork by offering real-time
@@ -47,14 +47,14 @@ export default function About({ mobile }) {
             and keeps teams connected regardless of location.
             <br />
             <br />
-            <span className='text-[16px] text-zinc-700 semiBold'>
+            <span className="text-[16px] text-zinc-700 semiBold">
               Our Mission
             </span>{" "}
             is to set a new standard for digital collaboration and agile project
             management in technology, health, and community development.
             <br />
             <br />
-            <span className='text-[16px] text-zinc-700 semiBold'>
+            <span className="text-[16px] text-zinc-700 semiBold">
               Our vision
             </span>{" "}
             is to become the preferred platform for agile methodology, helping
@@ -66,7 +66,7 @@ export default function About({ mobile }) {
           </div>
         </div>
         <Lottie
-          className='relative   w-[35vw] md:w-[60vw]'
+          className="relative   w-[35vw] md:w-[60vw]"
           animationData={greenLady}
           loop={true}
         />{" "}

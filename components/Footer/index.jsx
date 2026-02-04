@@ -129,7 +129,10 @@ export default function Footer({ mobile }) {
               style={inter.style}
               className="text-white text-sm md:text-lg lg:mt-5 flex flex-col  lg:space-y-5 font-normal  leading-[30px]"
             >
-              <div className="max-w-[200px]">BNB Plaza Lawoke Lake</div>
+              <div className="max-w-[200px]">
+                NO. 1, BNB PLAZA, LAWOKE LAKE, LEKKI- EPE EXPRESSWAY, LAGOS
+                STATE, NIGERIA
+              </div>
               <a href="tel:+2349060700888">+234 906 070 0888</a>
 
               <a href="tel:+27682311138">+27 68 231 1138</a>
