@@ -72,36 +72,29 @@ const Navbar = ({ children }) => {
         <div className='w-[55%] gap-4 hidden lg:flex justify-around items-start'>
           <LinkItem
             hideMenu={hideMenu}
-            path='/about'
+            path='/solutions'
             offColor={false}
-            text='About us'
+            text='Solutions'
             isScrolled={isScrolled}
           />
           <LinkItem
             hideMenu={hideMenu}
-            path='#services'
+            path='/agents'
             offColor={false}
-            text='Services'
+            text='AI Agents'
             isScrolled={isScrolled}
           />
           <LinkItem
             hideMenu={hideMenu}
-            path='#projects'
+            path='/infrastructure'
             offColor={false}
-            text='Projects'
+            text='Infrastructure'
             isScrolled={isScrolled}
           />
-          {/* <LinkItem
-            hideMenu={hideMenu}
-            path='/faq'
-            offColor={false}
-            text='FAQ'
-            isScrolled={isScrolled}
-          /> */}
           <LinkItem
             hideMenu={hideMenu}
-            path='#newsletter'
-            text='Newsletter'
+            path='/docs'
+            text='Documentation'
             isScrolled={isScrolled}
           />
         </div>

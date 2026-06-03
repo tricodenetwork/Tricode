@@ -44,10 +44,10 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Tricode Remote Workstation </title>
+        <title>TRICODE PRO | AI-Powered Technical Execution Infrastructure</title>
         <meta
           name='description'
-          content="As a distinguished Software and Hardware development firm, we stand prepared to address all your technological requirements. Our expertise spans from crafting mobile applications to developing sophisticated websites and robust software programs. Simply articulate your vision, and we'll transform it into reality with our adept team of professionals."
+          content="TRICODE PRO is the technical execution operating system for modern organizations. Build, automate, and manage digital operations through autonomous AI agents and intelligent SDLC orchestration."
         />
       </Head>
       <Navbar />
