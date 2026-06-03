@@ -137,7 +137,7 @@ const Index = () => {
           />
           <div className='flex justify-between items-end'>
             <div className='mr-4  h-full '>
-              <CountryCode />
+              <CountryCode onSelect={(country) => setCountryCode(country.phoneCode)} />
             </div>
             <div className='w-[70%]  h-full '>
               <InputLine
