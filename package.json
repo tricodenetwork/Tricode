@@ -17,6 +17,7 @@
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@iconify/react": "^4.1.1",
+    "@modelcontextprotocol/sdk": "^1.29.0",
     "@mui/icons-material": "latest",
     "@mui/material": "latest",
     "@next-auth/mongodb-adapter": "^1.1.3",
