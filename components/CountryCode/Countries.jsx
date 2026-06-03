@@ -5,9 +5,9 @@ import { countries } from "./data";
 import InputLine from "../InputLine";
 import Image from "next/image";
 
-const Countries = () => {
+const Countries = ({ onSelect }) => {
   const [searchCountry, setSearchCountry] = useState(false);
-  const [searchSelectedCountry, setSearchSelectedCountry] = useState("");
+  const [searchSelectedCountry, setSearchSelectedCountry] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredHistory, setFilteredHistory] = useState(countries);
 
@@ -21,6 +21,14 @@ const Countries = () => {
           country.shortName.toLowerCase().includes(value.toLowerCase())
       )
     );
+  };
+
+  const handleCountrySelect = (country) => {
+    setSearchSelectedCountry(country);
+    setSearchCountry(false);
+    if (onSelect) {
+      onSelect(country);
+    }
   };
 
   return (
@@ -76,7 +84,7 @@ const Countries = () => {
               <motion.li
                 key={uuidv4()}
                 className='flex items-center mb-[10px] hover:bg-gray-200 p-[10px]  cursor-pointer text-[15px]'
-                onClick={() => setSearchSelectedCountry(country)}
+                onClick={() => handleCountrySelect(country)}
                 whileHover={{ scale: 1.1, originX: 0 }}
                 transition={{ stiffness: 300 }}
               >
