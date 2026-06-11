@@ -1,0 +1,340 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--s:var(--color-background-secondary);--p:var(--color-background-primary);--t:var(--color-text-primary);--ts:var(--color-text-secondary);--b:var(--color-border-tertiary);--bs:var(--color-border-secondary);--r:var(--border-radius-md);--rl:var(--border-radius-lg)}
+body{background:transparent;font-family:var(--font-sans);color:var(--t)}
+.shell{display:grid;grid-template-columns:52px 200px 1fr;grid-template-rows:48px 1fr;height:680px;border:0.5px solid var(--bs);border-radius:var(--rl);overflow:hidden;background:var(--p)}
+.topbar{grid-column:1/-1;background:var(--p);border-bottom:0.5px solid var(--b);display:flex;align-items:center;padding:0 16px;gap:12px}
+.logo{font-size:13px;font-weight:500;letter-spacing:.04em;color:var(--t)}
+.logo span{color:var(--color-text-info)}
+.pill{font-size:11px;padding:2px 8px;border-radius:20px;background:var(--color-background-success);color:var(--color-text-success);border:0.5px solid var(--color-border-success)}
+.topbar-right{margin-left:auto;display:flex;align-items:center;gap:8px}
+.avatar{width:26px;height:26px;border-radius:50%;background:var(--color-background-info);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:500;color:var(--color-text-info)}
+.iconbar{background:var(--s);border-right:0.5px solid var(--b);display:flex;flex-direction:column;align-items:center;padding:8px 0;gap:2px}
+.ic{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:var(--r);cursor:pointer;font-size:18px;color:var(--ts);transition:background .15s,color .15s}
+.ic:hover,.ic.active{background:var(--p);color:var(--t)}
+.ic.active{border:0.5px solid var(--b)}
+.sidebar{border-right:0.5px solid var(--b);padding:12px 0;overflow-y:auto;font-size:13px}
+.sb-section{padding:0 8px;margin-bottom:16px}
+.sb-label{font-size:10px;font-weight:500;color:var(--ts);letter-spacing:.08em;padding:0 8px;margin-bottom:4px;text-transform:uppercase}
+.sb-item{display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:var(--r);cursor:pointer;color:var(--ts);transition:background .15s,color .15s}
+.sb-item:hover,.sb-item.active{background:var(--s);color:var(--t)}
+.sb-item.active{font-weight:500}
+.sb-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.dot-green{background:#639922}.dot-amber{background:#BA7517}.dot-blue{background:#185FA5}.dot-purple{background:#534AB7}.dot-gray{background:#5F5E5A}
+.badge{margin-left:auto;font-size:10px;padding:1px 6px;border-radius:10px;background:var(--color-background-danger);color:var(--color-text-danger)}
+.main{overflow:auto;padding:16px;display:flex;flex-direction:column;gap:12px}
+.section-title{font-size:11px;font-weight:500;color:var(--ts);letter-spacing:.07em;margin-bottom:6px}
+.row{display:flex;gap:10px}
+.card{background:var(--p);border:0.5px solid var(--b);border-radius:var(--rl);padding:12px 14px}
+.card-sm{flex:1;min-width:0}
+.stat-label{font-size:11px;color:var(--ts);margin-bottom:3px}
+.stat-val{font-size:20px;font-weight:500}
+.stat-sub{font-size:11px;color:var(--ts);margin-top:2px}
+.green{color:var(--color-text-success)}.amber{color:var(--color-text-warning)}.red{color:var(--color-text-danger)}.blue{color:var(--color-text-info)}
+.agent-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.agent-card{background:var(--s);border:0.5px solid var(--b);border-radius:var(--r);padding:10px 12px;cursor:pointer;transition:border-color .15s}
+.agent-card:hover{border-color:var(--bs)}
+.agent-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.agent-icon{width:28px;height:28px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:15px}
+.ag-pm{background:#EEEDFE}.ag-qa{background:#E1F5EE}.ag-dv{background:#E6F1FB}.ag-tw{background:#FAEEDA}.ag-do{background:#FAECE7}.ag-sec{background:#FBEAF0}
+.agent-name{font-size:12px;font-weight:500}
+.agent-status{font-size:10px}
+.status-bar{height:3px;border-radius:2px;background:var(--b);overflow:hidden;margin-top:6px}
+.status-fill{height:100%;border-radius:2px;transition:width .4s}
+.sf-green{background:#639922}.sf-amber{background:#BA7517}.sf-blue{background:#185FA5}
+.sprint-board{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.sprint-col{background:var(--s);border:0.5px solid var(--b);border-radius:var(--r);padding:8px}
+.sprint-col-title{font-size:11px;font-weight:500;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.ticket{background:var(--p);border:0.5px solid var(--b);border-radius:var(--r);padding:8px;margin-bottom:6px;font-size:11px;cursor:pointer}
+.ticket:hover{border-color:var(--bs)}
+.ticket-id{font-size:10px;color:var(--ts);margin-bottom:3px}
+.ticket-tag{font-size:10px;padding:1px 6px;border-radius:10px;display:inline-block;margin-top:4px}
+.tag-ai{background:#EEEDFE;color:#3C3489}.tag-bug{background:#FCEBEB;color:#791F1F}.tag-feat{background:#E1F5EE;color:#085041}.tag-infra{background:#E6F1FB;color:#0C447C}
+.activity-feed{display:flex;flex-direction:column;gap:6px}
+.event{display:flex;align-items:flex-start;gap:8px;font-size:11px;padding:6px 0;border-bottom:0.5px solid var(--b)}
+.event:last-child{border-bottom:none}
+.event-icon{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;margin-top:1px}
+.event-body{flex:1;min-width:0}
+.event-meta{color:var(--ts);margin-top:1px}
+.pipeline{display:flex;align-items:center;gap:0;margin:4px 0}
+.pipe-step{flex:1;padding:6px 4px;text-align:center;font-size:10px;font-weight:500;position:relative}
+.pipe-step:not(:last-child)::after{content:'';position:absolute;right:-5px;top:50%;transform:translateY(-50%);border-left:5px solid transparent;border-right:none;border-top:5px solid transparent;border-bottom:5px solid transparent;z-index:1}
+.ps-done{background:#EAF3DE;color:#27500A;border-radius:3px 0 0 3px}
+.ps-run{background:#E6F1FB;color:#0C447C}
+.ps-wait{background:var(--s);color:var(--ts)}
+.ps-done::after{border-left-color:#EAF3DE!important}
+.ps-run::after{border-left-color:#E6F1FB!important}
+.ps-wait::after{border-left-color:var(--s)!important}
+.ps-last{border-radius:0 3px 3px 0}
+.tabs{display:flex;gap:0;border-bottom:0.5px solid var(--b);margin-bottom:10px}
+.tab{font-size:12px;padding:6px 12px;cursor:pointer;color:var(--ts);border-bottom:2px solid transparent;transition:color .15s,border-color .15s}
+.tab.active{color:var(--t);border-bottom-color:var(--t);font-weight:500}
+.mcp-chip{display:inline-flex;align-items:center;gap:4px;font-size:11px;padding:3px 8px;border-radius:20px;background:var(--s);border:0.5px solid var(--b);margin:2px}
+.workflow-node{padding:7px 12px;border-radius:var(--r);font-size:11px;font-weight:500;border:0.5px solid var(--b);display:inline-flex;align-items:center;gap:6px}
+.wn-trigger{background:#EEEDFE;color:#3C3489;border-color:#AFA9EC}
+.wn-agent{background:#E1F5EE;color:#085041;border-color:#5DCAA5}
+.wn-action{background:#FAEEDA;color:#633806;border-color:#EF9F27}
+.wn-output{background:#E6F1FB;color:#0C447C;border-color:#85B7EB}
+.arrow-h{display:inline-flex;align-items:center;color:var(--ts);font-size:12px;padding:0 3px}
+.intel-bar{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.intel-label{font-size:11px;color:var(--ts);min-width:80px}
+.intel-track{flex:1;height:6px;background:var(--b);border-radius:3px;overflow:hidden}
+.intel-fill{height:100%;border-radius:3px}
+.intel-pct{font-size:11px;color:var(--ts);min-width:28px;text-align:right}
+.pulse{width:8px;height:8px;border-radius:50%;background:var(--color-text-success);display:inline-block;position:relative}
+.pulse::after{content:'';position:absolute;inset:-3px;border-radius:50%;border:1.5px solid var(--color-text-success);opacity:.5;animation:pulse-ring 1.4s ease-out infinite}
+@keyframes pulse-ring{0%{transform:scale(.7);opacity:.8}100%{transform:scale(1.6);opacity:0}}
+.search-bar{flex:1;max-width:240px;padding:5px 10px;border-radius:var(--r);border:0.5px solid var(--b);font-size:12px;background:var(--s);color:var(--t)}
+</style>
+
+<div class="shell">
+
+  <!-- Top bar -->
+  <div class="topbar">
+    <span class="logo">TRICODE <span>PRO</span></span>
+    <span class="pill">● Agentic OS</span>
+    <input class="search-bar" placeholder="⌘K  Search or command…" readonly>
+    <div class="topbar-right">
+      <span style="font-size:11px;color:var(--ts)">Sprint 14 · Day 3/10</span>
+      <div class="avatar">TC</div>
+    </div>
+  </div>
+
+  <!-- Icon sidebar -->
+  <div class="iconbar">
+    <div class="ic active" title="Dashboard"><i class="ti ti-layout-dashboard" aria-hidden="true"></i></div>
+    <div class="ic" title="Agents"><i class="ti ti-robot" aria-hidden="true"></i></div>
+    <div class="ic" title="Sprint"><i class="ti ti-layout-kanban" aria-hidden="true"></i></div>
+    <div class="ic" title="Workflows"><i class="ti ti-workflow" aria-hidden="true"></i></div>
+    <div class="ic" title="Infrastructure"><i class="ti ti-server" aria-hidden="true"></i></div>
+    <div class="ic" title="Intelligence"><i class="ti ti-chart-bar" aria-hidden="true"></i></div>
+    <div class="ic" title="Docs"><i class="ti ti-file-description" aria-hidden="true"></i></div>
+    <div style="margin-top:auto"></div>
+    <div class="ic" title="Settings"><i class="ti ti-settings" aria-hidden="true"></i></div>
+  </div>
+
+  <!-- Left sidebar -->
+  <div class="sidebar">
+    <div class="sb-section">
+      <div class="sb-label">Workspace</div>
+      <div class="sb-item active"><span class="sb-dot dot-green"></span>Dashboard</div>
+      <div class="sb-item"><span class="sb-dot dot-blue"></span>Agent Console</div>
+      <div class="sb-item"><span class="sb-dot dot-amber"></span>Sprint Board <span class="badge">7</span></div>
+      <div class="sb-item"><span class="sb-dot dot-purple"></span>Workflows</div>
+    </div>
+    <div class="sb-section">
+      <div class="sb-label">Projects</div>
+      <div class="sb-item"><i class="ti ti-folder" style="font-size:13px" aria-hidden="true"></i>TRICODE OS v2</div>
+      <div class="sb-item"><i class="ti ti-folder" style="font-size:13px" aria-hidden="true"></i>Agent Workforce</div>
+      <div class="sb-item"><i class="ti ti-folder" style="font-size:13px" aria-hidden="true"></i>MCP Integrations</div>
+    </div>
+    <div class="sb-section">
+      <div class="sb-label">Active Agents</div>
+      <div class="sb-item"><span class="pulse"></span> AI PM Agent</div>
+      <div class="sb-item"><span class="pulse"></span> QA Engineer</div>
+      <div class="sb-item"><span class="sb-dot dot-gray"></span>DevOps Agent</div>
+      <div class="sb-item"><span class="sb-dot dot-gray"></span>Tech Writer</div>
+    </div>
+    <div class="sb-section">
+      <div class="sb-label">MCP Connectors</div>
+      <div class="sb-item"><i class="ti ti-brand-github" style="font-size:13px" aria-hidden="true"></i>GitHub</div>
+      <div class="sb-item"><i class="ti ti-brand-slack" style="font-size:13px" aria-hidden="true"></i>Slack</div>
+      <div class="sb-item"><i class="ti ti-file-text" style="font-size:13px" aria-hidden="true"></i>Notion</div>
+      <div class="sb-item"><i class="ti ti-brand-google" style="font-size:13px" aria-hidden="true"></i>Google Drive</div>
+    </div>
+  </div>
+
+  <!-- Main canvas -->
+  <div class="main">
+
+    <!-- KPI row -->
+    <div>
+      <div class="section-title">EXECUTIVE OVERVIEW</div>
+      <div class="row">
+        <div class="card card-sm">
+          <div class="stat-label">Sprint velocity</div>
+          <div class="stat-val green">84 pts</div>
+          <div class="stat-sub">↑ 12% vs last sprint</div>
+        </div>
+        <div class="card card-sm">
+          <div class="stat-label">Agents running</div>
+          <div class="stat-val blue">6 / 8</div>
+          <div class="stat-sub">2 standby</div>
+        </div>
+        <div class="card card-sm">
+          <div class="stat-label">Tickets resolved</div>
+          <div class="stat-val">42</div>
+          <div class="stat-sub amber">18 in review</div>
+        </div>
+        <div class="card card-sm">
+          <div class="stat-label">CI pipeline</div>
+          <div class="stat-val green">Passing</div>
+          <div class="stat-sub">Last run 4m ago</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Agent grid -->
+    <div>
+      <div class="section-title">AGENT CONSOLE</div>
+      <div class="agent-grid">
+        <div class="agent-card">
+          <div class="agent-head">
+            <div class="agent-icon ag-pm">🤖</div>
+            <div><div class="agent-name">AI PM Agent</div><div class="agent-status green">● Running</div></div>
+          </div>
+          <div style="font-size:10px;color:var(--ts)">Planning sprint 15 backlog…</div>
+          <div class="status-bar"><div class="status-fill sf-green" style="width:72%"></div></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-head">
+            <div class="agent-icon ag-qa">🧪</div>
+            <div><div class="agent-name">QA Engineer</div><div class="agent-status green">● Running</div></div>
+          </div>
+          <div style="font-size:10px;color:var(--ts)">E2E suite on auth module…</div>
+          <div class="status-bar"><div class="status-fill sf-blue" style="width:45%"></div></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-head">
+            <div class="agent-icon ag-dv">💻</div>
+            <div><div class="agent-name">DevOps Agent</div><div class="agent-status" style="color:var(--ts)">● Standby</div></div>
+          </div>
+          <div style="font-size:10px;color:var(--ts)">Awaiting deployment trigger</div>
+          <div class="status-bar"><div class="status-fill sf-green" style="width:100%"></div></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-head">
+            <div class="agent-icon ag-tw">✍️</div>
+            <div><div class="agent-name">Tech Writer</div><div class="agent-status amber">● Queued</div></div>
+          </div>
+          <div style="font-size:10px;color:var(--ts)">Drafting MCP docs…</div>
+          <div class="status-bar"><div class="status-fill sf-amber" style="width:28%"></div></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-head">
+            <div class="agent-icon ag-do">🔐</div>
+            <div><div class="agent-name">Security Auditor</div><div class="agent-status green">● Running</div></div>
+          </div>
+          <div style="font-size:10px;color:var(--ts)">Scanning RBAC policies…</div>
+          <div class="status-bar"><div class="status-fill sf-blue" style="width:60%"></div></div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-head">
+            <div class="agent-icon ag-sec">📊</div>
+            <div><div class="agent-name">Research Agent</div><div class="agent-status green">● Running</div></div>
+          </div>
+          <div style="font-size:10px;color:var(--ts)">Market intel synthesis…</div>
+          <div class="status-bar"><div class="status-fill sf-green" style="width:89%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sprint board preview + activity -->
+    <div class="row" style="align-items:flex-start">
+      <div style="flex:2;min-width:0">
+        <div class="section-title">SPRINT BOARD · Sprint 14</div>
+        <div class="sprint-board">
+          <div class="sprint-col">
+            <div class="sprint-col-title"><span class="sb-dot dot-gray"></span> Backlog</div>
+            <div class="ticket"><div class="ticket-id">TC-091</div>Agent memory persistence<span class="ticket-tag tag-ai">AI</span></div>
+            <div class="ticket"><div class="ticket-id">TC-092</div>Dashboard KPI widgets<span class="ticket-tag tag-feat">Feature</span></div>
+          </div>
+          <div class="sprint-col">
+            <div class="sprint-col-title"><span class="sb-dot dot-blue"></span> In Progress</div>
+            <div class="ticket"><div class="ticket-id">TC-085</div>MCP server auth flow<span class="ticket-tag tag-infra">Infra</span></div>
+            <div class="ticket"><div class="ticket-id">TC-087</div>LangGraph orchestration<span class="ticket-tag tag-ai">AI</span></div>
+          </div>
+          <div class="sprint-col">
+            <div class="sprint-col-title"><span class="sb-dot dot-amber"></span> Review</div>
+            <div class="ticket"><div class="ticket-id">TC-078</div>Redis session cache<span class="ticket-tag tag-infra">Infra</span></div>
+            <div class="ticket"><div class="ticket-id">TC-080</div>Agent approval UI<span class="ticket-tag tag-feat">Feature</span></div>
+          </div>
+          <div class="sprint-col">
+            <div class="sprint-col-title"><span class="sb-dot dot-green"></span> Done</div>
+            <div class="ticket"><div class="ticket-id">TC-071</div>FastAPI gateway v2<span class="ticket-tag tag-infra">Infra</span></div>
+            <div class="ticket"><div class="ticket-id">TC-074</div>Slack MCP connector<span class="ticket-tag tag-feat">Feature</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Activity feed -->
+      <div style="flex:1;min-width:0">
+        <div class="section-title">LIVE ACTIVITY</div>
+        <div class="card" style="padding:10px">
+          <div class="activity-feed">
+            <div class="event">
+              <div class="event-icon" style="background:#EEEDFE;color:#534AB7">🤖</div>
+              <div class="event-body"><div>PM Agent created 4 tickets for sprint 15</div><div class="event-meta">1m ago · TRICODE CORE</div></div>
+            </div>
+            <div class="event">
+              <div class="event-icon" style="background:#E1F5EE;color:#0F6E56">✅</div>
+              <div class="event-body"><div>QA passed E2E auth suite (98%)</div><div class="event-meta">4m ago · QA Agent</div></div>
+            </div>
+            <div class="event">
+              <div class="event-icon" style="background:#E6F1FB;color:#185FA5">🔗</div>
+              <div class="event-body"><div>GitHub MCP synced 12 PRs</div><div class="event-meta">6m ago · MCP Layer</div></div>
+            </div>
+            <div class="event">
+              <div class="event-icon" style="background:#FAECE7;color:#993C1D">🔐</div>
+              <div class="event-body"><div>Security audit flagged 1 RBAC gap</div><div class="event-meta">9m ago · Security Agent</div></div>
+            </div>
+            <div class="event">
+              <div class="event-icon" style="background:#FAEEDA;color:#633806">🚀</div>
+              <div class="event-body"><div>Deploy to staging — passed</div><div class="event-meta">14m ago · DevOps Agent</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CI Pipeline + Workflow builder preview -->
+    <div class="row">
+      <div style="flex:1;min-width:0">
+        <div class="section-title">CI / CD PIPELINE</div>
+        <div class="card" style="padding:10px 12px">
+          <div class="pipeline">
+            <div class="pipe-step ps-done">Lint ✓</div>
+            <div class="pipe-step ps-done">Test ✓</div>
+            <div class="pipe-step ps-run">Build…</div>
+            <div class="pipe-step ps-wait">Stage</div>
+            <div class="pipe-step ps-wait ps-last">Prod</div>
+          </div>
+          <div style="font-size:10px;color:var(--ts);margin-top:6px">Triggered by AI DevOps Agent · branch: feat/mcp-auth</div>
+        </div>
+      </div>
+      <div style="flex:1;min-width:0">
+        <div class="section-title">WORKFLOW BUILDER</div>
+        <div class="card" style="padding:10px 12px">
+          <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;font-size:11px">
+            <div class="workflow-node wn-trigger"><i class="ti ti-bell" aria-hidden="true"></i>GitHub PR</div>
+            <div class="arrow-h">→</div>
+            <div class="workflow-node wn-agent"><i class="ti ti-robot" aria-hidden="true"></i>QA Agent</div>
+            <div class="arrow-h">→</div>
+            <div class="workflow-node wn-action"><i class="ti ti-check" aria-hidden="true"></i>Approve</div>
+            <div class="arrow-h">→</div>
+            <div class="workflow-node wn-output"><i class="ti ti-send" aria-hidden="true"></i>Slack notify</div>
+          </div>
+          <div style="font-size:10px;color:var(--ts);margin-top:8px">MCP: <span class="mcp-chip">GitHub</span><span class="mcp-chip">Slack</span><span class="mcp-chip">Jira</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Intelligence bars -->
+    <div>
+      <div class="section-title">INTELLIGENCE DASHBOARD</div>
+      <div class="card" style="padding:12px 16px">
+        <div class="tabs">
+          <div class="tab active">Team</div>
+          <div class="tab">Revenue</div>
+          <div class="tab">AI Ops</div>
+        </div>
+        <div class="intel-bar"><div class="intel-label">Frontend</div><div class="intel-track"><div class="intel-fill sf-blue" style="width:88%"></div></div><div class="intel-pct blue">88%</div></div>
+        <div class="intel-bar"><div class="intel-label">Backend</div><div class="intel-track"><div class="intel-fill sf-green" style="width:74%"></div></div><div class="intel-pct green">74%</div></div>
+        <div class="intel-bar"><div class="intel-label">AI Agents</div><div class="intel-track"><div class="intel-fill" style="width:91%;background:#534AB7"></div></div><div class="intel-pct" style="color:#534AB7">91%</div></div>
+        <div class="intel-bar"><div class="intel-label">Infra / DevOps</div><div class="intel-track"><div class="intel-fill sf-amber" style="width:62%"></div></div><div class="intel-pct amber">62%</div></div>
+      </div>
+    </div>
+
+  </div><!-- /main -->
+</div><!-- /shell -->

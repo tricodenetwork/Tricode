@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --p: #ffffff;
+  --s: #f8f9fb;
+  --t: #020617;
+  --ts: #64748b;
+  --b: #e2e8f0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --p: #020617;
+    --s: #0f172a;
+    --t: #f8fafc;
+    --ts: #94a3b8;
+    --b: #1e293b;
+  }
+}
+
+body {
+  background: var(--p);
+  color: var(--t);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 13px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.pro-topbar {
+  height: 56px;
+}
+
+/* Glassmorphism Classes */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .glass {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Neural Pulse Animation */
+@keyframes neural-flow {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+.animate-neural {
+  animation: neural-flow 3s linear infinite;
+}
